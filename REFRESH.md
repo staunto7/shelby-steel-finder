@@ -11,6 +11,18 @@ commits the data, and publishes `site/` to GitHub Pages.
 
 Manual registrations: edit `registrations.json` (on github.com or locally) and push; the site updates in a few minutes.
 
+## Mac background job: USSSA and NSA (no Claude usage)
+
+USSSA's state sites and NSA answer 403 to GitHub's servers, so the Mac runs `local/refresh.sh` under launchd
+(`~/Library/LaunchAgents/com.shelbysteel.refresh.plist`, every 15 minutes while awake): a full refresh
+(fetch.py, teams.py, games.py) every 12 hours, and pool play/brackets only, Thursday to Monday morning. It commits
+"Mac refresh (...)" and pushes; GitHub then just republishes. When the Mac is asleep, USSSA and NSA keep their last copy.
+
+- Log: `~/Library/Logs/shelby-steel-refresh.log`
+- Install: `cp local/com.shelbysteel.refresh.plist ~/Library/LaunchAgents/ && launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.shelbysteel.refresh.plist`
+- Remove: `launchctl bootout gui/$(id -u)/com.shelbysteel.refresh && rm ~/Library/LaunchAgents/com.shelbysteel.refresh.plist`
+- Force a full refresh on the next run: delete `~/Library/Application Support/shelby-steel-finder/last-full`
+
 ## Mac job: browser-only sources (runs when the Mac is on)
 
 USFA (SincSports / usfaevents.com) and USA Softball TN/MS/GA (registerplay.com) block servers, so the
