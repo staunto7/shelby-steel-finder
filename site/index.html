@@ -580,7 +580,7 @@ function gamesHTML(g, ev){
   const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
   const isUs = n => pats.some(p => (n||"").toLowerCase().includes(p));
   if (!g.divisions.length) return notPosted(ev);
-  let h = `<div class="upd">Updated ${ago(g.updated)} · every 15 minutes on game days · <a href="${esc(g.source)}" target="_blank" rel="noopener">Sanction's game center ↗</a></div>`;
+  let h = `<div class="upd">Last change ${ago(g.updated)} · checked every 15 minutes on game days · <a href="${esc(g.source)}" target="_blank" rel="noopener">Sanction's game center ↗</a></div>`;
   for (const d of g.divisions){
     h += `<div class="dv">${esc(d.name)}</div>`;
     for (const p of d.pools){

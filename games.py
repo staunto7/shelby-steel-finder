@@ -108,8 +108,12 @@ def main():
             continue
         if not result:
             continue
+        path = OUT / f"{eid}.json"
+        before = json.loads(path.read_text()) if path.exists() else {}
+        if {k: v for k, v in before.items() if k != "updated"} == result and eid in index:
+            continue  # nothing new; leave the files alone so the Mac and GitHub only push real changes
         result["updated"] = now
-        (OUT / f"{eid}.json").write_text(json.dumps(result, separators=(",", ":")))
+        path.write_text(json.dumps(result, separators=(",", ":")))
         index[eid] = {"updated": now, "name": w["ev"]["name"], "pools": sum(len(d["pools"]) for d in result["divisions"]),
                       "brackets": sum(len(d["brackets"]) for d in result["divisions"])}
         print(f"{w['ev']['name']}: {index[eid]}", file=sys.stderr)

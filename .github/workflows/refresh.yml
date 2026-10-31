@@ -5,7 +5,7 @@ on:
     # 11:00 and 23:00 UTC = 6 AM / 6 PM Central (daylight time), 5 AM / 5 PM in winter
     - cron: "0 11,23 * * *"
   push:
-    branches: [main]
+    branches: [main]  # a "Mac refresh" push only republishes; it already carries fresh data
   workflow_dispatch:
 
 permissions:
@@ -26,12 +26,16 @@ jobs:
         with:
           python-version: "3.12"
       - name: Pull listings from every sanction
+        if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Mac refresh')
         run: python3 -I fetch.py
       - name: Pull team lists and find Shelby Steel registrations
+        if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Mac refresh')
         run: python3 -I teams.py
       - name: Pull pool play and brackets for Shelby Steel tournaments
+        if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Mac refresh')
         run: python3 -I games.py
       - name: Save new data back to the repo
+        if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Mac refresh')
         run: |
           git config user.name "shelby-steel-bot"
           git config user.email "actions@users.noreply.github.com"
