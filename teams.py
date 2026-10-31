@@ -19,7 +19,7 @@ SITE = ROOT / "site"
 TODAY = dt.date.today()
 LOOKAHEAD_DAYS = 150
 VENUES = {}  # event id -> ballparks, filled while reading USSSA event pages
-STATS = {"ok": 0, "throttled": 0, "failed": 0}  # written to site/status.json so refresh health is visible
+STATS = {}  # host -> {"ok", "throttled", "failed"}  # written to site/status.json so refresh health is visible
 
 
 def curl(url, data=None, jar=None):
@@ -32,10 +32,13 @@ def curl(url, data=None, jar=None):
     for wait in (0, 8, 25):
         time.sleep(wait)
         body, _, code = subprocess.run(cmd + [url], capture_output=True, text=True).stdout.rpartition("\n")
+        host = STATS.setdefault(re.sub(r"^https?://([^/]+).*", r"\1", url), {"ok": 0, "throttled": 0, "failed": 0})
         if code != "429":
-            STATS["ok" if code.startswith("2") else "failed"] += 1
+            host["ok" if code.startswith("2") else "failed"] += 1
+            if not code.startswith("2"):
+                host["lastCode"] = code
             return body
-    STATS["throttled"] += 1
+    host["throttled"] += 1
     return ""
 
 

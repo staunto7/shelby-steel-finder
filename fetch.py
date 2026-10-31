@@ -270,6 +270,7 @@ def main():
     events.sort(key=lambda e: (e["start"], e["state"], e["name"]))
     for e in events:  # stable id shared with teams.py and the page
         e["id"] = hashlib.sha1(f"{e['url']}|{e['start']}|{e['name']}".encode()).hexdigest()[:10]
+    (SITE_STATUS := OUT.parent / "fetch_status.json").write_text(json.dumps({"ran": now, "sources": status}))
     if prev.get("events") == events:
         print("DATA_UNCHANGED: no new or changed tournaments; nothing to republish")
         return
