@@ -1,0 +1,386 @@
+<meta charset="utf-8">
+<title>Shelby Steel Tournament Finder</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<style>
+/* Layout: black forged header band with the SS mark, a filter rail, then results grouped by tournament weekend. */
+:root{
+  --bg:#F2F3F5; --surface:#FFFFFF; --ink:#101317; --muted:#5D6772; --line:#D7DCE1; --steel:#2E5873; --steel-soft:#E3EBF1;
+  --band:#0B0D10; --band-ink:#F4F6F8; --band-muted:#9AA4AE;
+  --usssa:#B4232F; --pg:#1F4E9C; --pgf:#6A3FA0; --usfa:#0F7A5A; --gs:#B86A0B; --nsa:#0E7490; --usa:#334155;
+  --star:#C98A00;
+  --f-display:"Russo One","Arial Black",Impact,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-label:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1013; --surface:#171A1E; --ink:#ECEFF2; --muted:#9AA4AE; --line:#2A3036; --steel:#8DB6D2; --steel-soft:#1C2A34;
+  --band:#050607; --band-ink:#F4F6F8; --band-muted:#8B95A0;
+  --usssa:#F0626C; --pg:#7FA6EC; --pgf:#B793E6; --usfa:#4FC79E; --gs:#E8A548; --nsa:#4CC3DB; --usa:#A7B4C6; --star:#F2B930;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1013; --surface:#171A1E; --ink:#ECEFF2; --muted:#9AA4AE; --line:#2A3036; --steel:#8DB6D2; --steel-soft:#1C2A34;
+  --band:#050607; --band-ink:#F4F6F8; --band-muted:#8B95A0;
+  --usssa:#F0626C; --pg:#7FA6EC; --pgf:#B793E6; --usfa:#4FC79E; --gs:#E8A548; --nsa:#4CC3DB; --usa:#A7B4C6; --star:#F2B930;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--steel)}
+:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+
+/* header band */
+.band{background:var(--band);color:var(--band-ink);border-bottom:4px solid #6B7680}
+.band .wrap{display:flex;align-items:center;gap:18px;padding-block:22px;flex-wrap:wrap}
+.mark{width:58px;height:58px;flex:none;color:var(--band-ink)}
+.brand{min-width:0;flex:1}
+.brand .org{font-family:var(--f-display);font-size:clamp(20px,3.4vw,30px);letter-spacing:.06em;line-height:1;text-transform:uppercase}
+.brand .tool{font-family:var(--f-label);font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--band-muted);font-size:13px;margin-top:6px}
+.fresh{font-family:var(--f-label);font-size:14px;letter-spacing:.04em;color:var(--band-muted);text-align:right}
+.fresh b{color:var(--band-ink);font-weight:600}
+.fresh .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3FBF7F;margin-right:6px;vertical-align:1px}
+.fresh .dot.stale{background:#E0A030}
+
+/* filters */
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:6px;margin-top:-1px;padding:18px;display:grid;gap:16px;grid-template-columns:repeat(12,minmax(0,1fr))}
+.fwrap{padding-block:20px 6px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field>label,.field>.lbl{font-family:var(--f-label);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.c12{grid-column:span 12}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}.c8{grid-column:span 8}
+@media (max-width:760px){.c6,.c4,.c3,.c8{grid-column:span 12}}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:600 14px/1 var(--f-label);letter-spacing:.06em;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 13px;border-radius:4px;cursor:pointer;text-transform:uppercase}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip .sw{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:1px}
+input[type=date],select,input[type=search]{font:500 15px var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 10px;width:100%;min-width:0}
+.dates{display:flex;gap:8px;align-items:center}
+.dates span{color:var(--muted);font-family:var(--f-label)}
+.hint{font-size:12.5px;color:var(--muted)}
+.link-btn{background:none;border:0;padding:0;color:var(--steel);font:600 13px var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+
+/* summary */
+.summary{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px 8px}
+.summary h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:22px;letter-spacing:.03em;text-wrap:balance}
+.summary .sub{color:var(--muted);font-size:14px}
+.tally{display:flex;gap:6px;flex-wrap:wrap}
+.tally span{font:600 12px var(--f-label);letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:3px;background:var(--steel-soft);color:var(--ink)}
+
+/* weekend groups */
+.weekend{margin-top:18px}
+.wk-head{display:flex;align-items:center;gap:12px;font-family:var(--f-label);font-weight:700;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.wk-head .n{margin-left:auto;font-weight:600;letter-spacing:.06em}
+.list{display:grid;gap:0}
+.ev{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:start;padding:14px 4px;border-bottom:1px solid var(--line)}
+.ev:hover{background:var(--surface)}
+.when{font-family:var(--f-label);text-align:center;line-height:1;padding-top:2px}
+.when .mo{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--muted)}
+.when .d{font-family:var(--f-display);font-size:24px;margin-top:3px;font-variant-numeric:tabular-nums}
+.when .dow{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.04em}
+.ev .name{font-weight:700;font-size:16px;line-height:1.25;margin:0 0 5px;overflow-wrap:anywhere}
+.ev .name a{color:var(--ink);text-decoration:none}
+.ev .name a:hover{text-decoration:underline}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--muted);font-size:14px}
+.meta b{color:var(--ink);font-weight:600}
+.tag{font:700 11.5px/1 var(--f-label);letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;border-radius:3px;color:#fff;margin-right:8px;vertical-align:2px;white-space:nowrap}
+:root .tag{color:var(--surface)}
+.side{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.star{background:none;border:1px solid var(--line);border-radius:4px;width:36px;height:36px;cursor:pointer;color:var(--muted);display:grid;place-items:center}
+.star[aria-pressed="true"]{color:var(--star);border-color:var(--star)}
+.star svg{width:18px;height:18px}
+.go{font:600 13px var(--f-label);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;text-decoration:none;border-bottom:1px solid currentColor}
+@media (max-width:560px){.ev{grid-template-columns:52px minmax(0,1fr)}.side{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between}}
+
+.empty{padding:40px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:6px;margin-top:18px}
+.empty strong{display:block;color:var(--ink);font-size:17px;margin-bottom:6px}
+
+/* sources */
+.sources{margin-block:40px 32px;border-top:2px solid var(--ink);padding-top:14px}
+.sources h3{margin:0 0 4px;font-family:var(--f-label);font-size:14px;letter-spacing:.18em;text-transform:uppercase}
+.sources p{margin:0 0 12px;color:var(--muted);font-size:14px;max-width:70ch}
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.src{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:10px 12px;font-size:13.5px;display:flex;flex-direction:column;gap:3px}
+.src .t{font-weight:700;display:flex;align-items:center;gap:7px}
+.src .t i{width:9px;height:9px;border-radius:2px;display:inline-block}
+.src .s{color:var(--muted)}
+.src a{font-weight:600;font-size:13px}
+@media (prefers-reduced-motion:no-preference){.ev{transition:background .15s}}
+</style>
+
+<header class="band">
+  <div class="wrap">
+    <svg class="mark" viewBox="0 0 1931 1923" aria-hidden="true"><path fill="currentColor" d="M83 83H892V511L664 423V318H330V443L892 659V1008L83 1840V751L322 846V1250L662 910V810L83 608Z"/><path fill="currentColor" d="M1848 83H1039V511L1267 423V318H1601V443L1039 659V1008L1848 1840V751L1609 846V1250L1269 910V810L1848 608Z"/></svg>
+    <div class="brand">
+      <div class="org">Shelby Steel Softball</div>
+      <div class="tool">Tournament Finder</div>
+    </div>
+    <div class="fresh" id="fresh"><span class="dot"></span>Loading tournaments…</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="fwrap">
+    <form class="filters" id="filters" autocomplete="off">
+      <div class="field c12">
+        <span class="lbl">Season</span>
+        <div class="seg" id="seasons" role="group" aria-label="Season"></div>
+      </div>
+      <div class="field c6">
+        <label for="from">Dates</label>
+        <div class="dates"><input type="date" id="from" aria-label="From date"><span>to</span><input type="date" id="to" aria-label="To date"></div>
+        <span class="hint">Or pick one weekend: <input type="date" id="weekend" aria-label="Weekend of" style="width:auto;padding:4px 6px;font-size:13px"></span>
+      </div>
+      <div class="field c6">
+        <span class="lbl">States</span>
+        <div class="seg" id="states" role="group" aria-label="States"></div>
+      </div>
+      <div class="field c3">
+        <label for="age">Age division</label>
+        <select id="age"><option value="">All ages</option></select>
+      </div>
+      <div class="field c6">
+        <span class="lbl">Sanctions</span>
+        <div class="seg" id="sanctions" role="group" aria-label="Sanctions"></div>
+      </div>
+      <div class="field c3">
+        <label for="q">Search name or city</label>
+        <input type="search" id="q" placeholder="e.g. Hoover, Gulf Coast">
+      </div>
+    </form>
+  </div>
+
+  <section class="summary" aria-live="polite">
+    <div>
+      <h2 id="headline">Finding tournaments…</h2>
+      <div class="sub" id="subline"></div>
+    </div>
+    <div class="tally" id="tally"></div>
+  </section>
+  <div class="seg" style="margin-top:6px"><button type="button" class="chip" id="shortlistBtn" aria-pressed="false">★ My shortlist <span id="slCount"></span></button></div>
+
+  <div id="results"></div>
+
+  <section class="sources">
+    <h3>Where this comes from</h3>
+    <p>Listings are pulled from each sanction's own tournament site twice a day, morning and evening, and refreshed here automatically. Always confirm dates, fees and divisions on the event page before you register. Tap a sanction to check its site directly.</p>
+    <div class="src-grid" id="sources"></div>
+  </section>
+</main>
+
+<script>
+const SANCTIONS = {
+  "USSSA":        {color:"var(--usssa)", site:s=>`https://${s.toLowerCase()}fastpitch.usssa.com/events/`},
+  "USFA":         {color:"var(--usfa)",  site:()=>"https://usfastpitch.com/tournaments"},
+  "PGF":          {color:"var(--pgf)",   site:()=>"https://www.premiergirlsfastpitch.com/events"},
+  "Perfect Game": {color:"var(--pg)",    site:()=>"https://www.perfectgame.org/softball/schedule.aspx"},
+  "Grand Slam":   {color:"var(--gs)",    site:s=>`https://www.grandslamtournaments.com/fastpitch/Events?state=${s}`},
+  "NSA":          {color:"var(--nsa)",   site:()=>"https://nationalsoftballassociation.com/pages/events"},
+  "USA Softball": {color:"var(--usa)",   site:s=>({AL:"https://usasoftballofalabama.com/pages/events",FL:"https://usasoftballflorida.com/pages/events"})[s]||`https://${s.toLowerCase()}.registerplay.com/pages/events`}
+};
+const STATES = [["AL","Alabama"],["GA","Georgia"],["FL","Florida"],["TN","Tennessee"],["MS","Mississippi"]];
+const AGES = [6,7,8,9,10,11,12,13,14,15,16,18];
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+const store = {
+  get(k,d){try{const v=localStorage.getItem("ssf:"+k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem("ssf:"+k,JSON.stringify(v))}catch(e){}}
+};
+const today = new Date(); today.setHours(0,0,0,0);
+const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const parse = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
+
+let EVENTS = [], META = null;
+const saved = store.get("filters", {});
+const state = {
+  season: saved.season || "upcoming",
+  from: saved.from || iso(today), to: saved.to || "",
+  states: new Set(saved.states || STATES.map(s=>s[0])),
+  sanctions: new Set(Object.keys(SANCTIONS).filter(k=>!SANCTIONS[k].noData && !(saved.sanctions && saved.knownSanctions?.includes(k) && !saved.sanctions.includes(k)))),
+  age: saved.age || "", q: "", shortlist: false
+};
+const stars = new Set(store.get("stars", []));
+const keyOf = e => e.sanction+"|"+e.name+"|"+e.start+"|"+e.city;
+
+/* Seasons follow the calendar: fall runs Aug–Dec, spring/summer Jan–Jul. Options roll forward as the year goes on. */
+function seasons(){
+  const y = today.getFullYear(), m = today.getMonth();
+  const list = [{id:"upcoming", label:"All upcoming", from:iso(today), to:""}];
+  const fallYear = m >= 7 ? y : y - 1;
+  const springYear = m >= 7 ? y + 1 : y;
+  const fall = {id:"fall"+fallYear, label:`Fall ${fallYear}`, from:`${fallYear}-08-01`, to:`${fallYear}-12-31`};
+  const spring = {id:"spring"+springYear, label:`Spring/Summer ${springYear}`, from:`${springYear}-01-01`, to:`${springYear}-07-31`};
+  if (m >= 7) list.push(fall, spring);
+  else list.push(spring, {id:"fall"+y, label:`Fall ${y}`, from:`${y}-08-01`, to:`${y}-12-31`});
+  list.forEach(s => { if (s.from < iso(today)) s.from = iso(today); });
+  return list;
+}
+
+function chip(label, pressed, onClick, color){
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", pressed);
+  b.innerHTML = (color?`<span class="sw" style="background:${color}"></span>`:"") ;
+  b.append(label); b.addEventListener("click", onClick); return b;
+}
+
+function buildFilters(){
+  const segS = document.getElementById("seasons"); segS.innerHTML = "";
+  const ss = seasons();
+  if (!ss.some(s=>s.id===state.season) && state.season!=="custom") state.season = "upcoming";
+  ss.forEach(s => segS.append(chip(s.label, state.season===s.id, () => {
+    state.season = s.id; state.from = s.from; state.to = s.to; sync();
+  })));
+  const cur = ss.find(s=>s.id===state.season);
+  if (cur) { state.from = cur.from; state.to = cur.to; }
+
+  const segSt = document.getElementById("states"); segSt.innerHTML = "";
+  STATES.forEach(([c,n]) => segSt.append(chip(c, state.states.has(c), () => {
+    state.states.has(c) ? state.states.delete(c) : state.states.add(c); sync();
+  })));
+  [...segSt.children].forEach((b,i)=>b.title=STATES[i][1]);
+  const allBtn = document.createElement("button"); allBtn.type="button"; allBtn.className="link-btn"; allBtn.style.marginLeft="6px";
+  allBtn.textContent = state.states.size===STATES.length ? "Clear" : "All";
+  allBtn.onclick = () => { state.states = state.states.size===STATES.length ? new Set() : new Set(STATES.map(s=>s[0])); sync(); };
+  segSt.append(allBtn);
+
+  const segSa = document.getElementById("sanctions"); segSa.innerHTML = "";
+  Object.entries(SANCTIONS).filter(([,v])=>!v.noData).forEach(([k,v]) => segSa.append(chip(k, state.sanctions.has(k), () => {
+    state.sanctions.has(k) ? state.sanctions.delete(k) : state.sanctions.add(k); sync();
+  }, v.color)));
+
+  const age = document.getElementById("age");
+  if (age.options.length === 1) AGES.forEach(a => age.add(new Option(a===18?"18U / HS":`${a}U`, a)));
+  age.value = state.age;
+  document.getElementById("from").value = state.from;
+  document.getElementById("to").value = state.to;
+}
+
+function sync(){
+  store.set("filters", {season:state.season, from:state.from, to:state.to, states:[...state.states], sanctions:[...state.sanctions], knownSanctions:Object.keys(SANCTIONS), age:state.age});
+  buildFilters(); render();
+}
+
+document.getElementById("from").addEventListener("change", e => { state.from = e.target.value; state.season = "custom"; sync(); });
+document.getElementById("to").addEventListener("change", e => { state.to = e.target.value; state.season = "custom"; sync(); });
+document.getElementById("weekend").addEventListener("change", e => {
+  if (!e.target.value) return;
+  const d = parse(e.target.value); const fri = new Date(d); fri.setDate(d.getDate() - ((d.getDay()+2)%7));
+  const sun = new Date(fri); sun.setDate(fri.getDate()+2);
+  state.from = iso(fri); state.to = iso(sun); state.season = "custom"; e.target.value = ""; sync();
+});
+document.getElementById("age").addEventListener("change", e => { state.age = e.target.value; sync(); });
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value.trim().toLowerCase(); render(); });
+document.getElementById("filters").addEventListener("submit", e => e.preventDefault());
+document.getElementById("shortlistBtn").addEventListener("click", e => {
+  state.shortlist = !state.shortlist; e.currentTarget.setAttribute("aria-pressed", state.shortlist); render();
+});
+
+function filtered(){
+  return EVENTS.filter(e => {
+    const end = e.end || e.start;
+    if (end < iso(today)) return false;
+    if (state.from && end < state.from) return false;
+    if (state.to && e.start > state.to) return false;
+    if (!state.states.has(e.state)) return false;
+    if (!state.sanctions.has(e.sanction)) return false;
+    if (state.age) { const a = +state.age; if (e.ageMin==null || a < e.ageMin || a > e.ageMax) return false; }
+    if (state.q && !(e.name+" "+e.city).toLowerCase().includes(state.q)) return false;
+    if (state.shortlist && !stars.has(keyOf(e))) return false;
+    return true;
+  });
+}
+
+/* Group by tournament weekend: the Friday–Sunday block a start date falls in (Mon–Thu starts roll back to the prior weekend's Friday only if the event spans it). */
+function weekendOf(s){
+  const d = parse(s); const fri = new Date(d); fri.setDate(d.getDate() - ((d.getDay()+2)%7)); return fri;
+}
+function fmtRange(a,b){
+  const s=parse(a), e=parse(b||a);
+  if (a===(b||a)) return `${DOW[s.getDay()]} ${MON[s.getMonth()]} ${s.getDate()}`;
+  return s.getMonth()===e.getMonth() ? `${MON[s.getMonth()]} ${s.getDate()}–${e.getDate()}` : `${MON[s.getMonth()]} ${s.getDate()} – ${MON[e.getMonth()]} ${e.getDate()}`;
+}
+const esc = s => String(s??"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const starSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>';
+
+function render(){
+  const list = filtered();
+  const res = document.getElementById("results");
+  document.getElementById("slCount").textContent = stars.size ? `(${stars.size})` : "";
+  const stTxt = state.states.size===STATES.length ? "AL, GA, FL, TN & MS" : [...state.states].join(", ") || "no states";
+  const range = state.to ? `${fmtRange(state.from||iso(today), state.to)}` : `from ${fmtRange(state.from||iso(today))}`;
+  document.getElementById("headline").textContent = `${list.length} tournament${list.length===1?"":"s"} ${state.shortlist?"on your shortlist":""}`.trim();
+  document.getElementById("subline").textContent = `${stTxt} · ${range}${state.age?` · ${state.age==18?"18U/HS":state.age+"U"}`:""}`;
+  const counts = {}; list.forEach(e => counts[e.sanction]=(counts[e.sanction]||0)+1);
+  document.getElementById("tally").innerHTML = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`<span>${esc(k)} ${n}</span>`).join("");
+
+  if (!EVENTS.length) return;
+  if (!list.length){
+    res.innerHTML = `<div class="empty"><strong>No tournaments match these filters</strong>${state.shortlist?"Star a tournament to add it to your shortlist.":"Try more states, a wider date range, or all ages. New events are added twice a day as sanctions post them."}</div>`;
+    return;
+  }
+  const groups = new Map();
+  list.forEach(e => { const k = iso(weekendOf(e.start)); if(!groups.has(k)) groups.set(k, []); groups.get(k).push(e); });
+  let out = "";
+  for (const [k, evs] of groups){
+    const fri = parse(k), sun = new Date(fri); sun.setDate(fri.getDate()+2);
+    const label = fri.getMonth()===sun.getMonth() ? `Weekend of ${MON[fri.getMonth()]} ${fri.getDate()}–${sun.getDate()}, ${fri.getFullYear()}` : `Weekend of ${MON[fri.getMonth()]} ${fri.getDate()} – ${MON[sun.getMonth()]} ${sun.getDate()}, ${sun.getFullYear()}`;
+    out += `<section class="weekend"><div class="wk-head">${label}<span class="n">${evs.length}</span></div><div class="list">`;
+    for (const e of evs){
+      const s = parse(e.start), key = keyOf(e), on = stars.has(key);
+      const multi = e.end && e.end !== e.start;
+      out += `<article class="ev">
+        <div class="when"><div class="mo">${MON[s.getMonth()].toUpperCase()}</div><div class="d">${s.getDate()}</div><div class="dow">${multi?fmtRange(e.start,e.end).replace(/^[A-Za-z]+ /,""):DOW[s.getDay()]}</div></div>
+        <div style="min-width:0">
+          <h3 class="name"><span class="tag" style="background:${SANCTIONS[e.sanction]?.color||"var(--muted)"}">${esc(e.sanction)}</span><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a></h3>
+          <div class="meta"><span><b>${esc(e.city)}, ${esc(e.state)}</b></span><span>${esc(e.ages)}</span>${e.fee?`<span>${esc(e.fee)}</span>`:""}${e.teams?`<span>${e.teams} teams in</span>`:""}${multi?`<span>${fmtRange(e.start,e.end)}</span>`:""}</div>
+        </div>
+        <div class="side"><button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from":"Add to"} shortlist" data-k="${esc(key)}">${starSvg}</button><a class="go" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a></div>
+      </article>`;
+    }
+    out += `</div></section>`;
+  }
+  res.innerHTML = out;
+}
+document.getElementById("results").addEventListener("click", e => {
+  const b = e.target.closest(".star"); if (!b) return;
+  const k = b.dataset.k; stars.has(k) ? stars.delete(k) : stars.add(k); store.set("stars", [...stars]);
+  b.setAttribute("aria-pressed", stars.has(k)); document.getElementById("slCount").textContent = stars.size?`(${stars.size})`:"";
+  if (state.shortlist) render();
+});
+
+function ago(isoStr){
+  const m = Math.round((Date.now() - new Date(isoStr)) / 60000);
+  if (m < 2) return "just now"; if (m < 60) return `${m} min ago`;
+  const h = Math.round(m/60); if (h < 24) return `${h} hr${h>1?"s":""} ago`;
+  const d = Math.round(h/24); return `${d} day${d>1?"s":""} ago`;
+}
+function renderMeta(){
+  const fresh = document.getElementById("fresh");
+  const stale = (Date.now() - new Date(META.updated)) > 3*86400e3;
+  fresh.innerHTML = `<span class="dot${stale?" stale":""}"></span>New listings added <b>${ago(META.updated)}</b><br>${EVENTS.length} tournaments · checked twice a day`;
+  const home = [...state.states][0] || "AL";
+  document.getElementById("sources").innerHTML = Object.entries(SANCTIONS).map(([k,v]) => {
+    const s = META.sources[k];
+    const line = s ? `${s.count} events · checked ${ago(s.updated)}` : "No data yet";
+    return `<div class="src"><span class="t"><i style="background:${v.color}"></i>${esc(k)}</span><span class="s">${line}</span><a href="${v.site(home)}" target="_blank" rel="noopener">Open ${esc(k)} site ↗</a></div>`;
+  }).join("");
+}
+
+async function load(){
+  try{
+    const r = await fetch("data.json?t=" + Date.now(), {cache:"no-store"});
+    if (!r.ok) throw new Error(r.status);
+    META = await r.json(); EVENTS = META.events;
+    renderMeta(); render();
+  }catch(err){
+    document.getElementById("fresh").innerHTML = `<span class="dot stale"></span>Couldn't load tournaments`;
+    document.getElementById("headline").textContent = "Tournament list didn't load";
+    document.getElementById("results").innerHTML = `<div class="empty"><strong>The tournament list didn't load</strong>Refresh the page. If it keeps happening, use the sanction links below to search each site directly.</div>`;
+  }
+}
+buildFilters(); render(); load();
+setInterval(() => { if (document.visibilityState === "visible") load(); }, 15*60*1000);
+</script>

@@ -1,0 +1,53 @@
+# Shelby Steel Tournament Finder — refresh (runs at 6 AM and 6 PM)
+
+Artifact: https://claude.ai/artifact/3F2qMoF5P6zoHBVfZ1FhQn
+Page: `site/index.html` · Data: `site/data.json` (published as `data.json`)
+
+## Every run
+
+1. If the built-in browser tools (mcp__Claude_Browser__*) are available, refresh the browser-only
+   sources first: USFA, PGF and USA Softball TN/MS/GA (below). If the browser isn't available,
+   skip this; their cached rows stay on the page.
+2. `python3 -I /Users/stephentaunton/Claude/shelby-steel-finder/fetch.py`
+   Pulls USSSA, Perfect Game, Grand Slam, NSA and USA Softball (AL, FL) directly and merges the caches.
+3. If fetch.py printed `DATA_UNCHANGED`, stop: there is nothing new to publish.
+   If it printed `DATA_CHANGED`, republish only the data file (read the artifact first if this session has not):
+   Artifact publish with `url` = the artifact URL above, `file_path` = `site/index.html`,
+   `files` = `{"data.json": "site/data.json"}`.
+   Do not change the page itself during a refresh.
+
+## USA Softball TN, MS, GA (registerplay.com is behind Cloudflare, so use the browser)
+
+For each of `tn`, `ms`, `ga`: navigate the browser to `https://<st>.registerplay.com/`, wait a few seconds,
+run this JavaScript in the page (replace `<st>`), and save the returned JSON to
+`cache/usa_softball_raw_<st>.json`. An empty list `[]` is a valid result (no events posted).
+
+```js
+const d=await (await fetch('/api/v1/Event/display/active')).json();JSON.stringify(d.map(e=>({_key:e._key,host:location.host,sport:e.sport,cancelled:e.cancelled,name:e.name,location:e.location,starts:e.starts,ends:e.ends,entryFee:e.entryFee,teamCnt:e.teamCnt,competitionClassesList:(e.competitionClassesList||[]).map(c=>({name:c.name}))})))
+```
+
+fetch.py reads these files on its next run; no ingest step is needed.
+
+## USFA (SincSports blocks scripts, so use the browser)
+
+Navigate the browser to `https://softball.sincsports.com/eventlist.aspx?tid=USFAALA&season=10&show=F`,
+then run this JavaScript in the page and save the returned JSON to `cache/usfa_raw.json`:
+
+```js
+async function grab(tid,season){const h=await (await fetch(`/eventlist.aspx?tid=${tid}&season=${season}&show=F`)).text();const d=new DOMParser().parseFromString(h,'text/html');return [...d.querySelectorAll('.ev-card')].map(c=>{const chip=c.querySelector('.ev-datechip');const pops=[...c.querySelectorAll('.ev-pop')];const fees=pops[1]?[...pops[1].querySelectorAll('div')].map(x=>x.textContent.match(/\$\d+/)?.[0]).filter(Boolean).map(x=>+x.slice(1)).filter(x=>x>0):[];return [chip.querySelector('.ev-mo').textContent+' '+chip.querySelector('.ev-d').textContent,(chip.textContent.match(/to\s*(\d\d\/\d\d)/)||[])[1]||'',c.querySelector('.ev-name').textContent.trim().replace(/\s+/g,' '),pops[0]?pops[0].textContent.replace('Age divisions','').trim():'',c.querySelector('.ev-loc')?.textContent.trim()||'',fees.length?('$'+Math.min(...fees)+(Math.max(...fees)>Math.min(...fees)?' - $'+Math.max(...fees):'')):'',c.dataset.tid]})}
+const seen=new Set(),out=[];for(const [tid,s] of [['USFAALA',9],['USFAALA',10],['USFAGA',9],['USFAGA',10],['USFAMS',9],['USFAMS',10],['USFATN',7],['USFATN',8],['USFAFL',10],['USFAFL',11]]){try{for(const r of await grab(tid,s)){if(!seen.has(r[6])){seen.add(r[6]);out.push([tid.slice(4,6),...r])}}}catch(e){}}JSON.stringify(out)
+```
+
+Then: `python3 -I ingest.py usfa cache/usfa_raw.json`
+(SincSports season numbers roll over each year; if a state returns nothing, open usfastpitch.com/tournaments and use the season numbers in its state links.)
+
+## PGF (TournamentConnect renders with JavaScript)
+
+Navigate to `https://softball.tournamentconnect.premiergirlsfastpitch.com/events/register/tournaments/provider/premiergirlsfastpitch`,
+wait for the list to load, run this, and save the JSON to `cache/pgf_raw.json`:
+
+```js
+const t=document.body.innerText;const parts=t.split('\nDate: ');const out=[];for(let i=1;i<parts.length;i++){const prev=parts[i-1].trim().split('\n');const name=prev[prev.length-1].trim();const p=parts[i];const g=k=>(p.match(new RegExp(k+':\\s*(.*)'))||[])[1]||'';const loc=g('Location');if(/,\s*(AL|GA|FL|TN|MS)\b/.test(loc))out.push([p.split('\n')[0].trim(),name,g('Divisions'),loc,g('Entry Fee')])}JSON.stringify(out)
+```
+
+Then: `python3 -I ingest.py pgf cache/pgf_raw.json`
