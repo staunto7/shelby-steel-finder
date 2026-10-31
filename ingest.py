@@ -2,7 +2,7 @@
 """Turn raw browser-scraped rows (see REFRESH.md) into cache/<source>.json for fetch.py.
 
 usage: python3 ingest.py usfa raw.json   (rows: [state, "NOV 07", "07/18" or "", name, ages, location, fee, tid])
-       python3 ingest.py usfa_teams raw.txt   (lines: T|tid|division|team|class  or  V|tid|ballpark|address)
+       python3 ingest.py usfa_teams raw.txt   (lines: T|tid|division|team|class  or  V|tid|ballpark|address|division)
 PGF no longer needs this: fetch.py reads TournamentConnect's API directly (pgf.py).
 """
 import datetime as dt, json, re, sys
@@ -35,8 +35,9 @@ def usfa_teams(text):
         if len(p) < 4:
             continue
         e = out.setdefault("USFA" + p[1], {"divisions": [], "venues": []})
-        if p[0] == "V":
-            e["venues"].append({"name": p[2], "address": p[3]})
+        if p[0] == "V":  # V|tid|ballpark|address|division (division names the age group playing there)
+            age = re.search(r"\d{1,2}", p[4]) if len(p) > 4 else None
+            e["venues"].append({"name": p[2], "address": p[3], "ages": [int(age.group())] if age else []})
         elif len(p) >= 5:
             cls = p[4]
             if re.fullmatch(r"\d*", cls) or cls in ("Accepted", "Pay Later"):  # points or payment status, not a class

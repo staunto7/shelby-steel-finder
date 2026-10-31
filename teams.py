@@ -80,6 +80,7 @@ def usssa_coming(ev):
 
 
 def grand_slam_coming(ev):
+    VENUES[ev["id"]] = venues.grand_slam(ev["url"])
     page = curl(ev["url"].replace("/Events/Details/", "/Events/Teams/"))
     divisions = []
     for part in re.split(r'(?=<div[^>]*class="[^"]*division[^"]*")|(?=<h\d[^>]*>\s*\d{1,2}U)', page)[1:]:
@@ -97,9 +98,10 @@ def grand_slam_coming(ev):
 def perfect_game_coming(ev):
     """The group page links one event per age; each has its own accepted-teams table."""
     group = curl(ev["url"])
-    divisions = []
+    divisions, spots = [], []
     for pid, label in re.findall(r"Default\.aspx\?event=(\d+)[^>]*>(.*?)</a>", group, re.S):
         age = re.search(r"\b(\d{1,2})U\b", re.sub(r"<[^>]+>", " ", label))
+        spots += venues.perfect_game(pid, int(age.group(1)) if age else None)
         page = curl(f"https://www.perfectgame.org/Events/TournamentTeams.aspx?event={pid}")
         i = page.find("Accepted Teams")
         teams = []
@@ -109,6 +111,7 @@ def perfect_game_coming(ev):
                 teams.append([c[0], c[2], "", c[1]])
         if teams:
             divisions.append({"name": f"{age.group(1)}U" if age else clean_label(label), "teams": teams})
+    VENUES[ev["id"]] = venues.merge(spots)
     return divisions
 
 
@@ -126,6 +129,7 @@ def eventconnect_coming(ev):
         info = json.loads(curl(f"{host}/api/v1/EP/info-v3.0/desktop/{key}"))
     except ValueError:
         return None
+    VENUES[ev["id"]] = venues.eventconnect(info)
     if info.get("whosPlayingHidden"):
         return []
     divisions = []
@@ -170,7 +174,7 @@ def usfa_coming(ev):
     got = USFA_TEAMS.get(m.group(1)) if m else None
     if not got:
         return None
-    VENUES[ev["id"]] = got.get("venues") or []
+    VENUES[ev["id"]] = venues.merge(got.get("venues") or [])
     return got.get("divisions") or []
 
 
@@ -211,11 +215,14 @@ def main():
         for eid, divs in pool.map(work, todo):
             if divs:
                 coming[eid] = {"divisions": divs}
-                if VENUES.get(eid):
-                    coming[eid]["venues"] = VENUES[eid]
             elif eid in prev:  # keep the last good list if a fetch fails
                 coming[eid] = prev[eid]
     (SITE / "coming.json").write_text(json.dumps(coming, separators=(",", ":")))
+    prev_venues_all = json.loads((SITE / "venues.json").read_text()) if (SITE / "venues.json").exists() else {}
+    live = {e["id"] for e in data["events"]}
+    all_venues = {k: v for k, v in prev_venues_all.items() if k in live}  # keep the last good list if a site was down
+    all_venues.update({k: v for k, v in VENUES.items() if v})
+    (SITE / "venues.json").write_text(json.dumps(all_venues, separators=(",", ":")))
 
     by_id = {e["id"]: e for e in data["events"]}
     patterns = [p.lower() for p in reg.get("match", [])]
@@ -235,12 +242,12 @@ def main():
     prev_venues = {(r.get("eventId") or r["name"]): r.get("venues") for r in prev_ours.get("registrations", [])}
     for r in regs:  # ballparks with addresses, so families have everything in one place
         if not r.get("venues"):
-            r["venues"] = (VENUES.get(r.get("eventId")) or (venues.for_event(r) if r.get("sanction") == "Grand Slam" else [])
+            r["venues"] = (all_venues.get(r.get("eventId")) or (venues.for_event(r) if r.get("sanction") == "Grand Slam" else [])
                            or prev_venues.get(r.get("eventId") or r["name"]) or [])
     (SITE / "ours.json").write_text(json.dumps({"teams": reg.get("teams", []), "match": patterns, "registrations": regs}, indent=1))
     (SITE / "status.json").write_text(json.dumps({"updated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
                                                   "requests": STATS, "teamLists": len(coming),
-                                                  "venuesFound": sum(1 for v in VENUES.values() if v)}))
+                                                  "venuesFound": len(all_venues)}))
     teams_total = sum(len(d["teams"]) for v in coming.values() for d in v["divisions"])
     print(f"team lists for {len(coming)} events ({teams_total} teams); Shelby Steel: {len(found)} auto, {len(manual)} manual",
           file=sys.stderr)

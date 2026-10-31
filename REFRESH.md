@@ -66,7 +66,7 @@ replacing `TIDS` with that list. Save the returned text to `cache/usfa_teams_raw
 `python3 -I ingest.py usfa_teams cache/usfa_teams_raw.txt`.
 
 ```js
-const tids=TIDS;const L=[];for(const tid of tids){try{const h=await (await fetch(`/teamlist.aspx?tid=${tid}&tab=4&sub=0`)).text();const d=new DOMParser().parseFromString(h,'text/html');const ven={};for(const card of d.querySelectorAll('.tl-div-card')){const name=card.querySelector('h2')?.textContent.trim()||'';card.querySelectorAll('.tl-venues a').forEach(a=>{ven[a.textContent.trim()]=decodeURIComponent((a.getAttribute('href').split('q=')[1]||'').replace(/\+/g,' '))});for(const r of card.querySelectorAll('tr')){const c=[...r.cells].map(x=>x.textContent.trim().replace(/\s+/g,' '));if(c.length>=3&&c[0]&&c[0]!=='Team')L.push(['T',tid.slice(4),name,c[0],c[2]].join('|'))}}for(const [n,a] of Object.entries(ven))L.push(['V',tid.slice(4),n,a].join('|'))}catch(e){}}L.join('\n')
+const tids=TIDS;const L=[];for(const tid of tids){try{const h=await (await fetch(`/teamlist.aspx?tid=${tid}&tab=4&sub=0`)).text();const d=new DOMParser().parseFromString(h,'text/html');const ven=[];for(const card of d.querySelectorAll('.tl-div-card')){const name=card.querySelector('h2')?.textContent.trim()||'';card.querySelectorAll('.tl-venues a').forEach(a=>{ven.push([a.textContent.trim(),decodeURIComponent((a.getAttribute('href').split('q=')[1]||'').replace(/\+/g,' ')),name])});for(const r of card.querySelectorAll('tr')){const c=[...r.cells].map(x=>x.textContent.trim().replace(/\s+/g,' '));if(c.length>=3&&c[0]&&c[0]!=='Team')L.push(['T',tid.slice(4),name,c[0],c[2]].join('|'))}}for(const [n,a,dv] of ven)L.push(['V',tid.slice(4),n,a,dv].join('|'))}catch(e){}}L.join('\n')
 ```
 
 ## PGF

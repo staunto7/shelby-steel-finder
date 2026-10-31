@@ -171,10 +171,17 @@ details.div .tbl-wrap{padding:0 8px 8px}
 .game .tm.us{font-weight:700}
 .game .tm.us::before{content:"";width:4px;border-radius:2px;background:var(--ink);margin-right:-2px}
 .game .sc{font-variant-numeric:tabular-nums;font-weight:700;min-width:1.5em;text-align:right}
-.venues{margin-top:8px;display:grid;gap:6px;font-size:14.5px}
-.venues .vl{font:700 12px var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.venue a{font-weight:600}
-.venue span{display:block;color:var(--muted);font-size:13.5px}
+.venue{border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:10px 12px;display:grid;gap:4px}
+.ours .venue{background:var(--surface)}
+.venue.hit{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--ink)}
+.venue .vn{font-weight:700;font-size:15.5px}
+.venue .va{color:var(--muted);font-size:14px}
+.vages{display:flex;flex-wrap:wrap;gap:4px}
+.vages span{font:700 12px/1 var(--f-label);letter-spacing:.06em;padding:4px 7px;border-radius:3px;border:1px solid var(--line);color:var(--muted)}
+.vages span.on{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.vours{font-size:14px;font-weight:600}
+.vlinks{display:flex;gap:16px;flex-wrap:wrap}
+.vlinks a{font-weight:600;font-size:14px;padding:6px 0}
 .bracket-frame{width:100%;height:70vh;max-height:620px;border:1px solid var(--line);border-radius:6px;background:#fff}
 
 /* bottom tab bar (phones and tablets) */
@@ -317,7 +324,7 @@ const today = new Date(); today.setHours(0,0,0,0);
 const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 const parse = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
 
-let EVENTS = [], META = null, OURS = {teams:["8U","10U","12U"], registrations:[]}, COMING = {}, GAMES = {};
+let EVENTS = [], META = null, OURS = {teams:["8U","10U","12U"], registrations:[]}, COMING = {}, GAMES = {}, VENUES = {};
 const saved = store.get("filters", {});
 const state = {
   season: saved.season || "upcoming",
@@ -510,22 +517,25 @@ function card(e, opts = {}){
   const id = esc(e.id||"");
   const g = e.id && GAMES[e.id];
   const gCount = g && (g.pools || g.brackets) ? `<span class="cnt">· live</span>` : "";
+  const vs = venuesFor(e, opts.reg);
+  const where = vs.length === 1 ? `<span>${esc(vs[0].name)}</span>` : vs.length > 1 ? `<span>${vs.length} ballparks</span>` : "";
   return `<article class="ev" data-id="${id}">
     <div class="when"><div class="mo">${MON[s.getMonth()].toUpperCase()}</div><div class="d">${s.getDate()}</div><div class="dow">${multi?fmtRange(e.start,e.end).replace(/^[A-Za-z]+ /,""):DOW[s.getDay()]}</div></div>
     <div class="head">
       <h3 class="name">${team}${tag}${title}</h3>
-      <div class="meta"><span><b>${esc(e.city)}, ${esc(e.state)}</b></span>${who}${e.ages&&!opts.reg?`<span>${esc(e.ages)}</span>`:""}${e.fee&&!opts.reg?`<span>${esc(e.fee)}</span>`:""}${multi?`<span>${fmtRange(e.start,e.end)}</span>`:""}</div>
+      <div class="meta"><span><b>${esc(e.city)}, ${esc(e.state)}</b></span>${where}${who}${e.ages&&!opts.reg?`<span>${esc(e.ages)}</span>`:""}${e.fee&&!opts.reg?`<span>${esc(e.fee)}</span>`:""}${multi?`<span>${fmtRange(e.start,e.end)}</span>`:""}</div>
       ${flags}${e.note?`<div class="note">${esc(e.note)}</div>`:""}
-      ${opts.reg?venuesHTML(opts.reg.venues):""}
     </div>
     ${opts.reg?"<div></div>":`<button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from":"Add to"} shortlist" data-k="${esc(key)}">${starSvg}</button>`}
     <div class="actions">
       <button type="button" class="act" data-panel="coming" aria-expanded="false">Who's coming${nTeams?` <span class="cnt">(${nTeams})</span>`:""}</button>
       <button type="button" class="act" data-panel="games" aria-expanded="false">Pool play &amp; brackets${gCount}</button>
+      <button type="button" class="act" data-panel="venues" aria-expanded="false">Ballparks${vs.length?` <span class="cnt">(${vs.length})</span>`:""}</button>
       ${e.url?`<a class="act ghost" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a>`:""}
     </div>
     <div class="panel coming" data-for="coming" hidden></div>
     <div class="panel games" data-for="games" hidden></div>
+    <div class="panel venues-panel" data-for="venues" hidden></div>
   </article>`;
 }
 /* Who's coming: pick an age group (like the sanction sites), then open a division to see its teams. */
@@ -560,13 +570,51 @@ function comingHTML(ev, age){
     return `<details class="div"${us||shown.length===1?" open":""}><summary><span class="div-name">${esc(d.name)}</span><span class="div-count">${d.teams.length} teams${us?" · Shelby Steel":""}</span></summary><div class="tbl-wrap"><table class="teams-tbl"><tbody>${
       d.teams.map(([n,c,r,k]) => `<tr class="${isUs(n)?"us":""}"><td>${esc(n)}${k?`<span class="cls">${esc(k)}</span>`:""}</td><td class="c">${esc(c)}</td><td class="r">${esc(r||"")}</td></tr>`).join("")
     }</tbody></table></div></details>`;
-  }).join("") + (info.venues && !isOurEvent(id) ? venuesHTML(info.venues) : "");
+  }).join("");
 }
 
 /* Pool play and brackets: pulled every 15 minutes on game days for tournaments a Shelby Steel team is in. */
 const mapsUrl = v => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(`${v.name}, ${v.address}`);
-const venuesHTML = vs => vs && vs.length ? `<div class="venues"><div class="vl">Ballparks</div>${vs.map(v =>
-  `<div class="venue"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">${esc(v.name)} ↗</a><span>${esc(v.address)}</span></div>`).join("")}</div>` : "";
+const appleUrl = v => "https://maps.apple.com/?q=" + encodeURIComponent(v.name) + "&address=" + encodeURIComponent(v.address);
+/* Ballparks: from the sanction's event page, with the age groups that play at each when the sanction says so. */
+function venuesFor(e, reg){
+  const id = e.id || e.eventId;
+  return (id && VENUES[id]) || (reg && reg.venues) || e.venues || [];
+}
+/* Which ages to point out: the age filter, else the Shelby Steel teams registered for this event. */
+function focusAges(ev){
+  if (state.age) return [+state.age];
+  return ourRegs(ev.id || ev.eventId).map(r => parseInt(r.team)).filter(Boolean);
+}
+function venuesHTML(ev, vs, games){
+  const where = ev.url ? ` <a href="${esc(ev.url)}" target="_blank" rel="noopener">Check the event page ↗</a>` : "";
+  if (!vs.length) return `<div class="upd">No ballparks posted yet. They show up here once the director adds them.${where}</div>`;
+  const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
+  const isUs = n => pats.some(p => (n||"").toLowerCase().includes(p));
+  const atVenue = (v, field) => field && field.toLowerCase().startsWith(v.name.toLowerCase());
+  /* Once pool play posts, the field on each game tells us which ages and Shelby Steel games are at each park. */
+  const rows = vs.map(v => {
+    const ages = new Set(v.ages || []), ours = [];
+    for (const d of games?.divisions || []) for (const p of d.pools) for (const x of p.games) if (atVenue(v, x.field)){
+      const a = parseInt(d.name); if (a) ages.add(a);
+      if (isUs(x.a) || isUs(x.b)) ours.push(x);
+    }
+    return {...v, ages:[...ages].sort((a,b)=>a-b), ours};
+  });
+  const focus = focusAges(ev);
+  const hit = r => r.ours.length || r.ages.some(a => focus.includes(a));
+  if (focus.length) rows.sort((a,b) => hit(b) - hit(a));
+  const anyAges = rows.some(r => r.ages.length);
+  const note = focus.length && anyAges ? `<div class="upd">${focus.map(a=>ageLabel(a)).join(", ")} ballparks first.</div>`
+    : !anyAges ? `<div class="upd">${esc(ev.sanction||"The sanction")} doesn't list which age groups play at each ballpark${games && games.divisions.length ? "" : ". That fills in here once pools are posted"}.</div>` : "";
+  return note + rows.map(r => `<div class="venue${focus.length && hit(r) ? " hit" : ""}">
+      <div class="vn">${esc(r.name)}</div>
+      ${r.ages.length ? `<div class="vages">${r.ages.map(a => `<span class="${focus.includes(a)?"on":""}">${ageLabel(a)}</span>`).join("")}</div>` : ""}
+      <div class="va">${esc(r.address)}</div>
+      ${r.ours.length ? `<div class="vours">Shelby Steel here: ${r.ours.map(x => `${esc(fmtGameTime(x.time))} · ${esc(x.field)}`).join("; ")}</div>` : ""}
+      <div class="vlinks"><a href="${mapsUrl(r)}" target="_blank" rel="noopener">Google Maps ↗</a><a href="${appleUrl(r)}" target="_blank" rel="noopener">Apple Maps ↗</a></div>
+    </div>`).join("");
+}
 const fieldHTML = (f, vs) => { const v = (vs||[]).find(v => f && f.toLowerCase().startsWith(v.name.toLowerCase()));
   return v ? `<a href="${mapsUrl(v)}" target="_blank" rel="noopener">${esc(f)}</a>` : esc(f); };
 const fmtGameTime = t => { if (!t) return ""; const d = new Date(t); return `${DOW[d.getDay()]} ${d.toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})}`; };
@@ -596,7 +644,7 @@ function gamesHTML(g, ev){
       h += `<details class="div"><summary><span class="div-name">${esc(b.name)}</span><span class="div-count">Bracket</span></summary><div class="tbl-wrap" style="padding:8px"><iframe class="bracket-frame" sandbox="" title="${esc(d.name+" "+b.name)}" srcdoc="${esc(doc)}"></iframe></div></details>`;
     }
   }
-  return h + (g.venues && g.venues.length && !isOurEvent(ev.id) ? venuesHTML(g.venues) : "");
+  return h;
 }
 const eventById = id => EVENTS.find(e => e.id === id) || (OURS.registrations||[]).find(r => r.eventId === id) || {id};
 document.addEventListener("click", async e => {
@@ -605,10 +653,22 @@ document.addEventListener("click", async e => {
   const b = e.target.closest(".act[data-panel]"); if (!b) return;
   const art = b.closest(".ev"), kind = b.dataset.panel, box = art.querySelector(`.panel[data-for="${kind}"]`);
   const open = b.getAttribute("aria-expanded") === "true";
-  b.setAttribute("aria-expanded", !open); box.hidden = open;
+  art.querySelectorAll(".act[data-panel]").forEach(x => x.setAttribute("aria-expanded", "false"));  // one panel per card on small screens
+  art.querySelectorAll(".panel").forEach(x => x.hidden = true);
   if (open) return;
+  b.setAttribute("aria-expanded", "true"); box.hidden = false;
   const ev = eventById(art.dataset.id); ev.id = ev.id || ev.eventId;
   if (kind === "coming"){ if (!box.innerHTML) box.innerHTML = comingHTML(ev); return; }
+  if (kind === "venues"){
+    const reg = (OURS.registrations||[]).find(r => r.eventId === ev.id);
+    const vs = venuesFor(ev, reg);
+    box.innerHTML = venuesHTML(ev, vs, null);
+    if (ev.id && GAMES[ev.id]) try {
+      const g = await fetch(`games/${ev.id}.json?t=${Date.now()}`, {cache:"no-store"}).then(x => x.json());
+      box.innerHTML = venuesHTML(ev, vs.length ? vs : (g.venues || []), g);
+    } catch(err){}
+    return;
+  }
   if (!ev.id || !GAMES[ev.id]){ box.innerHTML = notPosted(ev); return; }
   box.innerHTML = `<div class="upd">Loading games…</div>`;
   try { const g = await fetch(`games/${ev.id}.json?t=${Date.now()}`, {cache:"no-store"}).then(x => x.json()); box.innerHTML = gamesHTML(g, ev); }
@@ -659,11 +719,12 @@ async function load(){
     const r = await fetch("data.json?t=" + Date.now(), {cache:"no-store"});
     if (!r.ok) throw new Error(r.status);
     META = await r.json(); EVENTS = META.events;
-    const [o, c] = await Promise.all([
+    const [o, c, v] = await Promise.all([
       fetch("ours.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : null).catch(() => null),
-      fetch("coming.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : null).catch(() => null)
+      fetch("coming.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : null).catch(() => null),
+      fetch("venues.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : null).catch(() => null)
     ]);
-    if (o) OURS = o; if (c) COMING = c;
+    if (o) OURS = o; if (c) COMING = c; if (v) VENUES = v;
     GAMES = await fetch("games/index.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : {}).catch(() => ({}));
     renderMeta(); renderOurs(); render();
   }catch(err){

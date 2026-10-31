@@ -43,7 +43,7 @@ def venues(item):
     out = []
     for f in item.get("facilities") or []:
         addr = ", ".join(p for p in [f.get("physical_address"), f.get("physical_city"), f.get("physical_zip")] if p)
-        out.append({"name": (f.get("name") or "").strip(), "address": addr})
+        out.append({"name": (f.get("name") or "").strip(), "address": addr, "ages": []})
     return out
 
 
