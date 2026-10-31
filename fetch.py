@@ -210,7 +210,7 @@ def eventconnect(sanction, rows, link):
 
 def nsa():
     rows = json.loads(get("https://nationalsoftballassociation.com/api/v1/Event/display/active"))
-    return eventconnect("NSA", rows, lambda e: f"https://nationalsoftballassociation.com/event/{e['_key']}")
+    return eventconnect("NSA", rows, lambda e: f"https://nationalsoftballassociation.com/pages/event/{e['_key']}")
 
 
 # AL and FL associations answer scripts directly; TN, MS and GA sit behind Cloudflare on registerplay.com,
@@ -229,7 +229,7 @@ def usa_softball():
         p = CACHE / f"usa_softball_raw_{st.lower()}.json"
         if p.exists():
             rows += json.loads(p.read_text())
-    return eventconnect("USA Softball", rows, lambda e: f"https://{e['host']}/pages/event/detail/{e['_key']}")
+    return eventconnect("USA Softball", rows, lambda e: f"https://{e['host']}/pages/event/{e['_key']}")
 
 
 def from_cache(name):

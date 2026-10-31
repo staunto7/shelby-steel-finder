@@ -1,4 +1,6 @@
+<!doctype html>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Shelby Steel Tournament Finder</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +29,11 @@
   --usssa:#F0626C; --pg:#7FA6EC; --pgf:#B793E6; --usfa:#4FC79E; --gs:#E8A548; --nsa:#4CC3DB; --usa:#A7B4C6; --star:#F2B930;
   color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 a{color:var(--steel)}
@@ -139,6 +146,7 @@ details.div .tbl-wrap{padding:0 8px 8px}
 .teams-tbl td{padding:5px 6px;border-top:1px solid var(--line);vertical-align:top}
 .teams-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
 .teams-tbl td.c{color:var(--muted)}
+.teams-tbl .cls{display:inline-block;margin-left:8px;font:600 11px/1 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:2px 5px;vertical-align:1px}
 .teams-tbl tr.us td{background:var(--steel-soft);font-weight:700}
 .tbl-wrap{overflow-x:auto}
 </style>
@@ -401,7 +409,12 @@ function card(e, opts = {}){
   </article>`;
 }
 /* Who's coming: pick an age group (like the sanction sites), then open a division to see its teams. */
-const divAge = name => { const m = (name||"").match(/(\d{1,2})\s*(?:U\b|&\s*Under|-)/i) || (/high school|HS\b/i.test(name)?[0,18]:null); return m ? +m[1] : 99; };
+const divAge = name => {
+  const head = (name||"").split(/\s+-\s+/)[0];
+  if (/high school|\bHS\b/i.test(head)) return 18;
+  const nums = (head.match(/\d{1,2}/g)||[]).map(Number).filter(n => n >= 6 && n <= 18);
+  return nums.length ? Math.max(...nums) : 99;
+};
 const ageLabel = n => n === 18 ? "18U/HS" : n === 99 ? "Other" : `${n}U`;
 function comingHTML(id, age){
   const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
@@ -419,7 +432,7 @@ function comingHTML(id, age){
   return picker + shown.map(d => {
     const us = d.teams.some(t => isUs(t[0]));
     return `<details class="div"${us||shown.length===1?" open":""}><summary><span class="div-name">${esc(d.name)}</span><span class="div-count">${d.teams.length} teams${us?" · Shelby Steel":""}</span></summary><div class="tbl-wrap"><table class="teams-tbl"><tbody>${
-      d.teams.map(([n,c,r]) => `<tr class="${isUs(n)?"us":""}"><td>${esc(n)}</td><td class="c">${esc(c)}</td><td class="r">${esc(r)}</td></tr>`).join("")
+      d.teams.map(([n,c,r,k]) => `<tr class="${isUs(n)?"us":""}"><td>${esc(n)}${k?`<span class="cls">${esc(k)}</span>`:""}</td><td class="c">${esc(c)}</td><td class="r">${esc(r||"")}</td></tr>`).join("")
     }</tbody></table></div></details>`;
   }).join("");
 }

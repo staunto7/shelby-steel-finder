@@ -4,7 +4,8 @@
 Reads site/data.json (from fetch.py) and registrations.json, writes:
   site/coming.json  {event id: {"divisions": [{"name", "teams": [[team, city, record]]}]}}
   site/ours.json    {"teams": [...], "registrations": [...]}  auto-detected + manual entries
-Team lists come from USSSA and Grand Slam; other sanctions don't publish them openly.
+Team lists come from USSSA, Grand Slam, Perfect Game, USA Softball and NSA (when the director releases them).
+Each team row is [team, city, record, class].
 """
 import datetime as dt, html, json, re, subprocess, sys
 from concurrent.futures import ThreadPoolExecutor
@@ -54,7 +55,7 @@ def usssa_coming(ev):
             c = cells(chunk)
             if len(c) >= 3 and c[1] and c[1] != "Team Name":
                 record = c[-1] if re.match(r"^\d+-\d+", c[-1]) else ""
-                current["teams"].append([c[1], c[2], record])
+                current["teams"].append([c[1], c[2], record, c[0]])
     return [d for d in divisions if d["teams"]]
 
 
@@ -67,9 +68,60 @@ def grand_slam_coming(ev):
         for row in re.findall(r"<tr[^>]*>.*?</tr>", part, re.S):
             c = cells(row)
             if len(c) >= 5 and c[1] and c[1] not in ("Open", "Team Name"):
-                teams.append([c[1], c[2], c[-1] if re.match(r"^\d+-\d+", c[-1]) else ""])
+                teams.append([c[1], c[2], c[-1] if re.match(r"^\d+-\d+", c[-1]) else "", c[3] if len(c) > 3 else ""])
         if name and teams:
             divisions.append({"name": name.group(1).strip(), "teams": teams})
+    return divisions
+
+
+def perfect_game_coming(ev):
+    """The group page links one event per age; each has its own accepted-teams table."""
+    group = curl(ev["url"])
+    divisions = []
+    for pid, label in re.findall(r"Default\.aspx\?event=(\d+)[^>]*>(.*?)</a>", group, re.S):
+        age = re.search(r"\b(\d{1,2})U\b", re.sub(r"<[^>]+>", " ", label))
+        page = curl(f"https://www.perfectgame.org/Events/TournamentTeams.aspx?event={pid}")
+        i = page.find("Accepted Teams")
+        teams = []
+        for row in re.findall(r"<tr[^>]*>(.*?)</tr>", page[i:] if i >= 0 else "", re.S):
+            c = cells(row)
+            if len(c) >= 3 and c[0] and c[0] != "Team":
+                teams.append([c[0], c[2], "", c[1]])
+        if teams:
+            divisions.append({"name": f"{age.group(1)}U" if age else clean_label(label), "teams": teams})
+    return divisions
+
+
+def clean_label(s):
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", s))).strip()
+
+
+def eventconnect_coming(ev):
+    """USA Softball / NSA: event info lists the classes; each class has its own team list."""
+    m = re.match(r"(https://[^/]+)/pages/event/(?:detail/)?(\d+)", ev["url"])
+    if not m:
+        return None
+    host, key = m.groups()
+    try:
+        info = json.loads(curl(f"{host}/api/v1/EP/info-v3.0/desktop/{key}"))
+    except ValueError:
+        return None
+    if info.get("whosPlayingHidden"):
+        return []
+    divisions = []
+    for d in info.get("divisions") or []:
+        try:
+            detail = json.loads(curl(f"{host}/api/v1/EP/division-detail-v3.0/{d['_key']}"))
+        except ValueError:
+            continue
+        teams = []
+        for t in detail.get("divisionTeams") or []:
+            cls, _, name = (t.get("name") or "").strip().partition(" - ")
+            if not name:
+                cls, name = "", cls
+            teams.append([name.strip(), t.get("location") or "", t.get("record") or "", cls.strip()])
+        if teams:
+            divisions.append({"name": d.get("name", "").strip(), "teams": teams})
     return divisions
 
 
@@ -85,12 +137,14 @@ def main():
     data = json.loads((SITE / "data.json").read_text())
     reg = json.loads((ROOT / "registrations.json").read_text())
     horizon = (TODAY + dt.timedelta(days=LOOKAHEAD_DAYS)).isoformat()
-    todo = [e for e in data["events"] if e["sanction"] in ("USSSA", "Grand Slam") and e["start"] <= horizon]
+    readers = {"USSSA": usssa_coming, "Grand Slam": grand_slam_coming, "Perfect Game": perfect_game_coming,
+               "USA Softball": eventconnect_coming, "NSA": eventconnect_coming}
+    todo = [e for e in data["events"] if e["sanction"] in readers and e["start"] <= horizon]
     prev = json.loads((SITE / "coming.json").read_text()) if (SITE / "coming.json").exists() else {}
 
     def work(ev):
         try:
-            divs = usssa_coming(ev) if ev["sanction"] == "USSSA" else grand_slam_coming(ev)
+            divs = readers[ev["sanction"]](ev)
         except Exception as exc:
             print(f"{ev['name']}: {exc}", file=sys.stderr)
             divs = None
@@ -110,7 +164,7 @@ def main():
     found = []
     for eid, info in coming.items():
         for d in info["divisions"]:
-            for name, city, _ in d["teams"]:
+            for name, *_ in d["teams"]:
                 if any(p in name.lower() for p in patterns):
                     ev = by_id.get(eid)
                     if ev:
