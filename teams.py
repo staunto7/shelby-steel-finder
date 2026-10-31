@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
 TODAY = dt.date.today()
 LOOKAHEAD_DAYS = 150
+VENUES = {}  # event id -> ballparks, filled while reading USSSA event pages
 
 
 def curl(url, data=None, jar=None):
@@ -44,6 +45,8 @@ def usssa_coming(ev):
     """Event page carries a nonce and the USSSA event id; the team list comes from admin-ajax."""
     jar = f"/tmp/ssf-{ev['id']}.jar"
     page = curl(ev["url"], jar=jar)
+    if page:
+        VENUES[ev["id"]] = venues.usssa(page)  # same page lists the ballparks; no extra request
     nonce = re.search(r'script_parameter\s*=\s*\{[^}]*"nonce":"([^"]+)"', page)
     eid = re.search(r'who-coming-api[^>]*data-event-id="(\d+)"|data-event-id="(\d+)"[^>]*who-coming-api', page)
     if not (nonce and eid):
@@ -186,7 +189,8 @@ def main():
     prev_venues = {(r.get("eventId") or r["name"]): r.get("venues") for r in prev_ours.get("registrations", [])}
     for r in regs:  # ballparks with addresses, so families have everything in one place
         if not r.get("venues"):
-            r["venues"] = venues.for_event(r) or prev_venues.get(r.get("eventId") or r["name"]) or []
+            r["venues"] = (VENUES.get(r.get("eventId")) or (venues.for_event(r) if r.get("sanction") != "USSSA" else [])
+                           or prev_venues.get(r.get("eventId") or r["name"]) or [])
     (SITE / "ours.json").write_text(json.dumps({"teams": reg.get("teams", []), "match": patterns, "registrations": regs}, indent=1))
     teams_total = sum(len(d["teams"]) for v in coming.values() for d in v["divisions"])
     print(f"team lists for {len(coming)} events ({teams_total} teams); Shelby Steel: {len(found)} auto, {len(manual)} manual",
