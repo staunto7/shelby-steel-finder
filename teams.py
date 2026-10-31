@@ -19,6 +19,7 @@ SITE = ROOT / "site"
 TODAY = dt.date.today()
 LOOKAHEAD_DAYS = 150
 VENUES = {}  # event id -> ballparks, filled while reading USSSA event pages
+STATS = {"ok": 0, "throttled": 0, "failed": 0}  # written to site/status.json so refresh health is visible
 
 
 def curl(url, data=None, jar=None):
@@ -32,7 +33,9 @@ def curl(url, data=None, jar=None):
         time.sleep(wait)
         body, _, code = subprocess.run(cmd + [url], capture_output=True, text=True).stdout.rpartition("\n")
         if code != "429":
+            STATS["ok" if code.startswith("2") else "failed"] += 1
             return body
+    STATS["throttled"] += 1
     return ""
 
 
@@ -192,6 +195,9 @@ def main():
             r["venues"] = (VENUES.get(r.get("eventId")) or (venues.for_event(r) if r.get("sanction") != "USSSA" else [])
                            or prev_venues.get(r.get("eventId") or r["name"]) or [])
     (SITE / "ours.json").write_text(json.dumps({"teams": reg.get("teams", []), "match": patterns, "registrations": regs}, indent=1))
+    (SITE / "status.json").write_text(json.dumps({"updated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
+                                                  "requests": STATS, "teamLists": len(coming),
+                                                  "venuesFound": sum(1 for v in VENUES.values() if v)}))
     teams_total = sum(len(d["teams"]) for v in coming.values() for d in v["divisions"])
     print(f"team lists for {len(coming)} events ({teams_total} teams); Shelby Steel: {len(found)} auto, {len(manual)} manual",
           file=sys.stderr)
