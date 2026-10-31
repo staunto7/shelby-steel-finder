@@ -95,11 +95,14 @@ T|45783|10 Under Girls|West Cobb Crush 2016|Accepted
 T|45783|12 Under Girls|Apex United Cobras - 12U Goodyear|Accepted
 T|45783|12 Under Girls|Apex United Cobras - 12U Shook|Accepted
 T|45783|12 Under Girls|Archer HotShotz|Accepted
+T|45783|12 Under Girls|Atlanta Crush 12u - Gwaltney|Accepted
+T|45783|12 Under Girls|CG Legacy 2015|Accepted
 T|45783|12 Under Girls|Dirty South Outlaws Hopper|Accepted
 T|45783|12 Under Girls|EC Bullets 2032 Triplett|Accepted
 T|45783|12 Under Girls|Firecrackers-2033 Buckner/Self|Accepted
 T|45783|12 Under Girls|GAP 2033 Ross|Accepted
 T|45783|12 Under Girls|Georgia Legends|Accepted
+T|45783|12 Under Girls|Monroe Mustangs|Accepted
 T|45783|12 Under Girls|Raptors 12U|Accepted
 T|45783|12 Under Girls|Thunder Gold 11U - Holliman|Accepted
 T|45783|12 Under Girls|Wow Factor Softball - Evans|Accepted
@@ -129,7 +132,6 @@ T|45783|18 Under Girls|Fireproof 16/18U-Stewart|Accepted
 T|45783|18 Under Girls|Ga Premier-Buffington|Accepted
 T|45783|18 Under Girls|GA Threat Waugh|Accepted
 T|45783|18 Under Girls|Georgia Crush - Rose|Accepted
-T|45783|18 Under Girls|Georgia Finesse|Pay Later
 T|45783|18 Under Girls|Georgia United Elite|Accepted
 T|45783|18 Under Girls|Lady Generals|Pay Later
 T|45783|18 Under Girls|Marucci Legacy SEGA - Carrow 14u|Accepted
@@ -263,15 +265,17 @@ T|45806|18 Under Girls|CSRA YARDDOGS 18U Gold|Pay Later
 T|45806|18 Under Girls|Fireproof 16U|Pay Later
 T|45806|18 Under Girls|Fuego GA Fastpitch 16U|Pay Later
 T|45806|18 Under Girls|Georgia Blue Diamonds - Trotter|Pay Later
-T|45806|18 Under Girls|Georgia Lightning|Pay Later
+T|45806|18 Under Girls|Georgia Lightning|Accepted
 T|45806|18 Under Girls|Georgia Misfits 16U-Gibel|Pay Later
 T|45806|18 Under Girls|Georgia Strike|Pay Later
 T|45806|18 Under Girls|RELENTLESS RIVALS|Pay Later
 T|45806|18 Under Girls|Smoke Fastpitch|Pay Later
 T|45821|10 Under Girls|Bama Belles|Accepted
+T|45821|10 Under Girls|Bama Elite (Brown)|Wait List
 T|45821|10 Under Girls|Carrollton Dirt Divas|Accepted
+T|45821|10 Under Girls|Coweta Chaos 2017|Accepted
 T|45821|10 Under Girls|Diamond Queens-10U Nolan|Accepted
-T|45821|10 Under Girls|Dirty Diamonds 10U|Pay Later
+T|45821|10 Under Girls|Dirty Diamonds 10U|Wait List
 T|45821|10 Under Girls|East Cobb Edge 10U - Carter|Accepted
 T|45821|10 Under Girls|HC Howlers|Accepted
 T|45821|10 Under Girls|Lady Mafia 10U|Accepted
@@ -318,6 +322,7 @@ T|45829|13 Under Girls|Social Circle Swarm|Wait List
 T|45829|14 Under Girls|14u Flush Powered by Royal Flush|Accepted
 T|45829|14 Under Girls|14U WILDCATS|Accepted
 T|45829|14 Under Girls|7th Inning Lady Royals - 14U - Hall|Accepted
+T|45829|14 Under Girls|Alpharetta Fire 14U - Stewart|Wait List
 T|45829|14 Under Girls|Apex United Cobras - 14U Kurz|Accepted
 T|45829|14 Under Girls|Dirt Dawgs 14U-Bradley|Wait List
 T|45829|14 Under Girls|East Cobb Chaos|Accepted
@@ -635,6 +640,7 @@ T|46020|18U C-CLASS|Texas Inferno 08|C-Class
 T|46027|8 Under Girls|Bremen Braves|Pay Later
 T|46027|8 Under Girls|Carrollton Dirt Divas 8U|Accepted
 T|46027|8 Under Girls|Magic 8U|Accepted
+T|46027|8 Under Girls|PC Angels|Wait List
 T|46027|8 Under Girls|West Georgia Bomb Pops|Accepted
 T|46027|8 Under Girls|West Georgia Nightmare 8U|Accepted
 T|46027|10 Under Girls|9:13 Athletics - Cowart|Accepted
