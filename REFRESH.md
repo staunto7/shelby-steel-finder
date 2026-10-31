@@ -1,20 +1,25 @@
-# Shelby Steel Tournament Finder — refresh (runs at 6 AM and 6 PM)
+# Shelby Steel Tournament Finder — refresh
 
-Artifact: https://claude.ai/artifact/3F2qMoF5P6zoHBVfZ1FhQn
-Page: `site/index.html` · Data: `site/data.json` (published as `data.json`)
+Live site: https://staunto7.github.io/shelby-steel-finder/  (repo: github.com/staunto7/shelby-steel-finder)
+The old Claude artifact (https://claude.ai/artifact/3F2qMoF5P6zoHBVfZ1FhQn) is only a "moved" pointer now. Never publish to it.
 
-## Every run
+## Main refresh: GitHub Actions (no Mac needed)
 
-1. If the built-in browser tools (mcp__Claude_Browser__*) are available, refresh the browser-only
-   sources first: USFA, PGF and USA Softball TN/MS/GA (below). If the browser isn't available,
-   skip this; their cached rows stay on the page.
-2. `python3 -I /Users/stephentaunton/Claude/shelby-steel-finder/fetch.py`
-   Pulls USSSA, Perfect Game, Grand Slam, NSA and USA Softball (AL, FL) directly and merges the caches.
-3. If fetch.py printed `DATA_UNCHANGED`, stop: there is nothing new to publish.
-   If it printed `DATA_CHANGED`, republish only the data file (read the artifact first if this session has not):
-   Artifact publish with `url` = the artifact URL above, `file_path` = `site/index.html`,
-   `files` = `{"data.json": "site/data.json"}`.
-   Do not change the page itself during a refresh.
+`.github/workflows/refresh.yml` runs at 6 AM / 6 PM Central and on every push: `fetch.py` (USSSA, Perfect Game,
+Grand Slam, NSA, USA Softball AL/FL + cached sources), then `teams.py` (who's coming + Shelby Steel registrations),
+commits the data, and publishes `site/` to GitHub Pages.
+
+Manual registrations: edit `registrations.json` (on github.com or locally) and push; the site updates in a few minutes.
+
+## Mac job: browser-only sources (runs when the Mac is on)
+
+USFA (SincSports), PGF (TournamentConnect) and USA Softball TN/MS/GA (registerplay.com) block servers, so the
+Mac's scheduled task refreshes them through the built-in browser:
+
+1. `cd /Users/stephentaunton/Claude/shelby-steel-finder && git pull --rebase -X theirs origin main`
+2. Refresh each source below with the browser and run the matching ingest step.
+3. `git add cache/ && git commit -m "Refresh browser-only sources" && git push origin main`
+   (the push triggers GitHub to rebuild and republish the site). If nothing changed, skip the commit.
 
 ## USA Softball TN, MS, GA (registerplay.com is behind Cloudflare, so use the browser)
 
