@@ -125,8 +125,16 @@ input[type=date],select,input[type=search]{font:500 15px var(--f-body);color:var
 
 /* who's coming */
 .coming-btn{background:none;border:0;padding:0;margin-top:6px;color:var(--steel);font:600 13px var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
-.coming{margin-top:10px;display:grid;gap:12px}
-.div-name{font:700 12px var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.coming{margin-top:10px;display:grid;gap:8px}
+.age-pick .chip{padding:7px 11px;font-size:13px}
+details.div{border:1px solid var(--line);border-radius:4px;background:var(--bg)}
+details.div>summary{display:flex;align-items:baseline;gap:10px;padding:9px 12px;cursor:pointer;list-style:none}
+details.div>summary::-webkit-details-marker{display:none}
+details.div>summary::before{content:"▸";color:var(--muted);font-size:12px;transition:transform .15s}
+details.div[open]>summary::before{transform:rotate(90deg)}
+details.div .tbl-wrap{padding:0 8px 8px}
+.div-name{font:700 13px var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.div-count{margin-left:auto;font-size:13px;color:var(--muted);white-space:nowrap}
 .teams-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
 .teams-tbl td{padding:5px 6px;border-top:1px solid var(--line);vertical-align:top}
 .teams-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
@@ -392,16 +400,35 @@ function card(e, opts = {}){
     <div class="side">${opts.reg?"":`<button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from":"Add to"} shortlist" data-k="${esc(key)}">${starSvg}</button>`}${e.url?`<a class="go" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a>`:""}</div>
   </article>`;
 }
-function comingHTML(id){
+/* Who's coming: pick an age group (like the sanction sites), then open a division to see its teams. */
+const divAge = name => { const m = (name||"").match(/(\d{1,2})\s*(?:U\b|&\s*Under|-)/i) || (/high school|HS\b/i.test(name)?[0,18]:null); return m ? +m[1] : 99; };
+const ageLabel = n => n === 18 ? "18U/HS" : n === 99 ? "Other" : `${n}U`;
+function comingHTML(id, age){
   const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
-  return COMING[id].divisions.map(d => `<div><div class="div-name">${esc(d.name)} · ${d.teams.length} teams</div><div class="tbl-wrap"><table class="teams-tbl"><tbody>${
-    d.teams.map(([n,c,r]) => `<tr class="${pats.some(p=>n.toLowerCase().includes(p))?"us":""}"><td>${esc(n)}</td><td class="c">${esc(c)}</td><td class="r">${esc(r)}</td></tr>`).join("")
-  }</tbody></table></div></div>`).join("");
+  const isUs = n => pats.some(p => n.toLowerCase().includes(p));
+  const divs = COMING[id].divisions;
+  const ages = [...new Set(divs.map(d => divAge(d.name)))].sort((x,y)=>x-y);
+  if (age == null){
+    const ours = divs.filter(d => d.teams.some(t => isUs(t[0]))).map(d => divAge(d.name));
+    const followed = [...following].map(t => parseInt(t)).filter(n => ages.includes(n));
+    age = ours[0] ?? followed[0] ?? ages[0];
+  }
+  const picker = `<div class="seg age-pick" role="group" aria-label="Age group">${ages.map(n =>
+    `<button type="button" class="chip" data-age="${n}" aria-pressed="${n===age}">${ageLabel(n)}</button>`).join("")}</div>`;
+  const shown = divs.filter(d => divAge(d.name) === age);
+  return picker + shown.map(d => {
+    const us = d.teams.some(t => isUs(t[0]));
+    return `<details class="div"${us||shown.length===1?" open":""}><summary><span class="div-name">${esc(d.name)}</span><span class="div-count">${d.teams.length} teams${us?" · Shelby Steel":""}</span></summary><div class="tbl-wrap"><table class="teams-tbl"><tbody>${
+      d.teams.map(([n,c,r]) => `<tr class="${isUs(n)?"us":""}"><td>${esc(n)}</td><td class="c">${esc(c)}</td><td class="r">${esc(r)}</td></tr>`).join("")
+    }</tbody></table></div></details>`;
+  }).join("");
 }
 document.addEventListener("click", e => {
+  const pick = e.target.closest(".age-pick .chip");
+  if (pick){ const box = pick.closest(".coming"); box.innerHTML = comingHTML(box.dataset.id, +pick.dataset.age); return; }
   const b = e.target.closest(".coming-btn"); if (!b) return;
   const box = b.nextElementSibling, open = b.getAttribute("aria-expanded") === "true";
-  if (!open && !box.innerHTML) box.innerHTML = comingHTML(b.dataset.coming);
+  if (!open && !box.innerHTML){ box.dataset.id = b.dataset.coming; box.innerHTML = comingHTML(b.dataset.coming); }
   box.hidden = open; b.setAttribute("aria-expanded", !open);
 });
 
