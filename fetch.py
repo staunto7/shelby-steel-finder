@@ -2,12 +2,15 @@
 """Pull travel-softball tournaments from each sanction and write site/data.json.
 
 Sources fetched directly: USSSA, Perfect Game, Grand Slam, NSA, USA Softball (AL, FL).
-Sources that block scripts (USFA on SincSports, PGF on TournamentConnect) are read
-from cache/<source>.json, which the hourly Claude job refreshes through the browser.
+PGF comes from TournamentConnect's own API (pgf.py). USFA (SincSports) blocks scripts, so it is read
+from cache/usfa.json, which the Mac job refreshes through the browser.
 Any source that fails keeps its last good data so the page never goes blank.
 """
 import base64, datetime as dt, hashlib, html, json, re, subprocess, sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pgf
 
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "cache"
@@ -232,13 +235,25 @@ def usa_softball():
     return eventconnect("USA Softball", rows, lambda e: f"https://{e['host']}/pages/event/{e['_key']}")
 
 
+def pgf_events():
+    out = []
+    for item in pgf.upcoming():
+        ev = item["event"]
+        if ev.get("stateabbr") not in STATES:
+            continue
+        out.append(event("PGF", ev["name"], ev["startdate"], ev.get("enddate") or ev["startdate"], ev["stateabbr"],
+                         f"{ev.get('city', '')}, {ev['stateabbr']}", (ev.get("divisionlabel") or "").replace(" Girls", ""),
+                         ev.get("pricinglabel") or "", pgf.event_url(ev["eventid"])))
+    return out
+
+
 def from_cache(name):
     p = CACHE / f"{name}.json"
     return json.loads(p.read_text()) if p.exists() else None
 
 
 SOURCES = {"usssa": ("USSSA", usssa), "perfect_game": ("Perfect Game", perfect_game),
-           "grand_slam": ("Grand Slam", grand_slam), "nsa": ("NSA", nsa), "usa_softball": ("USA Softball", usa_softball), "usfa": ("USFA", None), "pgf": ("PGF", None)}
+           "grand_slam": ("Grand Slam", grand_slam), "nsa": ("NSA", nsa), "usa_softball": ("USA Softball", usa_softball), "usfa": ("USFA", None), "pgf": ("PGF", pgf_events)}
 
 
 def main():

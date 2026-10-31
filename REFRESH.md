@@ -13,7 +13,7 @@ Manual registrations: edit `registrations.json` (on github.com or locally) and p
 
 ## Mac job: browser-only sources (runs when the Mac is on)
 
-USFA (SincSports), PGF (TournamentConnect) and USA Softball TN/MS/GA (registerplay.com) block servers, so the
+USFA (SincSports / usfaevents.com) and USA Softball TN/MS/GA (registerplay.com) block servers, so the
 Mac's scheduled task refreshes them through the built-in browser:
 
 1. `cd /Users/stephentaunton/Claude/shelby-steel-finder && git pull --rebase -X theirs origin main`
@@ -46,13 +46,17 @@ const seen=new Set(),out=[];for(const [tid,s] of [['USFAALA',9],['USFAALA',10],[
 Then: `python3 -I ingest.py usfa cache/usfa_raw.json`
 (SincSports season numbers roll over each year; if a state returns nothing, open usfastpitch.com/tournaments and use the season numbers in its state links.)
 
-## PGF (TournamentConnect renders with JavaScript)
+## USFA team lists ("Who's Playing")
 
-Navigate to `https://softball.tournamentconnect.premiergirlsfastpitch.com/events/register/tournaments/provider/premiergirlsfastpitch`,
-wait for the list to load, run this, and save the JSON to `cache/pgf_raw.json`:
+Navigate the browser to `https://usfaevents.com/details.aspx?tid=USFA45895` (any USFA event page works) and run this (it reads the tournament ids from cache/usfa.json's links, so pass them in:
+`python3 -c "import json,re;print(json.dumps(sorted({re.search(r'tid=(\w+)',e['url']).group(1) for e in json.load(open('cache/usfa.json'))['events']})))"`),
+replacing `TIDS` with that list. Save the returned text to `cache/usfa_teams_raw.txt`, then run
+`python3 -I ingest.py usfa_teams cache/usfa_teams_raw.txt`.
 
 ```js
-const t=document.body.innerText;const parts=t.split('\nDate: ');const out=[];for(let i=1;i<parts.length;i++){const prev=parts[i-1].trim().split('\n');const name=prev[prev.length-1].trim();const p=parts[i];const g=k=>(p.match(new RegExp(k+':\\s*(.*)'))||[])[1]||'';const loc=g('Location');if(/,\s*(AL|GA|FL|TN|MS)\b/.test(loc))out.push([p.split('\n')[0].trim(),name,g('Divisions'),loc,g('Entry Fee')])}JSON.stringify(out)
+const tids=TIDS;const L=[];for(const tid of tids){try{const h=await (await fetch(`/teamlist.aspx?tid=${tid}&tab=4&sub=0`)).text();const d=new DOMParser().parseFromString(h,'text/html');const ven={};for(const card of d.querySelectorAll('.tl-div-card')){const name=card.querySelector('h2')?.textContent.trim()||'';card.querySelectorAll('.tl-venues a').forEach(a=>{ven[a.textContent.trim()]=decodeURIComponent((a.getAttribute('href').split('q=')[1]||'').replace(/\+/g,' '))});for(const r of card.querySelectorAll('tr')){const c=[...r.cells].map(x=>x.textContent.trim().replace(/\s+/g,' '));if(c.length>=3&&c[0]&&c[0]!=='Team')L.push(['T',tid.slice(4),name,c[0],c[2]].join('|'))}}for(const [n,a] of Object.entries(ven))L.push(['V',tid.slice(4),n,a].join('|'))}catch(e){}}L.join('\n')
 ```
 
-Then: `python3 -I ingest.py pgf cache/pgf_raw.json`
+## PGF
+
+No browser step. fetch.py and teams.py read TournamentConnect's own API (pgf.py), so PGF refreshes on GitHub.

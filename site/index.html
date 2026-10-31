@@ -7,7 +7,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
 <style>
-/* Layout: black forged header band with the SS mark, a filter rail, then results grouped by tournament weekend. */
+/* Phone first: compact black header, Shelby Steel schedule on top, results by weekend, a filter panel that slides
+   open, and a bottom tab bar. From 1000px up the filters become a sticky left rail beside the results. */
 :root{
   --bg:#F2F3F5; --surface:#FFFFFF; --ink:#101317; --muted:#5D6772; --line:#D7DCE1; --steel:#2E5873; --steel-soft:#E3EBF1;
   --band:#0B0D10; --band-ink:#F4F6F8; --band-muted:#9AA4AE;
@@ -16,6 +17,7 @@
   --f-display:"Russo One","Arial Black",Impact,sans-serif;
   --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-label:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --tabbar:64px;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -30,141 +32,183 @@
   color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%}
-:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-body{margin:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:12px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.45;
+  padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom,0px))}
 img{max-width:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45}
-.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button{-webkit-tap-highlight-color:transparent}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 a{color:var(--steel)}
 :focus-visible{outline:2px solid var(--steel);outline-offset:2px}
 
 /* header band */
-.band{background:var(--band);color:var(--band-ink);border-bottom:4px solid #6B7680}
-.band .wrap{display:flex;align-items:center;gap:18px;padding-block:22px;flex-wrap:wrap}
-.mark{width:58px;height:58px;flex:none;color:var(--band-ink)}
+.band{background:var(--band);color:var(--band-ink);border-bottom:3px solid #6B7680;padding-top:env(safe-area-inset-top,0px)}
+.band .wrap{display:flex;align-items:center;gap:12px;padding-block:12px}
+.mark{width:40px;height:40px;flex:none;color:var(--band-ink)}
 .brand{min-width:0;flex:1}
-.brand .org{font-family:var(--f-display);font-size:clamp(20px,3.4vw,30px);letter-spacing:.06em;line-height:1;text-transform:uppercase}
-.brand .tool{font-family:var(--f-label);font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--band-muted);font-size:13px;margin-top:6px}
-.fresh{font-family:var(--f-label);font-size:14px;letter-spacing:.04em;color:var(--band-muted);text-align:right}
+.brand .org{font-family:var(--f-display);font-size:19px;letter-spacing:.05em;line-height:1.05;text-transform:uppercase}
+.brand .tool{font-family:var(--f-label);font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--band-muted);font-size:11.5px;margin-top:3px}
+.fresh{font-family:var(--f-label);font-size:13px;letter-spacing:.03em;color:var(--band-muted);padding:0 0 10px}
 .fresh b{color:var(--band-ink);font-weight:600}
 .fresh .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3FBF7F;margin-right:6px;vertical-align:1px}
 .fresh .dot.stale{background:#E0A030}
 
-/* filters */
-.filters{background:var(--surface);border:1px solid var(--line);border-radius:6px;margin-top:-1px;padding:18px;display:grid;gap:16px;grid-template-columns:repeat(12,minmax(0,1fr))}
-.fwrap{padding-block:20px 6px}
-.field{display:flex;flex-direction:column;gap:6px;min-width:0}
-.field>label,.field>.lbl{font-family:var(--f-label);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.c12{grid-column:span 12}.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}.c8{grid-column:span 8}
-@media (max-width:760px){.c6,.c4,.c3,.c8{grid-column:span 12}}
-.seg{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font:600 14px/1 var(--f-label);letter-spacing:.06em;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 13px;border-radius:4px;cursor:pointer;text-transform:uppercase}
+/* layout */
+.layout{display:block}
+.content{min-width:0}
+
+/* filter panel: a bar on phones that opens the full filter list */
+.filter-bar{display:flex;align-items:center;gap:10px;width:100%;margin-top:16px;padding:12px 14px;min-height:52px;
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;color:var(--ink);font:600 15px var(--f-body);cursor:pointer;text-align:left}
+.filter-bar svg{width:20px;height:20px;flex:none}
+.filter-bar .fb-text{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.filter-bar .fb-text small{display:block;color:var(--muted);font-weight:500;font-size:13px;overflow:hidden;text-overflow:ellipsis}
+.filter-bar .chev{transition:transform .15s}
+.filter-bar[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-top:8px;padding:16px;display:flex;flex-direction:column;gap:18px}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field>label,.field>.lbl{font-family:var(--f-label);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 15px/1 var(--f-label);letter-spacing:.05em;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:0 14px;min-height:44px;border-radius:22px;cursor:pointer;text-transform:uppercase;display:inline-flex;align-items:center}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
-.chip:hover{border-color:var(--muted)}
-.chip .sw{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:1px}
-input[type=date],select,input[type=search]{font:500 15px var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 10px;width:100%;min-width:0}
+.chip .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px}
+input[type=date],select,input[type=search]{font:500 16px var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:0 12px;min-height:46px;width:100%;min-width:0}
 .dates{display:flex;gap:8px;align-items:center}
 .dates span{color:var(--muted);font-family:var(--f-label)}
-.hint{font-size:12.5px;color:var(--muted)}
-.link-btn{background:none;border:0;padding:0;color:var(--steel);font:600 13px var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.hint{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hint input[type=date]{width:auto;min-height:40px;font-size:15px}
+.link-btn{background:none;border:0;padding:0 6px;min-height:44px;color:var(--steel);font:600 14px var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.done-btn{min-height:48px;border-radius:10px;border:0;background:var(--ink);color:var(--surface);font:700 15px var(--f-label);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
 
 /* summary */
-.summary{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px 8px}
-.summary h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:22px;letter-spacing:.03em;text-wrap:balance}
+.summary{display:flex;flex-direction:column;gap:8px;padding-block:20px 4px}
+.summary h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:21px;letter-spacing:.03em}
 .summary .sub{color:var(--muted);font-size:14px}
 .tally{display:flex;gap:6px;flex-wrap:wrap}
 .tally span{font:600 12px var(--f-label);letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:3px;background:var(--steel-soft);color:var(--ink)}
 
 /* weekend groups */
 .weekend{margin-top:18px}
-.wk-head{display:flex;align-items:center;gap:12px;font-family:var(--f-label);font-weight:700;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.wk-head{display:flex;align-items:center;gap:12px;font-family:var(--f-label);font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:2px solid var(--ink)}
 .wk-head .n{margin-left:auto;font-weight:600;letter-spacing:.06em}
-.list{display:grid;gap:0}
-.ev{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:start;padding:14px 4px;border-bottom:1px solid var(--line)}
-.ev:hover{background:var(--surface)}
+.list{display:grid;gap:10px;margin-top:10px}
+
+/* tournament card */
+.ev{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:4px 12px;align-items:start}
 .when{font-family:var(--f-label);text-align:center;line-height:1;padding-top:2px}
 .when .mo{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--muted)}
 .when .d{font-family:var(--f-display);font-size:24px;margin-top:3px;font-variant-numeric:tabular-nums}
-.when .dow{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.04em}
-.ev .name{font-weight:700;font-size:16px;line-height:1.25;margin:0 0 5px;overflow-wrap:anywhere}
+.when .dow{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.02em}
+.ev .name{font-weight:700;font-size:17px;line-height:1.25;margin:0 0 6px;overflow-wrap:anywhere}
 .ev .name a{color:var(--ink);text-decoration:none}
-.ev .name a:hover{text-decoration:underline}
-.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--muted);font-size:14px}
+.meta{display:flex;flex-wrap:wrap;gap:2px 12px;color:var(--muted);font-size:14px}
 .meta b{color:var(--ink);font-weight:600}
-.tag{font:700 11.5px/1 var(--f-label);letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;border-radius:3px;color:#fff;margin-right:8px;vertical-align:2px;white-space:nowrap}
-:root .tag{color:var(--surface)}
-.side{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.star{background:none;border:1px solid var(--line);border-radius:4px;width:36px;height:36px;cursor:pointer;color:var(--muted);display:grid;place-items:center}
+.tag{display:inline-block;font:700 11.5px/1 var(--f-label);letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;border-radius:3px;color:var(--surface);margin:0 6px 6px 0;white-space:nowrap}
+.star{background:none;border:1px solid var(--line);border-radius:50%;width:44px;height:44px;cursor:pointer;color:var(--muted);display:grid;place-items:center;margin:-4px -4px 0 0}
 .star[aria-pressed="true"]{color:var(--star);border-color:var(--star)}
-.star svg{width:18px;height:18px}
-.go{font:600 13px var(--f-label);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;text-decoration:none;border-bottom:1px solid currentColor}
-@media (max-width:560px){.ev{grid-template-columns:52px minmax(0,1fr)}.side{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between}}
+.star svg{width:20px;height:20px}
+.ev .body{grid-column:2 / -1;min-width:0}
+.ev .head{grid-column:2;min-width:0}
+.actions{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.act{flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:600 14px/1.1 var(--f-label);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;white-space:nowrap}
+.act[aria-expanded="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.act .cnt{font-weight:500;opacity:.8}
+.act.ghost{flex:0 0 auto;background:none}
+.panel{grid-column:1 / -1;margin-top:10px;display:grid;gap:8px;min-width:0}
+.panel .upd{font-size:14px;color:var(--muted)}
 
-.empty{padding:40px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:6px;margin-top:18px}
+.empty{padding:36px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px;margin-top:18px}
 .empty strong{display:block;color:var(--ink);font-size:17px;margin-bottom:6px}
 
 /* sources */
-.sources{margin-block:40px 32px;border-top:2px solid var(--ink);padding-top:14px}
+.sources{margin-block:36px 24px;border-top:2px solid var(--ink);padding-top:14px}
 .sources h3{margin:0 0 4px;font-family:var(--f-label);font-size:14px;letter-spacing:.18em;text-transform:uppercase}
 .sources p{margin:0 0 12px;color:var(--muted);font-size:14px;max-width:70ch}
-.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-.src{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:10px 12px;font-size:13.5px;display:flex;flex-direction:column;gap:3px}
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.src{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;font-size:13.5px;display:flex;flex-direction:column;gap:3px}
 .src .t{font-weight:700;display:flex;align-items:center;gap:7px}
 .src .t i{width:9px;height:9px;border-radius:2px;display:inline-block}
 .src .s{color:var(--muted)}
-.src a{font-weight:600;font-size:13px}
-@media (prefers-reduced-motion:no-preference){.ev{transition:background .15s}}
+.src a{font-weight:600;font-size:13px;padding:4px 0}
 
 /* our teams */
-.ours{margin-top:20px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:6px;padding:16px 18px}
-.ours-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.ours-head h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:20px;letter-spacing:.04em;text-transform:uppercase;flex:1;min-width:0}
+.ours{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:10px;padding:14px}
+.ours-head{display:flex;flex-direction:column;gap:10px}
+.ours-head h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:19px;letter-spacing:.04em;text-transform:uppercase}
 .ours-head .lbl{font-family:var(--f-label);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.ours-list{margin-top:10px}
-.ours .ev{border-bottom:1px solid var(--line)}
-.ours .ev:last-child{border-bottom:0}
-.ours .none{color:var(--muted);padding:12px 2px 4px;font-size:14px}
-.team-pill{display:inline-block;font:700 12px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:3px;background:var(--ink);color:var(--surface);margin-right:8px;vertical-align:2px}
-.reg-flag{display:inline-flex;align-items:center;gap:6px;font:700 12px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--steel-soft);border:1px solid var(--line);padding:4px 7px;border-radius:3px;margin-top:6px}
+.ours-list{margin-top:12px;display:grid;gap:10px}
+.ours .ev{background:var(--bg)}
+.ours .none{color:var(--muted);padding:6px 2px 2px;font-size:15px}
+.team-pill{display:inline-block;font:700 12px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:3px;background:var(--ink);color:var(--surface);margin:0 6px 6px 0}
+.reg-flag{display:inline-flex;align-items:center;gap:6px;font:700 12px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--steel-soft);border:1px solid var(--line);padding:5px 8px;border-radius:3px;margin-top:8px}
 .reg-flag svg{width:12px;height:12px}
-.note{font-size:13px;color:var(--muted);margin-top:4px}
+.note{font-size:13.5px;color:var(--muted);margin-top:4px}
 
 /* who's coming */
-.coming-btn{background:none;border:0;padding:0;margin-top:6px;color:var(--steel);font:600 13px var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
-.coming{margin-top:10px;display:grid;gap:8px}
-.age-pick .chip{padding:7px 11px;font-size:13px}
-details.div{border:1px solid var(--line);border-radius:4px;background:var(--bg)}
-details.div>summary{display:flex;align-items:baseline;gap:10px;padding:9px 12px;cursor:pointer;list-style:none}
+.age-pick .chip{min-height:40px;padding:0 12px;font-size:14px}
+details.div{border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.ours details.div{background:var(--surface)}
+details.div>summary{display:flex;align-items:center;gap:10px;padding:0 12px;min-height:48px;cursor:pointer;list-style:none}
 details.div>summary::-webkit-details-marker{display:none}
-details.div>summary::before{content:"▸";color:var(--muted);font-size:12px;transition:transform .15s}
+details.div>summary::before{content:"▸";color:var(--muted);font-size:13px;transition:transform .15s}
 details.div[open]>summary::before{transform:rotate(90deg)}
 details.div .tbl-wrap{padding:0 8px 8px}
-.div-name{font:700 13px var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.div-name{font:700 14px var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
 .div-count{margin-left:auto;font-size:13px;color:var(--muted);white-space:nowrap}
-.teams-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
-.teams-tbl td{padding:5px 6px;border-top:1px solid var(--line);vertical-align:top}
+.teams-tbl{width:100%;border-collapse:collapse;font-size:15px}
+.teams-tbl td{padding:8px 6px;border-top:1px solid var(--line);vertical-align:top}
 .teams-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
-.teams-tbl td.c{color:var(--muted)}
-.teams-tbl .cls{display:inline-block;margin-left:8px;font:600 11px/1 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:2px 5px;vertical-align:1px}
+.teams-tbl td.c{color:var(--muted);font-size:13.5px}
+.teams-tbl .cls{display:inline-block;margin-left:6px;font:600 11px/1 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:2px 5px;vertical-align:1px}
 .teams-tbl tr.us td{background:var(--steel-soft);font-weight:700}
+@media (max-width:560px){.teams-tbl td.c{display:none}}
 .tbl-wrap{overflow-x:auto}
-.games-btn{margin-left:14px}
-.games{margin-top:10px;display:grid;gap:8px}
-.games .upd{font-size:12.5px;color:var(--muted)}
-.games .dv{font:700 13px var(--f-label);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
-.game{display:grid;grid-template-columns:92px minmax(0,1fr) auto;gap:4px 12px;padding:8px 10px;border-top:1px solid var(--line);font-size:13.5px;align-items:center}
+.games .dv{font:700 14px var(--f-label);letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+.game{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:4px 10px;padding:10px;border-top:1px solid var(--line);font-size:14.5px;align-items:center}
 .game .t{font-family:var(--f-label);font-weight:600;color:var(--muted);line-height:1.2}
-.game .t small{display:block;font-weight:500;font-size:12px}
+.game .t small{display:block;font-weight:500;font-size:12.5px}
 .game .tm{display:flex;justify-content:space-between;gap:8px}
 .game .tm.us{font-weight:700}
 .game .tm.us::before{content:"";width:4px;border-radius:2px;background:var(--ink);margin-right:-2px}
 .game .sc{font-variant-numeric:tabular-nums;font-weight:700;min-width:1.5em;text-align:right}
-.venues{margin-top:8px;display:grid;gap:4px;font-size:13.5px}
+.venues{margin-top:8px;display:grid;gap:6px;font-size:14.5px}
 .venues .vl{font:700 12px var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .venue a{font-weight:600}
-.venue span{color:var(--muted)}
-.bracket-frame{width:100%;height:520px;border:1px solid var(--line);border-radius:4px;background:#fff}
+.venue span{display:block;color:var(--muted);font-size:13.5px}
+.bracket-frame{width:100%;height:70vh;max-height:620px;border:1px solid var(--line);border-radius:6px;background:#fff}
+
+/* bottom tab bar (phones and tablets) */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(3,1fr);
+  background:var(--band);border-top:1px solid #2A3036;padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar button{height:var(--tabbar);background:none;border:0;color:var(--band-muted);font:600 12px var(--f-label);letter-spacing:.1em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
+.tabbar button svg{width:22px;height:22px}
+.tabbar button[aria-current="true"]{color:var(--band-ink)}
+
+/* tablet */
+@media (min-width:640px){
+  .band .wrap{padding-block:16px}
+  .mark{width:50px;height:50px}
+  .brand .org{font-size:24px}
+  .fresh{text-align:right;padding:0}
+  .ours-head{flex-direction:row;align-items:center;flex-wrap:wrap}
+  .ours-head h2{flex:1}
+  .summary{flex-direction:row;align-items:baseline;justify-content:space-between;flex-wrap:wrap}
+  .act{flex:0 0 auto}
+}
+@media (min-width:640px){.band .wrap{flex-wrap:nowrap}}
+@media (max-width:639px){.band .wrap{flex-wrap:wrap}.fresh{flex-basis:100%}}
+
+/* desktop: sticky filter rail on the left, no tab bar */
+@media (min-width:1000px){
+  body{padding-bottom:0}
+  .tabbar,.filter-bar,.done-btn{display:none!important}
+  .layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;align-items:start}
+  .rail{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto;margin-top:16px}
+  .rail .filters{display:flex!important;margin-top:0}
+  .ev{grid-template-columns:56px minmax(0,1fr) auto;padding:16px}
+  .ev:hover{border-color:var(--muted)}
+}
+@media (prefers-reduced-motion:no-preference){.ev{transition:border-color .15s}}
 </style>
 
 <header class="band">
@@ -178,62 +222,77 @@ details.div .tbl-wrap{padding:0 8px 8px}
   </div>
 </header>
 
-<main class="wrap">
-  <section class="ours" id="ours" aria-labelledby="oursTitle">
-    <div class="ours-head">
-      <h2 id="oursTitle">Shelby Steel schedule</h2>
-      <span class="lbl">Following</span>
-      <div class="seg" id="follow" role="group" aria-label="Teams you follow"></div>
-    </div>
-    <div class="ours-list" id="oursList"><div class="none">Loading Shelby Steel registrations…</div></div>
-  </section>
-  <div class="fwrap">
-    <form class="filters" id="filters" autocomplete="off">
-      <div class="field c12">
+<main class="wrap layout">
+  <aside class="rail" id="rail">
+    <button type="button" class="filter-bar" id="filterToggle" aria-expanded="false" aria-controls="filters">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18v2H3zm4 6h10v2H7zm3 6h4v2h-4z"/></svg>
+      <span class="fb-text">Filters<small id="filterSummary">All states · all sanctions</small></span>
+      <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+    </button>
+    <form class="filters" id="filters" autocomplete="off" hidden>
+      <div class="field">
         <span class="lbl">Season</span>
         <div class="seg" id="seasons" role="group" aria-label="Season"></div>
       </div>
-      <div class="field c6">
+      <div class="field">
         <label for="from">Dates</label>
         <div class="dates"><input type="date" id="from" aria-label="From date"><span>to</span><input type="date" id="to" aria-label="To date"></div>
-        <span class="hint">Or pick one weekend: <input type="date" id="weekend" aria-label="Weekend of" style="width:auto;padding:4px 6px;font-size:13px"></span>
+        <span class="hint">Or one weekend: <input type="date" id="weekend" aria-label="Weekend of"></span>
       </div>
-      <div class="field c6">
+      <div class="field">
         <span class="lbl">States</span>
         <div class="seg" id="states" role="group" aria-label="States"></div>
       </div>
-      <div class="field c3">
+      <div class="field">
         <label for="age">Age division</label>
         <select id="age"><option value="">All ages</option></select>
       </div>
-      <div class="field c6">
+      <div class="field">
         <span class="lbl">Sanctions</span>
         <div class="seg" id="sanctions" role="group" aria-label="Sanctions"></div>
       </div>
-      <div class="field c3">
+      <div class="field">
         <label for="q">Search name or city</label>
-        <input type="search" id="q" placeholder="e.g. Hoover, Gulf Coast">
+        <input type="search" id="q" placeholder="e.g. Hoover, Gulf Coast" enterkeyhint="search">
       </div>
+      <button type="button" class="done-btn" id="filterDone">Show tournaments</button>
     </form>
+  </aside>
+
+  <div class="content">
+    <section class="ours" id="ours" aria-labelledby="oursTitle">
+      <div class="ours-head">
+        <h2 id="oursTitle">Shelby Steel schedule</h2>
+        <span class="lbl">Following</span>
+        <div class="seg" id="follow" role="group" aria-label="Teams you follow"></div>
+      </div>
+      <div class="ours-list" id="oursList"><div class="none">Loading Shelby Steel registrations…</div></div>
+    </section>
+
+    <section class="summary" id="find" aria-live="polite">
+      <div>
+        <h2 id="headline">Finding tournaments…</h2>
+        <div class="sub" id="subline"></div>
+      </div>
+      <div class="tally" id="tally"></div>
+    </section>
+    <div class="seg" style="margin-top:8px"><button type="button" class="chip" id="shortlistBtn" aria-pressed="false">★ My shortlist <span id="slCount"></span></button></div>
+
+    <div id="results"></div>
+
+    <section class="sources">
+      <h3>Where this comes from</h3>
+      <p>Listings and team lists are pulled from each sanction's own site twice a day, and pool play every 15 minutes on tournament weekends. Always confirm dates, fees and divisions on the event page before you register.</p>
+      <div class="src-grid" id="sources"></div>
+    </section>
   </div>
-
-  <section class="summary" aria-live="polite">
-    <div>
-      <h2 id="headline">Finding tournaments…</h2>
-      <div class="sub" id="subline"></div>
-    </div>
-    <div class="tally" id="tally"></div>
-  </section>
-  <div class="seg" style="margin-top:6px"><button type="button" class="chip" id="shortlistBtn" aria-pressed="false">★ My shortlist <span id="slCount"></span></button></div>
-
-  <div id="results"></div>
-
-  <section class="sources">
-    <h3>Where this comes from</h3>
-    <p>Listings are pulled from each sanction's own tournament site twice a day, morning and evening, and refreshed here automatically. Always confirm dates, fees and divisions on the event page before you register. Tap a sanction to check its site directly.</p>
-    <div class="src-grid" id="sources"></div>
-  </section>
 </main>
+
+<nav class="tabbar" aria-label="Sections">
+  <button type="button" data-tab="ours" aria-current="true"><svg viewBox="0 0 1931 1923" aria-hidden="true"><path fill="currentColor" d="M83 83H892V511L664 423V318H330V443L892 659V1008L83 1840V751L322 846V1250L662 910V810L83 608Z"/><path fill="currentColor" d="M1848 83H1039V511L1267 423V318H1601V443L1039 659V1008L1848 1840V751L1609 846V1250L1269 910V810L1848 608Z"/></svg>Our schedule</button>
+  <button type="button" data-tab="find"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>Find</button>
+  <button type="button" data-tab="shortlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>Shortlist</button>
+</nav>
 
 <script>
 const SANCTIONS = {
@@ -324,9 +383,39 @@ function buildFilters(){
   document.getElementById("to").value = state.to;
 }
 
+/* Phones: filters live behind a bar that shows what's selected; desktop shows them as a rail. */
+function filterSummary(){
+  const st = state.states.size===STATES.length ? "All states" : (state.states.size ? [...state.states].join(" ") : "No states");
+  const all = Object.keys(SANCTIONS).length;
+  const sa = state.sanctions.size===all ? "all sanctions" : `${state.sanctions.size} of ${all} sanctions`;
+  const ss = seasons().find(x=>x.id===state.season);
+  const when = ss ? ss.label : `${fmtRange(state.from||iso(today), state.to||state.from||iso(today))}`;
+  document.getElementById("filterSummary").textContent = `${when} · ${st} · ${sa}${state.age?` · ${state.age==18?"18U/HS":state.age+"U"}`:""}`;
+}
+const filterToggle = document.getElementById("filterToggle"), filterForm = document.getElementById("filters");
+const desktop = matchMedia("(min-width:1000px)");
+function setFilters(open){ filterToggle.setAttribute("aria-expanded", open); filterForm.hidden = !open && !desktop.matches; }
+filterToggle.addEventListener("click", () => setFilters(filterToggle.getAttribute("aria-expanded") !== "true"));
+document.getElementById("filterDone").addEventListener("click", () => { setFilters(false); document.getElementById("find").scrollIntoView({behavior:"smooth"}); });
+desktop.addEventListener("change", () => setFilters(false)); setFilters(false);
+
+/* Bottom tab bar on phones. */
+document.querySelector(".tabbar").addEventListener("click", e => {
+  const b = e.target.closest("button[data-tab]"); if (!b) return;
+  const tab = b.dataset.tab;
+  if (tab === "shortlist" || state.shortlist){
+    state.shortlist = tab === "shortlist";
+    document.getElementById("shortlistBtn").setAttribute("aria-pressed", state.shortlist); render();
+  }
+  if (tab === "ours") document.getElementById("ours").scrollIntoView({behavior:"smooth"});
+  else if (tab === "find"){ document.getElementById("rail").scrollIntoView({behavior:"smooth"}); setFilters(true); }
+  else document.getElementById("find").scrollIntoView({behavior:"smooth"});
+  document.querySelectorAll(".tabbar button").forEach(x => x.setAttribute("aria-current", x === b));
+});
+
 function sync(){
   store.set("filters", {season:state.season, from:state.from, to:state.to, states:[...state.states], sanctions:[...state.sanctions], knownSanctions:Object.keys(SANCTIONS), age:state.age});
-  buildFilters(); render();
+  buildFilters(); filterSummary(); render();
 }
 
 document.getElementById("from").addEventListener("change", e => { state.from = e.target.value; state.season = "custom"; sync(); });
@@ -399,9 +488,14 @@ function render(){
   }
   res.innerHTML = out;
 }
-/* One tournament row. Used by the main list and the Shelby Steel schedule. */
+/* One tournament card. Used by the main list and the Shelby Steel schedule. Every card offers Who's coming and
+   Pool play & brackets; each fills in once the director posts it on the sanction's site. */
 const checkSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>';
+/* What each sanction calls its registered-team list. */
+const LIST_NAME = {"USSSA":"Who's Coming", "USA Softball":"Who's Playing", "NSA":"Who's Playing", "USFA":"Who's Playing",
+  "PGF":"Committed Teams", "Perfect Game":"Accepted Teams", "Grand Slam":"Teams"};
 function ourRegs(id){ return (OURS.registrations||[]).filter(r => r.eventId === id && following.has(r.team)); }
+const isOurEvent = id => (OURS.registrations||[]).some(r => r.eventId === id);
 function card(e, opts = {}){
   const s = parse(e.start), key = keyOf(e), on = stars.has(key);
   const multi = e.end && e.end !== e.start;
@@ -413,17 +507,25 @@ function card(e, opts = {}){
   const team = opts.reg ? `<span class="team-pill">${esc(opts.reg.team||"Shelby Steel")}</span>` : "";
   const flags = !opts.reg && regs.length ? regs.map(r => `<span class="reg-flag">${checkSvg}Shelby Steel ${esc(r.team)} registered</span>`).join(" ") : "";
   const who = opts.reg && opts.reg.teamName ? `<span>${esc(opts.reg.teamName)}${opts.reg.division?` · ${esc(opts.reg.division)}`:""}</span>` : "";
-  return `<article class="ev" data-id="${esc(e.id||"")}">
+  const id = esc(e.id||"");
+  const g = e.id && GAMES[e.id];
+  const gCount = g && (g.pools || g.brackets) ? `<span class="cnt">· live</span>` : "";
+  return `<article class="ev" data-id="${id}">
     <div class="when"><div class="mo">${MON[s.getMonth()].toUpperCase()}</div><div class="d">${s.getDate()}</div><div class="dow">${multi?fmtRange(e.start,e.end).replace(/^[A-Za-z]+ /,""):DOW[s.getDay()]}</div></div>
-    <div style="min-width:0">
+    <div class="head">
       <h3 class="name">${team}${tag}${title}</h3>
-      <div class="meta"><span><b>${esc(e.city)}, ${esc(e.state)}</b></span>${who}${e.ages&&!opts.reg?`<span>${esc(e.ages)}</span>`:""}${e.fee&&!opts.reg?`<span>${esc(e.fee)}</span>`:""}${e.teams?`<span>${e.teams} teams in</span>`:""}${multi?`<span>${fmtRange(e.start,e.end)}</span>`:""}</div>
+      <div class="meta"><span><b>${esc(e.city)}, ${esc(e.state)}</b></span>${who}${e.ages&&!opts.reg?`<span>${esc(e.ages)}</span>`:""}${e.fee&&!opts.reg?`<span>${esc(e.fee)}</span>`:""}${multi?`<span>${fmtRange(e.start,e.end)}</span>`:""}</div>
       ${flags}${e.note?`<div class="note">${esc(e.note)}</div>`:""}
       ${opts.reg?venuesHTML(opts.reg.venues):""}
-      ${nTeams?`<button type="button" class="coming-btn" data-coming="${esc(e.id)}" aria-expanded="false">Who's coming (${nTeams} teams)</button><div class="coming" hidden></div>`:""}
-      ${e.id&&GAMES[e.id]?`<button type="button" class="coming-btn games-btn" data-games="${esc(e.id)}" aria-expanded="false">Pool play &amp; brackets</button><div class="games" hidden></div>`:""}
     </div>
-    <div class="side">${opts.reg?"":`<button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from":"Add to"} shortlist" data-k="${esc(key)}">${starSvg}</button>`}${e.url?`<a class="go" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a>`:""}</div>
+    ${opts.reg?"<div></div>":`<button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from":"Add to"} shortlist" data-k="${esc(key)}">${starSvg}</button>`}
+    <div class="actions">
+      <button type="button" class="act" data-panel="coming" aria-expanded="false">Who's coming${nTeams?` <span class="cnt">(${nTeams})</span>`:""}</button>
+      <button type="button" class="act" data-panel="games" aria-expanded="false">Pool play &amp; brackets${gCount}</button>
+      ${e.url?`<a class="act ghost" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a>`:""}
+    </div>
+    <div class="panel coming" data-for="coming" hidden></div>
+    <div class="panel games" data-for="games" hidden></div>
   </article>`;
 }
 /* Who's coming: pick an age group (like the sanction sites), then open a division to see its teams. */
@@ -434,47 +536,51 @@ const divAge = name => {
   return nums.length ? Math.max(...nums) : 99;
 };
 const ageLabel = n => n === 18 ? "18U/HS" : n === 99 ? "Other" : `${n}U`;
-function comingHTML(id, age){
+function comingHTML(ev, age){
+  const id = ev.id, info = COMING[id];
+  const term = LIST_NAME[ev.sanction] || "Who's Coming";
+  const where = ev.url ? ` <a href="${esc(ev.url)}" target="_blank" rel="noopener">Check the event page ↗</a>` : "";
+  if (!info || !info.divisions.length)
+    return `<div class="upd">No teams posted yet. ${esc(ev.sanction||"The sanction")} calls this list “${esc(term)}”, and it shows up here once the director releases it.${where}</div>`;
   const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
   const isUs = n => pats.some(p => n.toLowerCase().includes(p));
-  const divs = COMING[id].divisions;
+  const divs = info.divisions;
   const ages = [...new Set(divs.map(d => divAge(d.name)))].sort((x,y)=>x-y);
   if (age == null){
     const ours = divs.filter(d => d.teams.some(t => isUs(t[0]))).map(d => divAge(d.name));
     const followed = [...following].map(t => parseInt(t)).filter(n => ages.includes(n));
     age = ours[0] ?? followed[0] ?? ages[0];
   }
-  const picker = `<div class="seg age-pick" role="group" aria-label="Age group">${ages.map(n =>
-    `<button type="button" class="chip" data-age="${n}" aria-pressed="${n===age}">${ageLabel(n)}</button>`).join("")}</div>`;
+  const note = `<div class="upd">${esc(ev.sanction)}'s “${esc(term)}” list</div>`;
+  const picker = ages.length > 1 ? `<div class="seg age-pick" role="group" aria-label="Age group">${ages.map(n =>
+    `<button type="button" class="chip" data-age="${n}" aria-pressed="${n===age}">${ageLabel(n)}</button>`).join("")}</div>` : "";
   const shown = divs.filter(d => divAge(d.name) === age);
-  return picker + shown.map(d => {
+  return note + picker + shown.map(d => {
     const us = d.teams.some(t => isUs(t[0]));
     return `<details class="div"${us||shown.length===1?" open":""}><summary><span class="div-name">${esc(d.name)}</span><span class="div-count">${d.teams.length} teams${us?" · Shelby Steel":""}</span></summary><div class="tbl-wrap"><table class="teams-tbl"><tbody>${
       d.teams.map(([n,c,r,k]) => `<tr class="${isUs(n)?"us":""}"><td>${esc(n)}${k?`<span class="cls">${esc(k)}</span>`:""}</td><td class="c">${esc(c)}</td><td class="r">${esc(r||"")}</td></tr>`).join("")
     }</tbody></table></div></details>`;
-  }).join("");
+  }).join("") + (info.venues && !isOurEvent(id) ? venuesHTML(info.venues) : "");
 }
-document.addEventListener("click", e => {
-  const pick = e.target.closest(".age-pick .chip");
-  if (pick){ const box = pick.closest(".coming"); box.innerHTML = comingHTML(box.dataset.id, +pick.dataset.age); return; }
-  const b = e.target.closest(".coming-btn"); if (!b) return;
-  const box = b.nextElementSibling, open = b.getAttribute("aria-expanded") === "true";
-  if (!open && !box.innerHTML){ box.dataset.id = b.dataset.coming; box.innerHTML = comingHTML(b.dataset.coming); }
-  box.hidden = open; b.setAttribute("aria-expanded", !open);
-});
 
-/* Pool play and brackets (only for tournaments a Shelby Steel team is in). */
+/* Pool play and brackets: pulled every 15 minutes on game days for tournaments a Shelby Steel team is in. */
 const mapsUrl = v => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(`${v.name}, ${v.address}`);
 const venuesHTML = vs => vs && vs.length ? `<div class="venues"><div class="vl">Ballparks</div>${vs.map(v =>
-  `<div class="venue"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">${esc(v.name)} ↗</a> <span>${esc(v.address)}</span></div>`).join("")}</div>` : "";
+  `<div class="venue"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">${esc(v.name)} ↗</a><span>${esc(v.address)}</span></div>`).join("")}</div>` : "";
 const fieldHTML = (f, vs) => { const v = (vs||[]).find(v => f && f.toLowerCase().startsWith(v.name.toLowerCase()));
   return v ? `<a href="${mapsUrl(v)}" target="_blank" rel="noopener">${esc(f)}</a>` : esc(f); };
 const fmtGameTime = t => { if (!t) return ""; const d = new Date(t); return `${DOW[d.getDay()]} ${d.toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})}`; };
-function gamesHTML(g){
+function notPosted(ev){
+  const where = ev.url ? ` <a href="${esc(ev.url)}" target="_blank" rel="noopener">Event page ↗</a>` : "";
+  return isOurEvent(ev.id)
+    ? `<div class="upd">Pools and brackets aren't posted yet. They fill in here automatically as soon as the director posts them, usually a day or two before the first pitch.${where}</div>`
+    : `<div class="upd">Pools and brackets aren't posted here yet. They fill in automatically for tournaments a Shelby Steel team is in. For this one, check the sanction's page.${where}</div>`;
+}
+function gamesHTML(g, ev){
   const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
   const isUs = n => pats.some(p => (n||"").toLowerCase().includes(p));
-  if (!g.divisions.length) return `<div class="upd">The schedule hasn't been released yet. It usually posts a day or two before the tournament. <a href="${esc(g.source)}" target="_blank" rel="noopener">Check the sanction's page ↗</a></div>`;
-  let h = `<div class="upd">Updated ${ago(g.updated)} · refreshes every 15 minutes on game days · <a href="${esc(g.source)}" target="_blank" rel="noopener">Sanction's game center ↗</a></div>`;
+  if (!g.divisions.length) return notPosted(ev);
+  let h = `<div class="upd">Updated ${ago(g.updated)} · every 15 minutes on game days · <a href="${esc(g.source)}" target="_blank" rel="noopener">Sanction's game center ↗</a></div>`;
   for (const d of g.divisions){
     h += `<div class="dv">${esc(d.name)}</div>`;
     for (const p of d.pools){
@@ -490,19 +596,24 @@ function gamesHTML(g){
       h += `<details class="div"><summary><span class="div-name">${esc(b.name)}</span><span class="div-count">Bracket</span></summary><div class="tbl-wrap" style="padding:8px"><iframe class="bracket-frame" sandbox="" title="${esc(d.name+" "+b.name)}" srcdoc="${esc(doc)}"></iframe></div></details>`;
     }
   }
-  return h;
+  return h + (g.venues && g.venues.length && !isOurEvent(ev.id) ? venuesHTML(g.venues) : "");
 }
+const eventById = id => EVENTS.find(e => e.id === id) || (OURS.registrations||[]).find(r => r.eventId === id) || {id};
 document.addEventListener("click", async e => {
-  const b = e.target.closest(".games-btn"); if (!b) return;
-  e.stopImmediatePropagation();
-  const box = b.nextElementSibling, open = b.getAttribute("aria-expanded") === "true";
+  const pick = e.target.closest(".age-pick .chip");
+  if (pick){ const box = pick.closest(".panel"); box.innerHTML = comingHTML(eventById(box.closest(".ev").dataset.id), +pick.dataset.age); return; }
+  const b = e.target.closest(".act[data-panel]"); if (!b) return;
+  const art = b.closest(".ev"), kind = b.dataset.panel, box = art.querySelector(`.panel[data-for="${kind}"]`);
+  const open = b.getAttribute("aria-expanded") === "true";
   b.setAttribute("aria-expanded", !open); box.hidden = open;
-  if (!open){
-    box.innerHTML = `<div class="upd">Loading games…</div>`;
-    try { const g = await fetch(`games/${b.dataset.games}.json?t=${Date.now()}`, {cache:"no-store"}).then(x => x.json()); box.innerHTML = gamesHTML(g); }
-    catch(err){ box.innerHTML = `<div class="upd">Games didn't load. Try again in a minute.</div>`; }
-  }
-}, true);
+  if (open) return;
+  const ev = eventById(art.dataset.id); ev.id = ev.id || ev.eventId;
+  if (kind === "coming"){ if (!box.innerHTML) box.innerHTML = comingHTML(ev); return; }
+  if (!ev.id || !GAMES[ev.id]){ box.innerHTML = notPosted(ev); return; }
+  box.innerHTML = `<div class="upd">Loading games…</div>`;
+  try { const g = await fetch(`games/${ev.id}.json?t=${Date.now()}`, {cache:"no-store"}).then(x => x.json()); box.innerHTML = gamesHTML(g, ev); }
+  catch(err){ box.innerHTML = `<div class="upd">Games didn't load. Try again in a minute.</div>`; }
+});
 
 /* Shelby Steel schedule: registrations for the teams this viewer follows. */
 function renderOurs(){
@@ -561,6 +672,6 @@ async function load(){
     document.getElementById("results").innerHTML = `<div class="empty"><strong>The tournament list didn't load</strong>Refresh the page. If it keeps happening, use the sanction links below to search each site directly.</div>`;
   }
 }
-buildFilters(); render(); load();
+buildFilters(); filterSummary(); render(); load();
 setInterval(() => { if (document.visibilityState === "visible") load(); }, 15*60*1000);
 </script>

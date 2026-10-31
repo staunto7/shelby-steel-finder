@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
 OUT = SITE / "games"
 TODAY = dt.date.today()
-WINDOW_BEFORE, WINDOW_AFTER = 3, 1  # start fetching 3 days out; keep refreshing through the day after it ends
+WINDOW_BEFORE, WINDOW_AFTER = 14, 1  # start checking 2 weeks out so pools show the moment they post; keep refreshing through the day after it ends
 
 
 def post(data):

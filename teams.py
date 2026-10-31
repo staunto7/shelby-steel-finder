@@ -4,7 +4,9 @@
 Reads site/data.json (from fetch.py) and registrations.json, writes:
   site/coming.json  {event id: {"divisions": [{"name", "teams": [[team, city, record]]}]}}
   site/ours.json    {"teams": [...], "registrations": [...]}  auto-detected + manual entries
-Team lists come from USSSA, Grand Slam, Perfect Game, USA Softball and NSA (when the director releases them).
+Team lists come from every sanction, whatever each calls it: USSSA "Who's Coming", USA Softball / NSA / USFA
+"Who's Playing" (USFA via cache/usfa_teams.json from the Mac job), PGF "Committed Teams", Perfect Game "Accepted Teams",
+Grand Slam "Teams". Lists appear once the director releases them.
 Each team row is [team, city, record, class].
 """
 import datetime as dt, html, json, re, subprocess, sys, time
@@ -12,7 +14,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import venues
+import pgf, venues
 
 ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
@@ -143,9 +145,38 @@ def eventconnect_coming(ev):
     return divisions
 
 
+_PGF = {}
+
+
+def pgf_coming(ev):
+    """PGF calls it "Committed Teams"."""
+    m = re.search(r"#event-(\d+)", ev["url"])
+    if not m:
+        return None
+    item = _PGF.get(m.group(1))
+    if not item:
+        return None
+    VENUES[ev["id"]] = pgf.venues(item)
+    return pgf.committed(item)
+
+
+USFA_TEAMS = {}  # tid -> {"divisions", "venues"}; USFA ("Who's Playing") is behind Cloudflare, so the Mac job saves it
+
+
+def usfa_coming(ev):
+    if not USFA_TEAMS and (ROOT / "cache" / "usfa_teams.json").exists():
+        USFA_TEAMS.update(json.loads((ROOT / "cache" / "usfa_teams.json").read_text()))
+    m = re.search(r"tid=(\w+)", ev["url"])
+    got = USFA_TEAMS.get(m.group(1)) if m else None
+    if not got:
+        return None
+    VENUES[ev["id"]] = got.get("venues") or []
+    return got.get("divisions") or []
+
+
 def age_of(*texts):
     for t in texts:
-        m = re.search(r"\b(\d{1,2})\s*(?:U\b|&\s*Under)", t or "", re.I)
+        m = re.search(r"\b(\d{1,2})\s*(?:U\b|&\s*Under|Under\b)", t or "", re.I)
         if m and 6 <= int(m.group(1)) <= 18:
             return f"{int(m.group(1))}U"
     return None
@@ -156,7 +187,8 @@ def main():
     reg = json.loads((ROOT / "registrations.json").read_text())
     horizon = (TODAY + dt.timedelta(days=LOOKAHEAD_DAYS)).isoformat()
     readers = {"USSSA": usssa_coming, "Grand Slam": grand_slam_coming, "Perfect Game": perfect_game_coming,
-               "USA Softball": eventconnect_coming, "NSA": eventconnect_coming}
+               "USA Softball": eventconnect_coming, "NSA": eventconnect_coming,
+               "PGF": pgf_coming, "USFA": usfa_coming}
     todo = [e for e in data["events"] if e["sanction"] in readers and e["start"] <= horizon]
     prev = json.loads((SITE / "coming.json").read_text()) if (SITE / "coming.json").exists() else {}
 
@@ -168,11 +200,19 @@ def main():
             divs = None
         return ev["id"], divs
 
+    if any(e["sanction"] == "PGF" for e in todo):
+        try:  # one call lists every PGF event; readers below look theirs up
+            _PGF.update({str(i["event"]["eventid"]): i for i in pgf.upcoming()})
+        except Exception as exc:
+            print(f"PGF: {exc}", file=sys.stderr)
+
     coming = {}
     with ThreadPoolExecutor(max_workers=3) as pool:
         for eid, divs in pool.map(work, todo):
             if divs:
                 coming[eid] = {"divisions": divs}
+                if VENUES.get(eid):
+                    coming[eid]["venues"] = VENUES[eid]
             elif eid in prev:  # keep the last good list if a fetch fails
                 coming[eid] = prev[eid]
     (SITE / "coming.json").write_text(json.dumps(coming, separators=(",", ":")))
@@ -195,7 +235,7 @@ def main():
     prev_venues = {(r.get("eventId") or r["name"]): r.get("venues") for r in prev_ours.get("registrations", [])}
     for r in regs:  # ballparks with addresses, so families have everything in one place
         if not r.get("venues"):
-            r["venues"] = (VENUES.get(r.get("eventId")) or (venues.for_event(r) if r.get("sanction") != "USSSA" else [])
+            r["venues"] = (VENUES.get(r.get("eventId")) or (venues.for_event(r) if r.get("sanction") == "Grand Slam" else [])
                            or prev_venues.get(r.get("eventId") or r["name"]) or [])
     (SITE / "ours.json").write_text(json.dumps({"teams": reg.get("teams", []), "match": patterns, "registrations": regs}, indent=1))
     (SITE / "status.json").write_text(json.dumps({"updated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
