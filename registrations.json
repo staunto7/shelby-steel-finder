@@ -1,0 +1,18 @@
+{
+  "_help": "Shelby Steel registrations. 'match' finds our teams in the sanctions' registered-team lists automatically. Add anything it misses to 'manual' (copy an entry and edit it). 'team' must be one of 'teams'.",
+  "match": ["shelby steel"],
+  "teams": ["8U", "10U", "12U"],
+  "manual": [
+    {
+      "team": "10U",
+      "name": "Midnight Madness",
+      "start": "2026-10-30",
+      "end": "2026-10-31",
+      "city": "Anniston",
+      "state": "AL",
+      "sanction": "",
+      "url": "",
+      "note": "Added by hand. Sanction and exact dates not confirmed."
+    }
+  ]
+}

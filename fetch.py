@@ -6,7 +6,7 @@ Sources that block scripts (USFA on SincSports, PGF on TournamentConnect) are re
 from cache/<source>.json, which the hourly Claude job refreshes through the browser.
 Any source that fails keeps its last good data so the page never goes blank.
 """
-import base64, datetime as dt, html, json, re, subprocess, sys
+import base64, datetime as dt, hashlib, html, json, re, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -268,6 +268,8 @@ def main():
     cutoff = (TODAY - dt.timedelta(days=1)).isoformat()
     events = [e for e in events if (e.get("end") or e["start"]) >= cutoff]
     events.sort(key=lambda e: (e["start"], e["state"], e["name"]))
+    for e in events:  # stable id shared with teams.py and the page
+        e["id"] = hashlib.sha1(f"{e['url']}|{e['start']}|{e['name']}".encode()).hexdigest()[:10]
     if prev.get("events") == events:
         print("DATA_UNCHANGED: no new or changed tournaments; nothing to republish")
         return

@@ -1,0 +1,64 @@
+{
+ "teams": [
+  "8U",
+  "10U",
+  "12U"
+ ],
+ "match": [
+  "shelby steel"
+ ],
+ "registrations": [
+  {
+   "team": "10U",
+   "name": "Midnight Madness",
+   "start": "2026-10-30",
+   "end": "2026-10-31",
+   "city": "Anniston",
+   "state": "AL",
+   "sanction": "",
+   "url": "",
+   "note": "Added by hand. Sanction and exact dates not confirmed.",
+   "source": "manual"
+  },
+  {
+   "sanction": "USSSA",
+   "name": "Fall World Series",
+   "start": "2026-11-07",
+   "end": "2026-11-08",
+   "state": "AL",
+   "city": "Birmingham Area",
+   "ages": "8U - 14U",
+   "ageMin": 8,
+   "ageMax": 14,
+   "fee": "$290 - $425",
+   "teams": 82,
+   "url": "https://alfastpitch.usssa.com/event/fall-world-series-5/",
+   "id": "34ca8f7893",
+   "eventId": "34ca8f7893",
+   "team": "8U",
+   "teamName": "Shelby Steel Premier 2036 - Reimers",
+   "division": "8 & Under Open",
+   "source": "auto"
+  },
+  {
+   "sanction": "USSSA",
+   "name": "SUPERHEROES (TURF)",
+   "start": "2026-11-14",
+   "end": "2026-11-14",
+   "state": "GA",
+   "city": "Covington",
+   "ages": "8U - HS",
+   "ageMin": 8,
+   "ageMax": 18,
+   "fee": "$265 - $473",
+   "teams": 58,
+   "url": "https://gafastpitch.usssa.com/event/superheroes/",
+   "id": "e262c6a454",
+   "eventId": "e262c6a454",
+   "team": "10U",
+   "teamName": "Shelby Steel 2034 - Lackey",
+   "division": "10 & Under B",
+   "source": "auto"
+  }
+ ]
+}

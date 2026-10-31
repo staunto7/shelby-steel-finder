@@ -108,6 +108,31 @@ input[type=date],select,input[type=search]{font:500 15px var(--f-body);color:var
 .src .s{color:var(--muted)}
 .src a{font-weight:600;font-size:13px}
 @media (prefers-reduced-motion:no-preference){.ev{transition:background .15s}}
+
+/* our teams */
+.ours{margin-top:20px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:6px;padding:16px 18px}
+.ours-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ours-head h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:20px;letter-spacing:.04em;text-transform:uppercase;flex:1;min-width:0}
+.ours-head .lbl{font-family:var(--f-label);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ours-list{margin-top:10px}
+.ours .ev{border-bottom:1px solid var(--line)}
+.ours .ev:last-child{border-bottom:0}
+.ours .none{color:var(--muted);padding:12px 2px 4px;font-size:14px}
+.team-pill{display:inline-block;font:700 12px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:3px;background:var(--ink);color:var(--surface);margin-right:8px;vertical-align:2px}
+.reg-flag{display:inline-flex;align-items:center;gap:6px;font:700 12px/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--steel-soft);border:1px solid var(--line);padding:4px 7px;border-radius:3px;margin-top:6px}
+.reg-flag svg{width:12px;height:12px}
+.note{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* who's coming */
+.coming-btn{background:none;border:0;padding:0;margin-top:6px;color:var(--steel);font:600 13px var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.coming{margin-top:10px;display:grid;gap:12px}
+.div-name{font:700 12px var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.teams-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.teams-tbl td{padding:5px 6px;border-top:1px solid var(--line);vertical-align:top}
+.teams-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.teams-tbl td.c{color:var(--muted)}
+.teams-tbl tr.us td{background:var(--steel-soft);font-weight:700}
+.tbl-wrap{overflow-x:auto}
 </style>
 
 <header class="band">
@@ -122,6 +147,14 @@ input[type=date],select,input[type=search]{font:500 15px var(--f-body);color:var
 </header>
 
 <main class="wrap">
+  <section class="ours" id="ours" aria-labelledby="oursTitle">
+    <div class="ours-head">
+      <h2 id="oursTitle">Shelby Steel schedule</h2>
+      <span class="lbl">Following</span>
+      <div class="seg" id="follow" role="group" aria-label="Teams you follow"></div>
+    </div>
+    <div class="ours-list" id="oursList"><div class="none">Loading Shelby Steel registrations…</div></div>
+  </section>
   <div class="fwrap">
     <form class="filters" id="filters" autocomplete="off">
       <div class="field c12">
@@ -193,7 +226,7 @@ const today = new Date(); today.setHours(0,0,0,0);
 const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 const parse = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
 
-let EVENTS = [], META = null;
+let EVENTS = [], META = null, OURS = {teams:["8U","10U","12U"], registrations:[]}, COMING = {};
 const saved = store.get("filters", {});
 const state = {
   season: saved.season || "upcoming",
@@ -203,6 +236,7 @@ const state = {
   age: saved.age || "", q: "", shortlist: false
 };
 const stars = new Set(store.get("stars", []));
+const following = new Set(store.get("following", ["8U","10U","12U"]));
 const keyOf = e => e.sanction+"|"+e.name+"|"+e.start+"|"+e.city;
 
 /* Seasons follow the calendar: fall runs Aug–Dec, spring/summer Jan–Jul. Options roll forward as the year goes on. */
@@ -328,22 +362,63 @@ function render(){
     const fri = parse(k), sun = new Date(fri); sun.setDate(fri.getDate()+2);
     const label = fri.getMonth()===sun.getMonth() ? `Weekend of ${MON[fri.getMonth()]} ${fri.getDate()}–${sun.getDate()}, ${fri.getFullYear()}` : `Weekend of ${MON[fri.getMonth()]} ${fri.getDate()} – ${MON[sun.getMonth()]} ${sun.getDate()}, ${sun.getFullYear()}`;
     out += `<section class="weekend"><div class="wk-head">${label}<span class="n">${evs.length}</span></div><div class="list">`;
-    for (const e of evs){
-      const s = parse(e.start), key = keyOf(e), on = stars.has(key);
-      const multi = e.end && e.end !== e.start;
-      out += `<article class="ev">
-        <div class="when"><div class="mo">${MON[s.getMonth()].toUpperCase()}</div><div class="d">${s.getDate()}</div><div class="dow">${multi?fmtRange(e.start,e.end).replace(/^[A-Za-z]+ /,""):DOW[s.getDay()]}</div></div>
-        <div style="min-width:0">
-          <h3 class="name"><span class="tag" style="background:${SANCTIONS[e.sanction]?.color||"var(--muted)"}">${esc(e.sanction)}</span><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a></h3>
-          <div class="meta"><span><b>${esc(e.city)}, ${esc(e.state)}</b></span><span>${esc(e.ages)}</span>${e.fee?`<span>${esc(e.fee)}</span>`:""}${e.teams?`<span>${e.teams} teams in</span>`:""}${multi?`<span>${fmtRange(e.start,e.end)}</span>`:""}</div>
-        </div>
-        <div class="side"><button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from":"Add to"} shortlist" data-k="${esc(key)}">${starSvg}</button><a class="go" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a></div>
-      </article>`;
-    }
+    for (const e of evs) out += card(e);
     out += `</div></section>`;
   }
   res.innerHTML = out;
 }
+/* One tournament row. Used by the main list and the Shelby Steel schedule. */
+const checkSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>';
+function ourRegs(id){ return (OURS.registrations||[]).filter(r => r.eventId === id && following.has(r.team)); }
+function card(e, opts = {}){
+  const s = parse(e.start), key = keyOf(e), on = stars.has(key);
+  const multi = e.end && e.end !== e.start;
+  const regs = opts.reg ? [opts.reg] : (e.id ? ourRegs(e.id) : []);
+  const info = e.id && COMING[e.id];
+  const nTeams = info ? info.divisions.reduce((n,d)=>n+d.teams.length,0) : 0;
+  const tag = e.sanction ? `<span class="tag" style="background:${SANCTIONS[e.sanction]?.color||"var(--muted)"}">${esc(e.sanction)}</span>` : "";
+  const title = e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a>` : esc(e.name);
+  const team = opts.reg ? `<span class="team-pill">${esc(opts.reg.team||"Shelby Steel")}</span>` : "";
+  const flags = !opts.reg && regs.length ? regs.map(r => `<span class="reg-flag">${checkSvg}Shelby Steel ${esc(r.team)} registered</span>`).join(" ") : "";
+  const who = opts.reg && opts.reg.teamName ? `<span>${esc(opts.reg.teamName)}${opts.reg.division?` · ${esc(opts.reg.division)}`:""}</span>` : "";
+  return `<article class="ev" data-id="${esc(e.id||"")}">
+    <div class="when"><div class="mo">${MON[s.getMonth()].toUpperCase()}</div><div class="d">${s.getDate()}</div><div class="dow">${multi?fmtRange(e.start,e.end).replace(/^[A-Za-z]+ /,""):DOW[s.getDay()]}</div></div>
+    <div style="min-width:0">
+      <h3 class="name">${team}${tag}${title}</h3>
+      <div class="meta"><span><b>${esc(e.city)}, ${esc(e.state)}</b></span>${who}${e.ages&&!opts.reg?`<span>${esc(e.ages)}</span>`:""}${e.fee&&!opts.reg?`<span>${esc(e.fee)}</span>`:""}${e.teams?`<span>${e.teams} teams in</span>`:""}${multi?`<span>${fmtRange(e.start,e.end)}</span>`:""}</div>
+      ${flags}${e.note?`<div class="note">${esc(e.note)}</div>`:""}
+      ${nTeams?`<button type="button" class="coming-btn" data-coming="${esc(e.id)}" aria-expanded="false">Who's coming (${nTeams} teams)</button><div class="coming" hidden></div>`:""}
+    </div>
+    <div class="side">${opts.reg?"":`<button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from":"Add to"} shortlist" data-k="${esc(key)}">${starSvg}</button>`}${e.url?`<a class="go" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a>`:""}</div>
+  </article>`;
+}
+function comingHTML(id){
+  const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
+  return COMING[id].divisions.map(d => `<div><div class="div-name">${esc(d.name)} · ${d.teams.length} teams</div><div class="tbl-wrap"><table class="teams-tbl"><tbody>${
+    d.teams.map(([n,c,r]) => `<tr class="${pats.some(p=>n.toLowerCase().includes(p))?"us":""}"><td>${esc(n)}</td><td class="c">${esc(c)}</td><td class="r">${esc(r)}</td></tr>`).join("")
+  }</tbody></table></div></div>`).join("");
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest(".coming-btn"); if (!b) return;
+  const box = b.nextElementSibling, open = b.getAttribute("aria-expanded") === "true";
+  if (!open && !box.innerHTML) box.innerHTML = comingHTML(b.dataset.coming);
+  box.hidden = open; b.setAttribute("aria-expanded", !open);
+});
+
+/* Shelby Steel schedule: registrations for the teams this viewer follows. */
+function renderOurs(){
+  const seg = document.getElementById("follow"); seg.innerHTML = "";
+  (OURS.teams||[]).forEach(t => seg.append(chip(t, following.has(t), () => {
+    following.has(t) ? following.delete(t) : following.add(t); store.set("following", [...following]); renderOurs(); render();
+  })));
+  const byId = Object.fromEntries(EVENTS.map(e => [e.id, e]));
+  const regs = (OURS.registrations||[]).filter(r => following.has(r.team) && (r.end||r.start) >= iso(today));
+  const list = document.getElementById("oursList");
+  if (!following.size){ list.innerHTML = `<div class="none">Pick a team above to see where they're playing.</div>`; return; }
+  if (!regs.length){ list.innerHTML = `<div class="none">No upcoming tournaments found for ${[...following].join(", ")} yet. Registrations show up here automatically once the sanction lists the team.</div>`; return; }
+  list.innerHTML = regs.map(r => card(r.eventId && byId[r.eventId] ? byId[r.eventId] : r, {reg:r})).join("");
+}
+
 document.getElementById("results").addEventListener("click", e => {
   const b = e.target.closest(".star"); if (!b) return;
   const k = b.dataset.k; stars.has(k) ? stars.delete(k) : stars.add(k); store.set("stars", [...stars]);
@@ -374,7 +449,12 @@ async function load(){
     const r = await fetch("data.json?t=" + Date.now(), {cache:"no-store"});
     if (!r.ok) throw new Error(r.status);
     META = await r.json(); EVENTS = META.events;
-    renderMeta(); render();
+    const [o, c] = await Promise.all([
+      fetch("ours.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : null).catch(() => null),
+      fetch("coming.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : null).catch(() => null)
+    ]);
+    if (o) OURS = o; if (c) COMING = c;
+    renderMeta(); renderOurs(); render();
   }catch(err){
     document.getElementById("fresh").innerHTML = `<span class="dot stale"></span>Couldn't load tournaments`;
     document.getElementById("headline").textContent = "Tournament list didn't load";
