@@ -10,7 +10,7 @@ import base64, datetime as dt, hashlib, html, json, re, subprocess, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import pgf
+import mvp, pgf
 
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "cache"
@@ -247,13 +247,28 @@ def pgf_events():
     return out
 
 
+def mvp_events():
+    out = []
+    for when, url, name, fee in mvp.listing():
+        page = get(url)
+        d = mvp.detail(page)
+        start, end = mvp.dates(d["dates"] or when)
+        st = state_of(d["address"])
+        if not (start and st):  # placeholder rows ("more tournaments posted soon") have no details
+            continue
+        out.append(event("MVP", name, start, end, st, f"{mvp.city(d['address'])}, {st}",
+                         "8U - 18U", fee.replace("10U-18U:", "10U-18U").replace("8U:", "· 8U"), url))
+    return out
+
+
 def from_cache(name):
     p = CACHE / f"{name}.json"
     return json.loads(p.read_text()) if p.exists() else None
 
 
 SOURCES = {"usssa": ("USSSA", usssa), "perfect_game": ("Perfect Game", perfect_game),
-           "grand_slam": ("Grand Slam", grand_slam), "nsa": ("NSA", nsa), "usa_softball": ("USA Softball", usa_softball), "usfa": ("USFA", None), "pgf": ("PGF", pgf_events)}
+           "grand_slam": ("Grand Slam", grand_slam), "nsa": ("NSA", nsa), "usa_softball": ("USA Softball", usa_softball), "usfa": ("USFA", None), "pgf": ("PGF", pgf_events),
+           "mvp": ("MVP", mvp_events)}
 
 
 def main():

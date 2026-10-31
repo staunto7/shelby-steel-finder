@@ -5,7 +5,7 @@ Reads site/data.json (from fetch.py) and registrations.json, writes:
   site/coming.json  {event id: {"divisions": [{"name", "teams": [[team, city, record]]}]}}
   site/ours.json    {"teams": [...], "registrations": [...]}  auto-detected + manual entries
 Team lists come from every sanction, whatever each calls it: USSSA "Who's Coming", USA Softball / NSA / USFA
-"Who's Playing" (USFA via cache/usfa_teams.json from the Mac job), PGF "Committed Teams", Perfect Game "Accepted Teams",
+"Who's Playing" (USFA via cache/usfa_teams.json from the Mac job), PGF "Committed Teams", MVP "Teams Currently Registered", Perfect Game "Accepted Teams",
 Grand Slam "Teams". Lists appear once the director releases them.
 Each team row is [team, city, record, class].
 """
@@ -14,7 +14,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import pgf, venues
+import mvp, pgf, venues
 
 ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
@@ -164,6 +164,13 @@ def pgf_coming(ev):
     return pgf.committed(item)
 
 
+def mvp_coming(ev):
+    """MVP calls it "Teams Currently Registered"."""
+    page = curl(ev["url"])
+    VENUES[ev["id"]] = mvp.venues(page)
+    return mvp.teams(page)
+
+
 USFA_TEAMS = {}  # tid -> {"divisions", "venues"}; USFA ("Who's Playing") is behind Cloudflare, so the Mac job saves it
 
 
@@ -192,7 +199,7 @@ def main():
     horizon = (TODAY + dt.timedelta(days=LOOKAHEAD_DAYS)).isoformat()
     readers = {"USSSA": usssa_coming, "Grand Slam": grand_slam_coming, "Perfect Game": perfect_game_coming,
                "USA Softball": eventconnect_coming, "NSA": eventconnect_coming,
-               "PGF": pgf_coming, "USFA": usfa_coming}
+               "PGF": pgf_coming, "USFA": usfa_coming, "MVP": mvp_coming}
     todo = [e for e in data["events"] if e["sanction"] in readers and e["start"] <= horizon]
     prev = json.loads((SITE / "coming.json").read_text()) if (SITE / "coming.json").exists() else {}
 

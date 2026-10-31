@@ -6,7 +6,7 @@ The old Claude artifact (https://claude.ai/artifact/3F2qMoF5P6zoHBVfZ1FhQn) is o
 ## Main refresh: GitHub Actions (no Mac needed)
 
 `.github/workflows/refresh.yml` runs at 6 AM / 6 PM Central and on every push: `fetch.py` (USSSA, Perfect Game,
-Grand Slam, NSA, USA Softball AL/FL + cached sources), then `teams.py` (who's coming + Shelby Steel registrations),
+Grand Slam, NSA, USA Softball AL/FL, PGF, MVP + cached sources), then `teams.py` (who's coming + Shelby Steel registrations),
 commits the data, and publishes `site/` to GitHub Pages.
 
 Manual registrations: edit `registrations.json` (on github.com or locally) and push; the site updates in a few minutes.
@@ -68,6 +68,11 @@ replacing `TIDS` with that list. Save the returned text to `cache/usfa_teams_raw
 ```js
 const tids=TIDS;const L=[];for(const tid of tids){try{const h=await (await fetch(`/teamlist.aspx?tid=${tid}&tab=4&sub=0`)).text();const d=new DOMParser().parseFromString(h,'text/html');const ven=[];for(const card of d.querySelectorAll('.tl-div-card')){const name=card.querySelector('h2')?.textContent.trim()||'';card.querySelectorAll('.tl-venues a').forEach(a=>{ven.push([a.textContent.trim(),decodeURIComponent((a.getAttribute('href').split('q=')[1]||'').replace(/\+/g,' ')),name])});for(const r of card.querySelectorAll('tr')){const c=[...r.cells].map(x=>x.textContent.trim().replace(/\s+/g,' '));if(c.length>=3&&c[0]&&c[0]!=='Team')L.push(['T',tid.slice(4),name,c[0],c[2]].join('|'))}}for(const [n,a,dv] of ven)L.push(['V',tid.slice(4),n,a,dv].join('|'))}catch(e){}}L.join('\n')
 ```
+
+## MVP (mvpsports.net)
+
+No browser step. mvp.py reads the Our Tournaments table, each tournament page (complex, address, "Teams Currently
+Registered") and, once posted, the per-age iTournamentBrackets pool schedule and elimination bracket links.
 
 ## PGF
 

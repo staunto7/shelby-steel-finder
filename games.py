@@ -3,13 +3,13 @@
 
 Reads site/ours.json and site/data.json; writes site/games/<event id>.json plus site/games/index.json.
 Runs from the game-day GitHub workflow every 15 minutes Thu–Sun; exits quickly when nothing is in its window.
-USSSA is supported now (Game Center API); other sanctions link out until added.
+USSSA (Game Center API) and MVP (iTournamentBrackets) are supported; other sanctions link out until added.
 """
 import datetime as dt, json, re, subprocess, sys, urllib.parse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import venues
+import mvp, venues
 
 ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
@@ -81,7 +81,30 @@ def usssa_games(ev, ages):
             "venues": venues.usssa(page)}
 
 
-READERS = {"USSSA": usssa_games}
+def mvp_games(ev, ages):
+    """MVP posts per-age links to iTournamentBrackets: a pool schedule and an elimination bracket."""
+    page = get(ev["url"])
+    divisions = []
+    for label, pool_url, bracket_url in mvp.links(page):
+        age = re.match(r"(\d{1,2})", label)
+        if ages and age and int(age.group(1)) not in ages:
+            continue
+        out = {"name": label, "pools": [], "brackets": []}
+        if pool_url:
+            games = mvp.pool_games(pool_url, ev["start"][:4])
+            if games:
+                out["pools"].append({"name": "Pool play", "final": False, "games": games})
+        if bracket_url:
+            head, body = mvp.bracket(bracket_url)
+            if "Seed" in body or "Game" in body:
+                html, _ = clean_bracket(head + body, "")
+                out["brackets"].append({"name": "Elimination bracket", "html": html, "style": ""})
+        if out["pools"] or out["brackets"]:
+            divisions.append(out)
+    return {"source": ev["url"], "divisions": divisions, "venues": mvp.venues(page)}
+
+
+READERS = {"USSSA": usssa_games, "MVP": mvp_games}
 
 
 def main():
