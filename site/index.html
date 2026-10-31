@@ -149,6 +149,22 @@ details.div .tbl-wrap{padding:0 8px 8px}
 .teams-tbl .cls{display:inline-block;margin-left:8px;font:600 11px/1 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:2px 5px;vertical-align:1px}
 .teams-tbl tr.us td{background:var(--steel-soft);font-weight:700}
 .tbl-wrap{overflow-x:auto}
+.games-btn{margin-left:14px}
+.games{margin-top:10px;display:grid;gap:8px}
+.games .upd{font-size:12.5px;color:var(--muted)}
+.games .dv{font:700 13px var(--f-label);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+.game{display:grid;grid-template-columns:92px minmax(0,1fr) auto;gap:4px 12px;padding:8px 10px;border-top:1px solid var(--line);font-size:13.5px;align-items:center}
+.game .t{font-family:var(--f-label);font-weight:600;color:var(--muted);line-height:1.2}
+.game .t small{display:block;font-weight:500;font-size:12px}
+.game .tm{display:flex;justify-content:space-between;gap:8px}
+.game .tm.us{font-weight:700}
+.game .tm.us::before{content:"";width:4px;border-radius:2px;background:var(--ink);margin-right:-2px}
+.game .sc{font-variant-numeric:tabular-nums;font-weight:700;min-width:1.5em;text-align:right}
+.venues{margin-top:8px;display:grid;gap:4px;font-size:13.5px}
+.venues .vl{font:700 12px var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.venue a{font-weight:600}
+.venue span{color:var(--muted)}
+.bracket-frame{width:100%;height:520px;border:1px solid var(--line);border-radius:4px;background:#fff}
 </style>
 
 <header class="band">
@@ -242,7 +258,7 @@ const today = new Date(); today.setHours(0,0,0,0);
 const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 const parse = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
 
-let EVENTS = [], META = null, OURS = {teams:["8U","10U","12U"], registrations:[]}, COMING = {};
+let EVENTS = [], META = null, OURS = {teams:["8U","10U","12U"], registrations:[]}, COMING = {}, GAMES = {};
 const saved = store.get("filters", {});
 const state = {
   season: saved.season || "upcoming",
@@ -403,7 +419,9 @@ function card(e, opts = {}){
       <h3 class="name">${team}${tag}${title}</h3>
       <div class="meta"><span><b>${esc(e.city)}, ${esc(e.state)}</b></span>${who}${e.ages&&!opts.reg?`<span>${esc(e.ages)}</span>`:""}${e.fee&&!opts.reg?`<span>${esc(e.fee)}</span>`:""}${e.teams?`<span>${e.teams} teams in</span>`:""}${multi?`<span>${fmtRange(e.start,e.end)}</span>`:""}</div>
       ${flags}${e.note?`<div class="note">${esc(e.note)}</div>`:""}
+      ${opts.reg?venuesHTML(opts.reg.venues):""}
       ${nTeams?`<button type="button" class="coming-btn" data-coming="${esc(e.id)}" aria-expanded="false">Who's coming (${nTeams} teams)</button><div class="coming" hidden></div>`:""}
+      ${e.id&&GAMES[e.id]?`<button type="button" class="coming-btn games-btn" data-games="${esc(e.id)}" aria-expanded="false">Pool play &amp; brackets</button><div class="games" hidden></div>`:""}
     </div>
     <div class="side">${opts.reg?"":`<button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from":"Add to"} shortlist" data-k="${esc(key)}">${starSvg}</button>`}${e.url?`<a class="go" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a>`:""}</div>
   </article>`;
@@ -444,6 +462,47 @@ document.addEventListener("click", e => {
   if (!open && !box.innerHTML){ box.dataset.id = b.dataset.coming; box.innerHTML = comingHTML(b.dataset.coming); }
   box.hidden = open; b.setAttribute("aria-expanded", !open);
 });
+
+/* Pool play and brackets (only for tournaments a Shelby Steel team is in). */
+const mapsUrl = v => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(`${v.name}, ${v.address}`);
+const venuesHTML = vs => vs && vs.length ? `<div class="venues"><div class="vl">Ballparks</div>${vs.map(v =>
+  `<div class="venue"><a href="${mapsUrl(v)}" target="_blank" rel="noopener">${esc(v.name)} ↗</a> <span>${esc(v.address)}</span></div>`).join("")}</div>` : "";
+const fieldHTML = (f, vs) => { const v = (vs||[]).find(v => f && f.toLowerCase().startsWith(v.name.toLowerCase()));
+  return v ? `<a href="${mapsUrl(v)}" target="_blank" rel="noopener">${esc(f)}</a>` : esc(f); };
+const fmtGameTime = t => { if (!t) return ""; const d = new Date(t); return `${DOW[d.getDay()]} ${d.toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})}`; };
+function gamesHTML(g){
+  const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
+  const isUs = n => pats.some(p => (n||"").toLowerCase().includes(p));
+  if (!g.divisions.length) return `<div class="upd">The schedule hasn't been released yet. It usually posts a day or two before the tournament. <a href="${esc(g.source)}" target="_blank" rel="noopener">Check the sanction's page ↗</a></div>`;
+  let h = `<div class="upd">Updated ${ago(g.updated)} · refreshes every 15 minutes on game days · <a href="${esc(g.source)}" target="_blank" rel="noopener">Sanction's game center ↗</a></div>`;
+  for (const d of g.divisions){
+    h += `<div class="dv">${esc(d.name)}</div>`;
+    for (const p of d.pools){
+      const us = p.games.some(x => isUs(x.a) || isUs(x.b));
+      h += `<details class="div"${us?" open":""}><summary><span class="div-name">${esc(p.name)}${p.final?" · Final":""}</span><span class="div-count">${p.games.length} games${us?" · Shelby Steel":""}</span></summary>${
+        p.games.map(x => `<div class="game"><div class="t">${esc(fmtGameTime(x.time))}<small>${fieldHTML(x.field, g.venues)}</small></div><div>
+          <div class="tm${isUs(x.a)?" us":""}"><span>${esc(x.a)}</span></div><div class="tm${isUs(x.b)?" us":""}"><span>${esc(x.b)}</span></div></div>
+          <div><div class="sc">${x.as ?? ""}</div><div class="sc">${x.bs ?? ""}</div></div></div>`).join("")
+      }</details>`;
+    }
+    for (const b of d.brackets){
+      const doc = `<!doctype html><meta charset="utf-8"><style>body{margin:8px;font:12px system-ui,sans-serif;color:#111;background:#fff}${b.style||""}</style>${b.html}`;
+      h += `<details class="div"><summary><span class="div-name">${esc(b.name)}</span><span class="div-count">Bracket</span></summary><div class="tbl-wrap" style="padding:8px"><iframe class="bracket-frame" sandbox="" title="${esc(d.name+" "+b.name)}" srcdoc="${esc(doc)}"></iframe></div></details>`;
+    }
+  }
+  return h;
+}
+document.addEventListener("click", async e => {
+  const b = e.target.closest(".games-btn"); if (!b) return;
+  e.stopImmediatePropagation();
+  const box = b.nextElementSibling, open = b.getAttribute("aria-expanded") === "true";
+  b.setAttribute("aria-expanded", !open); box.hidden = open;
+  if (!open){
+    box.innerHTML = `<div class="upd">Loading games…</div>`;
+    try { const g = await fetch(`games/${b.dataset.games}.json?t=${Date.now()}`, {cache:"no-store"}).then(x => x.json()); box.innerHTML = gamesHTML(g); }
+    catch(err){ box.innerHTML = `<div class="upd">Games didn't load. Try again in a minute.</div>`; }
+  }
+}, true);
 
 /* Shelby Steel schedule: registrations for the teams this viewer follows. */
 function renderOurs(){
@@ -494,6 +553,7 @@ async function load(){
       fetch("coming.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : null).catch(() => null)
     ]);
     if (o) OURS = o; if (c) COMING = c;
+    GAMES = await fetch("games/index.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : {}).catch(() => ({}));
     renderMeta(); renderOurs(); render();
   }catch(err){
     document.getElementById("fresh").innerHTML = `<span class="dot stale"></span>Couldn't load tournaments`;

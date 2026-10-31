@@ -1,0 +1,53 @@
+name: Game-day pool play and brackets
+
+on:
+  schedule:
+    # every 15 minutes Thursday-Sunday (UTC days; covers Central Thu morning through Sun night)
+    - cron: "*/15 * * * 4,5,6,0"
+    - cron: "*/15 0-5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  games:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.save.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pull pool play and brackets for Shelby Steel tournaments
+        run: python3 -I games.py
+      - id: save
+        name: Save new games back to the repo
+        run: |
+          git config user.name "shelby-steel-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add site/games/
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; else
+            git commit -m "Refresh pool play and brackets" && git pull --rebase -X theirs origin main && git push && echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.save.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: games
+    if: needs.games.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

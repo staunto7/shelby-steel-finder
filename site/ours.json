@@ -18,7 +18,8 @@
    "sanction": "",
    "url": "",
    "note": "Added by hand. Sanction and exact dates not confirmed.",
-   "source": "manual"
+   "source": "manual",
+   "venues": []
   },
   {
    "sanction": "USSSA",
@@ -38,7 +39,8 @@
    "team": "8U",
    "teamName": "Shelby Steel Premier 2036 - Reimers",
    "division": "8 & Under Open",
-   "source": "auto"
+   "source": "auto",
+   "venues": []
   },
   {
    "sanction": "USSSA",
@@ -58,7 +60,8 @@
    "team": "10U",
    "teamName": "Shelby Steel 2034 - Lackey",
    "division": "10 & Under B",
-   "source": "auto"
+   "source": "auto",
+   "venues": []
   }
  ]
 }

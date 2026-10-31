@@ -7,9 +7,12 @@ Reads site/data.json (from fetch.py) and registrations.json, writes:
 Team lists come from USSSA, Grand Slam, Perfect Game, USA Softball and NSA (when the director releases them).
 Each team row is [team, city, record, class].
 """
-import datetime as dt, html, json, re, subprocess, sys
+import datetime as dt, html, json, re, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import venues
 
 ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
@@ -18,12 +21,18 @@ LOOKAHEAD_DAYS = 150
 
 
 def curl(url, data=None, jar=None):
-    cmd = ["curl", "-sL", "--max-time", "40", "-A", "Mozilla/5.0 (Macintosh) ShelbySteelFinder"]
+    """Polite fetch: if a site answers 429 (too many requests), wait and retry a couple of times."""
+    cmd = ["curl", "-sL", "--max-time", "40", "-A", "Mozilla/5.0 (Macintosh) ShelbySteelFinder", "-w", "\n%{http_code}"]
     if jar:
         cmd += ["-b", jar, "-c", jar]
     if data:
         cmd += ["--data", data]
-    return subprocess.run(cmd + [url], capture_output=True, text=True).stdout
+    for wait in (0, 8, 25):
+        time.sleep(wait)
+        body, _, code = subprocess.run(cmd + [url], capture_output=True, text=True).stdout.rpartition("\n")
+        if code != "429":
+            return body
+    return ""
 
 
 def cells(row):
@@ -151,7 +160,7 @@ def main():
         return ev["id"], divs
 
     coming = {}
-    with ThreadPoolExecutor(max_workers=8) as pool:
+    with ThreadPoolExecutor(max_workers=3) as pool:
         for eid, divs in pool.map(work, todo):
             if divs:
                 coming[eid] = {"divisions": divs}
@@ -173,6 +182,11 @@ def main():
     cutoff = (TODAY - dt.timedelta(days=1)).isoformat()
     manual = [{**m, "source": "manual"} for m in reg.get("manual", []) if (m.get("end") or m["start"]) >= cutoff]
     regs = sorted(found + manual, key=lambda r: (r["start"], r.get("team", "")))
+    prev_ours = json.loads((SITE / "ours.json").read_text()) if (SITE / "ours.json").exists() else {}
+    prev_venues = {(r.get("eventId") or r["name"]): r.get("venues") for r in prev_ours.get("registrations", [])}
+    for r in regs:  # ballparks with addresses, so families have everything in one place
+        if not r.get("venues"):
+            r["venues"] = venues.for_event(r) or prev_venues.get(r.get("eventId") or r["name"]) or []
     (SITE / "ours.json").write_text(json.dumps({"teams": reg.get("teams", []), "match": patterns, "registrations": regs}, indent=1))
     teams_total = sum(len(d["teams"]) for v in coming.values() for d in v["divisions"])
     print(f"team lists for {len(coming)} events ({teams_total} teams); Shelby Steel: {len(found)} auto, {len(manual)} manual",
