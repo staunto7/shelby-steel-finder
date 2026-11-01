@@ -1,35 +1,3 @@
-T|45765|10U Spooky teams|Beach Dune Divas|C-Class
-T|45765|10U Spooky teams|Dothan Warriors Rogers|C-Class
-T|45765|10U Spooky teams|Jacksonville Storm|B-Class
-T|45765|10U Spooky teams|Panhandle Heat 10u Carver|B-Class
-T|45765|10U Spooky teams|Sowega Lady Spartans|C-Class
-T|45765|12 Haunted dugouts|Panhandle Heat-Mock|C-Class
-T|45765|12 Haunted dugouts|Power Softball Gulf South 12u|C-Class
-T|45765|12 Haunted dugouts|South Georgia Spark|C-Class
-T|45765|12 Haunted dugouts|Southern Steal- Harris|C-Class
-T|45765|12 Haunted dugouts|SOWEGA TRIBE 12U|C-Class
-T|45765|14U Zombie division|Adiktiv Elite Hale|B-Class
-T|45765|14U Zombie division|North Florida Fire|C-Class
-T|45765|14U Zombie division|Sowega Tribe 14U- Dickens|C-Class
-V|45765|Bill Reynolds Sports Complex|1100 Cox Avenue, Bainbridge, GA 39819|10U Spooky teams
-V|45765|Bill Reynolds Sports Complex|1100 Cox Avenue, Bainbridge, GA 39819|12 Haunted dugouts
-V|45765|Bill Reynolds Sports Complex|1100 Cox Avenue, Bainbridge, GA 39819|14U Zombie division
-T|45766|10U Haunted dugouts|10U GATA Softball|B-Class
-T|45766|10U Haunted dugouts|Coastal Crushers 10U|B-Class
-T|45766|10U Haunted dugouts|FiftyFifty 10u|B-Class
-T|45766|10U Haunted dugouts|Gold Premier 10U Bishara|B-Class
-T|45766|10U Haunted dugouts|Heat HDX 10u|B-Class
-T|45766|10U Haunted dugouts|Santa Fe Inferno 10U White|B-Class
-T|45766|10U Haunted dugouts|Tide 10U Marchetti|B-Class
-T|45766|10U Haunted dugouts|Unity 10U Tiffany|B-Class
-T|45766|12U Zombie division|CAGE-MCFARLAND|B-Class
-T|45766|12U Zombie division|Dixie Divas Owens|B-Class
-T|45766|12U Zombie division|Jarman's Zombie SQUAD!|B-Class
-T|45766|12U Zombie division|L3gacy 42 - 12U Blue|B-Class
-T|45766|12U Zombie division|Santa Fe Inferno 12U White|B-Class
-T|45766|12U Zombie division|Tide 12U Milan|B-Class
-V|45766|Trembling Earth Recreation Complex|2110 Recreation Road, Waycross, GA 31503|10U Haunted dugouts
-V|45766|Trembling Earth Recreation Complex|2110 Recreation Road, Waycross, GA 31503|12U Zombie division
 T|45767|8 Under Girls|Battery - Coffee|B-Class
 T|45767|8 Under Girls|FL Elite 8u Pfau|
 T|45767|10 Under Girls|Bluewave Carter|C-Class
@@ -65,6 +33,7 @@ T|45769|10 Under Girls|F3 Softball|C-Class
 T|45769|10 Under Girls|Florida Select - Williams|B-Class
 T|45769|10 Under Girls|Heat HDX 10u|B-Class
 T|45769|10 Under Girls|L3gacy 42 Gold|B-Class
+T|45769|10 Under Girls|Unity 10U Tiffany|B-Class
 T|45769|12 Under Girls|CAGE-MCFARLAND|B-Class
 T|45769|12 Under Girls|Camden Valkyries 12U-Kurtz|B-Class
 T|45769|12 Under Girls|F3 Softball 12u|C-Class
@@ -133,7 +102,6 @@ T|45783|18 Under Girls|Ga Premier-Buffington|Accepted
 T|45783|18 Under Girls|GA Threat Waugh|Accepted
 T|45783|18 Under Girls|Georgia Crush - Rose|Accepted
 T|45783|18 Under Girls|Georgia United Elite|Accepted
-T|45783|18 Under Girls|Lady Generals|Pay Later
 T|45783|18 Under Girls|Marucci Legacy SEGA - Carrow 14u|Accepted
 T|45783|18 Under Girls|Poison Ivy 16u|Accepted
 T|45783|18 Under Girls|SC Bombers 16u - Lee|Accepted
@@ -218,6 +186,18 @@ T|45790|12 Under Girls|Dirt Dawgs 12u Goff|B-Class
 T|45790|12 Under Girls|Georgia Force 2033 Smith/Heggood|B-Class
 T|45790|12 Under Girls|Shelby Steel 2032/2033|C-Class
 T|45790|14 Under Girls|TC Elite - Stroud|B-Class
+T|45791|10 Under Girls|Georgia Misfits 10U|C-Class
+T|45791|10 Under Girls|Georgia Platinum Cherokee|B-Class
+T|45791|12 Under Girls|Canes 2033|B-Class
+T|45791|12 Under Girls|CRUSH Livermore 12U|C-Class
+T|45791|12 Under Girls|Ga Fire 2032 - Sappenfield|B-Class
+T|45791|12 Under Girls|Wow Factor Softball - Evans|C-Class
+T|45791|13 Under Girls|Premier Fastpitch 31/32|C-Class
+T|45791|14 Under Girls|Blaze Fastpitch|C-Class
+T|45791|14 Under Girls|Fury Platinum 2031|B-Class
+T|45791|14 Under Girls|Georgia Misfits- Sipsy|C-Class
+T|45791|14 Under Girls|Georgia Misfits-Holland|C-Class
+T|45791|16 Under Girls|Georgia Misfits 16U-Gibel|C-Class
 T|45806|12 Under Girls|Canes Perry|Pay Later
 T|45806|12 Under Girls|Capstone Athletics - Loew|Pay Later
 T|45806|12 Under Girls|CRUSH Livermore 12U|Wait List
@@ -312,6 +292,10 @@ T|45823|12 Under Girls|Canes Perry|C-Class
 T|45823|12 Under Girls|Monroe Chaos 12u|C-Class
 T|45823|12 Under Girls|West Georgia Nightmare 12 Gold|C-Class
 T|45823|14 Under Girls|Blaze Fastpitch|C-Class
+T|45824|8 Under Girls|West Georgia Bomb Pops|C-Class
+T|45824|9 Under Girls|Carrollton Dirt Divas|C-Class
+T|45824|9 Under Girls|Dirty Diamonds 10U|C-Class
+T|45824|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
 T|45829|10 Under Girls|Capstone Athletics - Johnson|Pay Later
 T|45829|10 Under Girls|Georgia Express 2034|Wait List
 T|45829|12 Under Girls|Atlanta Crush 12u - Gwaltney|Accepted
@@ -397,72 +381,6 @@ T|45831|18 Under Girls|RELENTLESS RIVALS|C-Class
 T|45831|18 Under Girls|Smoke Fastpitch|C-Class
 T|45831|18 Under Girls|War-Town Fastpitch|B-Class
 T|45831|18 Under Girls|WC Crush 16U|C-Class
-T|45895|7U|Batesville Belles - 7U|C-Class
-T|45895|7U|Bratz 7U|C-Class
-T|45895|7U|FPA 7U|C-Class
-T|45895|7U|Greenwood Grit 7u|C-Class
-T|45895|7U|Grenada Pink Sox 7U|C-Class
-T|45895|7U|Nola Elite- 7U|C-Class
-T|45895|8U|Batbusters 180 Sports - 8u|C-Class
-T|45895|8U|Delta Blues|C-Class
-T|45895|8U|Greenwood Grit 8u|C-Class
-T|45895|8U|MS Maniacs|C-Class
-T|45895|9U|Banshees|C-Class
-T|45895|9U|County Collision 9U|C-Class
-T|45895|9U|Greenwood Grit 9u|
-T|45895|9U|Sip Girls 9u|C-Class
-T|45895|9U|Southern Slammerz 2k17|C-Class
-T|45895|10U|Bratz 10u|C-Class
-T|45895|10U|Cleveland Chaos 2034|C-Class
-T|45895|10U|County Collision|C-Class
-T|45895|10U|FPA 10U|C-Class
-T|45895|10U|Greenwood Grit 10u|
-T|45895|10U|Grenada Havoc|B-Class
-T|45895|12U|Bratz|C-Class
-T|45895|12U|County Collision-McBride|C-Class
-T|45895|12U|Greenwood Grit|C-Class
-T|45895|12U|Hustlers 15|B-Class
-T|45895|12U|Mississippi Approach Elite-Polk|C-Class
-T|45895|12U|OES|C-Class
-T|45895|12U|P23|B-Class
-T|45895|12U|The Lady Y’alls|C-Class
-T|45895|14U|Legacy Fastpitch|B-Class
-T|45895|14U|MS Maniacs 14U|C-Class
-T|45895|14U|North Mississippi Elite|C-Class
-V|45895|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|7U
-V|45895|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|8U
-V|45895|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|9U
-V|45895|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|10U
-V|45895|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|12U
-V|45895|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|14U
-T|45896|10U|Fitness Factory Impact|C-Class
-T|45896|10U|Lady Wreckers 10U|C-Class
-T|45896|10U|Lady Wreckers 9U|C-Class
-T|45896|10U|MS Angels|C-Class
-T|45896|10U|MS Lionettes|League/Rec
-T|45896|10U|Southern Elite 9u- Gray|C-Class
-T|45896|12U|Dorsey Diamond Dawgs|C-Class
-T|45896|12U|Easley Softball Club|C-Class
-T|45896|12U|Heat Nation-Sutton|C-Class
-T|45896|12U|Lady Wreckers 11U|C-Class
-T|45896|12U|Lady Wreckers 12U -Burns|C-Class
-T|45896|12U|Mississippi Nomads|C-Class
-T|45896|12U|MS Express 12u Finnie|C-Class
-T|45896|12U|New Albany Diamond Dawgs|C-Class
-T|45896|12U|Saltillo SALT|C-Class
-T|45896|12U|Southern Elite 12u-Humphrey|C-Class
-T|45896|12U|Team Mississippi|A-Class
-T|45896|12U|Tomahawks 2K15|C-Class
-T|45896|14U|Diamond Elite|C-Class
-T|45896|14U|Lady Sip Elite|C-Class
-T|45896|14U|Lady Wreckers ‘13|C-Class
-T|45896|14U|Lady Wreckers 14U Burns|C-Class
-T|45896|14U|M-PACT|C-Class
-T|45896|14U|Mississippi Heat-14U Vaughan|C-Class
-T|45896|14U|Ms. Aftershock Elite|C-Class
-V|45896|Peoples Bank Sportsplex|34 Smith Park Dr, Ripley, MS 38663|10U
-V|45896|Peoples Bank Sportsplex|34 Smith Park Dr, Ripley, MS 38663|12U
-V|45896|Peoples Bank Sportsplex|34 Smith Park Dr, Ripley, MS 38663|14U
 T|45898|8 Under Girls|Mathiston Mayhem|C-Class
 T|45898|9 Under Girls|Jaguars 9U|C-Class
 T|45898|9 Under Girls|Lady Wreckers 9U|C-Class
