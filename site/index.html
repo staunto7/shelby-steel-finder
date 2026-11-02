@@ -76,6 +76,15 @@ main{position:relative}
 /* layout */
 .layout{display:block}
 .content{min-width:0}
+/* Phones: the Shelby Steel schedule comes first, then the filters, then the tournaments they filter. */
+@media (max-width:999px){
+  .layout{display:flex;flex-direction:column}
+  .content{display:contents}
+  .content>*{order:3}
+  .content>.install{order:0}
+  .content>.ours{order:1}
+  .rail{order:2}
+}
 
 /* filter panel: a bar on phones that opens the full filter list */
 .filter-bar{display:flex;align-items:center;gap:10px;width:100%;margin-top:16px;padding:12px 14px;min-height:52px;
@@ -325,7 +334,7 @@ details.div .tbl-wrap{padding:0 8px 8px}
 
     <section class="sources">
       <h3>Where this comes from</h3>
-      <p>Listings and team lists are pulled from each sanction's own site twice a day, and pool play every 15 minutes on tournament weekends. Always confirm dates, fees and divisions on the event page before you register.</p>
+      <p>Listings and team lists are pulled from each sanction's own site four times a day, and pool play every 15 minutes on tournament weekends. Always confirm dates, fees and divisions on the event page before you register.</p>
       <div class="src-grid" id="sources"></div>
     </section>
   </div>
@@ -517,7 +526,7 @@ function render(){
 
   if (!EVENTS.length) return;
   if (!list.length){
-    res.innerHTML = `<div class="empty"><strong>No tournaments match these filters</strong>${state.shortlist?"Star a tournament to add it to your shortlist.":"Try more states, a wider date range, or all ages. New events are added twice a day as sanctions post them."}</div>`;
+    res.innerHTML = `<div class="empty"><strong>No tournaments match these filters</strong>${state.shortlist?"Star a tournament to add it to your shortlist.":"Try more states, a wider date range, or all ages. New events are added four times a day as sanctions post them."}</div>`;
     return;
   }
   const groups = new Map();
@@ -748,7 +757,7 @@ function ago(isoStr){
 function renderMeta(){
   const fresh = document.getElementById("fresh");
   const stale = (Date.now() - new Date(META.updated)) > 3*86400e3;
-  fresh.innerHTML = `<span class="dot${stale?" stale":""}"></span>New listings added <b>${ago(META.updated)}</b><br>${EVENTS.length} tournaments · checked twice a day`;
+  fresh.innerHTML = `<span class="dot${stale?" stale":""}"></span>New listings added <b>${ago(META.updated)}</b><br>${EVENTS.length} tournaments · checked 4× a day`;
   const home = [...state.states][0] || "AL";
   document.getElementById("sources").innerHTML = Object.entries(SANCTIONS).map(([k,v]) => {
     const s = META.sources[k];

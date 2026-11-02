@@ -1,7 +1,7 @@
 #!/bin/bash
 # Mac background refresh for the sources that block GitHub's servers (USSSA, NSA).
 # launchd runs this every 15 minutes while the Mac is awake (see local/com.shelbysteel.refresh.plist).
-#   - Full refresh (listings, team lists, ballparks, pool play) when the last one is 12+ hours old.
+#   - Full refresh (listings, team lists, ballparks, pool play) when the last one is 6+ hours old (four times a day).
 #   - Otherwise, Thursday through Monday morning, just pool play and brackets for Shelby Steel tournaments.
 # Pushes to GitHub only when something changed; GitHub then republishes the site. Uses no Claude usage.
 set -u
@@ -22,7 +22,7 @@ last=$(cat "$STAMP" 2>/dev/null || echo 0)
 dow=$(date +%u)   # 1 = Monday ... 7 = Sunday
 hour=$(date +%H)
 
-if (( now - last >= 12 * 3600 )); then
+if (( now - last >= 6 * 3600 )); then
   mode=full
 elif (( dow >= 4 )) || { (( dow == 1 )) && (( 10#$hour < 6 )); }; then
   mode=games

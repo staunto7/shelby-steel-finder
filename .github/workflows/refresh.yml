@@ -2,8 +2,8 @@ name: Refresh tournaments and publish site
 
 on:
   schedule:
-    # 11:00 and 23:00 UTC = 6 AM / 6 PM Central (daylight time), 5 AM / 5 PM in winter
-    - cron: "0 11,23 * * *"
+    # Four times a day: 0, 6, 12, 18 UTC = 6 AM, noon, 6 PM, midnight Central in winter (an hour later in summer)
+    - cron: "0 0,6,12,18 * * *"
   push:
     branches: [main]  # a "Mac refresh" push only republishes; it already carries fresh data
   workflow_dispatch:

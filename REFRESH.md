@@ -15,7 +15,7 @@ Manual registrations: edit `registrations.json` (on github.com or locally) and p
 
 USSSA's state sites and NSA answer 403 to GitHub's servers, so the Mac runs `local/refresh.sh` under launchd
 (`~/Library/LaunchAgents/com.shelbysteel.refresh.plist`, every 15 minutes while awake): a full refresh
-(fetch.py, teams.py, games.py) every 12 hours, and pool play/brackets only, Thursday to Monday morning. It commits
+(fetch.py, teams.py, games.py) every 6 hours, and pool play/brackets only, Thursday to Monday morning. It commits
 "Mac refresh (...)" and pushes; GitHub then just republishes. When the Mac is asleep, USSSA and NSA keep their last copy.
 
 - Log: `~/Library/Logs/shelby-steel-refresh.log`
