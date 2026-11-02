@@ -77,3 +77,7 @@ Registered") and, once posted, the per-age iTournamentBrackets pool schedule and
 ## PGF
 
 No browser step. fetch.py and teams.py read TournamentConnect's own API (pgf.py), so PGF refreshes on GitHub.
+
+## Home-screen icon
+
+The SS app icons in site/icons/ are drawn by `python3 local/make_icons.py` (standard library only). Re-run it after changing the design; site/manifest.webmanifest and the apple-touch-icon tag in index.html point at them.

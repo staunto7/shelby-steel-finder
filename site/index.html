@@ -3,6 +3,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Shelby Steel Tournament Finder</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<!-- Home-screen app: SS icon, opens full screen with the black header running under the status bar. -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#0B0D10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Shelby Steel">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
@@ -143,6 +152,14 @@ input[type=date],select,input[type=search]{font:500 16px var(--f-body);color:var
 .src a{font-weight:600;font-size:13px;padding:4px 0}
 
 /* our teams */
+.install{margin-top:16px;display:flex;align-items:center;gap:12px;background:var(--band);color:var(--band-ink);border-radius:10px;padding:12px 12px 12px 14px}
+.install[hidden]{display:none}
+.install img{width:44px;height:44px;border-radius:10px;flex:none}
+.install .txt{flex:1;min-width:0;font-size:14px;line-height:1.35;color:var(--band-muted)}
+.install .txt strong{display:block;color:var(--band-ink);font-family:var(--f-label);font-weight:700;font-size:16px;letter-spacing:.04em}
+.install .share{display:inline-block;width:15px;height:15px;vertical-align:-2px;color:var(--band-ink)}
+.install .go{flex:none;min-height:40px;padding:0 14px;border:0;border-radius:8px;background:var(--band-ink);color:var(--band);font:700 15px var(--f-label);letter-spacing:.04em}
+.install .x{flex:none;width:40px;height:40px;border:0;background:none;color:var(--band-muted);font-size:22px;line-height:1}
 .ours{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:10px;padding:14px}
 .ours-head{display:flex;flex-direction:column;gap:10px}
 .ours-head h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:19px;letter-spacing:.04em;text-transform:uppercase}
@@ -280,6 +297,12 @@ details.div .tbl-wrap{padding:0 8px 8px}
   </aside>
 
   <div class="content">
+    <div class="install" id="install" hidden>
+      <img src="icons/apple-touch-icon.png" alt="">
+      <div class="txt" id="installTxt"></div>
+      <button type="button" class="go" id="installGo" hidden>Add</button>
+      <button type="button" class="x" id="installX" aria-label="Dismiss">×</button>
+    </div>
     <section class="ours" id="ours" aria-labelledby="oursTitle">
       <div class="ours-head">
         <h2 id="oursTitle">Shelby Steel schedule</h2>
@@ -760,4 +783,33 @@ addEventListener("scroll", () => { const on = scrollY > 40; if (band.classList.c
 addEventListener("resize", setHdr); setHdr();
 buildFilters(); filterSummary(); render(); load();
 setInterval(() => { if (document.visibilityState === "visible") load(); }, 15*60*1000);
+/* A home-screen app has no pull-to-refresh and can sit in the background for hours: reload when it comes back. */
+let hiddenAt = 0;
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") hiddenAt = Date.now();
+  else if (hiddenAt && Date.now() - hiddenAt > 5*60*1000) load();
+});
+/* "Add to Home Screen" tip on phones, until it's added or dismissed. Android gets a one-tap Add button;
+   iPhone can only be told where Safari keeps it. */
+(() => {
+  const box = document.getElementById("install"), txt = document.getElementById("installTxt"), go = document.getElementById("installGo");
+  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  const phone = matchMedia("(max-width: 999px) and (pointer: coarse)").matches;
+  if (standalone || !phone || store.get("installTip", "") === "dismissed") return;
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const shareIcon = '<svg class="share" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.5l4.2 4.2-1.4 1.4L13 6.3V15h-2V6.3L9.2 8.1 7.8 6.7zM5 10h4v2H7v8h10v-8h-2v-2h4v12H5z"/></svg>';
+  if (ios){
+    txt.innerHTML = `<strong>Put Shelby Steel on your home screen</strong>Tap ${shareIcon} Share, then <b>Add to Home Screen</b>.`;
+    box.hidden = false;
+  }
+  let prompt = null;
+  addEventListener("beforeinstallprompt", e => {
+    e.preventDefault(); prompt = e;
+    txt.innerHTML = `<strong>Put Shelby Steel on your home screen</strong>Opens full screen, like an app.`;
+    go.hidden = false; box.hidden = false;
+  });
+  go.addEventListener("click", async () => { if (!prompt) return; prompt.prompt(); await prompt.userChoice; prompt = null; box.hidden = true; });
+  addEventListener("appinstalled", () => { box.hidden = true; store.set("installTip", "dismissed"); });
+  document.getElementById("installX").addEventListener("click", () => { box.hidden = true; store.set("installTip", "dismissed"); });
+})();
 </script>
