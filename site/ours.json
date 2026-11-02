@@ -9,19 +9,6 @@
  ],
  "registrations": [
   {
-   "team": "10U",
-   "name": "Midnight Madness",
-   "start": "2026-10-30",
-   "end": "2026-10-31",
-   "city": "Anniston",
-   "state": "AL",
-   "sanction": "",
-   "url": "",
-   "note": "Added by hand. Sanction and exact dates not confirmed.",
-   "source": "manual",
-   "venues": []
-  },
-  {
    "sanction": "USSSA",
    "name": "Fall World Series",
    "start": "2026-11-07",
