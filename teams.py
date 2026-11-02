@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Pull registered-team lists ("Who's coming") and find Shelby Steel's registrations.
 
-Reads site/data.json (from fetch.py) and registrations.json, writes:
+Reads site/data.json (from fetch.py), site/team.json and registrations.json, writes:
   site/coming.json  {event id: {"divisions": [{"name", "teams": [[team, city, record]]}]}}
   site/ours.json    {"teams": [...], "registrations": [...]}  auto-detected + manual entries
 Team lists come from every sanction, whatever each calls it: USSSA "Who's Coming", USA Softball / NSA / USFA
@@ -196,6 +196,7 @@ def age_of(*texts):
 def main():
     data = json.loads((SITE / "data.json").read_text())
     reg = json.loads((ROOT / "registrations.json").read_text())
+    team = json.loads((SITE / "team.json").read_text())  # team name to look for and the team list
     horizon = (TODAY + dt.timedelta(days=LOOKAHEAD_DAYS)).isoformat()
     readers = {"USSSA": usssa_coming, "Grand Slam": grand_slam_coming, "Perfect Game": perfect_game_coming,
                "USA Softball": eventconnect_coming, "NSA": eventconnect_coming,
@@ -232,7 +233,7 @@ def main():
     (SITE / "venues.json").write_text(json.dumps(all_venues, separators=(",", ":")))
 
     by_id = {e["id"]: e for e in data["events"]}
-    patterns = [p.lower() for p in reg.get("match", [])]
+    patterns = [p.lower() for p in team.get("match", [])]
     found = []
     for eid, info in coming.items():
         for d in info["divisions"]:
@@ -251,7 +252,7 @@ def main():
         if not r.get("venues"):
             r["venues"] = (all_venues.get(r.get("eventId")) or (venues.for_event(r) if r.get("sanction") == "Grand Slam" else [])
                            or prev_venues.get(r.get("eventId") or r["name"]) or [])
-    (SITE / "ours.json").write_text(json.dumps({"teams": reg.get("teams", []), "match": patterns, "registrations": regs}, indent=1))
+    (SITE / "ours.json").write_text(json.dumps({"teams": team.get("teams", []), "match": patterns, "registrations": regs}, indent=1))
     (SITE / "status.json").write_text(json.dumps({"updated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
                                                   "requests": STATS, "teamLists": len(coming),
                                                   "venuesFound": len(all_venues)}))

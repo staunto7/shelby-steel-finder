@@ -81,3 +81,16 @@ No browser step. fetch.py and teams.py read TournamentConnect's own API (pgf.py)
 ## Home-screen icon
 
 The SS app icons in site/icons/ are drawn by `python3 local/make_icons.py` (standard library only). Re-run it after changing the design; site/manifest.webmanifest and the apple-touch-icon tag in index.html point at them.
+
+## Setting the finder up for another team
+
+Everything team-specific is in `site/team.json`: the name shown on the page, the name(s) to look for in the sanctions'
+team lists (`match`, lowercase), the teams/ages parents can follow, and the states to cover. The scripts and the page
+both read it, and the tournament data itself is the same for every team. For a copy branded for someone else, also:
+
+- Logo: swap the SS paths in the `<svg>` tags in site/index.html (header, watermark, tab bar) and in local/make_icons.py,
+  then re-run `python3 local/make_icons.py`.
+- Home-screen name: `name`/`short_name` in site/manifest.webmanifest.
+- Manual registrations: registrations.json.
+- New states: most sanctions follow `states` automatically. USA Softball needs that state's site added in fetch.py,
+  and the Claude browser task covers only the states it lists.

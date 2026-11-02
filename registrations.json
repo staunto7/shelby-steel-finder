@@ -1,7 +1,5 @@
 {
-  "_help": "Shelby Steel registrations. 'match' finds our teams in the sanctions' registered-team lists automatically. Add anything it misses to 'manual' (copy an entry and edit it). 'team' must be one of 'teams'.",
-  "match": ["shelby steel"],
-  "teams": ["8U", "10U", "12U"],
+  "_help": "Shelby Steel registrations the sanctions' team lists don't show. The team name to look for and the team list live in site/team.json. Add anything it misses to 'manual' (copy an entry and edit it). 'team' must be one of the teams in site/team.json.",
   "manual": [
     {
       "team": "10U",

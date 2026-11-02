@@ -15,7 +15,7 @@ import mvp, pgf
 ROOT = Path(__file__).resolve().parent
 CACHE = ROOT / "cache"
 OUT = ROOT / "site" / "data.json"
-STATES = ["AL", "GA", "FL", "TN", "MS"]
+STATES = json.loads((ROOT / "site" / "team.json").read_text())["states"]  # the team's states, from site/team.json
 STATE_NAMES = {"ALABAMA": "AL", "GEORGIA": "GA", "FLORIDA": "FL", "TENNESSEE": "TN", "MISSISSIPPI": "MS"}
 MONTHS = {m: i for i, m in enumerate(["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"], 1)}
 TODAY = dt.date.today()
