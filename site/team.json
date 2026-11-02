@@ -1,0 +1,8 @@
+{
+  "_help": "Everything specific to one team or organization. To set the finder up for another team, edit this file (and swap the logo: see REFRESH.md). Tournament data is shared by every team.",
+  "name": "Shelby Steel",
+  "org": "Shelby Steel Softball",
+  "match": ["shelby steel"],
+  "teams": ["8U", "10U", "12U"],
+  "states": ["AL", "GA", "FL", "TN", "MS"]
+}

@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Shelby Steel">
+<meta name="apple-mobile-web-app-title" content="Shelby Steel" id="appTitle">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
@@ -259,7 +259,7 @@ details.div .tbl-wrap{padding:0 8px 8px}
   <div class="wrap">
     <svg class="mark" viewBox="0 0 1931 1923" aria-hidden="true"><path fill="currentColor" d="M83 83H892V511L664 423V318H330V443L892 659V1008L83 1840V751L322 846V1250L662 910V810L83 608Z"/><path fill="currentColor" d="M1848 83H1039V511L1267 423V318H1601V443L1039 659V1008L1848 1840V751L1609 846V1250L1269 910V810L1848 608Z"/></svg>
     <div class="brand">
-      <div class="org">Shelby Steel Softball</div>
+      <div class="org" id="orgName">Shelby Steel Softball</div>
       <div class="tool">Tournament Finder</div>
     </div>
     <div class="fresh" id="fresh"><span class="dot"></span>Loading tournaments…</div>
@@ -318,7 +318,7 @@ details.div .tbl-wrap{padding:0 8px 8px}
         <span class="lbl">Following</span>
         <div class="seg" id="follow" role="group" aria-label="Teams you follow"></div>
       </div>
-      <div class="ours-list" id="oursList"><div class="none">Loading Shelby Steel registrations…</div></div>
+      <div class="ours-list" id="oursList"><div class="none">Loading registrations…</div></div>
     </section>
 
     <section class="summary" id="find" aria-live="polite">
@@ -357,7 +357,11 @@ const SANCTIONS = {
   "MVP":          {color:"var(--mvp)",   site:()=>"https://www.mvpsports.net/our-tournaments/"},
   "USA Softball": {color:"var(--usa)",   site:s=>({AL:"https://usasoftballofalabama.com/pages/events",FL:"https://usasoftballflorida.com/pages/events"})[s]||`https://${s.toLowerCase()}.registerplay.com/pages/events`}
 };
-const STATES = [["AL","Alabama"],["GA","Georgia"],["FL","Florida"],["TN","Tennessee"],["MS","Mississippi"]];
+/* Team settings (site/team.json): name to show and to look for in team lists, its teams, and its states.
+   These defaults are used until it loads, or if it can't. */
+let TEAM = {name:"Shelby Steel", org:"Shelby Steel Softball", match:["shelby steel"], teams:["8U","10U","12U"], states:["AL","GA","FL","TN","MS"]};
+const STATE_NAMES = {AL:"Alabama",AR:"Arkansas",FL:"Florida",GA:"Georgia",KY:"Kentucky",LA:"Louisiana",MS:"Mississippi",NC:"North Carolina",SC:"South Carolina",TN:"Tennessee",TX:"Texas",VA:"Virginia"};
+let STATES = TEAM.states.map(c => [c, STATE_NAMES[c] || c]);
 const AGES = [6,7,8,9,10,11,12,13,14,15,16,18];
 const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -517,7 +521,7 @@ function render(){
   const list = filtered();
   const res = document.getElementById("results");
   document.getElementById("slCount").textContent = stars.size ? `(${stars.size})` : "";
-  const stTxt = state.states.size===STATES.length ? "AL, GA, FL, TN & MS" : [...state.states].join(", ") || "no states";
+  const stTxt = state.states.size===STATES.length ? STATES.map(s=>s[0]).join(", ").replace(/, (\w+)$/, " & $1") : [...state.states].join(", ") || "no states";
   const range = state.to ? `${fmtRange(state.from||iso(today), state.to)}` : `from ${fmtRange(state.from||iso(today))}`;
   document.getElementById("headline").textContent = `${list.length} tournament${list.length===1?"":"s"} ${state.shortlist?"on your shortlist":""}`.trim();
   document.getElementById("subline").textContent = `${stTxt} · ${range}${state.age?` · ${state.age==18?"18U/HS":state.age+"U"}`:""}`;
@@ -557,8 +561,8 @@ function card(e, opts = {}){
   const nTeams = info ? info.divisions.reduce((n,d)=>n+d.teams.length,0) : 0;
   const tag = e.sanction ? `<span class="tag" style="background:${SANCTIONS[e.sanction]?.color||"var(--muted)"}">${esc(e.sanction)}</span>` : "";
   const title = e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a>` : esc(e.name);
-  const team = opts.reg ? `<span class="team-pill">${esc(opts.reg.team||"Shelby Steel")}</span>` : "";
-  const flags = !opts.reg && regs.length ? regs.map(r => `<span class="reg-flag">${checkSvg}Shelby Steel ${esc(r.team)} registered</span>`).join(" ") : "";
+  const team = opts.reg ? `<span class="team-pill">${esc(opts.reg.team||TEAM.name)}</span>` : "";
+  const flags = !opts.reg && regs.length ? regs.map(r => `<span class="reg-flag">${checkSvg}${esc(TEAM.name)} ${esc(r.team)} registered</span>`).join(" ") : "";
   const who = opts.reg && opts.reg.teamName ? `<span>${esc(opts.reg.teamName)}${opts.reg.division?` · ${esc(opts.reg.division)}`:""}</span>` : "";
   const id = esc(e.id||"");
   const g = e.id && GAMES[e.id];
@@ -598,7 +602,7 @@ function comingHTML(ev, age){
   const where = ev.url ? ` <a href="${esc(ev.url)}" target="_blank" rel="noopener">Check the event page ↗</a>` : "";
   if (!info || !info.divisions.length)
     return `<div class="upd">No teams posted yet. ${esc(ev.sanction||"The sanction")} calls this list “${esc(term)}”, and it shows up here once the director releases it.${where}</div>`;
-  const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
+  const pats = (OURS.match||TEAM.match).map(p=>p.toLowerCase());
   const isUs = n => pats.some(p => n.toLowerCase().includes(p));
   const divs = info.divisions;
   const ages = [...new Set(divs.map(d => divAge(d.name)))].sort((x,y)=>x-y);
@@ -613,7 +617,7 @@ function comingHTML(ev, age){
   const shown = divs.filter(d => divAge(d.name) === age);
   return note + picker + shown.map(d => {
     const us = d.teams.some(t => isUs(t[0]));
-    return `<details class="div"${us||shown.length===1?" open":""}><summary><span class="div-name">${esc(d.name)}</span><span class="div-count">${d.teams.length} teams${us?" · Shelby Steel":""}</span></summary><div class="tbl-wrap"><table class="teams-tbl"><tbody>${
+    return `<details class="div"${us||shown.length===1?" open":""}><summary><span class="div-name">${esc(d.name)}</span><span class="div-count">${d.teams.length} teams${us?" · "+esc(TEAM.name):""}</span></summary><div class="tbl-wrap"><table class="teams-tbl"><tbody>${
       d.teams.map(([n,c,r,k]) => `<tr class="${isUs(n)?"us":""}"><td>${esc(n)}${k?`<span class="cls">${esc(k)}</span>`:""}</td><td class="c">${esc(c)}</td><td class="r">${esc(r||"")}</td></tr>`).join("")
     }</tbody></table></div></details>`;
   }).join("");
@@ -635,7 +639,7 @@ function focusAges(ev){
 function venuesHTML(ev, vs, games){
   const where = ev.url ? ` <a href="${esc(ev.url)}" target="_blank" rel="noopener">Check the event page ↗</a>` : "";
   if (!vs.length) return `<div class="upd">No ballparks posted yet. They show up here once the director adds them.${where}</div>`;
-  const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
+  const pats = (OURS.match||TEAM.match).map(p=>p.toLowerCase());
   const isUs = n => pats.some(p => (n||"").toLowerCase().includes(p));
   const atVenue = (v, field) => parkOf(field, vs) === v;
   /* Once pool play posts, the field on each game tells us which ages and Shelby Steel games are at each park. */
@@ -657,7 +661,7 @@ function venuesHTML(ev, vs, games){
       <div class="vn">${esc(r.name)}</div>
       ${r.ages.length ? `<div class="vages">${r.ages.map(a => `<span class="${focus.includes(a)?"on":""}">${ageLabel(a)}</span>`).join("")}</div>` : ""}
       <div class="va">${esc(r.address)}</div>
-      ${r.ours.length ? `<div class="vours">Shelby Steel here: ${r.ours.map(x => `${esc(fmtGameTime(x.time))} · ${esc(x.field)}`).join("; ")}</div>` : ""}
+      ${r.ours.length ? `<div class="vours">${esc(TEAM.name)} here: ${r.ours.map(x => `${esc(fmtGameTime(x.time))} · ${esc(x.field)}`).join("; ")}</div>` : ""}
       <div class="vlinks"><a href="${mapsUrl(r)}" target="_blank" rel="noopener">Google Maps ↗</a><a href="${appleUrl(r)}" target="_blank" rel="noopener">Apple Maps ↗</a></div>
     </div>`).join("");
 }
@@ -674,10 +678,10 @@ function notPosted(ev){
   const where = ev.url ? ` <a href="${esc(ev.url)}" target="_blank" rel="noopener">Event page ↗</a>` : "";
   return isOurEvent(ev.id)
     ? `<div class="upd">Pools and brackets aren't posted yet. They fill in here automatically as soon as the director posts them, usually a day or two before the first pitch.${where}</div>`
-    : `<div class="upd">Pools and brackets aren't posted here yet. They fill in automatically for tournaments a Shelby Steel team is in. For this one, check the sanction's page.${where}</div>`;
+    : `<div class="upd">Pools and brackets aren't posted here yet. They fill in automatically for tournaments a ${esc(TEAM.name)} team is in. For this one, check the sanction's page.${where}</div>`;
 }
 function gamesHTML(g, ev){
-  const pats = (OURS.match||["shelby steel"]).map(p=>p.toLowerCase());
+  const pats = (OURS.match||TEAM.match).map(p=>p.toLowerCase());
   const isUs = n => pats.some(p => (n||"").toLowerCase().includes(p));
   if (!g.divisions.length) return notPosted(ev);
   let h = `<div class="upd">Last change ${ago(g.updated)} · checked every 15 minutes on game days · <a href="${esc(g.source)}" target="_blank" rel="noopener">Sanction's game center ↗</a></div>`;
@@ -685,7 +689,7 @@ function gamesHTML(g, ev){
     h += `<div class="dv">${esc(d.name)}</div>`;
     for (const p of d.pools){
       const us = p.games.some(x => isUs(x.a) || isUs(x.b));
-      h += `<details class="div"${us?" open":""}><summary><span class="div-name">${esc(p.name)}${p.final?" · Final":""}</span><span class="div-count">${p.games.length} games${us?" · Shelby Steel":""}</span></summary>${
+      h += `<details class="div"${us?" open":""}><summary><span class="div-name">${esc(p.name)}${p.final?" · Final":""}</span><span class="div-count">${p.games.length} games${us?" · "+esc(TEAM.name):""}</span></summary>${
         p.games.map(x => `<div class="game"><div class="t">${esc(fmtGameTime(x.time))}<small>${fieldHTML(x.field, g.venues)}</small></div><div>
           <div class="tm${isUs(x.a)?" us":""}"><span>${esc(x.a)}</span></div><div class="tm${isUs(x.b)?" us":""}"><span>${esc(x.b)}</span></div></div>
           <div><div class="sc">${x.as ?? ""}</div><div class="sc">${x.bs ?? ""}</div></div></div>`).join("")
@@ -758,7 +762,7 @@ function renderMeta(){
   const fresh = document.getElementById("fresh");
   const stale = (Date.now() - new Date(META.updated)) > 3*86400e3;
   fresh.innerHTML = `<span class="dot${stale?" stale":""}"></span>New listings added <b>${ago(META.updated)}</b><br>${EVENTS.length} tournaments · checked 4× a day`;
-  const home = [...state.states][0] || "AL";
+  const home = [...state.states][0] || TEAM.states[0];
   document.getElementById("sources").innerHTML = Object.entries(SANCTIONS).map(([k,v]) => {
     const s = META.sources[k];
     const line = s ? `${s.count} events · checked ${ago(s.updated)}` : "No data yet";
@@ -790,7 +794,19 @@ const band = document.getElementById("band");
 const setHdr = () => document.documentElement.style.setProperty("--hdr", band.offsetHeight + "px");
 addEventListener("scroll", () => { const on = scrollY > 40; if (band.classList.contains("scrolled") !== on){ band.classList.toggle("scrolled", on); setHdr(); } }, {passive:true});
 addEventListener("resize", setHdr); setHdr();
-buildFilters(); filterSummary(); render(); load();
+/* Load the team settings, then build the page around them. */
+function applyTeam(t){
+  TEAM = {...TEAM, ...t};
+  STATES = TEAM.states.map(c => [c, STATE_NAMES[c] || c]);
+  const codes = STATES.map(x => x[0]);
+  state.states = saved.states ? new Set(saved.states.filter(c => codes.includes(c))) : new Set(codes);
+  document.title = `${TEAM.name} Tournament Finder`;
+  document.getElementById("appTitle").content = TEAM.name;
+  document.getElementById("orgName").textContent = TEAM.org;
+  document.getElementById("oursTitle").textContent = `${TEAM.name} schedule`;
+}
+fetch("team.json?t=" + Date.now(), {cache:"no-store"}).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+  .then(t => { try { applyTeam(t); } catch(e){} buildFilters(); filterSummary(); render(); load(); });
 setInterval(() => { if (document.visibilityState === "visible") load(); }, 15*60*1000);
 /* A home-screen app has no pull-to-refresh and can sit in the background for hours: reload when it comes back. */
 let hiddenAt = 0;
@@ -808,13 +824,13 @@ document.addEventListener("visibilitychange", () => {
   const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   const shareIcon = '<svg class="share" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.5l4.2 4.2-1.4 1.4L13 6.3V15h-2V6.3L9.2 8.1 7.8 6.7zM5 10h4v2H7v8h10v-8h-2v-2h4v12H5z"/></svg>';
   if (ios){
-    txt.innerHTML = `<strong>Put Shelby Steel on your home screen</strong>Tap ${shareIcon} Share, then <b>Add to Home Screen</b>.`;
+    txt.innerHTML = `<strong>Put ${esc(TEAM.name)} on your home screen</strong>Tap ${shareIcon} Share, then <b>Add to Home Screen</b>.`;
     box.hidden = false;
   }
   let prompt = null;
   addEventListener("beforeinstallprompt", e => {
     e.preventDefault(); prompt = e;
-    txt.innerHTML = `<strong>Put Shelby Steel on your home screen</strong>Opens full screen, like an app.`;
+    txt.innerHTML = `<strong>Put ${esc(TEAM.name)} on your home screen</strong>Opens full screen, like an app.`;
     go.hidden = false; box.hidden = false;
   });
   go.addEventListener("click", async () => { if (!prompt) return; prompt.prompt(); await prompt.userChoice; prompt = null; box.hidden = true; });
