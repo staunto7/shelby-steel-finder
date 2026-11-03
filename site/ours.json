@@ -10,6 +10,38 @@
  "registrations": [
   {
    "sanction": "USSSA",
+   "name": "Battle For The Bling",
+   "start": "2026-11-07",
+   "end": "2026-11-07",
+   "state": "AL",
+   "city": "Millbrook",
+   "ages": "7U - 18U",
+   "ageMin": 7,
+   "ageMax": 18,
+   "fee": "$150 - $195",
+   "teams": 33,
+   "url": "https://alfastpitch.usssa.com/event/battle-for-the-bling-2/",
+   "id": "6d5837a04a",
+   "eventId": "6d5837a04a",
+   "team": "12U",
+   "teamName": "Shelby Steel 2032/2033 - Lackey",
+   "division": "12 & Under C",
+   "source": "auto",
+   "venues": [
+    {
+     "name": "Mill Creek Park",
+     "address": "3511 Shirley Road, Millbrook, AL, 36054",
+     "ages": []
+    },
+    {
+     "name": "Edward Thompson Park",
+     "address": "1655 Ray Thorington Road, Pike Road, AL, 36064",
+     "ages": []
+    }
+   ]
+  },
+  {
+   "sanction": "USSSA",
    "name": "Fall World Series",
    "start": "2026-11-07",
    "end": "2026-11-08",
@@ -19,7 +51,7 @@
    "ageMin": 8,
    "ageMax": 14,
    "fee": "$290 - $425",
-   "teams": 84,
+   "teams": 82,
    "url": "https://alfastpitch.usssa.com/event/fall-world-series-5/",
    "id": "34ca8f7893",
    "eventId": "34ca8f7893",
