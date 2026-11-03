@@ -105,6 +105,7 @@ T|45783|14 Under Girls|Vipers Athletics|Accepted
 T|45783|18 Under Girls|Alpharetta Fire HS Connor/Rucker|Accepted
 T|45783|18 Under Girls|Apex United Cobras - 16U Reynolds|Accepted
 T|45783|18 Under Girls|Apex United Cobras - 16U Sanders|Accepted
+T|45783|18 Under Girls|Atlanta Premier- Bowers|Accepted
 T|45783|18 Under Girls|EC Edge - Townsend '10|Accepted
 T|45783|18 Under Girls|Fireproof 16/18U-Stewart|Accepted
 T|45783|18 Under Girls|Ga Premier-Buffington|Accepted
@@ -166,7 +167,6 @@ T|45784|14 Under Girls|Stars Fastpitch - GA - Czarnecke|B-Class
 T|45784|14 Under Girls|Thunder 14U - Tomak|C-Class
 T|45784|14 Under Girls|Unity 13U - Gilcher|C-Class
 T|45784|14 Under Girls|WG Freedom Fastpitch|C-Class
-T|45784|16 Under Girls|14U Wow Factor Glenn 2030/2031|B-Class
 T|45784|16 Under Girls|16u Flush Fastpitch PWD Royal Flush Plumbing|B-Class
 T|45784|16 Under Girls|Apex United Cobras - 16U Sanders|C-Class
 T|45784|16 Under Girls|Atlanta Premier MMR|B-Class
@@ -345,47 +345,44 @@ T|45831|10 Under Girls|Buford Fastpitch 2034|Pay Later
 T|45831|12 Under Girls|Atlanta Crush 12u - Morgan|Wait List
 T|45831|12 Under Girls|Capstone Athletics - Loew|Pay Later
 T|45831|12 Under Girls|CG Legacy 2015|Pay Later
-T|45831|12 Under Girls|Dirty Diamonds 12U|Pay Later
-T|45831|12 Under Girls|EC Bullets- Germeus|Pay Later
-T|45831|12 Under Girls|FOD Select 2033-Scoggins|Pay Later
-T|45831|12 Under Girls|Forge Fastpitch 27:17|Pay Later
-T|45831|12 Under Girls|Georgia Express|Wait List
+T|45831|12 Under Girls|Dirty Diamonds 12U|Accepted
+T|45831|12 Under Girls|EC Bullets- Germeus|Accepted
+T|45831|12 Under Girls|Forge Fastpitch 27:17|Accepted
+T|45831|12 Under Girls|Georgia Express|Accepted
 T|45831|12 Under Girls|Monroe Mustangs|Pay Later
-T|45831|12 Under Girls|Rhyne Park Renegades|Pay Later
-T|45831|14 Under Girls|14u Flush Powered by Royal Flush|Pay Later
-T|45831|14 Under Girls|7th Inning Lady Royals - 14U - Hall|Pay Later
-T|45831|14 Under Girls|Apache Softball|Pay Later
-T|45831|14 Under Girls|ATL Patriots - Williams|Pay Later
+T|45831|12 Under Girls|Rhyne Park Renegades|Accepted
+T|45831|14 Under Girls|14u Flush Powered by Royal Flush|Accepted
+T|45831|14 Under Girls|Apache Softball|Accepted
+T|45831|14 Under Girls|ATL Patriots - Williams|Accepted
 T|45831|14 Under Girls|Atlanta Apex|Wait List
-T|45831|14 Under Girls|Atlanta Crush 14u Graden|Pay Later
-T|45831|14 Under Girls|Capstone Athletics - Bennett|Pay Later
+T|45831|14 Under Girls|Atlanta Crush 14u Graden|Accepted
+T|45831|14 Under Girls|Capstone Athletics - Bennett|Accepted
 T|45831|14 Under Girls|East Cobb Bullets - Taylor|Wait List
 T|45831|14 Under Girls|FOD Select Winfrey|Pay Later
-T|45831|14 Under Girls|Fury Platinum Jones|Pay Later
-T|45831|14 Under Girls|GA Raiders FP '30/'31|Pay Later
-T|45831|14 Under Girls|Georgia Misfits- Sipsy|Pay Later
-T|45831|14 Under Girls|Georgia Misfits-Holland|Pay Later
-T|45831|14 Under Girls|Legacy - Aliengena|Wait List
-T|45831|14 Under Girls|Mizuno Premier Batchelor 14U|Pay Later
-T|45831|14 Under Girls|Momentum 3:14|Pay Later
+T|45831|14 Under Girls|Fury Platinum Jones|Accepted
+T|45831|14 Under Girls|GA Raiders FP '30/'31|Accepted
+T|45831|14 Under Girls|Georgia Misfits- Sipsy|Accepted
+T|45831|14 Under Girls|Georgia Misfits-Holland|Accepted
+T|45831|14 Under Girls|Legacy - Aliengena|Accepted
+T|45831|14 Under Girls|Mizuno Premier Batchelor 14U|Accepted
+T|45831|14 Under Girls|Momentum 3:14|Accepted
 T|45831|14 Under Girls|Peaches Premier|Pay Later
-T|45831|14 Under Girls|Premier Fastpitch 31/32|Pay Later
-T|45831|14 Under Girls|Southern Select|Pay Later
-T|45831|18 Under Girls|Apex United Cobras - 16U Reynolds|Pay Later
-T|45831|18 Under Girls|Atlanta Crush 16U Hebert|Pay Later
-T|45831|18 Under Girls|Atlanta Flames 16U|Pay Later
-T|45831|18 Under Girls|Canes SE Softball 2029 - Malone|Pay Later
-T|45831|18 Under Girls|Dirt Dawgs 18U|Pay Later
-T|45831|18 Under Girls|EC Edge - Townsend '10|Pay Later
-T|45831|18 Under Girls|GA Threat Waugh|Pay Later
-T|45831|18 Under Girls|Georgia Blue Diamonds - Trotter|Pay Later
+T|45831|14 Under Girls|Premier Fastpitch 31/32|Accepted
+T|45831|14 Under Girls|Southern Select|Accepted
+T|45831|18 Under Girls|Apex United Cobras - 16U Reynolds|Accepted
+T|45831|18 Under Girls|Atlanta Crush 16U Hebert|Accepted
+T|45831|18 Under Girls|Atlanta Flames 16U|Accepted
+T|45831|18 Under Girls|Dirt Dawgs 18U|Accepted
+T|45831|18 Under Girls|EC Edge - Townsend '10|Accepted
+T|45831|18 Under Girls|GA Threat Waugh|Accepted
+T|45831|18 Under Girls|Georgia Blue Diamonds - Trotter|Accepted
 T|45831|18 Under Girls|Georgia Finesse|Pay Later
-T|45831|18 Under Girls|Georgia Fire Smith 16u|Pay Later
-T|45831|18 Under Girls|Georgia Strike|Pay Later
-T|45831|18 Under Girls|Marucci Legacy 16U Miller|Pay Later
-T|45831|18 Under Girls|RELENTLESS RIVALS|Pay Later
-T|45831|18 Under Girls|Smoke Fastpitch|Pay Later
-T|45831|18 Under Girls|War-Town Fastpitch|Pay Later
+T|45831|18 Under Girls|Georgia Fire Smith 16u|Accepted
+T|45831|18 Under Girls|Georgia Strike|Accepted
+T|45831|18 Under Girls|Marucci Legacy 16U Miller|Accepted
+T|45831|18 Under Girls|RELENTLESS RIVALS|Accepted
+T|45831|18 Under Girls|Smoke Fastpitch|Accepted
+T|45831|18 Under Girls|War-Town Fastpitch|Accepted
 T|45831|18 Under Girls|WC Crush 16U|Wait List
 T|45898|8 Under Girls|Mathiston Mayhem|C-Class
 T|45898|8 Under Girls|Team Mississippi-Rimmer|
@@ -395,6 +392,7 @@ T|45898|10 Under Girls|Lady Legends Softball|C-Class
 T|45898|10 Under Girls|Lady Wreckers 10U|C-Class
 T|45898|10 Under Girls|Lady Wreckers 9U|C-Class
 T|45898|10 Under Girls|Mississippi Glory 10-Lewis|C-Class
+T|45898|11 Under Girls|Tomahawks 2K15|C-Class
 T|45898|12 Under Girls|Crockett Chaos 11u|C-Class
 T|45898|12 Under Girls|Dirt Sisters|C-Class
 T|45898|12 Under Girls|Easley Softball Club|C-Class
@@ -405,6 +403,7 @@ T|45898|12 Under Girls|Mississippi Approach 12U Yeager|C-Class
 T|45898|12 Under Girls|Mississippi Drip 2032|C-Class
 T|45898|12 Under Girls|Southern Ballers 2K15|C-Class
 T|45898|13 Under Girls|Cleveland Chaos 13U|C-Class
+T|45898|13 Under Girls|Flex Fastpitch|C-Class
 T|45898|13 Under Girls|Mississippi Storm 14U|
 T|45898|13 Under Girls|MS Blues|C-Class
 T|45898|13 Under Girls|Next Level|B-Class
@@ -431,7 +430,6 @@ T|45899|8 Under Girls|Team Mississippi-Rimmer|
 T|45899|9 Under Girls|County Collision 9u|C-Class
 T|45899|9 Under Girls|Grenada Gold|B-Class
 T|45899|9 Under Girls|illusions 9u|C-Class
-T|45899|9 Under Girls|Jaguars 9U|C-Class
 T|45899|9 Under Girls|Mississippi Heat 9u|C-Class
 T|45899|9 Under Girls|Monroe County Chaos|C-Class
 T|45899|9 Under Girls|River Rebs|C-Class
@@ -445,11 +443,8 @@ T|45900|10 Under Girls|MS Express 10U - Dover|C-Class
 T|45900|10 Under Girls|MS Lionettes|League/Rec
 T|45900|10 Under Girls|Southern Elite 10u Gentry|C-Class
 T|45900|12 Under Girls|Dorsey Diamond Dawgs|C-Class
-T|45900|12 Under Girls|Klutch 2K15|C-Class
 T|45900|12 Under Girls|Legends14|C-Class
 T|45900|12 Under Girls|Mississippi Heat- Seahorn|C-Class
-T|45900|12 Under Girls|Outsiders|C-Class
-T|45900|12 Under Girls|Tomahawks 2K15|C-Class
 T|45900|16 Under Girls|901 Rays 16 - Williams|C-Class
 T|45900|16 Under Girls|Lady Wreckers 16U - Thomas|C-Class
 T|45900|16 Under Girls|Memphis Elite 16u|C-Class
@@ -484,6 +479,7 @@ T|45901|14 Under Girls|Lady Wreckers 14U Burns|C-Class
 T|45901|14 Under Girls|MS Express 14U White|C-Class
 T|45901|14 Under Girls|MSXpress|C-Class
 T|45901|14 Under Girls|Tennessee Heat|C-Class
+T|45901|14 Under Girls|TN Lady Prospects-14u|B-Class
 T|45901|14 Under Girls|UNDERDAWGS|C-Class
 T|45974|10 Under Girls|Alabama Fury 10u Hall|C-Class
 T|45974|10 Under Girls|Big Bend Lightning Parsons|B-Class
@@ -498,8 +494,11 @@ T|45974|10 Under Girls|South GA Landsharks - 10U|B-Class
 T|45974|10 Under Girls|Sowega Lady Spartans|C-Class
 T|45974|10 Under Girls|Wildfire Causey 10U|B-Class
 T|45982|10 Under Girls|Hocking Valley Thunder|C-Class
-T|45982|11 Under Girls|Miami County Blaze Maxson|C-Class
+T|45982|11 Under Girls|Kryptonite softball|C-Class
+T|45982|12 Under Girls|Knights Elite|C-Class
 T|45982|12 Under Girls|Lady Diamondbacks 12U Nutt|C-Class
+T|45982|12 Under Girls|Miami County Blaze Maxson|C-Class
+T|45982|12 Under Girls|Mountain State Misfits|C-Class
 T|45982|14 Under Girls|Kentucky Smoke|B-Class
 T|45982|14 Under Girls|Lady Dukes Bellamy/Whitt 14u|B-Class
 T|45982|14 Under Girls|Lady Rams 14U|C-Class
@@ -584,6 +583,7 @@ T|46027|12 Under Girls|Carrollton Dirt Divas 2033|Accepted
 T|46027|12 Under Girls|Lady Mafia 12U|Accepted
 T|46027|12 Under Girls|West Georgia Nightmare 12 Gold|Accepted
 T|46027|12 Under Girls|West Georgia Nightmare 12U|Accepted
+T|46027|14 Under Girls|Bama Elite 14u|Wait List
 T|46027|14 Under Girls|Blaze Fastpitch|Accepted
 T|46027|14 Under Girls|Cosmos Softball|Accepted
 T|46027|14 Under Girls|East Cobb Bullets - Taylor|Accepted
@@ -608,6 +608,7 @@ T|46031|14 Under Girls|FOD Select Winfrey|C-Class
 T|46031|16 Under Girls|Atlanta Crush 16U Hebert|B-Class
 T|46031|16 Under Girls|Atlanta Premier MMR|B-Class
 T|46031|16 Under Girls|Brooks Pressure 16u|B-Class
+T|46031|16 Under Girls|Ga Fire Banes 16u|B-Class
 T|46031|16 Under Girls|Georgia Misfits 16U-Gibel|C-Class
 T|46031|16 Under Girls|Georgia Strike|C-Class
 T|46031|16 Under Girls|Smoke Fastpitch|C-Class
@@ -660,3 +661,4 @@ T|46084|16 Under Girls|Panhandle Blaze|B-Class
 T|46084|18 Under Girls|Adiktiv Elite Gold|B-Class
 T|46084|18 Under Girls|Adiktiv Elite Hutchinson|B-Class
 T|46084|18 Under Girls|Big Bend Lightning Helms|C-Class
+T|46105|8 Under Girls|Lady Prospects-Roberts|C-Class
