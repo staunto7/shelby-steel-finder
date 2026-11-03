@@ -7,6 +7,7 @@ T|45768|12 Under Girls|Panhandle Heat-Mock|C-Class
 T|45768|12 Under Girls|PanHandle Power|C-Class
 T|45768|12 Under Girls|Power Softball Gulf South 12u|C-Class
 T|45768|12 Under Girls|South Georgia Spark|C-Class
+T|45768|12 Under Girls|Southern Steal- Harris|C-Class
 T|45768|12 Under Girls|Southwest Georgia Diamond Dealers|C-Class
 T|45768|12 Under Girls|SOWEGA TRIBE 12U|C-Class
 T|45768|12 Under Girls|Talahassee Lady Bombers 12U|B-Class
@@ -490,6 +491,7 @@ T|45974|10 Under Girls|Bluewave Carter|C-Class
 T|45974|10 Under Girls|EC Elite|C-Class
 T|45974|10 Under Girls|Florida Rise|C-Class
 T|45974|10 Under Girls|Jacksonville Storm|B-Class
+T|45974|10 Under Girls|Lady Volts 10U - Persing|B-Class
 T|45974|10 Under Girls|Pines|C-Class
 T|45974|10 Under Girls|Purple Reign|B-Class
 T|45974|10 Under Girls|South GA Landsharks - 10U|B-Class
@@ -611,6 +613,7 @@ T|46031|16 Under Girls|Georgia Strike|C-Class
 T|46031|16 Under Girls|Smoke Fastpitch|C-Class
 T|46031|18 Under Girls|Georgia United Elite|B-Class
 T|46031|18 Under Girls|RELENTLESS RIVALS|C-Class
+T|46034|10 Under Girls|Lady Volts 10U - Persing|B-Class
 T|46034|12 Under Girls|PanHandle Power|C-Class
 T|46038|13 Under Girls|Stars Fastpitch - GA - Czarnecke|B-Class
 T|46038|14 Under Girls|Vipers Athletics|C-Class
