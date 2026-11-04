@@ -135,7 +135,6 @@ T|45784|12 Under Girls|Georgia Wild Fastpitch|C-Class
 T|45784|12 Under Girls|Lady Dukes Dawson 12U|C-Class
 T|45784|12 Under Girls|Milton Force|C-Class
 T|45784|12 Under Girls|Monroe Mustangs|C-Class
-T|45784|12 Under Girls|NG Heat|B-Class
 T|45784|12 Under Girls|North Ga Reign|
 T|45784|12 Under Girls|Raptors 12U|C-Class
 T|45784|12 Under Girls|SBL Pirates 12U Black|B-Class
@@ -622,13 +621,10 @@ T|46040|8 Under Girls|Extreme Heat DC|C-Class
 T|46040|8 Under Girls|Lady Monarchs - 8U|C-Class
 T|46040|8 Under Girls|NHR Lady Prospects 8U|
 T|46040|8 Under Girls|TN River Surge|C-Class
-T|46040|9 Under Girls|DIAMOND DIVAS|C-Class
-T|46040|9 Under Girls|TN Heat|
 T|46040|10 Under Girls|731 Lady Scrappers|C-Class
 T|46040|10 Under Girls|Extreme Heat DC|C-Class
 T|46040|10 Under Girls|Lady Monarchs - 10U|C-Class
 T|46040|10 Under Girls|Legends 10u Lexington|C-Class
-T|46040|10 Under Girls|NHR Force|C-Class
 T|46040|10 Under Girls|Swing Check Softball 10U - Roberts|B-Class
 T|46084|8 Under Girls|Havoc Athletics|C-Class
 T|46084|8 Under Girls|Premier 8u Teal|C-Class
