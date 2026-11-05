@@ -103,7 +103,7 @@
    "ageMin": 8,
    "ageMax": 18,
    "fee": "$265 - $473",
-   "teams": 64,
+   "teams": 67,
    "url": "https://gafastpitch.usssa.com/event/superheroes/",
    "id": "e262c6a454",
    "eventId": "e262c6a454",
@@ -139,6 +139,33 @@
    "division": "12 Under Girls",
    "source": "auto",
    "venues": []
+  },
+  {
+   "sanction": "USSSA",
+   "name": "Jingle Bell Classic",
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "state": "GA",
+   "city": "Dublin",
+   "ages": "8U - 18U",
+   "ageMin": 8,
+   "ageMax": 18,
+   "fee": "$425",
+   "teams": 57,
+   "url": "https://gafastpitch.usssa.com/event/jingle-bell-classic-2/",
+   "id": "a3e64f3b2e",
+   "eventId": "a3e64f3b2e",
+   "team": "",
+   "teamName": "Shelby Steel 2034 - Lackey",
+   "division": "Tournament Teams",
+   "source": "auto",
+   "venues": [
+    {
+     "name": "Southern Pines Regional Sports Complex",
+     "address": "575 Southern Pines Road, Dublin, GA, 31021",
+     "ages": []
+    }
+   ]
   }
  ]
 }
