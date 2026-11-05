@@ -1,4 +1,3 @@
-T|45768|10 Under Girls|Big Bend Lightning Parsons|B-Class
 T|45768|12 Under Girls|AP Rucker 12u|B-Class
 T|45768|12 Under Girls|Big Bend Lightning Troelstrup|C-Class
 T|45768|12 Under Girls|Georgia Rage 33|B-Class
@@ -15,6 +14,7 @@ T|45769|8 Under Girls|Ducks 8u|B-Class
 T|45769|8 Under Girls|Sassy Sluggers|B-Class
 T|45769|8 Under Girls|Walker-Camden Valkyries|B-Class
 T|45769|8 Under Girls|X-Reps|C-Class
+T|45769|10 Under Girls|Big Bend Lightning Parsons|B-Class
 T|45769|10 Under Girls|CAGE-DEATS|C-Class
 T|45769|10 Under Girls|Coastal Crushers 10U|B-Class
 T|45769|10 Under Girls|F3 Softball|C-Class
@@ -60,6 +60,7 @@ T|45771|12 Under Girls|Southwest Georgia Diamond Dealers|C-Class
 T|45771|12 Under Girls|SOWEGA TRIBE 12U|C-Class
 T|45771|14 Under Girls|North Florida Fire|C-Class
 T|45771|14 Under Girls|Power Softball Gulf South 14u|C-Class
+T|45771|14 Under Girls|Vibe 850|C-Class
 T|45783|10u|Buford Fastpitch 2034|Accepted
 T|45783|10u|Capstone Athletics - Johnson|Accepted
 T|45783|10u|Dirty South Outlaws Hopper|Accepted
@@ -106,11 +107,11 @@ T|45783|HS|Apex United Cobras - 16U Sanders|Accepted
 T|45783|HS|Atlanta Premier- Bowers|Accepted
 T|45783|HS|EC Edge - Townsend '10|Accepted
 T|45783|HS|Fireproof 16/18U-Stewart|Accepted
+T|45783|HS|Fury Plat|Accepted
 T|45783|HS|Ga Premier-Buffington|Accepted
 T|45783|HS|GA Threat Waugh|Accepted
 T|45783|HS|Georgia Crush - Rose|Accepted
 T|45783|HS|Georgia United Elite|Accepted
-T|45783|HS|Poison Ivy 16u|Accepted
 T|45783|HS|SC Bombers 16u - Lee|Accepted
 T|45784|10 Under Girls|Buford Fastpitch 2034|C-Class
 T|45784|10 Under Girls|Foul Play|C-Class
@@ -152,6 +153,7 @@ T|45784|14 Under Girls|GA Vanquish Hyde|C-Class
 T|45784|14 Under Girls|Georgia Classics Select|B-Class
 T|45784|14 Under Girls|Georgia Fire Yawn|C-Class
 T|45784|14 Under Girls|Georgia Smoke|B-Class
+T|45784|14 Under Girls|Hustle Factory - Blue|B-Class
 T|45784|14 Under Girls|Lady Panthers 14U|C-Class
 T|45784|14 Under Girls|Palmetto Legacy- Stuart|C-Class
 T|45784|14 Under Girls|Premier Fastpitch-Reed 14A|A-Class
@@ -287,6 +289,7 @@ T|45822|10 Under Girls|Bremen Braves|C-Class
 T|45822|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
 T|45822|10 Under Girls|Georgia Force 2017 - Archibald/Dennis|C-Class
 T|45822|10 Under Girls|Rogue Nation Rebels 10U|C-Class
+T|45822|11 Under Girls|Carrollton Dirt Divas 2033|C-Class
 T|45822|12 Under Girls|ATL Patriots 12U Cato|C-Class
 T|45822|12 Under Girls|Cherokee Crush|C-Class
 T|45822|12 Under Girls|Diamond Queens|C-Class
@@ -343,6 +346,7 @@ T|45831|12 Under Girls|EC Bullets- Germeus|Accepted
 T|45831|12 Under Girls|Forge Fastpitch 27:17|Accepted
 T|45831|12 Under Girls|Georgia Express|Accepted
 T|45831|12 Under Girls|Rhyne Park Renegades|Accepted
+T|45831|13 Under Girls|Hustle Factory - Blue|Wait List
 T|45831|14 Under Girls|14u Flush Powered by Royal Flush|Accepted
 T|45831|14 Under Girls|Apache Softball|Accepted
 T|45831|14 Under Girls|ATL Patriots - Williams|Accepted
@@ -486,7 +490,6 @@ T|45901|14 Under Girls|Tennessee Heat|C-Class
 T|45901|14 Under Girls|TN Lady Prospects-14u|B-Class
 T|45901|14 Under Girls|UNDERDAWGS|C-Class
 T|45974|10 Under Girls|Alabama Fury 10u Hall|C-Class
-T|45974|10 Under Girls|Big Bend Lightning Parsons|B-Class
 T|45974|10 Under Girls|Bluewave Carter|C-Class
 T|45974|10 Under Girls|EC Elite|C-Class
 T|45974|10 Under Girls|Florida Rise|C-Class
@@ -526,9 +529,6 @@ T|46015|12U Open|Rawlings Tigers 12U|170
 T|46015|12U Open|SALT 2014 Adams / Brininger|180
 T|46015|12U Open|SALT 2033 Mitchell|170
 T|46015|12U Open|South Alabama Sirens 12U|160
-T|46015|14U Open|Florida Elite 2031|80
-T|46015|14U Open|South Alabama Lady Titans Cross|80
-T|46015|14U Open|Titans Glover/Hagler 14U|280
 T|46019|8U OPEN DIVISION|Lady Prospects-Roberts|C-Class
 T|46019|8U OPEN DIVISION|Tx Pressure|C-Class
 T|46019|8U OPEN DIVISION|Unity 2036-Cervantes|B-Class
