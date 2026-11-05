@@ -244,7 +244,6 @@ T|45806|14 Under Girls|Raptors|Pay Later
 T|45806|14 Under Girls|Sage Street Savage Fastpitch|Pay Later
 T|45806|14 Under Girls|Stars Fastpitch - GA - Czarnecke|Pay Later
 T|45806|14 Under Girls|Thunder 14U - Tomak|Pay Later
-T|45806|15 Under Girls|Texas Kaotic|Wait List
 T|45806|18 Under Girls|16u Flush Fastpitch PWD Royal Flush Plumbing|Pay Later
 T|45806|18 Under Girls|Atlanta Crush 16U Newsom|Pay Later
 T|45806|18 Under Girls|Atlanta Premier MMR|Pay Later
@@ -377,70 +376,81 @@ T|45831|18 Under Girls|RELENTLESS RIVALS|Accepted
 T|45831|18 Under Girls|Smoke Fastpitch|Accepted
 T|45831|18 Under Girls|War-Town Fastpitch|Accepted
 T|45831|18 Under Girls|WC Crush 16U|Wait List
-T|45898|10 Under Girls|ESC 10u-Forbess|C-Class
-T|45898|10 Under Girls|Lady Legends Softball|C-Class
-T|45898|10 Under Girls|Lady Wreckers 10U|C-Class
-T|45898|10 Under Girls|Lady Wreckers 9U|C-Class
-T|45898|10 Under Girls|Mississippi Glory 10-Lewis|C-Class
-T|45898|11 Under Girls|Crockett Chaos 11u|C-Class
-T|45898|11 Under Girls|Dirt Sisters|C-Class
-T|45898|11 Under Girls|Magnolia Heat 11U|C-Class
-T|45898|11 Under Girls|Mississippi Aces-Anderson|C-Class
-T|45898|11 Under Girls|Tomahawks 2K15|C-Class
-T|45898|12 Under Girls|Dorsey Diamond Dawgs|C-Class
-T|45898|12 Under Girls|Easley Softball Club|C-Class
-T|45898|12 Under Girls|Lady Wreckers 11U|C-Class
-T|45898|12 Under Girls|Lady Wreckers 12U -Burns|C-Class
-T|45898|12 Under Girls|Legends14|C-Class
-T|45898|12 Under Girls|Mississippi Approach 12U Yeager|C-Class
-T|45898|12 Under Girls|Mississippi Drip 2032|C-Class
-T|45898|12 Under Girls|Mississippi Heat- Seahorn|C-Class
-T|45898|12 Under Girls|Outsiders|C-Class
-T|45898|12 Under Girls|Southern Ballers 2K15|C-Class
-T|45898|13 Under Girls|901 Rays - Jegier|C-Class
-T|45898|13 Under Girls|Cleveland Chaos 13U|C-Class
-T|45898|13 Under Girls|Flex Fastpitch|C-Class
-T|45898|13 Under Girls|Mississippi Storm 14U|
-T|45898|13 Under Girls|MS Blues|C-Class
-T|45898|13 Under Girls|Next Level|B-Class
-T|45898|14 Under Girls|ESC-Faulkner|B-Class
-T|45898|14 Under Girls|Lady Sip Elite|C-Class
-T|45898|14 Under Girls|Lady Wreckers 14U Burns|C-Class
-T|45898|14 Under Girls|Memphis Elite 14u|C-Class
-T|45898|14 Under Girls|Mississippi Drip|C-Class
-T|45898|14 Under Girls|Mississippi Heat-14U Vaughan|C-Class
-T|45898|14 Under Girls|Ms. Aftershock Elite|C-Class
-T|45898|14 Under Girls|MSXpress|C-Class
-T|45898|14 Under Girls|Premier Fastpitch|C-Class
-T|45898|14 Under Girls|TN Lady Prospects-14u|B-Class
-T|45898|14 Under Girls|UNDERDAWGS|C-Class
-T|45898|14 Under Girls|Xtreme '12|B-Class
-T|45899|7 Under Girls|Bratz 7U|C-Class
-T|45899|7 Under Girls|Grenada Pink Sox 7U|C-Class
-T|45899|7 Under Girls|Nola Elite- 7U|C-Class
-T|45899|8 Under Girls|Batbusters 180 Sports - 8u|C-Class
-T|45899|8 Under Girls|Delta Blues|C-Class
-T|45899|8 Under Girls|Mathiston Mayhem|C-Class
-T|45899|8 Under Girls|Team Mississippi-Rimmer|
-T|45899|9 Under Girls|Grenada Gold|B-Class
-T|45899|9 Under Girls|illusions 9u|C-Class
-T|45899|9 Under Girls|Mississippi Heat 9u|C-Class
-T|45899|9 Under Girls|Monroe County Chaos|C-Class
-T|45899|9 Under Girls|River Rebs|C-Class
-T|45899|9 Under Girls|Southern Slammerz 2k17|C-Class
-T|45900|10 Under Girls|Collierville Dragons 10u- Giles|C-Class
-T|45900|10 Under Girls|Fitness Factory Impact|C-Class
-T|45900|10 Under Girls|Grenada Havoc|B-Class
-T|45900|10 Under Girls|Lady Prospects Cole|C-Class
-T|45900|10 Under Girls|MS Angels|C-Class
-T|45900|10 Under Girls|MS Explosions|C-Class
-T|45900|10 Under Girls|MS Express 10U - Dover|C-Class
-T|45900|10 Under Girls|MS Lionettes|League/Rec
-T|45900|10 Under Girls|Southern Elite 10u Gentry|C-Class
-T|45900|16 Under Girls|901 Rays 16 - Williams|C-Class
-T|45900|16 Under Girls|Lady Wreckers 16U - Thomas|C-Class
-T|45900|16 Under Girls|Memphis Elite 16u|C-Class
-T|45900|16 Under Girls|Mississippi Heat-Randolph|C-Class
+T|45898|10U|ESC 10u-Forbess|C-Class
+T|45898|10U|Lady Legends Softball|C-Class
+T|45898|10U|Lady Wreckers 10U|C-Class
+T|45898|10U|Lady Wreckers 9U|C-Class
+T|45898|10U|Mississippi Glory 10-Lewis|C-Class
+T|45898|11U|Crockett Chaos 11u|C-Class
+T|45898|11U|Dirt Sisters|C-Class
+T|45898|11U|Magnolia Heat 11U|C-Class
+T|45898|11U|Mississippi Aces-Anderson|C-Class
+T|45898|11U|Tomahawks 2K15|C-Class
+T|45898|12U Group 1|Lady Wreckers 12U -Burns|C-Class
+T|45898|12U Group 1|Legends14|C-Class
+T|45898|12U Group 1|Mississippi Drip 2032|C-Class
+T|45898|12U Group 1|Outsiders|C-Class
+T|45898|12U Group 1|Southern Ballers 2K15|C-Class
+T|45898|12U Group 2|Dorsey Diamond Dawgs|C-Class
+T|45898|12U Group 2|Easley Softball Club|C-Class
+T|45898|12U Group 2|Lady Wreckers 11U|C-Class
+T|45898|12U Group 2|Mississippi Approach 12U Yeager|C-Class
+T|45898|12U Group 2|Mississippi Heat- Seahorn|C-Class
+T|45898|13U|901 Rays - Jegier|C-Class
+T|45898|13U|Cleveland Chaos 13U|C-Class
+T|45898|13U|Flex Fastpitch|C-Class
+T|45898|13U|Mississippi Storm|
+T|45898|13U|MS Blues|C-Class
+T|45898|13U|Next Level|B-Class
+T|45898|14U Split Brackets|ESC-Faulkner|B-Class
+T|45898|14U Split Brackets|Lady Sip Elite|C-Class
+T|45898|14U Split Brackets|Lady Wreckers 14U Burns|C-Class
+T|45898|14U Split Brackets|Memphis Elite 14u|C-Class
+T|45898|14U Split Brackets|Mississippi Drip|C-Class
+T|45898|14U Split Brackets|Mississippi Heat-14U Vaughan|C-Class
+T|45898|14U Split Brackets|Ms. Aftershock Elite|C-Class
+T|45898|14U Split Brackets|MSXpress|C-Class
+T|45898|14U Split Brackets|Premier Fastpitch|C-Class
+T|45898|14U Split Brackets|TN Lady Prospects-14u|B-Class
+T|45898|14U Split Brackets|UNDERDAWGS|C-Class
+T|45898|14U Split Brackets|Xtreme '12|B-Class
+V|45898|BNA Bank Park|1165 Bratton Road, New Albany, MS 38652|10U
+V|45898|BNA Bank Park|1165 Bratton Road, New Albany, MS 38652|11U
+V|45898|BNA Bank Park|1165 Bratton Road, New Albany, MS 38652|12U Group 1
+V|45898|BNA Bank Park|1165 Bratton Road, New Albany, MS 38652|12U Group 2
+V|45898|BNA Bank Park|1165 Bratton Road, New Albany, MS 38652|13U
+V|45898|BNA Bank Park|1165 Bratton Road, New Albany, MS 38652|14U Split Brackets
+T|45899|7U|Bratz 7U|C-Class
+T|45899|7U|Grenada Pink Sox 7U|C-Class
+T|45899|7U|Nola Elite- 7U|C-Class
+T|45899|8U|Batbusters 180 Sports - 8u|C-Class
+T|45899|8U|Delta Blues|C-Class
+T|45899|8U|Mathiston Mayhem|C-Class
+T|45899|8U|Team Mississippi-Rimmer|
+T|45899|9U|Grenada Gold|B-Class
+T|45899|9U|illusions 9u|C-Class
+T|45899|9U|Mississippi Heat 9u|C-Class
+T|45899|9U|Monroe County Chaos|C-Class
+T|45899|9U|River Rebs|C-Class
+T|45899|9U|Southern Slammerz 2k17|C-Class
+V|45899|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|7U
+V|45899|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|8U
+V|45899|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|9U
+T|45900|10U|Collierville Dragons 10u- Giles|C-Class
+T|45900|10U|Fitness Factory Impact|C-Class
+T|45900|10U|Grenada Havoc|B-Class
+T|45900|10U|Lady Prospects Cole|C-Class
+T|45900|10U|MS Angels|C-Class
+T|45900|10U|MS Explosions|C-Class
+T|45900|10U|MS Express 10U - Dover|C-Class
+T|45900|10U|MS Lionettes|League/Rec
+T|45900|10U|Southern Elite 10u Gentry|C-Class
+T|45900|16U|901 Rays 16 - Williams|C-Class
+T|45900|16U|Lady Wreckers 16U - Thomas|C-Class
+T|45900|16U|Memphis Elite 16u|C-Class
+T|45900|16U|Mississippi Heat-Randolph|C-Class
+V|45900|WK Webb Sportsplex|453 Turner Industrial Road, Saltillo, MS 38866|10U
+V|45900|WK Webb Sportsplex|453 Turner Industrial Road, Saltillo, MS 38866|16U
 T|45901|8 Under Girls|BT Performance|C-Class
 T|45901|8 Under Girls|Mississippi Express 8u Wilemon|C-Class
 T|45901|8 Under Girls|MS Express 8U - Duncan|C-Class
@@ -468,6 +478,7 @@ T|45901|12 Under Girls|Outsiders|C-Class
 T|45901|12 Under Girls|Saltillo SALT|C-Class
 T|45901|12 Under Girls|Tomahawks 2K15|C-Class
 T|45901|13 Under Girls|Flex Fastpitch|C-Class
+T|45901|14 Under Girls|Lady Prospects 14U Premier Stotler|C-Class
 T|45901|14 Under Girls|Lady Reds 2K31|C-Class
 T|45901|14 Under Girls|Lady Wreckers 14U Burns|C-Class
 T|45901|14 Under Girls|MS Express 14U White|C-Class
@@ -502,22 +513,22 @@ T|45982|18 Under Girls|Cincy Doom '29/'30 - Niese|C-Class
 T|45982|18 Under Girls|Diamond Elite 2009|C-Class
 T|45982|18 Under Girls|Lady Rams 16U|C-Class
 T|45982|18 Under Girls|Patriots|C-Class
-T|46015|10 Under Girls|Bluewave Carter|160
-T|46015|10 Under Girls|Dothan Warriors Rogers|370
-T|46015|10 Under Girls|Jacksonville Storm|60
-T|46015|10 Under Girls|North Florida Chaos 10U|100
-T|46015|10 Under Girls|Power Softball Gulf South 10u Jenkins|0
-T|46015|10 Under Girls|South Alabama Sirens 10U|140
-T|46015|10 Under Girls|Sowega Lady Spartans|370
-T|46015|12 Under Girls|Big Bend Lightning Briscoe|370
-T|46015|12 Under Girls|CAT-5|0
-T|46015|12 Under Girls|Rawlings Tigers 12U|170
-T|46015|12 Under Girls|SALT 2014 Adams / Brininger|180
-T|46015|12 Under Girls|SALT 2033 Mitchell|170
-T|46015|12 Under Girls|South Alabama Sirens 12U|160
-T|46015|14 Under Girls|Florida Elite 2031|80
-T|46015|14 Under Girls|South Alabama Lady Titans Cross|80
-T|46015|14 Under Girls|Titans Glover/Hagler 14U|280
+T|46015|10U Open|Bluewave Carter|160
+T|46015|10U Open|Dothan Warriors Rogers|370
+T|46015|10U Open|Jacksonville Storm|60
+T|46015|10U Open|North Florida Chaos 10U|100
+T|46015|10U Open|Power Softball Gulf South 10u Jenkins|0
+T|46015|10U Open|South Alabama Sirens 10U|140
+T|46015|10U Open|Sowega Lady Spartans|370
+T|46015|12U Open|Big Bend Lightning Briscoe|370
+T|46015|12U Open|CAT-5|0
+T|46015|12U Open|Rawlings Tigers 12U|170
+T|46015|12U Open|SALT 2014 Adams / Brininger|180
+T|46015|12U Open|SALT 2033 Mitchell|170
+T|46015|12U Open|South Alabama Sirens 12U|160
+T|46015|14U Open|Florida Elite 2031|80
+T|46015|14U Open|South Alabama Lady Titans Cross|80
+T|46015|14U Open|Titans Glover/Hagler 14U|280
 T|46019|8U OPEN DIVISION|Tx Pressure|C-Class
 T|46019|8U C-CLASS DIVISION|8u Sox Select|League/Rec
 T|46019|8U C-CLASS DIVISION|Outlaws Select 2036|C-Class
@@ -645,7 +656,6 @@ T|46084|14 Under Girls|North Florida Chaos|B-Class
 T|46084|14 Under Girls|North Florida Fire|C-Class
 T|46084|14 Under Girls|Panhandle Premier 14U|B-Class
 T|46084|14 Under Girls|Power Softball Gulf South 14u|C-Class
-T|46084|14 Under Girls|SALT 2014 Adams / Brininger|B-Class
 T|46084|14 Under Girls|Unity Mallon 2031|B-Class
 T|46084|14 Under Girls|Vibe 850|C-Class
 T|46084|16 Under Girls|Adiktiv Elite Hodges|B-Class
