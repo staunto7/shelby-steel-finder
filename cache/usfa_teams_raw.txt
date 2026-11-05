@@ -162,16 +162,15 @@ T|45784|14 Under Girls|Unity 13U - Gilcher|C-Class
 T|45784|14 Under Girls|WG Freedom Fastpitch|C-Class
 T|45784|16 Under Girls|16u Flush Fastpitch PWD Royal Flush Plumbing|B-Class
 T|45784|16 Under Girls|Apex United Cobras - 16U Sanders|C-Class
-T|45784|16 Under Girls|Atlanta Premier MMR|B-Class
 T|45784|16 Under Girls|Fireproof -Sigmund|C-Class
 T|45784|16 Under Girls|GA Fire - Gentry|C-Class
 T|45784|16 Under Girls|Ga Fire Banes 16u|B-Class
 T|45784|16 Under Girls|Georgia Finesse|B-Class
 T|45784|16 Under Girls|Georgia Misfits 16U-Gibel|C-Class
-T|45784|16 Under Girls|Lady Generals|C-Class
 T|45784|16 Under Girls|North Georgia Girls 16u|C-Class
 T|45784|16 Under Girls|Sharon Springs Spartans|B-Class
 T|45784|16 Under Girls|WC Crush 16U|C-Class
+T|45784|16 Under Girls|West End Warriors- Burg|B-Class
 T|45784|18 Under Girls|Georgia United Elite|B-Class
 T|45789|10 Under Girls|HC Elite|C-Class
 T|45789|12 Under Girls|Carrollton Dirt Divas 2032|C-Class
@@ -498,6 +497,7 @@ T|45974|10 Under Girls|Pines|C-Class
 T|45974|10 Under Girls|Purple Reign|B-Class
 T|45974|10 Under Girls|South GA Landsharks - 10U|B-Class
 T|45974|10 Under Girls|Sowega Lady Spartans|C-Class
+T|45974|10 Under Girls|Tribe Vibe 10u|C-Class
 T|45974|10 Under Girls|Wildfire Causey 10U|B-Class
 T|45982|10 Under Girls|Hocking Valley Thunder|C-Class
 T|45982|11 Under Girls|Kryptonite softball|C-Class
@@ -529,7 +529,9 @@ T|46015|12U Open|South Alabama Sirens 12U|160
 T|46015|14U Open|Florida Elite 2031|80
 T|46015|14U Open|South Alabama Lady Titans Cross|80
 T|46015|14U Open|Titans Glover/Hagler 14U|280
+T|46019|8U OPEN DIVISION|Lady Prospects-Roberts|C-Class
 T|46019|8U OPEN DIVISION|Tx Pressure|C-Class
+T|46019|8U OPEN DIVISION|Unity 2036-Cervantes|B-Class
 T|46019|8U C-CLASS DIVISION|8u Sox Select|League/Rec
 T|46019|8U C-CLASS DIVISION|Outlaws Select 2036|C-Class
 T|46019|8U C-CLASS DIVISION|West Georgia Diamonds 2K18|C-Class
@@ -538,6 +540,7 @@ T|46019|9U 2K17 DIVISION|Lady Outlaws Cruz|C-Class
 T|46019|9U 2K17 DIVISION|Sudden Impact 2k17-Schneider|A-Class
 T|46019|9U 2K17 DIVISION|TN Rampage|C-Class
 T|46019|10U OPEN DIVISION|KnockOuts 2034|A-Class
+T|46019|10U OPEN DIVISION|Rhyne Park Renegades 10U|B-Class
 T|46019|10U C-CLASS DIVISION|Hocking Valley Thunder|C-Class
 T|46019|10U C-CLASS DIVISION|Howard County Thunder 10U|C-Class
 T|46019|10U C-CLASS DIVISION|Katy Warriors 2K35|C-Class
@@ -548,6 +551,7 @@ T|46019|11U 2K15 DIVISION|Lebanon Heat|League/Rec
 T|46019|11U 2K15 DIVISION|Militia 14|C-Class
 T|46019|12U OPEN DIVISION|Ohio Hawks 2k14- Gabbard|B-Class
 T|46019|12U OPEN DIVISION|Ohio Storm 2032 Streby|B-Class
+T|46019|12U OPEN DIVISION|Rhyne Park Renegades|B-Class
 T|46019|12U OPEN DIVISION|Sienna Surge|A-Class
 T|46019|12U OPEN DIVISION|Texas Crossfire Gold|B-Class
 T|46019|12U C-CLASS DIVISION|Forge Fastpitch 27:17|C-Class
@@ -555,6 +559,7 @@ T|46019|12U C-CLASS DIVISION|HTX Aces 12U LeBlanc|C-Class
 T|46019|12U C-CLASS DIVISION|Mattoon Pride 12U|C-Class
 T|46019|12U C-CLASS DIVISION|Prestige Town 12u|C-Class
 T|46020|13U DIVISION|Finesse - Biederstedt|C-Class
+T|46020|14U OPEN|West Columbia Select|C-Class
 T|46020|14U C-CLASS|AP-Underwood 2012|B-Class
 T|46020|14U C-CLASS|East Cobb Chaos|C-Class
 T|46020|14U C-CLASS|Katy Warriors|C-Class
@@ -567,6 +572,7 @@ T|46020|16U OPEN|Ohio Emeralds 15u|A-Class
 T|46020|16U OPEN|STX Bombers Rendon|A-Class
 T|46020|16U C-CLASS|Firecrackers Kay/Barnes|C-Class
 T|46020|18U OPEN|Midwest Aftershock - BT|A-Class
+T|46020|18U OPEN|Oklahoma Bombers 18u Gold|A-Class
 T|46020|18U C-CLASS|Texas Inferno 08|C-Class
 T|46027|8u|Bremen Braves|Accepted
 T|46027|8u|Carrollton Dirt Divas 8U|Accepted
@@ -624,15 +630,15 @@ T|46034|12 Under Girls|PanHandle Power|C-Class
 T|46038|13 Under Girls|Stars Fastpitch - GA - Czarnecke|B-Class
 T|46038|14 Under Girls|Vipers Athletics|C-Class
 T|46038|16 Under Girls|Georgia Blue Diamonds - Trotter|B-Class
-T|46040|8 Under Girls|Extreme Heat DC|C-Class
-T|46040|8 Under Girls|Lady Monarchs - 8U|C-Class
-T|46040|8 Under Girls|NHR Lady Prospects 8U|
-T|46040|8 Under Girls|TN River Surge|C-Class
-T|46040|10 Under Girls|731 Lady Scrappers|C-Class
-T|46040|10 Under Girls|Extreme Heat DC|C-Class
-T|46040|10 Under Girls|Lady Monarchs - 10U|C-Class
-T|46040|10 Under Girls|Legends 10u Lexington|C-Class
-T|46040|10 Under Girls|Swing Check Softball 10U - Roberts|B-Class
+T|46040|Under 8U Girls First Division|Extreme Heat DC|C-Class
+T|46040|Under 8U Girls First Division|Lady Monarchs - 8U|C-Class
+T|46040|Under 8U Girls First Division|NHR Lady Prospects 8U|
+T|46040|Under 8U Girls First Division|TN River Surge|C-Class
+T|46040|Under 10U Girls First Division|731 Lady Scrappers|C-Class
+T|46040|Under 10U Girls First Division|Extreme Heat DC|C-Class
+T|46040|Under 10U Girls First Division|Lady Monarchs - 10U|C-Class
+T|46040|Under 10U Girls First Division|Legends 10u Lexington|C-Class
+T|46040|Under 10U Girls First Division|Swing Check Softball 10U - Roberts|B-Class
 T|46084|8 Under Girls|Havoc Athletics|C-Class
 T|46084|8 Under Girls|Premier 8u Teal|C-Class
 T|46084|10 Under Girls|Beach Dune Divas|C-Class
