@@ -29,6 +29,7 @@ T|45769|14 Under Girls|Camden Valkyries 14U-McKibben|B-Class
 T|45770|8 Under Girls|Wildfire Caq 8U|B-Class
 T|45770|10 Under Girls|CAGE-DEATS|C-Class
 T|45770|10 Under Girls|Jacksonville Storm|B-Class
+T|45770|10 Under Girls|Purple Reign|B-Class
 T|45770|10 Under Girls|Sowega Lady Spartans|C-Class
 T|45770|12 Under Girls|AP Rucker 12u|B-Class
 T|45770|12 Under Girls|Southern Smoke-Simpson|C-Class
@@ -40,6 +41,11 @@ T|45770|14 Under Girls|Pines 14u phillips|C-Class
 T|45770|14 Under Girls|Powermill-Hall|C-Class
 T|45770|14 Under Girls|South Georgia FEAR 14u|B-Class
 T|45770|14 Under Girls|Southern Smoke 14U Davis|B-Class
+T|45770|18 Under Girls|4EVER5 15U|B-Class
+T|45770|18 Under Girls|4EVER5 18U|B-Class
+T|45770|18 Under Girls|Adiktiv Elite Gold|B-Class
+T|45770|18 Under Girls|Adiktiv Elite Hodges|B-Class
+T|45770|18 Under Girls|Adiktiv Elite Hutchinson|B-Class
 T|45770|18 Under Girls|Big Bend Lightning Helms|C-Class
 T|45770|18 Under Girls|Zombie Squad|C-Class
 T|45771|10 Under Girls|Big Bend Lightning Parsons|B-Class
@@ -78,7 +84,6 @@ T|45783|12u|Dirty South Outlaws Hopper|Accepted
 T|45783|12u|EC Bullets 2032 Triplett|Accepted
 T|45783|12u|Firecrackers-2033 Buckner/Self|Accepted
 T|45783|12u|GA Stars Fastpitch 12U|Accepted
-T|45783|12u|GAP 2033 Ross|Accepted
 T|45783|12u|Georgia Legends|Accepted
 T|45783|12u|Monroe Mustangs|Accepted
 T|45783|12u|Raptors 12U|Accepted
@@ -121,6 +126,7 @@ T|45784|10 Under Girls|Georgia Misfits 10U|C-Class
 T|45784|10 Under Girls|Georgia Platinum Cherokee|B-Class
 T|45784|10 Under Girls|Southern Heat 10U|C-Class
 T|45784|10 Under Girls|Southern Storm 2035|C-Class
+T|45784|11 Under Girls|GAP 2033 Ross|B-Class
 T|45784|12 Under Girls|Apex United Cobras - 12U Goodyear|B-Class
 T|45784|12 Under Girls|Archer HotShotz|C-Class
 T|45784|12 Under Girls|Atlanta Flames 12U|C-Class
@@ -182,8 +188,6 @@ T|45789|12 Under Girls|Lady Mafia 12U|C-Class
 T|45789|12 Under Girls|West Georgia Nightmare 12 Gold|C-Class
 T|45789|14 Under Girls|Cosmos Softball|B-Class
 T|45789|14 Under Girls|East Cobb Bullets - Taylor|C-Class
-T|45789|14 Under Girls|Georgia Misfits- Sipsy|C-Class
-T|45789|14 Under Girls|Georgia Misfits-Holland|C-Class
 T|45789|14 Under Girls|Lady Mafia 14U|C-Class
 T|45789|14 Under Girls|Spartans Select 2012|
 T|45789|14 Under Girls|West Georgia Nightmare 14u Gold|B-Class
@@ -201,6 +205,7 @@ T|45791|12 Under Girls|CRUSH Livermore 12U|C-Class
 T|45791|12 Under Girls|Ga Fire 2032 - Sappenfield|B-Class
 T|45791|12 Under Girls|Wow Factor Softball - Evans|C-Class
 T|45791|13 Under Girls|Premier Fastpitch 31/32|C-Class
+T|45791|13 Under Girls|West Cobb Crush 2013|B-Class
 T|45791|14 Under Girls|Blaze Fastpitch|C-Class
 T|45791|14 Under Girls|Fury Platinum 2031|B-Class
 T|45791|14 Under Girls|Georgia Misfits- Sipsy|C-Class
@@ -298,7 +303,7 @@ T|45822|12 Under Girls|Cherokee Crush|Applied
 T|45822|12 Under Girls|Diamond Queens|Applied
 T|45822|12 Under Girls|Georgia Force 2033 Smith/Heggood|Applied
 T|45822|12 Under Girls|Monroe Chaos 12u|Accepted
-T|45822|12 Under Girls|West Georgia Nightmare 12U|Applied
+T|45822|12 Under Girls|West Georgia Nightmare 12U|Accepted
 T|45822|14 Under Girls|WG Freedom Fastpitch|Wait List
 T|45823|9 Under Girls|Carrollton Dirt Divas|C-Class
 T|45823|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
@@ -442,7 +447,6 @@ V|45899|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|7U
 V|45899|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|8U
 V|45899|Kirk Auto Group Sportsplex|675 Papermill Rd, Grenada, MS 38901|9U
 T|45900|10U|Collierville Dragons 10u- Giles|C-Class
-T|45900|10U|Fitness Factory Impact|C-Class
 T|45900|10U|Grenada Havoc|B-Class
 T|45900|10U|Lady Prospects Cole|C-Class
 T|45900|10U|MS Angels|C-Class
@@ -666,9 +670,11 @@ T|46084|14 Under Girls|Panhandle Premier 14U|B-Class
 T|46084|14 Under Girls|Power Softball Gulf South 14u|C-Class
 T|46084|14 Under Girls|Unity Mallon 2031|B-Class
 T|46084|14 Under Girls|Vibe 850|C-Class
-T|46084|16 Under Girls|Adiktiv Elite Hodges|B-Class
-T|46084|16 Under Girls|Panhandle Blaze|B-Class
+T|46084|18 Under Girls|4EVER5 15U|B-Class
+T|46084|18 Under Girls|4EVER5 18U|B-Class
 T|46084|18 Under Girls|Adiktiv Elite Gold|B-Class
+T|46084|18 Under Girls|Adiktiv Elite Hodges|B-Class
 T|46084|18 Under Girls|Adiktiv Elite Hutchinson|B-Class
 T|46084|18 Under Girls|Big Bend Lightning Helms|C-Class
+T|46084|18 Under Girls|Panhandle Blaze|B-Class
 T|46105|8 Under Girls|Lady Prospects-Roberts|C-Class
