@@ -11,8 +11,6 @@ T|45768|12 Under Girls|SOWEGA TRIBE 12U|C-Class
 T|45768|12 Under Girls|Talahassee Lady Bombers 12U|B-Class
 T|45769|8 Under Girls|Battery - Coffee|B-Class
 T|45769|8 Under Girls|Ducks 8u|B-Class
-T|45769|8 Under Girls|Sassy Sluggers|B-Class
-T|45769|8 Under Girls|Walker-Camden Valkyries|B-Class
 T|45769|8 Under Girls|X-Reps|C-Class
 T|45769|10 Under Girls|Big Bend Lightning Parsons|B-Class
 T|45769|10 Under Girls|CAGE-DEATS|C-Class
@@ -42,6 +40,8 @@ T|45770|14 Under Girls|Pines 14u phillips|C-Class
 T|45770|14 Under Girls|Powermill-Hall|C-Class
 T|45770|14 Under Girls|South Georgia FEAR 14u|B-Class
 T|45770|14 Under Girls|Southern Smoke 14U Davis|B-Class
+T|45770|18 Under Girls|Big Bend Lightning Helms|C-Class
+T|45770|18 Under Girls|Zombie Squad|C-Class
 T|45771|10 Under Girls|Big Bend Lightning Parsons|B-Class
 T|45771|10 Under Girls|Dothan Warriors Whitten|C-Class
 T|45771|10 Under Girls|Florida Rise|C-Class
@@ -107,7 +107,7 @@ T|45783|HS|Apex United Cobras - 16U Sanders|Accepted
 T|45783|HS|Atlanta Premier- Bowers|Accepted
 T|45783|HS|EC Edge - Townsend '10|Accepted
 T|45783|HS|Fireproof 16/18U-Stewart|Accepted
-T|45783|HS|Fury Plat|Accepted
+T|45783|HS|Fury Platinum 2031|Accepted
 T|45783|HS|Ga Premier-Buffington|Accepted
 T|45783|HS|GA Threat Waugh|Accepted
 T|45783|HS|Georgia Crush - Rose|Accepted
@@ -117,10 +117,10 @@ T|45784|10 Under Girls|Buford Fastpitch 2034|C-Class
 T|45784|10 Under Girls|Foul Play|C-Class
 T|45784|10 Under Girls|Georgia Impact Dupriest 2034|B-Class
 T|45784|10 Under Girls|Georgia Impact Munday 34/35|C-Class
+T|45784|10 Under Girls|Georgia Misfits 10U|C-Class
 T|45784|10 Under Girls|Georgia Platinum Cherokee|B-Class
 T|45784|10 Under Girls|Southern Heat 10U|C-Class
 T|45784|10 Under Girls|Southern Storm 2035|C-Class
-T|45784|10 Under Girls|TB Blue Sox Heald 10U|A-Class
 T|45784|12 Under Girls|Apex United Cobras - 12U Goodyear|B-Class
 T|45784|12 Under Girls|Archer HotShotz|C-Class
 T|45784|12 Under Girls|Atlanta Flames 12U|C-Class
@@ -175,6 +175,7 @@ T|45784|16 Under Girls|Sharon Springs Spartans|B-Class
 T|45784|16 Under Girls|WC Crush 16U|C-Class
 T|45784|16 Under Girls|West End Warriors- Burg|B-Class
 T|45784|18 Under Girls|Georgia United Elite|B-Class
+T|45789|10 Under Girls|Georgia Misfits 10U|C-Class
 T|45789|10 Under Girls|HC Elite|C-Class
 T|45789|12 Under Girls|Carrollton Dirt Divas 2032|C-Class
 T|45789|12 Under Girls|Lady Mafia 12U|C-Class
@@ -276,28 +277,29 @@ T|45821|12u|Monroe Chaos 12u|Accepted
 T|45821|12u|Pc Sox|Accepted
 T|45821|12u|SBL Pirates 12u Academy|Accepted
 T|45821|12u|West Ga Lady Bombers|Accepted
-T|45822|8 Under Girls|Blue Crush 2036|League/Rec
-T|45822|8 Under Girls|Ellenwood Elite 8U|C-Class
-T|45822|8 Under Girls|Lady Bombers|C-Class
-T|45822|8 Under Girls|Naturals 8u|C-Class
-T|45822|8 Under Girls|West Georgia Bomb Pops|C-Class
-T|45822|8 Under Girls|West Georgia Diamonds 2K18|C-Class
-T|45822|8 Under Girls|Wildcats - 8U|League/Rec
-T|45822|9 Under Girls|Carrollton Dirt Divas|C-Class
-T|45822|10 Under Girls|Angels|All-Star
-T|45822|10 Under Girls|Bama Belles|C-Class
-T|45822|10 Under Girls|Bremen Braves|C-Class
-T|45822|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
-T|45822|10 Under Girls|Georgia Force 2017 - Archibald/Dennis|C-Class
-T|45822|10 Under Girls|Rogue Nation Rebels 10U|C-Class
-T|45822|11 Under Girls|Carrollton Dirt Divas 2033|C-Class
-T|45822|12 Under Girls|ATL Patriots 12U Cato|C-Class
-T|45822|12 Under Girls|Cherokee Crush|C-Class
-T|45822|12 Under Girls|Diamond Queens|C-Class
-T|45822|12 Under Girls|Georgia Force 2033 Smith/Heggood|B-Class
-T|45822|12 Under Girls|Monroe Chaos 12u|C-Class
-T|45822|12 Under Girls|West Georgia Nightmare 12U|C-Class
-T|45822|14 Under Girls|WG Freedom Fastpitch|C-Class
+T|45822|8 Under Girls|Blue Crush 2036|Applied
+T|45822|8 Under Girls|Ellenwood Elite 8U|Pay Later
+T|45822|8 Under Girls|Lady Bombers|Applied
+T|45822|8 Under Girls|Naturals 8u|Applied
+T|45822|8 Under Girls|West Georgia Bomb Pops|Applied
+T|45822|8 Under Girls|West Georgia Diamonds 2K18|Applied
+T|45822|8 Under Girls|Wildcats - 8U|Applied
+T|45822|10 Under Girls|Angels|Accepted
+T|45822|10 Under Girls|Bama Belles|Applied
+T|45822|10 Under Girls|Bremen Braves|Accepted
+T|45822|10 Under Girls|Carrollton Dirt Divas|Applied
+T|45822|10 Under Girls|Diamond Queens-10U Nolan|Applied
+T|45822|10 Under Girls|Georgia Force 2017 - Archibald/Dennis|Applied
+T|45822|10 Under Girls|Rogue Nation Rebels 10U|Accepted
+T|45822|12 Under Girls|9:13 Athletics - Rice|Applied
+T|45822|12 Under Girls|ATL Patriots 12U Cato|Applied
+T|45822|12 Under Girls|Carrollton Dirt Divas 2033|Applied
+T|45822|12 Under Girls|Cherokee Crush|Applied
+T|45822|12 Under Girls|Diamond Queens|Applied
+T|45822|12 Under Girls|Georgia Force 2033 Smith/Heggood|Applied
+T|45822|12 Under Girls|Monroe Chaos 12u|Accepted
+T|45822|12 Under Girls|West Georgia Nightmare 12U|Applied
+T|45822|14 Under Girls|WG Freedom Fastpitch|Wait List
 T|45823|9 Under Girls|Carrollton Dirt Divas|C-Class
 T|45823|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
 T|45823|10 Under Girls|Lady Mafia 10U|C-Class
@@ -503,6 +505,7 @@ T|45974|10 Under Girls|Sowega Lady Spartans|C-Class
 T|45974|10 Under Girls|Tribe Vibe 10u|C-Class
 T|45974|10 Under Girls|Wildfire Causey 10U|B-Class
 T|45982|10 Under Girls|Hocking Valley Thunder|C-Class
+T|45982|10 Under Girls|Midwest Crush 10U|C-Class
 T|45982|11 Under Girls|Kryptonite softball|C-Class
 T|45982|12 Under Girls|Knights Elite|C-Class
 T|45982|12 Under Girls|Lady Diamondbacks 12U Nutt|C-Class
