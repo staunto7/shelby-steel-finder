@@ -38,6 +38,7 @@ def clean_bracket(html, style):
     html = re.sub(r"<script.*?</script>", "", html or "", flags=re.S | re.I)
     html = re.sub(r"\son\w+\s*=\s*(\"[^\"]*\"|'[^']*'|[^\s>]+)", "", html, flags=re.I)
     html = re.sub(r"(href|src)\s*=\s*([\"'])\s*javascript:[^\"']*\2", "", html, flags=re.I)
+    html = re.sub(r"<br>\s*Pub\d+-\d+-D[\d.]+T[\d:]+\s*(?=<br>)", "", html)  # USSSA's publish stamp changes on every fetch
     style = re.sub(r"@import[^;]+;|expression\([^)]*\)|url\([^)]*\)", "", style or "", flags=re.I)
     return html, style
 
