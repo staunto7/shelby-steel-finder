@@ -131,6 +131,7 @@ T|45784|12 Under Girls|Easton Futures|B-Class
 T|45784|12 Under Girls|Firecrackers-2033 Buckner/Self|B-Class
 T|45784|12 Under Girls|Ga Classics - 12U|C-Class
 T|45784|12 Under Girls|Georgia Force 2032|A-Class
+T|45784|12 Under Girls|Georgia Legends|C-Class
 T|45784|12 Under Girls|Georgia Wild Fastpitch|C-Class
 T|45784|12 Under Girls|Lady Dukes Dawson 12U|C-Class
 T|45784|12 Under Girls|Milton Force|C-Class
@@ -350,7 +351,6 @@ T|45831|13 Under Girls|Hustle Factory - Blue|Wait List
 T|45831|14 Under Girls|14u Flush Powered by Royal Flush|Accepted
 T|45831|14 Under Girls|Apache Softball|Accepted
 T|45831|14 Under Girls|ATL Patriots - Williams|Accepted
-T|45831|14 Under Girls|Atlanta Apex|Wait List
 T|45831|14 Under Girls|Atlanta Crush 14u Graden|Accepted
 T|45831|14 Under Girls|Capstone Athletics - Bennett|Accepted
 T|45831|14 Under Girls|East Cobb Bullets - Taylor|Wait List
@@ -650,7 +650,6 @@ T|46084|10 Under Girls|North Florida Chaos 10U|C-Class
 T|46084|10 Under Girls|Power Softball Gulf South 10u Jenkins|C-Class
 T|46084|10 Under Girls|South Walton Hawks (Brown)|C-Class
 T|46084|12 Under Girls|Adiktiv Elite Murphy|C-Class
-T|46084|12 Under Girls|AP Rucker 12u|B-Class
 T|46084|12 Under Girls|Dothan Warriors 12u - Hall|C-Class
 T|46084|14 Under Girls|Adiktiv Elite Hale|B-Class
 T|46084|14 Under Girls|Battery - Ibarra|B-Class
