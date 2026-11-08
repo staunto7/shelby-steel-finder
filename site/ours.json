@@ -10,6 +10,58 @@
  "registrations": [
   {
    "sanction": "USSSA",
+   "name": "Fall World Series",
+   "start": "2026-11-07",
+   "end": "2026-11-08",
+   "state": "AL",
+   "city": "Birmingham Area",
+   "ages": "8U - 14U",
+   "ageMin": 8,
+   "ageMax": 14,
+   "fee": "$290 - $425",
+   "teams": 82,
+   "url": "https://alfastpitch.usssa.com/event/fall-world-series-5/",
+   "id": "34ca8f7893",
+   "eventId": "34ca8f7893",
+   "team": "8U",
+   "teamName": "Shelby Steel Premier 2036 - Reimers",
+   "division": "8 & Under Open",
+   "source": "auto",
+   "venues": [
+    {
+     "name": "Calera Sports Complex",
+     "address": "1 Calera Eagle Drive, Calera, AL, 35040",
+     "ages": []
+    },
+    {
+     "name": "Eagle Sports Complex",
+     "address": "3176 County Rd 20, Calera, AL, 35040",
+     "ages": []
+    },
+    {
+     "name": "Black Creek Ball Park",
+     "address": "950 Yarbrough Road, Birmingham, AL, 35217",
+     "ages": []
+    },
+    {
+     "name": "Fultondale Sports Complex",
+     "address": "950 Central Avenue, Fultondale, AL, 35068",
+     "ages": []
+    },
+    {
+     "name": "Hoover Central Park",
+     "address": "3468 Chapel Lane, Hoover, AL, 35226",
+     "ages": []
+    },
+    {
+     "name": "Oliver Park",
+     "address": "9758 Hwy 25, Calera, AL, 35040",
+     "ages": []
+    }
+   ]
+  },
+  {
+   "sanction": "USSSA",
    "name": "SUPERHEROES (TURF)",
    "start": "2026-11-14",
    "end": "2026-11-14",
@@ -19,13 +71,13 @@
    "ageMin": 8,
    "ageMax": 18,
    "fee": "$299 - $473",
-   "teams": 66,
+   "teams": 68,
    "url": "https://gafastpitch.usssa.com/event/superheroes/",
    "id": "e262c6a454",
    "eventId": "e262c6a454",
    "team": "10U",
    "teamName": "Shelby Steel 2034 - Lackey",
-   "division": "10 & Under B",
+   "division": "10 & Under Open",
    "source": "auto",
    "venues": [
     {
