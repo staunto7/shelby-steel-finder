@@ -82,27 +82,6 @@
      "ages": []
     }
    ]
-  },
-  {
-   "sanction": "USFA",
-   "name": "Test",
-   "start": "2026-12-12",
-   "end": "2026-12-12",
-   "state": "MS",
-   "city": "Saltillo",
-   "ages": "08U, 10U, 12U",
-   "ageMin": 8,
-   "ageMax": 12,
-   "fee": "$225",
-   "teams": null,
-   "url": "https://softball.sincsports.com/TTIntro.aspx?tid=USFA46149",
-   "id": "273cfda709",
-   "eventId": "273cfda709",
-   "team": "8U",
-   "teamName": "Shelby Steel Premier 2036 - Reimers",
-   "division": "8 Under Girls",
-   "source": "auto",
-   "venues": []
   }
  ]
 }
