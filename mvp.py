@@ -104,8 +104,17 @@ def game_time(day, clock, year):
 
 
 def pool_games(url, year):
-    """Games from an iTournamentBrackets pool schedule: Game, score, Team One, score, Team Two, Location, Date, Time."""
+    """Games from an iTournamentBrackets pool schedule (Game, score, Team One, score, Team Two, Location, Date, Time)
+    and its Standings table (Team, W, L, T, PCT, A, AA, F, AF, DIFF), best first as the site lists them."""
     page = get(url)
+    standings = []
+    j = page.find('id="lblPoolPlayStandings"')
+    for row in re.findall(r'<tr class="lmTableCell[^"]*"\s*>(.*?)</tr>', page[j:page.find("</table>", j)] if j >= 0 else "", re.S):
+        c = [text(x) for x in re.findall(r"<td[^>]*>(.*?)</td>", row, re.S)]
+        if len(c) >= 10 and c[0]:
+            n = lambda v: int(v) if re.fullmatch(r"-?\d+", v) else None
+            standings.append({"team": c[0], "w": n(c[1]) or 0, "l": n(c[2]) or 0, "t": n(c[3]) or 0,
+                              "ra": n(c[5]), "rs": n(c[7]), "rd": n(c[9])})
     i = page.find('id="lblPoolPlay"')
     games = []
     for row in re.findall(r'<tr class="lmTableCell[^"]*"\s*>(.*?)</tr>', page[i:] if i >= 0 else "", re.S):
@@ -113,7 +122,7 @@ def pool_games(url, year):
         if len(c) >= 8 and c[2] and c[4]:
             games.append({"time": game_time(c[6], c[7], year), "field": c[5], "game": c[0], "a": c[2], "b": c[4],
                           "as": c[1] or None, "bs": c[3] or None, "aClass": "", "bClass": ""})
-    return games
+    return games, standings
 
 
 def bracket(url):

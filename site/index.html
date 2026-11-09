@@ -221,12 +221,39 @@ details.div .tbl-wrap{padding:0 8px 8px}
 .vlinks a{font-weight:600;font-size:14px;padding:6px 0}
 .bracket-frame{width:100%;height:70vh;max-height:620px;border:1px solid var(--line);border-radius:6px;background:#fff}
 
-/* bottom tab bar (phones and tablets) */
-.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(3,1fr);
+/* Screens: each bottom tab shows only its own sections. */
+body:not([data-view="ours"]) #install, body:not([data-view="ours"]) #ours,
+body:not([data-view="find"]) .rail, body:not([data-view="find"]) .sources,
+body[data-view="ours"] #find, body[data-view="games"] #find, body[data-view="ours"] #results, body[data-view="games"] #results,
+body:not([data-view="games"]) #gamesView{display:none!important}
+body[data-view="saved"] #tally{display:none}
+
+/* Pool play tab: one block per tournament, standings first. */
+.gview{margin-top:16px}
+.gview>h2{margin:0 0 4px;font-family:var(--f-display);font-weight:400;font-size:19px;letter-spacing:.04em;text-transform:uppercase}
+.gview>.sub{color:var(--muted);font-size:14.5px;margin-bottom:12px}
+.gev{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:10px;padding:14px;margin-bottom:14px}
+.gev.past{border-top-color:var(--line)}
+.gev h3{margin:0;font-size:17px;line-height:1.3;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gev .meta{color:var(--muted);font-size:14px;margin:4px 0 8px}
+.gev .games{display:grid;gap:8px}
+.stand{width:100%;border-collapse:collapse;font-size:14.5px;font-variant-numeric:tabular-nums}
+.stand th{font:600 11.5px var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:right;padding:6px 6px 4px}
+.stand th:nth-child(2),.stand td:nth-child(2){text-align:left}
+.stand td{padding:8px 6px;border-top:1px solid var(--line);text-align:right;white-space:nowrap}
+.stand td:nth-child(2){white-space:normal}
+.stand td.seed{font-family:var(--f-display);color:var(--muted);width:2em;text-align:center}
+.stand tr.us td{background:var(--steel-soft);font-weight:700}
+.stand-note{font-size:13px;color:var(--muted);padding:6px 6px 8px}
+.sub-h{font:700 12px var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:10px 10px 2px}
+
+/* bottom tab bar (phones and tablets); a tab row under the header on desktop */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);
   background:var(--band);border-top:1px solid #2A3036;padding-bottom:env(safe-area-inset-bottom,0px)}
-.tabbar button{height:var(--tabbar);background:none;border:0;color:var(--band-muted);font:600 12px var(--f-label);letter-spacing:.1em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
+.tabbar button{height:var(--tabbar);background:none;border:0;color:var(--band-muted);font:600 11.5px var(--f-label);letter-spacing:.05em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
 .tabbar button svg{width:22px;height:22px}
-.tabbar button[aria-current="true"]{color:var(--band-ink)}
+.tabbar button[aria-current="true"]{color:var(--band-ink);box-shadow:inset 0 3px 0 var(--band-ink)}
+.tabbar .badge{font-size:11px;opacity:.8}
 
 /* tablet */
 @media (min-width:640px){
@@ -245,8 +272,13 @@ details.div .tbl-wrap{padding:0 8px 8px}
 /* desktop: sticky filter rail on the left, no tab bar */
 @media (min-width:1000px){
   body{padding-bottom:0}
-  .tabbar,.filter-bar,.done-btn{display:none!important}
+  .filter-bar,.done-btn{display:none!important}
+  .tabbar{position:sticky;top:var(--hdr,70px);bottom:auto;z-index:14;display:flex;justify-content:center;gap:8px;padding:0;border-top:0;border-bottom:1px solid #2A3036}
+  .tabbar button{height:48px;flex-direction:row;gap:8px;padding:0 18px;font-size:14px}
+  .tabbar button svg{width:18px;height:18px}
+  .tabbar button[aria-current="true"]{box-shadow:inset 0 -3px 0 var(--band-ink)}
   .layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;align-items:start}
+  body:not([data-view="find"]) .layout{grid-template-columns:minmax(0,1fr);max-width:900px}
   .rail{position:sticky;top:calc(var(--hdr,70px) + 16px);max-height:calc(100vh - var(--hdr,70px) - 32px);overflow:auto;margin-top:16px}
   .rail .filters{display:flex!important;margin-top:0}
   .ev{grid-template-columns:56px minmax(0,1fr) auto;padding:16px}
@@ -266,6 +298,12 @@ details.div .tbl-wrap{padding:0 8px 8px}
   </div>
 </header>
 
+<nav class="tabbar" aria-label="Sections">
+  <button type="button" data-tab="ours" aria-current="true"><svg viewBox="0 0 1931 1923" aria-hidden="true"><path fill="currentColor" d="M83 83H892V511L664 423V318H330V443L892 659V1008L83 1840V751L322 846V1250L662 910V810L83 608Z"/><path fill="currentColor" d="M1848 83H1039V511L1267 423V318H1601V443L1039 659V1008L1848 1840V751L1609 846V1250L1269 910V810L1848 608Z"/></svg>Our schedule</button>
+  <button type="button" data-tab="games"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 5h7v14H3M10 12h5M15 7h6M15 7v10h6"/></svg>Pool play</button>
+  <button type="button" data-tab="find"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>Find</button>
+  <button type="button" data-tab="saved"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg><span>Saved <span class="badge" id="slCount"></span></span></button>
+</nav>
 <div class="watermark" aria-hidden="true"><svg viewBox="0 0 1931 1923"><path fill="currentColor" d="M83 83H892V511L664 423V318H330V443L892 659V1008L83 1840V751L322 846V1250L662 910V810L83 608Z"/><path fill="currentColor" d="M1848 83H1039V511L1267 423V318H1601V443L1039 659V1008L1848 1840V751L1609 846V1250L1269 910V810L1848 608Z"/></svg></div>
 
 <main class="wrap layout">
@@ -328,9 +366,14 @@ details.div .tbl-wrap{padding:0 8px 8px}
       </div>
       <div class="tally" id="tally"></div>
     </section>
-    <div class="seg" style="margin-top:8px"><button type="button" class="chip" id="shortlistBtn" aria-pressed="false">★ My shortlist <span id="slCount"></span></button></div>
 
     <div id="results"></div>
+
+    <section class="gview" id="gamesView" aria-labelledby="gamesTitle">
+      <h2 id="gamesTitle">Pool play &amp; brackets</h2>
+      <div class="sub" id="gamesSub">Standings, games and brackets for Shelby Steel tournaments.</div>
+      <div id="gamesList"><div class="upd">Loading pool play…</div></div>
+    </section>
 
     <section class="sources">
       <h3>Where this comes from</h3>
@@ -340,11 +383,6 @@ details.div .tbl-wrap{padding:0 8px 8px}
   </div>
 </main>
 
-<nav class="tabbar" aria-label="Sections">
-  <button type="button" data-tab="ours" aria-current="true"><svg viewBox="0 0 1931 1923" aria-hidden="true"><path fill="currentColor" d="M83 83H892V511L664 423V318H330V443L892 659V1008L83 1840V751L322 846V1250L662 910V810L83 608Z"/><path fill="currentColor" d="M1848 83H1039V511L1267 423V318H1601V443L1039 659V1008L1848 1840V751L1609 846V1250L1269 910V810L1848 608Z"/></svg>Our schedule</button>
-  <button type="button" data-tab="find"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>Find</button>
-  <button type="button" data-tab="shortlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>Shortlist</button>
-</nav>
 
 <script>
 const SANCTIONS = {
@@ -370,6 +408,7 @@ const store = {
   get(k,d){try{const v=localStorage.getItem("ssf:"+k);return v?JSON.parse(v):d}catch(e){return d}},
   set(k,v){try{localStorage.setItem("ssf:"+k,JSON.stringify(v))}catch(e){}}
 };
+document.body.dataset.view = store.get("view", "ours");  // pick the screen before first paint
 const today = new Date(); today.setHours(0,0,0,0);
 const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 const parse = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
@@ -456,18 +495,20 @@ filterToggle.addEventListener("click", () => setFilters(filterToggle.getAttribut
 document.getElementById("filterDone").addEventListener("click", () => { setFilters(false); document.getElementById("find").scrollIntoView({behavior:"smooth"}); });
 desktop.addEventListener("change", () => setFilters(false)); setFilters(false);
 
-/* Bottom tab bar on phones. */
+/* Tabs: Our schedule, Pool play, Find and Saved are separate screens; the last one opened comes back next time. */
+const VIEWS = ["ours", "games", "find", "saved"];
+function showView(view, opts = {}){
+  if (!VIEWS.includes(view)) view = "ours";
+  document.body.dataset.view = view;
+  document.querySelectorAll(".tabbar button").forEach(x => x.setAttribute("aria-current", x.dataset.tab === view));
+  store.set("view", view);
+  const saved = view === "saved";
+  if (state.shortlist !== saved){ state.shortlist = saved; render(); }
+  if (view === "games") renderGames(opts.focus);
+  if (!opts.focus) scrollTo({top: 0});
+}
 document.querySelector(".tabbar").addEventListener("click", e => {
-  const b = e.target.closest("button[data-tab]"); if (!b) return;
-  const tab = b.dataset.tab;
-  if (tab === "shortlist" || state.shortlist){
-    state.shortlist = tab === "shortlist";
-    document.getElementById("shortlistBtn").setAttribute("aria-pressed", state.shortlist); render();
-  }
-  if (tab === "ours") document.getElementById("ours").scrollIntoView({behavior:"smooth"});
-  else if (tab === "find"){ document.getElementById("rail").scrollIntoView({behavior:"smooth"}); setFilters(true); }
-  else document.getElementById("find").scrollIntoView({behavior:"smooth"});
-  document.querySelectorAll(".tabbar button").forEach(x => x.setAttribute("aria-current", x === b));
+  const b = e.target.closest("button[data-tab]"); if (b) showView(b.dataset.tab);
 });
 
 function sync(){
@@ -486,11 +527,9 @@ document.getElementById("weekend").addEventListener("change", e => {
 document.getElementById("age").addEventListener("change", e => { state.age = e.target.value; sync(); });
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value.trim().toLowerCase(); render(); });
 document.getElementById("filters").addEventListener("submit", e => e.preventDefault());
-document.getElementById("shortlistBtn").addEventListener("click", e => {
-  state.shortlist = !state.shortlist; e.currentTarget.setAttribute("aria-pressed", state.shortlist); render();
-});
 
 function filtered(){
+  if (state.shortlist) return EVENTS.filter(e => stars.has(keyOf(e)) && (e.end || e.start) >= iso(today));  // Saved ignores the filters
   return EVENTS.filter(e => {
     const end = e.end || e.start;
     if (end < iso(today)) return false;
@@ -500,7 +539,6 @@ function filtered(){
     if (!state.sanctions.has(e.sanction)) return false;
     if (state.age) { const a = +state.age; if (e.ageMin==null || a < e.ageMin || a > e.ageMax) return false; }
     if (state.q && !(e.name+" "+e.city).toLowerCase().includes(state.q)) return false;
-    if (state.shortlist && !stars.has(keyOf(e))) return false;
     return true;
   });
 }
@@ -523,14 +561,16 @@ function render(){
   document.getElementById("slCount").textContent = stars.size ? `(${stars.size})` : "";
   const stTxt = state.states.size===STATES.length ? STATES.map(s=>s[0]).join(", ").replace(/, (\w+)$/, " & $1") : [...state.states].join(", ") || "no states";
   const range = state.to ? `${fmtRange(state.from||iso(today), state.to)}` : `from ${fmtRange(state.from||iso(today))}`;
-  document.getElementById("headline").textContent = `${list.length} tournament${list.length===1?"":"s"} ${state.shortlist?"on your shortlist":""}`.trim();
-  document.getElementById("subline").textContent = `${stTxt} · ${range}${state.age?` · ${state.age==18?"18U/HS":state.age+"U"}`:""}`;
+  document.getElementById("headline").textContent = state.shortlist ? `${list.length} saved tournament${list.length===1?"":"s"}`
+    : `${list.length} tournament${list.length===1?"":"s"}`;
+  document.getElementById("subline").textContent = state.shortlist ? "Tap ☆ on any tournament in Find to save it here."
+    : `${stTxt} · ${range}${state.age?` · ${state.age==18?"18U/HS":state.age+"U"}`:""}`;
   const counts = {}; list.forEach(e => counts[e.sanction]=(counts[e.sanction]||0)+1);
   document.getElementById("tally").innerHTML = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`<span>${esc(k)} ${n}</span>`).join("");
 
   if (!EVENTS.length) return;
   if (!list.length){
-    res.innerHTML = `<div class="empty"><strong>No tournaments match these filters</strong>${state.shortlist?"Star a tournament to add it to your shortlist.":"Try more states, a wider date range, or all ages. New events are added four times a day as sanctions post them."}</div>`;
+    res.innerHTML = `<div class="empty"><strong>${state.shortlist?"Nothing saved yet":"No tournaments match these filters"}</strong>${state.shortlist?"Tap the ☆ on a tournament in Find to save it here, so you can compare the ones you're considering.":"Try more states, a wider date range, or all ages. New events are added four times a day as sanctions post them."}</div>`;
     return;
   }
   const groups = new Map();
@@ -576,10 +616,10 @@ function card(e, opts = {}){
       <div class="meta"><span><b>${esc(e.city)}, ${esc(e.state)}</b></span>${where}${who}${e.ages&&!opts.reg?`<span>${esc(e.ages)}</span>`:""}${e.fee&&!opts.reg?`<span>${esc(e.fee)}</span>`:""}${multi?`<span>${fmtRange(e.start,e.end)}</span>`:""}</div>
       ${flags}${e.note?`<div class="note">${esc(e.note)}</div>`:""}
     </div>
-    ${opts.reg?"<div></div>":`<button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from":"Add to"} shortlist" data-k="${esc(key)}">${starSvg}</button>`}
+    ${opts.reg?"<div></div>":`<button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from saved":"Save tournament"}" data-k="${esc(key)}">${starSvg}</button>`}
     <div class="actions">
       <button type="button" class="act" data-panel="coming" aria-expanded="false">Who's coming${nTeams?` <span class="cnt">(${nTeams})</span>`:""}</button>
-      <button type="button" class="act" data-panel="games" aria-expanded="false">Pool play &amp; brackets${gCount}</button>
+      <button type="button" class="act" data-panel="games" aria-expanded="false">Pool play &amp; brackets${gCount}${g?" →":""}</button>
       <button type="button" class="act" data-panel="venues" aria-expanded="false">Ballparks${vs.length?` <span class="cnt">(${vs.length})</span>`:""}</button>
       ${e.url?`<a class="act ghost" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a>`:""}
     </div>
@@ -680,6 +720,60 @@ function notPosted(ev){
     ? `<div class="upd">Pools and brackets aren't posted yet. They fill in here automatically as soon as the director posts them, usually a day or two before the first pitch.${where}</div>`
     : `<div class="upd">Pools and brackets aren't posted here yet. They fill in automatically for tournaments a ${esc(TEAM.name)} team is in. For this one, check the sanction's page.${where}</div>`;
 }
+const ordinal = n => n + (["th","st","nd","rd"][(n%100-20)%10] || ["th","st","nd","rd"][n%100] || "th");
+const num = v => v == null || v === "" ? "–" : (Number.isInteger(v) ? String(v) : Number(v).toFixed(1));
+/* Pool standings: the sanction's own when it has them, else worked out from posted scores, else the seeding going in. */
+function standingsHTML(p, g, isUs){
+  const rows = p.standings || [];
+  if (!rows.length) return "";
+  const src = /mvpsports|itournament/.test(g.source||"") ? "MVP" : "USSSA";
+  if (p.standingsKind === "seeding")
+    return `<div class="sub-h">Seeding</div><div class="stand-note">No pool scores posted yet. This is ${src}'s seeding order going in; it updates as scores come in.</div>
+      <div class="tbl-wrap"><table class="stand"><tbody>${rows.map((r,i) => `<tr class="${isUs(r.team)?"us":""}"><td class="seed">${r.place||i+1}</td><td>${esc(r.team)}</td></tr>`).join("")}</tbody></table></div>`;
+  const avg = src === "USSSA" && p.standingsKind === "official";  // USSSA gives runs allowed and run difference per game
+  const note = p.standingsKind === "calculated"
+    ? `Worked out from the posted scores. Directors break ties their own way (often head-to-head first), so the official seeds can differ.`
+    : `${src}'s standings${avg?". RA and RD are per game, with the run-rule cap":""}.`;
+  return `<div class="sub-h">Standings</div><div class="stand-note">${note}</div>
+    <div class="tbl-wrap"><table class="stand"><thead><tr><th></th><th>Team</th><th>W-L-T</th><th>RA</th><th>RD</th></tr></thead><tbody>${
+    rows.map((r,i) => `<tr class="${isUs(r.team)?"us":""}"><td class="seed">${r.place||i+1}</td><td>${esc(r.team)}</td><td>${r.w}-${r.l}-${r.t}</td><td>${num(r.ra)}</td><td>${r.rd>0?"+":""}${num(r.rd)}</td></tr>`).join("")
+    }</tbody></table></div>`;
+}
+const POOL_SANCTIONS = ["USSSA", "MVP"];  // sanctions games.py reads pools and brackets from
+/* Pool play tab: tournaments with posted pools (and last weekend's for a week), plus upcoming ones still waiting. */
+async function renderGames(focus){
+  const box = document.getElementById("gamesList");
+  if (!EVENTS.length) return;  // still loading
+  document.getElementById("gamesTitle").textContent = "Pool play & brackets";
+  document.getElementById("gamesSub").textContent = `Seeding, standings, games and brackets for ${TEAM.name} tournaments. Checked every 15 minutes on game days.`;
+  const t = iso(today), soon = iso(new Date(today.getTime() + 14*86400e3));
+  const items = Object.entries(GAMES).map(([id, v]) => ({id, ...v, ...(EVENTS.find(e => e.id === id) || {})})).filter(i => i.start);
+  for (const r of OURS.registrations || [])  // upcoming tournaments whose pools aren't in yet
+    if (r.start <= soon && (r.end||r.start) >= t && !items.some(i => i.id === r.eventId)) items.push({id: r.eventId, ...r, waiting: true});
+  const teamsOf = it => [...new Set((OURS.registrations||[]).filter(r => r.eventId === it.id).map(r => r.team).concat(GAMES[it.id]?.teams||[]))].filter(Boolean);
+  const live = items.filter(i => (i.end||i.start) >= t).sort((a,b) => a.start.localeCompare(b.start));
+  const past = items.filter(i => (i.end||i.start) < t).sort((a,b) => b.start.localeCompare(a.start));
+  if (!live.length && !past.length){
+    box.innerHTML = `<div class="empty"><strong>No pool play right now</strong>Pools, seeding and brackets for ${esc(TEAM.name)} tournaments show up here as soon as the director posts them, usually a day or two before the first pitch.</div>`;
+    return;
+  }
+  const head = (it, isPast) => {
+    const tag = it.sanction ? `<span class="tag" style="background:${SANCTIONS[it.sanction]?.color||"var(--muted)"}">${esc(it.sanction)}</span>` : "";
+    const teams = teamsOf(it).map(x => `<span class="team-pill">${esc(x)}</span>`).join("");
+    const title = it.url ? `<a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.name)}</a>` : esc(it.name);
+    return `<article class="gev${isPast?" past":""}" id="g-${esc(it.id)}"><h3>${teams}${tag}${title}</h3>
+      <div class="meta">${fmtRange(it.start, it.end)}${it.city?` · ${esc(it.city)}, ${esc(it.state)}`:""}${isPast?" · Final":""}</div><div class="games" data-g="${esc(it.id)}"><div class="upd">Loading…</div></div></article>`;
+  };
+  box.innerHTML = live.map(i => head(i, false)).join("") + (past.length ? `<div class="sub-h" style="padding:8px 0 10px">Last weekend</div>` + past.map(i => head(i, true)).join("") : "");
+  for (const it of [...live, ...past]){
+    const el = box.querySelector(`[data-g="${CSS.escape(it.id)}"]`);
+    if (!POOL_SANCTIONS.includes(it.sanction)){ el.innerHTML = `<div class="upd">${esc(it.sanction||"This sanction")} pool play isn't pulled in here yet. Check the event page for pools and brackets.${it.url?` <a href="${esc(it.url)}" target="_blank" rel="noopener">Event page ↗</a>`:""}</div>`; continue; }
+    if (it.waiting || !GAMES[it.id]){ el.innerHTML = notPosted(it); continue; }
+    fetch(`games/${it.id}.json?t=${Date.now()}`, {cache:"no-store"}).then(x => x.json())
+      .then(g => { el.innerHTML = gamesHTML(g, it); if (focus === it.id) document.getElementById("g-"+it.id).scrollIntoView({behavior:"smooth"}); })
+      .catch(() => { el.innerHTML = `<div class="upd">Games didn't load. Try again in a minute.</div>`; });
+  }
+}
 function gamesHTML(g, ev){
   const pats = (OURS.match||TEAM.match).map(p=>p.toLowerCase());
   const isUs = n => pats.some(p => (n||"").toLowerCase().includes(p));
@@ -687,9 +781,15 @@ function gamesHTML(g, ev){
   let h = `<div class="upd">Last change ${ago(g.updated)} · checked every 15 minutes on game days · <a href="${esc(g.source)}" target="_blank" rel="noopener">Sanction's game center ↗</a></div>`;
   for (const d of g.divisions){
     h += `<div class="dv">${esc(d.name)}</div>`;
+    if (d.results && d.results.length){
+      const us = d.results.some(r => isUs(r.team));
+      h += `<details class="div" open><summary><span class="div-name">Final results</span><span class="div-count">${us?esc(TEAM.name)+" "+ordinal(d.results.find(r=>isUs(r.team)).place):d.results.length+" teams"}</span></summary>
+        <div class="tbl-wrap"><table class="stand"><thead><tr><th>Place</th><th>Team</th><th>W-L</th></tr></thead><tbody>${
+        d.results.map(r => `<tr class="${isUs(r.team)?"us":""}"><td class="seed">${r.place}</td><td>${esc(r.team)}</td><td>${r.w}-${r.l}</td></tr>`).join("")}</tbody></table></div></details>`;
+    }
     for (const p of d.pools){
-      const us = p.games.some(x => isUs(x.a) || isUs(x.b));
-      h += `<details class="div"${us?" open":""}><summary><span class="div-name">${esc(p.name)}${p.final?" · Final":""}</span><span class="div-count">${p.games.length} games${us?" · "+esc(TEAM.name):""}</span></summary>${
+      const us = p.games.some(x => isUs(x.a) || isUs(x.b)) || (p.standings||[]).some(r => isUs(r.team));
+      h += `<details class="div"${us?" open":""}><summary><span class="div-name">${esc(p.name)}${p.final?" · Final":""}</span><span class="div-count">${p.games.length} games${us?" · "+esc(TEAM.name):""}</span></summary>${standingsHTML(p, g, isUs)}${p.games.length?`<div class="sub-h">Games</div>`:""}${
         p.games.map(x => `<div class="game"><div class="t">${esc(fmtGameTime(x.time))}<small>${fieldHTML(x.field, g.venues)}</small></div><div>
           <div class="tm${isUs(x.a)?" us":""}"><span>${esc(x.a)}</span></div><div class="tm${isUs(x.b)?" us":""}"><span>${esc(x.b)}</span></div></div>
           <div><div class="sc">${x.as ?? ""}</div><div class="sc">${x.bs ?? ""}</div></div></div>`).join("")
@@ -726,6 +826,8 @@ document.addEventListener("click", async e => {
     return;
   }
   if (!ev.id || !GAMES[ev.id]){ box.innerHTML = notPosted(ev); return; }
+  b.setAttribute("aria-expanded", "false"); box.hidden = true;
+  showView("games", {focus: ev.id}); return;
   box.innerHTML = `<div class="upd">Loading games…</div>`;
   try { const g = await fetch(`games/${ev.id}.json?t=${Date.now()}`, {cache:"no-store"}).then(x => x.json()); box.innerHTML = gamesHTML(g, ev); }
   catch(err){ box.innerHTML = `<div class="upd">Games didn't load. Try again in a minute.</div>`; }
@@ -783,6 +885,7 @@ async function load(){
     if (o) OURS = o; if (c) COMING = c; if (v) VENUES = v;
     GAMES = await fetch("games/index.json?t=" + Date.now(), {cache:"no-store"}).then(x => x.ok ? x.json() : {}).catch(() => ({}));
     renderMeta(); renderOurs(); render();
+    if (document.body.dataset.view === "games") renderGames();
   }catch(err){
     document.getElementById("fresh").innerHTML = `<span class="dot stale"></span>Couldn't load tournaments`;
     document.getElementById("headline").textContent = "Tournament list didn't load";
@@ -806,7 +909,7 @@ function applyTeam(t){
   document.getElementById("oursTitle").textContent = `${TEAM.name} schedule`;
 }
 fetch("team.json?t=" + Date.now(), {cache:"no-store"}).then(r => r.ok ? r.json() : {}).catch(() => ({}))
-  .then(t => { try { applyTeam(t); } catch(e){} buildFilters(); filterSummary(); render(); load(); });
+  .then(t => { try { applyTeam(t); } catch(e){} buildFilters(); filterSummary(); showView(store.get("view", "ours")); render(); load(); });
 setInterval(() => { if (document.visibilityState === "visible") load(); }, 15*60*1000);
 /* A home-screen app has no pull-to-refresh and can sit in the background for hours: reload when it comes back. */
 let hiddenAt = 0;

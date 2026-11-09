@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pool play and brackets for tournaments Shelby Steel is registered in.
+"""Pool play (with standings/seeding), brackets and final results for tournaments Shelby Steel is registered in.
 
 Reads site/ours.json and site/data.json; writes site/games/<event id>.json plus site/games/index.json.
 Runs from the game-day GitHub workflow every 15 minutes Thu–Sun; exits quickly when nothing is in its window.
@@ -43,6 +43,39 @@ def clean_bracket(html, style):
     return html, style
 
 
+def standings_from_games(games):
+    """W-L-T and runs for each team from posted pool scores, best first: win %, fewest runs allowed, run difference.
+    Directors break ties their own way (often head-to-head first), so this is marked as calculated, not official."""
+    t = {}
+    for g in games:
+        if g.get("as") in (None, "") or g.get("bs") in (None, ""):
+            continue
+        try:
+            a, b = int(g["as"]), int(g["bs"])
+        except (TypeError, ValueError):
+            continue
+        for team, f, ag in ((g["a"], a, b), (g["b"], b, a)):
+            r = t.setdefault(team, {"team": team, "w": 0, "l": 0, "t": 0, "rs": 0, "ra": 0})
+            r["w" if f > ag else "l" if f < ag else "t"] += 1
+            r["rs"] += f
+            r["ra"] += ag
+    rows = list(t.values())
+    for r in rows:
+        r["rd"] = r["rs"] - r["ra"]
+    pct = lambda r: (r["w"] + r["t"] / 2) / max(1, r["w"] + r["l"] + r["t"])
+    return sorted(rows, key=lambda r: (-pct(r), r["ra"], -r["rd"]))
+
+
+def usssa_standings(pool):
+    """USSSA's own pool standings once results are in; before that its order is the pre-game seeding."""
+    rows = [{"team": r.get("teamName") or "", "w": r.get("pool_wins") or 0, "l": r.get("pool_loses") or 0,
+             "t": r.get("pool_ties") or 0, "ra": r.get("pool_avg_points_allowed"), "rd": r.get("pool_avg_point_diff_with_maximum"),
+             "place": r.get("poolPlace")} for r in sorted(pool.get("results") or [], key=lambda r: r.get("poolPlace") or 99)]
+    if any(r["w"] or r["l"] or r["t"] for r in rows):
+        return rows, "official"
+    return rows, "seeding"
+
+
 def usssa_games(ev, ages):
     page = get(ev["url"])
     m = re.search(r"event_gameCenter/\?eventID=(\d+)", page)
@@ -52,11 +85,19 @@ def usssa_games(ev, ages):
     menu = post({"action": "selpV2", "eventID": eid, "divisionID": "", "tabName": "gameCenter"})
     divisions = []
     for div in menu.get("gameCenterDDown") or []:
-        if ages and int(div.get("age") or 0) not in ages:
+        age = str(div.get("age") or "")
+        if ages and (int(age) if age.isdigit() else 18) not in ages:  # "HS" divisions count as 18U
             continue
         out = {"name": f"{div.get('age')}U {div.get('Class', '')}".strip(), "pools": [], "brackets": []}
         for o in div.get("options") or []:
             if o.get("optionID") == "results":
+                rep = post({"action": "getGameCenterContent", "gmParams": json.dumps(
+                    {"eventID": eid, "divisionID": str(o["divisionID"]), "bnp": "0", "bf": "0", "option": "results",
+                     "isWinner": "0"}, separators=(",", ":"))})
+                places = [{"place": r.get("place"), "team": r.get("teamname") or "", "w": r.get("wins") or 0, "l": r.get("loses") or 0}
+                          for r in rep.get("tournamentResults") or [] if r.get("place")]
+                if rep.get("released") and places:
+                    out["results"] = sorted(places, key=lambda r: r["place"])
                 continue
             gm = {"eventID": eid, "divisionID": str(o["divisionID"]), "bnp": str(o["bracketNotPool"]),
                   "bf": str(o["bracketFlight"]), "option": str(o["optionID"]), "isWinner": str(o["isWinner"])}
@@ -71,12 +112,16 @@ def usssa_games(ev, ages):
                         "as": g.get("winnersScore"), "bs": g.get("losersScore"),
                         "aClass": g.get("winningTeamClass") or "", "bClass": g.get("losingTeamClass") or "",
                     } for g in p.get("schedules") or []]
-                    out["pools"].append({"name": f"Pool {p.get('pool')}", "final": bool(p.get("isFinal")), "games": games})
+                    rows, kind = usssa_standings(p)
+                    if kind == "seeding" and any(g["as"] is not None for g in games):
+                        rows, kind = standings_from_games(games), "calculated"
+                    out["pools"].append({"name": f"Pool {p.get('pool')}", "final": bool(p.get("isFinal")), "games": games,
+                                         "standings": rows, "standingsKind": kind})
             elif data.get("template") == "bracket" and data.get("html"):
                 html, style = clean_bracket(data["html"], data.get("style"))
                 out["brackets"].append({"name": o.get("name") + (f" ({o['format']})" if o.get("format") else ""),
                                         "html": html, "style": style})
-        if out["pools"] or out["brackets"]:
+        if out["pools"] or out["brackets"] or out.get("results"):
             divisions.append(out)
     return {"source": f"https://www.usssa.com/fastpitch/event_gameCenter/?eventID={eid}", "divisions": divisions,
             "venues": venues.usssa(page)}
@@ -92,9 +137,10 @@ def mvp_games(ev, ages):
             continue
         out = {"name": label, "pools": [], "brackets": []}
         if pool_url:
-            games = mvp.pool_games(pool_url, ev["start"][:4])
-            if games:
-                out["pools"].append({"name": "Pool play", "final": False, "games": games})
+            games, rows = mvp.pool_games(pool_url, ev["start"][:4])
+            if games or rows:
+                out["pools"].append({"name": "Pool play", "final": False, "games": games,
+                                     "standings": rows or standings_from_games(games), "standingsKind": "official" if rows else "calculated"})
         if bracket_url:
             head, body = mvp.bracket(bracket_url)
             if "Seed" in body or "Game" in body:
@@ -138,12 +184,16 @@ def main():
             continue  # nothing new; leave the files alone so the Mac and GitHub only push real changes
         result["updated"] = now
         path.write_text(json.dumps(result, separators=(",", ":")))
-        index[eid] = {"updated": now, "name": w["ev"]["name"], "pools": sum(len(d["pools"]) for d in result["divisions"]),
-                      "brackets": sum(len(d["brackets"]) for d in result["divisions"])}
+        ev = w["ev"]
+        index[eid] = {"updated": now, "name": ev["name"], "pools": sum(len(d["pools"]) for d in result["divisions"]),
+                      "brackets": sum(len(d["brackets"]) for d in result["divisions"]),
+                      "sanction": ev.get("sanction"), "start": ev["start"], "end": ev.get("end") or ev["start"],
+                      "city": ev.get("city"), "state": ev.get("state"), "url": ev.get("url"),
+                      "teams": sorted({r["team"] for r in ours["registrations"] if r.get("eventId") == eid and r.get("team")})}
         print(f"{w['ev']['name']}: {index[eid]}", file=sys.stderr)
     cutoff = (TODAY - dt.timedelta(days=7)).isoformat()  # drop old events from the index after a week
-    keep = {e["eventId"] for e in ours.get("registrations", []) if e.get("eventId") and (e.get("end") or e["start"]) >= cutoff}
-    index = {k: v for k, v in index.items() if k in keep}
+    keep = {e["eventId"] for e in ours.get("registrations", []) if e.get("eventId")}
+    index = {k: v for k, v in index.items() if k in keep or (v.get("end") or "") >= cutoff}  # last weekend stays a week
     index_path.write_text(json.dumps(index, separators=(",", ":")))
 
 
