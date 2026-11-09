@@ -232,6 +232,7 @@ body[data-view="saved"] #tally{display:none}
 .gview{margin-top:16px}
 .gview>h2{margin:0 0 4px;font-family:var(--f-display);font-weight:400;font-size:19px;letter-spacing:.04em;text-transform:uppercase}
 .gview>.sub{color:var(--muted);font-size:14.5px;margin-bottom:12px}
+.g-follow{margin-bottom:14px}
 .gev{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:10px;padding:14px;margin-bottom:14px}
 .gev.past{border-top-color:var(--line)}
 .gev h3{margin:0;font-size:17px;line-height:1.3;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -254,6 +255,7 @@ body[data-view="saved"] #tally{display:none}
 .tabbar button svg{width:22px;height:22px}
 .tabbar button[aria-current="true"]{color:var(--band-ink);box-shadow:inset 0 3px 0 var(--band-ink)}
 .tabbar .badge{font-size:11px;opacity:.8}
+.tabbar button>span{text-align:center;line-height:1.1}
 
 /* tablet */
 @media (min-width:640px){
@@ -300,7 +302,7 @@ body[data-view="saved"] #tally{display:none}
 
 <nav class="tabbar" aria-label="Sections">
   <button type="button" data-tab="ours" aria-current="true"><svg viewBox="0 0 1931 1923" aria-hidden="true"><path fill="currentColor" d="M83 83H892V511L664 423V318H330V443L892 659V1008L83 1840V751L322 846V1250L662 910V810L83 608Z"/><path fill="currentColor" d="M1848 83H1039V511L1267 423V318H1601V443L1039 659V1008L1848 1840V751L1609 846V1250L1269 910V810L1848 608Z"/></svg>Our schedule</button>
-  <button type="button" data-tab="games"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 5h7v14H3M10 12h5M15 7h6M15 7v10h6"/></svg>Pool play</button>
+  <button type="button" data-tab="games"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 5h7v14H3M10 12h5M15 7h6M15 7v10h6"/></svg><span>Pool &amp; bracket</span></button>
   <button type="button" data-tab="find"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>Find</button>
   <button type="button" data-tab="saved"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg><span>Saved <span class="badge" id="slCount"></span></span></button>
 </nav>
@@ -370,8 +372,9 @@ body[data-view="saved"] #tally{display:none}
     <div id="results"></div>
 
     <section class="gview" id="gamesView" aria-labelledby="gamesTitle">
-      <h2 id="gamesTitle">Pool play &amp; brackets</h2>
+      <h2 id="gamesTitle">Pool &amp; bracket play</h2>
       <div class="sub" id="gamesSub">Standings, games and brackets for Shelby Steel tournaments.</div>
+      <div class="ours-head g-follow"><span class="lbl">Following</span><div class="seg" id="followGames" role="group" aria-label="Teams you follow"></div></div>
       <div id="gamesList"><div class="upd">Loading pool play…</div></div>
     </section>
 
@@ -495,7 +498,7 @@ filterToggle.addEventListener("click", () => setFilters(filterToggle.getAttribut
 document.getElementById("filterDone").addEventListener("click", () => { setFilters(false); document.getElementById("find").scrollIntoView({behavior:"smooth"}); });
 desktop.addEventListener("change", () => setFilters(false)); setFilters(false);
 
-/* Tabs: Our schedule, Pool play, Find and Saved are separate screens; the last one opened comes back next time. */
+/* Tabs: Our schedule, Pool & bracket, Find and Saved are separate screens; the last one opened comes back next time. */
 const VIEWS = ["ours", "games", "find", "saved"];
 function showView(view, opts = {}){
   if (!VIEWS.includes(view)) view = "ours";
@@ -619,7 +622,7 @@ function card(e, opts = {}){
     ${opts.reg?"<div></div>":`<button type="button" class="star" aria-pressed="${on}" aria-label="${on?"Remove from saved":"Save tournament"}" data-k="${esc(key)}">${starSvg}</button>`}
     <div class="actions">
       <button type="button" class="act" data-panel="coming" aria-expanded="false">Who's coming${nTeams?` <span class="cnt">(${nTeams})</span>`:""}</button>
-      <button type="button" class="act" data-panel="games" aria-expanded="false">Pool play &amp; brackets${gCount}${g?" →":""}</button>
+      <button type="button" class="act" data-panel="games" aria-expanded="false">Pool &amp; bracket${gCount}${g?" →":""}</button>
       <button type="button" class="act" data-panel="venues" aria-expanded="false">Ballparks${vs.length?` <span class="cnt">(${vs.length})</span>`:""}</button>
       ${e.url?`<a class="act ghost" href="${esc(e.url)}" target="_blank" rel="noopener">Details ↗</a>`:""}
     </div>
@@ -744,22 +747,33 @@ const POOL_SANCTIONS = ["USSSA", "MVP"];  // sanctions games.py reads pools and 
 async function renderGames(focus){
   const box = document.getElementById("gamesList");
   if (!EVENTS.length) return;  // still loading
-  document.getElementById("gamesTitle").textContent = "Pool play & brackets";
+  document.getElementById("gamesTitle").textContent = "Pool & bracket play";
   document.getElementById("gamesSub").textContent = `Seeding, standings, games and brackets for ${TEAM.name} tournaments. Checked every 15 minutes on game days.`;
   const t = iso(today), soon = iso(new Date(today.getTime() + 14*86400e3));
   const items = Object.entries(GAMES).map(([id, v]) => ({id, ...v, ...(EVENTS.find(e => e.id === id) || {})})).filter(i => i.start);
   for (const r of OURS.registrations || [])  // upcoming tournaments whose pools aren't in yet
     if (r.start <= soon && (r.end||r.start) >= t && !items.some(i => i.id === r.eventId)) items.push({id: r.eventId, ...r, waiting: true});
   const teamsOf = it => [...new Set((OURS.registrations||[]).filter(r => r.eventId === it.id).map(r => r.team).concat(GAMES[it.id]?.teams||[]))].filter(Boolean);
-  const live = items.filter(i => (i.end||i.start) >= t).sort((a,b) => a.start.localeCompare(b.start));
-  const past = items.filter(i => (i.end||i.start) < t).sort((a,b) => b.start.localeCompare(a.start));
+  /* Same Following buttons as the schedule (and the same saved choice): show only the teams picked. */
+  const seg = document.getElementById("followGames"); seg.innerHTML = "";
+  (OURS.teams||[]).forEach(x => seg.append(chip(x, following.has(x), () => {
+    following.has(x) ? following.delete(x) : following.add(x); store.set("following", [...following]); renderOurs(); renderGames();
+  })));
+  if (!following.size){ box.innerHTML = `<div class="none">Pick a team above to see its pools and brackets.</div>`; return; }
+  const followed = it => { const ts = teamsOf(it); return !ts.length || ts.some(x => following.has(x)); };  // unknown team: always show
+  const live = items.filter(i => (i.end||i.start) >= t && followed(i)).sort((a,b) => a.start.localeCompare(b.start));
+  const past = items.filter(i => (i.end||i.start) < t && followed(i)).sort((a,b) => b.start.localeCompare(a.start));
+  if (!live.length && !past.length && items.length){
+    box.innerHTML = `<div class="empty"><strong>Nothing for ${[...following].join(", ")} right now</strong>Pools and brackets for the teams you follow show up here as soon as the director posts them.</div>`;
+    return;
+  }
   if (!live.length && !past.length){
     box.innerHTML = `<div class="empty"><strong>No pool play right now</strong>Pools, seeding and brackets for ${esc(TEAM.name)} tournaments show up here as soon as the director posts them, usually a day or two before the first pitch.</div>`;
     return;
   }
   const head = (it, isPast) => {
     const tag = it.sanction ? `<span class="tag" style="background:${SANCTIONS[it.sanction]?.color||"var(--muted)"}">${esc(it.sanction)}</span>` : "";
-    const teams = teamsOf(it).map(x => `<span class="team-pill">${esc(x)}</span>`).join("");
+    const teams = teamsOf(it).filter(x => following.has(x)).map(x => `<span class="team-pill">${esc(x)}</span>`).join("");
     const title = it.url ? `<a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.name)}</a>` : esc(it.name);
     return `<article class="gev${isPast?" past":""}" id="g-${esc(it.id)}"><h3>${teams}${tag}${title}</h3>
       <div class="meta">${fmtRange(it.start, it.end)}${it.city?` · ${esc(it.city)}, ${esc(it.state)}`:""}${isPast?" · Final":""}</div><div class="games" data-g="${esc(it.id)}"><div class="upd">Loading…</div></div></article>`;
@@ -770,16 +784,17 @@ async function renderGames(focus){
     if (!POOL_SANCTIONS.includes(it.sanction)){ el.innerHTML = `<div class="upd">${esc(it.sanction||"This sanction")} pool play isn't pulled in here yet. Check the event page for pools and brackets.${it.url?` <a href="${esc(it.url)}" target="_blank" rel="noopener">Event page ↗</a>`:""}</div>`; continue; }
     if (it.waiting || !GAMES[it.id]){ el.innerHTML = notPosted(it); continue; }
     fetch(`games/${it.id}.json?t=${Date.now()}`, {cache:"no-store"}).then(x => x.json())
-      .then(g => { el.innerHTML = gamesHTML(g, it); if (focus === it.id) document.getElementById("g-"+it.id).scrollIntoView({behavior:"smooth"}); })
+      .then(g => { el.innerHTML = gamesHTML(g, it, [...following].map(x => parseInt(x)).filter(Boolean)); if (focus === it.id) document.getElementById("g-"+it.id).scrollIntoView({behavior:"smooth"}); })
       .catch(() => { el.innerHTML = `<div class="upd">Games didn't load. Try again in a minute.</div>`; });
   }
 }
-function gamesHTML(g, ev){
+function gamesHTML(g, ev, ages){
   const pats = (OURS.match||TEAM.match).map(p=>p.toLowerCase());
   const isUs = n => pats.some(p => (n||"").toLowerCase().includes(p));
   if (!g.divisions.length) return notPosted(ev);
   let h = `<div class="upd">Last change ${ago(g.updated)} · checked every 15 minutes on game days · <a href="${esc(g.source)}" target="_blank" rel="noopener">Sanction's game center ↗</a></div>`;
-  for (const d of g.divisions){
+  const divs = ages && ages.length ? g.divisions.filter(d => { const a = parseInt(d.name); return !a || ages.includes(a); }) : g.divisions;
+  for (const d of (divs.length ? divs : g.divisions)){
     h += `<div class="dv">${esc(d.name)}</div>`;
     if (d.results && d.results.length){
       const us = d.results.some(r => isUs(r.team));
@@ -838,6 +853,7 @@ function renderOurs(){
   const seg = document.getElementById("follow"); seg.innerHTML = "";
   (OURS.teams||[]).forEach(t => seg.append(chip(t, following.has(t), () => {
     following.has(t) ? following.delete(t) : following.add(t); store.set("following", [...following]); renderOurs(); render();
+    if (document.body.dataset.view === "games") renderGames();
   })));
   const byId = Object.fromEntries(EVENTS.map(e => [e.id, e]));
   const regs = (OURS.registrations||[]).filter(r => following.has(r.team) && (r.end||r.start) >= iso(today));
