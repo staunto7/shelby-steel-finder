@@ -22,6 +22,7 @@ T|45769|10 Under Girls|FiftyFifty 10u|B-Class
 T|45769|10 Under Girls|Florida Select - Williams|B-Class
 T|45769|10 Under Girls|Heat HDX 10u|B-Class
 T|45769|10 Under Girls|L3gacy 42 Gold|B-Class
+T|45769|10 Under Girls|Southern Blues 10U|C-Class
 T|45769|10 Under Girls|Unity 10U Tiffany|B-Class
 T|45769|12 Under Girls|CAGE-MCFARLAND|B-Class
 T|45769|12 Under Girls|F3 Softball 12u|C-Class
@@ -48,6 +49,7 @@ T|45770|18 Under Girls|Adiktiv Elite Gold|B-Class
 T|45770|18 Under Girls|Adiktiv Elite Hodges|B-Class
 T|45770|18 Under Girls|Adiktiv Elite Hutchinson|B-Class
 T|45770|18 Under Girls|Big Bend Lightning Helms|C-Class
+T|45770|18 Under Girls|Ghost 16U Braxton|B-Class
 T|45770|18 Under Girls|IMPACT ZONE-HS|B-Class
 T|45770|18 Under Girls|SOUTHERN STORM 16U|C-Class
 T|45770|18 Under Girls|Zombie Squad|C-Class
@@ -75,6 +77,7 @@ T|45771|14 Under Girls|Vibe 850|C-Class
 T|45784|10 Under Girls|Foul Play|Accepted
 T|45784|10 Under Girls|Georgia Impact Munday 34/35|Accepted
 T|45784|10 Under Girls|Georgia Misfits 10U|Accepted
+T|45784|10 Under Girls|Mountain Mystics|Accepted
 T|45784|10 Under Girls|Southern Heat 10U|Accepted
 T|45784|10 Under Girls|Southern Storm 2035|Accepted
 T|45784|12 Under Girls|Apex United Cobras - 12U Goodyear|Accepted
@@ -407,6 +410,7 @@ T|46031|18 Under Girls|Georgia United Elite|B-Class
 T|46031|18 Under Girls|RELENTLESS RIVALS|C-Class
 T|46034|10 Under Girls|Lady Volts 10U - Persing|B-Class
 T|46034|12 Under Girls|AP Rucker 12u|B-Class
+T|46034|12 Under Girls|Big Bend Lightning Briscoe|B-Class
 T|46034|12 Under Girls|Galaxy 229 12U|C-Class
 T|46034|12 Under Girls|PanHandle Power|C-Class
 T|46034|12 Under Girls|Southern Smoke-Simpson|C-Class
