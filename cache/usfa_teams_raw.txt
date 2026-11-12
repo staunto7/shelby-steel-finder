@@ -196,7 +196,6 @@ T|45806|14 Under Girls|Renegades 2030/31 14U|Wait List
 T|45806|14 Under Girls|Social Circle Swarm|Accepted
 T|45806|14 Under Girls|Stars Fastpitch - GA - Czarnecke|Wait List
 T|45806|14 Under Girls|Vipers Athletics|Accepted
-T|45806|16 Under Girls|Georgia Finesse|Wait List
 T|45806|18 Under Girls|16u Flush Fastpitch PWD Royal Flush Plumbing|Accepted
 T|45806|18 Under Girls|Atlanta Crush 16U Hebert|Accepted
 T|45806|18 Under Girls|Atlanta Crush 16U Newsom|Accepted
@@ -206,6 +205,7 @@ T|45806|18 Under Girls|CSRA YARDDOGS 18U Gold|Accepted
 T|45806|18 Under Girls|Dirty Diamonds Bell|Accepted
 T|45806|18 Under Girls|Fireproof 16U|Accepted
 T|45806|18 Under Girls|GA FIRE WILKINS|Accepted
+T|45806|18 Under Girls|Georgia Finesse|Wait List
 T|45806|18 Under Girls|Georgia Lightning|Accepted
 T|45806|18 Under Girls|Georgia Misfits 16U-Gibel|Accepted
 T|45806|18 Under Girls|Impact Caymol- Helms|Accepted
@@ -420,9 +420,6 @@ T|46034|12 Under Girls|Galaxy 229 12U|C-Class
 T|46034|12 Under Girls|PanHandle Power|C-Class
 T|46034|12 Under Girls|Southern Smoke-Simpson|C-Class
 T|46034|12 Under Girls|SOWEGA TRIBE 12U|C-Class
-T|46038|13 Under Girls|Stars Fastpitch - GA - Czarnecke|B-Class
-T|46038|14 Under Girls|Vipers Athletics|C-Class
-T|46038|16 Under Girls|Georgia Blue Diamonds - Trotter|B-Class
 T|46084|10U Open|Beach Dune Divas|C-Class
 T|46084|10U Open|Florida Elite 10U - Merritt|B-Class
 T|46084|10U Open|Jacksonville Storm|B-Class
