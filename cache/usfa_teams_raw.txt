@@ -232,7 +232,6 @@ T|45822|10u|Wow Factor Nation GA Hines|Accepted
 T|45822|12u|9:13 Athletics - Rice|Accepted
 T|45822|12u|ATL Patriots 12U Cato|Accepted
 T|45822|12u|Diamond Queens|Accepted
-T|45822|12u|Lady Mafia 12U|Accepted
 T|45822|12u|Monroe Chaos 12u|Accepted
 T|45822|12u|West Ga Lady Bombers|Accepted
 T|45822|12u|West Georgia Nightmare 12 Gold|Accepted
@@ -274,7 +273,6 @@ T|45831|14u White|Capstone Athletics - Bennett|Accepted
 T|45831|14u White|FOD Select Winfrey|Accepted
 T|45831|14u White|Georgia Misfits-Holland|Accepted
 T|45831|14u White|Legacy - Aliengena|Accepted
-T|45831|14u White|Mizuno Premier Batchelor 14U|Accepted
 T|45831|14u White|Peaches Premier|Accepted
 T|45831|14u White|Southern Select|Accepted
 T|45831|14U Red|14u Flush Powered by Royal Flush|Accepted
@@ -437,10 +435,12 @@ T|46084|14U Open|Unity Mallon 2031|B-Class
 T|46084|14U Open|Vibe 850|C-Class
 T|46084|High School Open|4EVER5 15U|B-Class
 T|46084|High School Open|4EVER5 18U|B-Class
+T|46084|High School Open|Adiktiv Elite Hutchinson|B-Class
 T|46084|High School Open|Big Bend Lightning Helms|C-Class
 T|46084|High School Open|Panhandle Blaze|B-Class
 V|46084|Southport Recreational Complex|8598 FL-77, Southport, FL 32409|10U Open
 V|46084|Southport Recreational Complex|8598 FL-77, Southport, FL 32409|14U Open
+V|46084|H.G. Harders Park|7900 John Pitts Road, Panama City, FL 32404|High School Open
 V|46084|Southport Recreational Complex|8598 FL-77, Southport, FL 32409|High School Open
 T|46105|8 Under Girls|Lady Prospects-Roberts|C-Class
 T|46105|8 Under Girls|TN River Surge|C-Class
