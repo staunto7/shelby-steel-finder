@@ -137,12 +137,10 @@ T|45784|HS|Sharon Springs Spartans|Accepted
 T|45784|HS|WC Crush 16U|Accepted
 T|45784|HS|West End Warriors- Burg|Accepted
 T|45790|10 Under Girls|HC Elite|C-Class
-T|45790|12 Under Girls|Carrollton Dirt Divas 2032|C-Class
 T|45790|12 Under Girls|Dirt Dawgs 12u Goff|B-Class
 T|45790|12 Under Girls|Georgia Force 2033 Smith/Heggood|B-Class
 T|45790|12 Under Girls|Shelby Steel 2032/2033|C-Class
 T|45790|14 Under Girls|TC Elite - Stroud|B-Class
-T|45790|14 Under Girls|West Georgia Nightmare 14U|B-Class
 T|45791|10 Under Girls|Georgia Misfits 10U|C-Class
 T|45791|10 Under Girls|Georgia Platinum Cherokee|B-Class
 T|45791|12 Under Girls|Canes 2033|B-Class
@@ -241,15 +239,17 @@ T|45822|14u|North Georgia Wrath|Accepted
 T|45822|14u|Spartans Select 2012|Accepted
 T|45822|14u|West Georgia Nightmare 14u Gold|Accepted
 T|45822|14u|WG Freedom Fastpitch|Accepted
-T|45823|9 Under Girls|Carrollton Dirt Divas|C-Class
-T|45823|9 Under Girls|Coweta Chaos 2017|C-Class
+T|45823|10 Under Girls|Carrollton Dirt Divas|C-Class
+T|45823|10 Under Girls|Coweta Chaos 2017|C-Class
 T|45823|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
 T|45823|10 Under Girls|Lady Mafia 10U|C-Class
 T|45823|10 Under Girls|Mayhem FP 10u|C-Class
 T|45823|10 Under Girls|NGA Static 2035|C-Class
 T|45823|12 Under Girls|Canes Perry|C-Class
+T|45823|12 Under Girls|Carrollton Dirt Divas 2032|C-Class
 T|45823|12 Under Girls|Monroe Chaos 12u|C-Class
 T|45823|12 Under Girls|West Georgia Nightmare 12 Gold|C-Class
+T|45823|12 Under Girls|West Georgia Nightmare 12U|C-Class
 T|45823|14 Under Girls|Blaze Fastpitch|C-Class
 T|45824|8 Under Girls|Carrollton Dirt Divas 8U|C-Class
 T|45824|8 Under Girls|West Georgia Bomb Pops|C-Class
@@ -417,6 +417,7 @@ T|46034|12 Under Girls|Big Bend Lightning Briscoe|B-Class
 T|46034|12 Under Girls|Galaxy 229 12U|C-Class
 T|46034|12 Under Girls|PanHandle Power|C-Class
 T|46034|12 Under Girls|Southern Smoke-Simpson|C-Class
+T|46034|12 Under Girls|SOWEGA Smoke|B-Class
 T|46034|12 Under Girls|SOWEGA TRIBE 12U|C-Class
 T|46084|10U Open|Beach Dune Divas|C-Class
 T|46084|10U Open|Florida Elite 10U - Merritt|B-Class
