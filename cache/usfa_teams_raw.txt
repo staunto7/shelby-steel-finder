@@ -23,9 +23,6 @@ T|45768|12U Open|Talahassee Lady Bombers 12U|B-Class
 T|45768|12U Open|Warriors 11U Messick|C-Class
 V|45768|Davis Park Seminole County Recreation|Use Google Maps for Davis Park, Donalsonville, GA 39845|10U B-Minor
 V|45768|Davis Park Seminole County Recreation|Use Google Maps for Davis Park, Donalsonville, GA 39845|12U Open
-T|45769|8U Open|Ducks 8u|B-Class
-T|45769|8U Open|FiftyFifty 8u|B-Class
-T|45769|8U Open|X-Reps|C-Class
 T|45769|10U Open|Ballers Fastpitch 2035|B-Class
 T|45769|10U Open|CAGE FURY|B-Class
 T|45769|10U Open|CAGE-DEATS|C-Class
@@ -38,7 +35,6 @@ T|45769|12U Open|CAGE-MCFARLAND|B-Class
 T|45769|12U Open|F3 Softball 12u|C-Class
 T|45769|12U Open|FiftyFifty 12u|B-Class
 T|45769|12U Open|L3gacy 42 - 12U Blue|B-Class
-V|45769|Trembling Earth Recreation Complex|2110 Recreation Road, Waycross, GA 31503|8U Open
 V|45769|Trembling Earth Recreation Complex|2110 Recreation Road, Waycross, GA 31503|10U Open
 V|45769|Trembling Earth Recreation Complex|2110 Recreation Road, Waycross, GA 31503|12U Open
 T|45770|10 Under Girls|CAGE-DEATS|C-Class
@@ -128,7 +124,6 @@ T|45784|HS|16u Flush Fastpitch PWD Royal Flush Plumbing|Accepted
 T|45784|HS|AP Elite- Eubanks HS|Accepted
 T|45784|HS|Apex United Cobras - 16U Sanders|Accepted
 T|45784|HS|Fireproof -Sigmund|Accepted
-T|45784|HS|GA Fire - Gentry|Accepted
 T|45784|HS|Georgia Reapers|Accepted
 T|45784|HS|North Georgia Girls 16u|Accepted
 T|45784|HS|Poison Ivy 16u|Accepted
