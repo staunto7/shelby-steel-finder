@@ -237,6 +237,7 @@ T|45822|14u|WG Freedom Fastpitch|Accepted
 T|45823|10 Under Girls|Carrollton Dirt Divas|C-Class
 T|45823|10 Under Girls|Coweta Chaos 2017|C-Class
 T|45823|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
+T|45823|10 Under Girls|East Cobb Edge 10U - Carter|
 T|45823|10 Under Girls|Lady Mafia 10U|C-Class
 T|45823|10 Under Girls|Mayhem FP 10u|C-Class
 T|45823|10 Under Girls|NGA Static 2035|C-Class
