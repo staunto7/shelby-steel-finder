@@ -46,13 +46,13 @@ T|45771|14 Under Girls|Power Softball Gulf South 14u|C-Class
 T|45771|14 Under Girls|Vibe 850|C-Class
 T|45790|10 Under Girls|HC Elite|C-Class
 T|45790|12 Under Girls|Dirt Dawgs 12u Goff|B-Class
-T|45790|12 Under Girls|Georgia Force 2033 Smith/Heggood|B-Class
 T|45790|12 Under Girls|Shelby Steel 2032/2033|C-Class
 T|45790|14 Under Girls|TC Elite - Stroud|B-Class
 T|45791|10 Under Girls|Georgia Misfits 10U|C-Class
 T|45791|10 Under Girls|Georgia Platinum Cherokee|B-Class
 T|45791|12 Under Girls|Canes 2033|B-Class
 T|45791|12 Under Girls|CRUSH Livermore 12U|C-Class
+T|45791|12 Under Girls|Diamond Queens|C-Class
 T|45791|12 Under Girls|Ga Fire 2032 - Sappenfield|B-Class
 T|45791|12 Under Girls|Wow Factor Softball - Evans|C-Class
 T|45791|13 Under Girls|Premier Fastpitch 31/32|C-Class
@@ -119,17 +119,20 @@ T|45806|18 Under Girls|Marucci Legacy SEGA - Carrow 14u|Accepted
 T|45806|18 Under Girls|North Georgia Menace|Accepted
 T|45806|18 Under Girls|RELENTLESS RIVALS|Accepted
 T|45806|18 Under Girls|Smoke Fastpitch|Accepted
-T|45823|10 Under Girls|Carrollton Dirt Divas|C-Class
-T|45823|10 Under Girls|Coweta Chaos 2017|C-Class
-T|45823|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
-T|45823|10 Under Girls|East Cobb Edge 10U - Carter|
-T|45823|10 Under Girls|Lady Mafia 10U|C-Class
-T|45823|10 Under Girls|Mayhem FP 10u|C-Class
-T|45823|10 Under Girls|NGA Static 2035|C-Class
-T|45823|12 Under Girls|Canes Perry|C-Class
-T|45823|12 Under Girls|Carrollton Dirt Divas 2032|C-Class
-T|45823|12 Under Girls|West Georgia Nightmare 12 Gold|C-Class
-T|45823|14 Under Girls|Blaze Fastpitch|C-Class
+T|45823|10 Under Girls|Bremen Braves|Pay Later
+T|45823|10 Under Girls|Carrollton Dirt Divas|Accepted
+T|45823|10 Under Girls|Coweta Chaos 2017|Pay Later
+T|45823|10 Under Girls|Diamond Queens-10U Nolan|Pay Later
+T|45823|10 Under Girls|East Cobb Edge 10U - Carter|Pay Later
+T|45823|10 Under Girls|Lady Mafia 10U|Pay Later
+T|45823|10 Under Girls|Mayhem FP 10u|Accepted
+T|45823|10 Under Girls|NGA Static 2035|Accepted
+T|45823|12 Under Girls|Canes Perry|Pay Later
+T|45823|12 Under Girls|Carrollton Dirt Divas 2032|Accepted
+T|45823|12 Under Girls|Georgia Force 2033 Smith/Heggood|Accepted
+T|45823|12 Under Girls|West Georgia Nightmare 12 Gold|Accepted
+T|45823|14 Under Girls|Blaze Fastpitch|Pay Later
+T|45823|14 Under Girls|North Georgia Wrath|Pay Later
 T|45824|8 Under Girls|Carrollton Dirt Divas 8U|C-Class
 T|45824|8 Under Girls|West Georgia Bomb Pops|C-Class
 T|45824|9 Under Girls|Carrollton Dirt Divas|C-Class
