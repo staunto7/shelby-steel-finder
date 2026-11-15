@@ -1,8 +1,6 @@
 T|45770|10 Under Girls|CAGE-DEATS|C-Class
 T|45770|10 Under Girls|Jacksonville Storm|B-Class
 T|45770|10 Under Girls|Purple Reign|B-Class
-T|45770|10 Under Girls|Sowega Lady Spartans|C-Class
-T|45770|14 Under Girls|Adiktiv Elite Hale|B-Class
 T|45770|14 Under Girls|Big Bend Lightning Sofield|B-Class
 T|45770|14 Under Girls|Coffee Elite 14U|B-Class
 T|45770|14 Under Girls|Diamond Devils 14u|B-Class
@@ -31,6 +29,7 @@ T|45771|10 Under Girls|Power Softball Gulf South 10u Jenkins|C-Class
 T|45771|10 Under Girls|Sowega Lady Spartans|C-Class
 T|45771|12 Under Girls|Alabama Fury 12u - Aplin|B-Class
 T|45771|12 Under Girls|Alabama Fury 12U - Cox|B-Class
+T|45771|12 Under Girls|Alabama Fury Jones 11u|
 T|45771|12 Under Girls|AP Rucker 12u|B-Class
 T|45771|12 Under Girls|Big Bend Lightning Briscoe|B-Class
 T|45771|12 Under Girls|Panhandle Heat-Mock|C-Class
@@ -124,6 +123,7 @@ T|45823|10 Under Girls|Carrollton Dirt Divas|Accepted
 T|45823|10 Under Girls|Coweta Chaos 2017|Pay Later
 T|45823|10 Under Girls|Diamond Queens-10U Nolan|Pay Later
 T|45823|10 Under Girls|East Cobb Edge 10U - Carter|Pay Later
+T|45823|10 Under Girls|Lady Dukes Usher 10U|Pay Later
 T|45823|10 Under Girls|Lady Mafia 10U|Pay Later
 T|45823|10 Under Girls|Mayhem FP 10u|Accepted
 T|45823|10 Under Girls|NGA Static 2035|Accepted
@@ -224,6 +224,9 @@ T|46031|16 Under Girls|Smoke Fastpitch|C-Class
 T|46031|18 Under Girls|Dirty Diamonds Bell|B-Class
 T|46031|18 Under Girls|Georgia United Elite|B-Class
 T|46031|18 Under Girls|RELENTLESS RIVALS|C-Class
+T|46034|9 Under Girls|EC Elite|C-Class
+T|46034|10 Under Girls|Alabama Fury 10u Hall|C-Class
+T|46034|10 Under Girls|Bluewave Carter|C-Class
 T|46034|10 Under Girls|Lady Volts 10U - Persing|B-Class
 T|46034|12 Under Girls|AP Rucker 12u|B-Class
 T|46034|12 Under Girls|Big Bend Lightning Briscoe|B-Class
