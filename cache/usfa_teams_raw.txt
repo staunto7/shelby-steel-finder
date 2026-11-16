@@ -55,7 +55,7 @@ T|45791|14 Under Girls|Blaze Fastpitch|C-Class
 T|45791|14 Under Girls|Fury Platinum 2031|B-Class
 T|45791|14 Under Girls|North Georgia Wrath|C-Class
 T|45791|16 Under Girls|Georgia Finesse|B-Class
-T|45806|10 Under Girls|Lady Dukes Usher 10U|Pay Later
+T|45806|11 Under Girls|D1VISION Softball 12U GA Elite|Wait List
 T|45806|12 Under Girls|Capstone Athletics - Loew|Accepted
 T|45806|12 Under Girls|CRUSH Livermore 12U|Accepted
 T|45806|12 Under Girls|Decatur Venom - Green|Accepted
@@ -107,10 +107,8 @@ T|45806|18 Under Girls|Georgia Finesse|Accepted
 T|45806|18 Under Girls|Georgia Lightning|Accepted
 T|45806|18 Under Girls|Impact Caymol- Helms|Accepted
 T|45806|18 Under Girls|Marucci Legacy SEGA - Carrow 14u|Accepted
-T|45806|18 Under Girls|North Georgia Menace|Accepted
 T|45806|18 Under Girls|RELENTLESS RIVALS|Accepted
 T|45806|18 Under Girls|Sharon Springs Spartans|Wait List
-T|45806|18 Under Girls|Smoke Fastpitch|Accepted
 T|45823|8 Under Girls|West Georgia Diamonds 2K18|Pay Later
 T|45823|10 Under Girls|Bremen Braves|Accepted
 T|45823|10 Under Girls|Carrollton Dirt Divas|Accepted
@@ -119,6 +117,7 @@ T|45823|10 Under Girls|Diamond Queens-10U Nolan|Accepted
 T|45823|10 Under Girls|East Cobb Edge 10U - Carter|Accepted
 T|45823|10 Under Girls|Lady Dukes Usher 10U|Pay Later
 T|45823|10 Under Girls|Lady Mafia 10U|Accepted
+T|45823|10 Under Girls|LC Peaches|Pay Later
 T|45823|10 Under Girls|Mayhem FP 10u|Accepted
 T|45823|10 Under Girls|NGA Static 2035|Accepted
 T|45823|10 Under Girls|Venom|Accepted
@@ -130,6 +129,7 @@ T|45823|14 Under Girls|Blaze Fastpitch|Accepted
 T|45823|14 Under Girls|North Georgia Wrath|Accepted
 T|45823|14 Under Girls|Renegades 2030/31 14U|Pay Later
 T|45823|14 Under Girls|TC Elite - Stroud|Accepted
+T|45824|8 Under Girls|Blue Crush 2036|League/Rec
 T|45824|8 Under Girls|Carrollton Dirt Divas 8U|C-Class
 T|45824|8 Under Girls|Naturals 8u|C-Class
 T|45824|8 Under Girls|West Georgia Bomb Pops|C-Class
@@ -155,8 +155,10 @@ T|45982|14 Under Girls|Lady Rams 14U|C-Class
 T|45982|14 Under Girls|M-PACT|C-Class
 T|45982|18 Under Girls|Cincy Doom '29/'30 - Niese|C-Class
 T|45982|18 Under Girls|Diamond Elite 2009|C-Class
+T|45982|18 Under Girls|Fuego|C-Class
 T|45982|18 Under Girls|Indiana Revolution 15U|B-Class
 T|45982|18 Under Girls|Lady Rams 16U|C-Class
+T|45982|18 Under Girls|Niagara Riptide|B-Class
 T|45982|18 Under Girls|Patriots|C-Class
 T|46019|8U OPEN DIVISION|Lady Prospects-Roberts|C-Class
 T|46019|8U OPEN DIVISION|Tx Pressure|C-Class
@@ -225,6 +227,7 @@ T|46031|18 Under Girls|Georgia United Elite|B-Class
 T|46031|18 Under Girls|RELENTLESS RIVALS|C-Class
 T|46034|10 Under Girls|Alabama Fury 10u Hall|C-Class
 T|46034|10 Under Girls|Bluewave|C-Class
+T|46034|10 Under Girls|Diamond Devils McLean|C-Class
 T|46034|10 Under Girls|EC Elite|C-Class
 T|46034|10 Under Girls|Florida Elite 10U - Merritt|B-Class
 T|46034|10 Under Girls|Jacksonville Storm|B-Class
