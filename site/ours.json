@@ -9,6 +9,43 @@
  ],
  "registrations": [
   {
+   "sanction": "USSSA",
+   "name": "BANANNA SOFTBALL with VINCE THE DANCING UMPIRE",
+   "start": "2026-11-21",
+   "end": "2026-11-21",
+   "state": "AL",
+   "city": "Trussville/Hoover",
+   "ages": "7U - HS",
+   "ageMin": 7,
+   "ageMax": 18,
+   "fee": "$150 - $300",
+   "teams": 62,
+   "url": "https://alfastpitch.usssa.com/event/bananna-softball-with-vince-the-dancing-umpire/",
+   "id": "6015c5cb61",
+   "eventId": "6015c5cb61",
+   "team": "12U",
+   "teamName": "Shelby Steel 2032/2033 - Lackey",
+   "division": "12 & Under C",
+   "source": "auto",
+   "venues": [
+    {
+     "name": "Hoover Central Park",
+     "address": "3468 Chapel Lane, Hoover, AL, 35226",
+     "ages": []
+    },
+    {
+     "name": "Trussville Softball Complex",
+     "address": "4621 Riverbend Road, Trussville, AL, 35173",
+     "ages": []
+    },
+    {
+     "name": "Trussville Baseball Complex",
+     "address": "4621 Riverbend Road, Trussville, AL, 35173",
+     "ages": []
+    }
+   ]
+  },
+  {
    "sanction": "USFA",
    "name": "Turkey Bowl Classic",
    "start": "2026-11-21",
@@ -40,7 +77,7 @@
    "ageMin": 8,
    "ageMax": 18,
    "fee": "$425",
-   "teams": 67,
+   "teams": 69,
    "url": "https://gafastpitch.usssa.com/event/jingle-bell-classic-2/",
    "id": "a3e64f3b2e",
    "eventId": "a3e64f3b2e",
