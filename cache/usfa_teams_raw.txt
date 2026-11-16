@@ -1,24 +1,20 @@
-T|45770|10 Under Girls|CAGE-DEATS|C-Class
-T|45770|10 Under Girls|Jacksonville Storm|B-Class
-T|45770|10 Under Girls|Purple Reign|B-Class
+T|45770|14 Under Girls|Atlanta Premier 14u Moore 2030|B-Class
 T|45770|14 Under Girls|Big Bend Lightning Sofield|B-Class
-T|45770|14 Under Girls|Coffee Elite 14U|B-Class
 T|45770|14 Under Girls|Diamond Devils 14u|B-Class
 T|45770|14 Under Girls|Florida Elite 2031|C-Class
 T|45770|14 Under Girls|Lady Reapers|B-Class
 T|45770|14 Under Girls|Panhandle Premier 14U|B-Class
 T|45770|14 Under Girls|Pines 14u phillips|C-Class
-T|45770|14 Under Girls|Powermill-Hall|C-Class
 T|45770|14 Under Girls|South Georgia FEAR 14u|B-Class
 T|45770|14 Under Girls|Southern Smoke 14U Davis|B-Class
-T|45770|18 Under Girls|4EVER5 15U|B-Class
-T|45770|18 Under Girls|4EVER5 18U|B-Class
 T|45770|18 Under Girls|Adiktiv Elite Gold|B-Class
 T|45770|18 Under Girls|Adiktiv Elite Hodges|B-Class
 T|45770|18 Under Girls|Adiktiv Elite Hutchinson|B-Class
 T|45770|18 Under Girls|Big Bend Lightning Helms|C-Class
 T|45770|18 Under Girls|Ghost 16U Braxton|B-Class
 T|45770|18 Under Girls|IMPACT ZONE-HS|B-Class
+T|45770|18 Under Girls|South GA FEAR-Barkman|B-Class
+T|45770|18 Under Girls|Southern Smoke|B-Class
 T|45770|18 Under Girls|SOUTHERN STORM 16U|C-Class
 T|45770|18 Under Girls|Zombie Squad|C-Class
 T|45771|10 Under Girls|Big Bend Lightning Parsons|B-Class
@@ -70,10 +66,12 @@ T|45806|12 Under Girls|EC Bullets 2032 Triplett|Accepted
 T|45806|12 Under Girls|Firecrackers-2033 Buckner/Self|Accepted
 T|45806|12 Under Girls|Forge Fastpitch 27:17|Accepted
 T|45806|12 Under Girls|Ga Classics - 12U|Accepted
+T|45806|12 Under Girls|Ga Platinum 12u- O’Kelley|Wait List
 T|45806|12 Under Girls|Georgia Fire 12U- Anderson|Accepted
 T|45806|12 Under Girls|Kennesaw Outlaws 12u- McGrew|Accepted
 T|45806|12 Under Girls|NG Heat|Accepted
 T|45806|12 Under Girls|Rhyne Park Renegades 11U|Accepted
+T|45806|12 Under Girls|SBL Pirates 12U Yellow|Wait List
 T|45806|12 Under Girls|WOW Factor 2032 Phillips|Accepted
 T|45806|14 Under Girls|14U WILDCATS|Accepted
 T|45806|14 Under Girls|Ambush Fastpitch Tench|Accepted
@@ -117,14 +115,16 @@ T|45806|18 Under Girls|Impact Caymol- Helms|Accepted
 T|45806|18 Under Girls|Marucci Legacy SEGA - Carrow 14u|Accepted
 T|45806|18 Under Girls|North Georgia Menace|Accepted
 T|45806|18 Under Girls|RELENTLESS RIVALS|Accepted
+T|45806|18 Under Girls|Sharon Springs Spartans|Wait List
 T|45806|18 Under Girls|Smoke Fastpitch|Accepted
-T|45823|10 Under Girls|Bremen Braves|Pay Later
+T|45823|8 Under Girls|West Georgia Diamonds 2K18|Pay Later
+T|45823|10 Under Girls|Bremen Braves|Accepted
 T|45823|10 Under Girls|Carrollton Dirt Divas|Accepted
 T|45823|10 Under Girls|Coweta Chaos 2017|Pay Later
 T|45823|10 Under Girls|Diamond Queens-10U Nolan|Pay Later
-T|45823|10 Under Girls|East Cobb Edge 10U - Carter|Pay Later
+T|45823|10 Under Girls|East Cobb Edge 10U - Carter|Accepted
 T|45823|10 Under Girls|Lady Dukes Usher 10U|Pay Later
-T|45823|10 Under Girls|Lady Mafia 10U|Pay Later
+T|45823|10 Under Girls|Lady Mafia 10U|Accepted
 T|45823|10 Under Girls|Mayhem FP 10u|Accepted
 T|45823|10 Under Girls|NGA Static 2035|Accepted
 T|45823|12 Under Girls|Canes Perry|Pay Later
@@ -157,6 +157,7 @@ T|45982|14 Under Girls|Lady Rams 14U|C-Class
 T|45982|14 Under Girls|M-PACT|C-Class
 T|45982|18 Under Girls|Cincy Doom '29/'30 - Niese|C-Class
 T|45982|18 Under Girls|Diamond Elite 2009|C-Class
+T|45982|18 Under Girls|Indiana Revolution 15U|B-Class
 T|45982|18 Under Girls|Lady Rams 16U|C-Class
 T|45982|18 Under Girls|Patriots|C-Class
 T|46019|8U OPEN DIVISION|Lady Prospects-Roberts|C-Class
@@ -224,39 +225,16 @@ T|46031|16 Under Girls|Smoke Fastpitch|C-Class
 T|46031|18 Under Girls|Dirty Diamonds Bell|B-Class
 T|46031|18 Under Girls|Georgia United Elite|B-Class
 T|46031|18 Under Girls|RELENTLESS RIVALS|C-Class
-T|46034|9 Under Girls|EC Elite|C-Class
 T|46034|10 Under Girls|Alabama Fury 10u Hall|C-Class
-T|46034|10 Under Girls|Bluewave Carter|C-Class
+T|46034|10 Under Girls|Bluewave|C-Class
+T|46034|10 Under Girls|EC Elite|C-Class
+T|46034|10 Under Girls|Jacksonville Storm|B-Class
 T|46034|10 Under Girls|Lady Volts 10U - Persing|B-Class
-T|46034|12 Under Girls|AP Rucker 12u|B-Class
 T|46034|12 Under Girls|Big Bend Lightning Briscoe|B-Class
 T|46034|12 Under Girls|Galaxy 229 12U|C-Class
 T|46034|12 Under Girls|PanHandle Power|C-Class
 T|46034|12 Under Girls|Southern Smoke-Simpson|C-Class
 T|46034|12 Under Girls|SOWEGA Smoke|B-Class
 T|46034|12 Under Girls|SOWEGA TRIBE 12U|C-Class
-T|46084|10U Open|Florida Elite 10U - Merritt|B-Class
-T|46084|10U Open|Jacksonville Storm|B-Class
-T|46084|10U Open|Middle Georgia Mayhem|C-Class
-T|46084|10U Open|Power Softball Gulf South 10u Jenkins|C-Class
-T|46084|10U Open|South Walton Hawks (Brown)|C-Class
-T|46084|14U Open|Alabama Fury 2031|B-Class
-T|46084|14U Open|Havoc Athletics|B-Class
-T|46084|14U Open|High Intensity FL 14U|B-Class
-T|46084|14U Open|HSB-Landry|C-Class
-T|46084|14U Open|North Florida Chaos|B-Class
-T|46084|14U Open|Power Softball Gulf South 14u|C-Class
-T|46084|14U Open|Sowega Tribe 14U- Dickens|C-Class
-T|46084|14U Open|Unity Mallon 2031|B-Class
-T|46084|14U Open|Vibe 850|C-Class
-T|46084|High School Open|4EVER5 15U|B-Class
-T|46084|High School Open|4EVER5 18U|B-Class
-T|46084|High School Open|Adiktiv Elite Hutchinson|B-Class
-T|46084|High School Open|Big Bend Lightning Helms|C-Class
-T|46084|High School Open|Panhandle Blaze|B-Class
-V|46084|Southport Recreational Complex|8598 FL-77, Southport, FL 32409|10U Open
-V|46084|Southport Recreational Complex|8598 FL-77, Southport, FL 32409|14U Open
-V|46084|H.G. Harders Park|7900 John Pitts Road, Panama City, FL 32404|High School Open
-V|46084|Southport Recreational Complex|8598 FL-77, Southport, FL 32409|High School Open
 T|46105|8 Under Girls|Lady Prospects-Roberts|C-Class
 T|46105|8 Under Girls|TN River Surge|C-Class
