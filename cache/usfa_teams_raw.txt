@@ -12,7 +12,7 @@ T|45770|18 Under Girls|Adiktiv Elite Hodges|B-Class
 T|45770|18 Under Girls|Adiktiv Elite Hutchinson|B-Class
 T|45770|18 Under Girls|Big Bend Lightning Helms|C-Class
 T|45770|18 Under Girls|Ghost 16U Braxton|B-Class
-T|45770|18 Under Girls|IMPACT ZONE-HS|B-Class
+T|45770|18 Under Girls|Lady Prospects Hogg|C-Class
 T|45770|18 Under Girls|South GA FEAR-Barkman|B-Class
 T|45770|18 Under Girls|Southern Smoke|B-Class
 T|45770|18 Under Girls|SOUTHERN STORM 16U|C-Class
@@ -22,6 +22,7 @@ T|45771|10 Under Girls|Dothan Warriors Whitten|C-Class
 T|45771|10 Under Girls|Florida Rise|C-Class
 T|45771|10 Under Girls|Jacksonville Storm|B-Class
 T|45771|10 Under Girls|Power Softball Gulf South 10u Jenkins|C-Class
+T|45771|10 Under Girls|Purple Reign|B-Class
 T|45771|10 Under Girls|Sowega Lady Spartans|C-Class
 T|45771|12 Under Girls|Alabama Fury 12u - Aplin|B-Class
 T|45771|12 Under Girls|Alabama Fury 12U - Cox|B-Class
@@ -44,6 +45,7 @@ T|45790|12 Under Girls|Dirt Dawgs 12u Goff|B-Class
 T|45790|12 Under Girls|Shelby Steel 2032/2033|C-Class
 T|45790|14 Under Girls|TC Elite - Stroud|B-Class
 T|45791|10 Under Girls|Georgia Platinum Cherokee|B-Class
+T|45791|11 Under Girls|Rhyne Park Renegades 11U|C-Class
 T|45791|12 Under Girls|Canes 2033|B-Class
 T|45791|12 Under Girls|CRUSH Livermore 12U|C-Class
 T|45791|12 Under Girls|Diamond Queens|C-Class
