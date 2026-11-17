@@ -3,12 +3,10 @@ T|45770|14 Under Girls|Big Bend Lightning Sofield|B-Class
 T|45770|14 Under Girls|Diamond Devils 14u|B-Class
 T|45770|14 Under Girls|Florida Elite 2031|C-Class
 T|45770|14 Under Girls|Lady Reapers|B-Class
-T|45770|14 Under Girls|Panhandle Premier 14U|B-Class
 T|45770|14 Under Girls|Pines 14u phillips|C-Class
 T|45770|14 Under Girls|South Georgia FEAR 14u|B-Class
 T|45770|14 Under Girls|Southern Smoke 14U Davis|B-Class
 T|45770|18 Under Girls|Adiktiv Elite Gold|B-Class
-T|45770|18 Under Girls|Adiktiv Elite Hodges|B-Class
 T|45770|18 Under Girls|Adiktiv Elite Hutchinson|B-Class
 T|45770|18 Under Girls|Big Bend Lightning Helms|C-Class
 T|45770|18 Under Girls|Ghost 16U Braxton|B-Class
@@ -111,7 +109,6 @@ T|45806|18 Under Girls|Georgia Lightning|Accepted
 T|45806|18 Under Girls|Impact Caymol- Helms|Accepted
 T|45806|18 Under Girls|Marucci Legacy SEGA - Carrow 14u|Accepted
 T|45806|18 Under Girls|RELENTLESS RIVALS|Accepted
-T|45806|18 Under Girls|Sharon Springs Spartans|Wait List
 T|45823|8 Under Girls|8u Sox Select|Pay Later
 T|45823|8 Under Girls|West Georgia Diamonds 2K18|Pay Later
 T|45823|10 Under Girls|Bremen Braves|Accepted
@@ -119,9 +116,8 @@ T|45823|10 Under Girls|Carrollton Dirt Divas|Accepted
 T|45823|10 Under Girls|Coweta Chaos 2017|Accepted
 T|45823|10 Under Girls|Diamond Queens-10U Nolan|Accepted
 T|45823|10 Under Girls|East Cobb Edge 10U - Carter|Accepted
-T|45823|10 Under Girls|Lady Dukes Usher 10U|Pay Later
 T|45823|10 Under Girls|Lady Mafia 10U|Accepted
-T|45823|10 Under Girls|LC Peaches|Pay Later
+T|45823|10 Under Girls|LC Peaches|Accepted
 T|45823|10 Under Girls|Mayhem FP 10u|Accepted
 T|45823|10 Under Girls|NGA Static 2035|Accepted
 T|45823|10 Under Girls|Venom|Accepted
