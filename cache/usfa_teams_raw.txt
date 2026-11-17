@@ -52,6 +52,7 @@ T|45791|12 Under Girls|Wow Factor Softball - Evans|C-Class
 T|45791|13 Under Girls|Premier Fastpitch 31/32|C-Class
 T|45791|13 Under Girls|West Cobb Crush 2013|B-Class
 T|45791|14 Under Girls|Blaze Fastpitch|C-Class
+T|45791|14 Under Girls|Fayette Thunder Select|C-Class
 T|45791|14 Under Girls|Fury Platinum 2031|B-Class
 T|45791|14 Under Girls|North Georgia Wrath|C-Class
 T|45791|16 Under Girls|Georgia Finesse|B-Class
@@ -109,6 +110,7 @@ T|45806|18 Under Girls|Impact Caymol- Helms|Accepted
 T|45806|18 Under Girls|Marucci Legacy SEGA - Carrow 14u|Accepted
 T|45806|18 Under Girls|RELENTLESS RIVALS|Accepted
 T|45806|18 Under Girls|Sharon Springs Spartans|Wait List
+T|45823|8 Under Girls|8u Sox Select|Pay Later
 T|45823|8 Under Girls|West Georgia Diamonds 2K18|Pay Later
 T|45823|10 Under Girls|Bremen Braves|Accepted
 T|45823|10 Under Girls|Carrollton Dirt Divas|Accepted
@@ -122,7 +124,6 @@ T|45823|10 Under Girls|Mayhem FP 10u|Accepted
 T|45823|10 Under Girls|NGA Static 2035|Accepted
 T|45823|10 Under Girls|Venom|Accepted
 T|45823|12 Under Girls|Canes Perry|Accepted
-T|45823|12 Under Girls|Carrollton Dirt Divas 2032|Accepted
 T|45823|12 Under Girls|Georgia Force 2033 Smith/Heggood|Accepted
 T|45823|12 Under Girls|West Georgia Nightmare 12 Gold|Accepted
 T|45823|14 Under Girls|Blaze Fastpitch|Accepted
@@ -231,7 +232,6 @@ T|46034|10 Under Girls|Diamond Devils McLean|C-Class
 T|46034|10 Under Girls|EC Elite|C-Class
 T|46034|10 Under Girls|Florida Elite 10U - Merritt|B-Class
 T|46034|10 Under Girls|Jacksonville Storm|B-Class
-T|46034|10 Under Girls|Lady Volts 10U - Persing|B-Class
 T|46034|10 Under Girls|Tallahassee Lady Bombers 10U|B-Class
 T|46034|12 Under Girls|Big Bend Lightning Briscoe|B-Class
 T|46034|12 Under Girls|Galaxy 229 12U|C-Class
