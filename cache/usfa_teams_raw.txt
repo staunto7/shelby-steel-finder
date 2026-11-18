@@ -14,6 +14,7 @@ T|45770|High School Open|South GA FEAR-Barkman|B-Class
 T|45770|High School Open|Southern Smoke|B-Class
 T|45770|High School Open|SOUTHERN STORM 16U|C-Class
 T|45770|High School Open|Zombie Squad|C-Class
+T|45771|9 Under Girls|Power Softball Gulf South|C-Class
 T|45771|10 Under Girls|Big Bend Lightning Parsons|B-Class
 T|45771|10 Under Girls|Dothan Warriors Whitten|C-Class
 T|45771|10 Under Girls|Florida Rise|C-Class
@@ -107,24 +108,21 @@ T|45806|18 Under Girls|Georgia Lightning|Accepted
 T|45806|18 Under Girls|Impact Caymol- Helms|Accepted
 T|45806|18 Under Girls|Marucci Legacy SEGA - Carrow 14u|Accepted
 T|45806|18 Under Girls|RELENTLESS RIVALS|Accepted
-T|45823|8 Under Girls|8u Sox Select|Pay Later
-T|45823|8 Under Girls|West Georgia Diamonds 2K18|Pay Later
 T|45823|10 Under Girls|Bremen Braves|Accepted
 T|45823|10 Under Girls|Carrollton Dirt Divas|Accepted
 T|45823|10 Under Girls|Coweta Chaos 2017|Accepted
 T|45823|10 Under Girls|Diamond Queens-10U Nolan|Accepted
 T|45823|10 Under Girls|East Cobb Edge 10U - Carter|Accepted
+T|45823|10 Under Girls|Lady Dukes Usher 10U|Accepted
 T|45823|10 Under Girls|Lady Mafia 10U|Accepted
 T|45823|10 Under Girls|LC Peaches|Accepted
 T|45823|10 Under Girls|Mayhem FP 10u|Accepted
 T|45823|10 Under Girls|NGA Static 2035|Accepted
 T|45823|10 Under Girls|Venom|Accepted
-T|45823|12 Under Girls|Canes Perry|Accepted
-T|45823|12 Under Girls|Georgia Force 2033 Smith/Heggood|Accepted
-T|45823|12 Under Girls|West Georgia Nightmare 12 Gold|Accepted
+T|45823|11 Under Girls|D1VISION Softball 12U GA Elite|Pay Later
 T|45823|14 Under Girls|Blaze Fastpitch|Accepted
 T|45823|14 Under Girls|North Georgia Wrath|Accepted
-T|45823|14 Under Girls|Renegades 2030/31 14U|Pay Later
+T|45823|14 Under Girls|Renegades 2030/31 14U|Accepted
 T|45823|14 Under Girls|TC Elite - Stroud|Accepted
 T|45824|8 Under Girls|Blue Crush 2036|League/Rec
 T|45824|8 Under Girls|Carrollton Dirt Divas 8U|C-Class
@@ -157,6 +155,7 @@ T|45982|18 Under Girls|Indiana Revolution 15U|B-Class
 T|45982|18 Under Girls|Lady Rams 16U|C-Class
 T|45982|18 Under Girls|Niagara Riptide|B-Class
 T|45982|18 Under Girls|Patriots|C-Class
+T|45983|14 Under Girls|Kentucky Rebels 14u|C-Class
 T|46019|8U OPEN DIVISION|Lady Prospects-Roberts|C-Class
 T|46019|8U OPEN DIVISION|Tx Pressure|C-Class
 T|46019|8U OPEN DIVISION|Unity 2036-Cervantes|B-Class
@@ -217,6 +216,7 @@ T|46031|16 Under Girls|Ga Fire Banes 16u|B-Class
 T|46031|16 Under Girls|Georgia Finesse|B-Class
 T|46031|16 Under Girls|Georgia Misfits 16U-Gibel|C-Class
 T|46031|16 Under Girls|Georgia Strike|C-Class
+T|46031|16 Under Girls|Impact Caymol- Helms|B-Class
 T|46031|16 Under Girls|North Georgia Menace|B-Class
 T|46031|16 Under Girls|Smoke Fastpitch|C-Class
 T|46031|18 Under Girls|Dirty Diamonds Bell|B-Class
