@@ -1,20 +1,19 @@
-T|45770|14 Under Girls|Atlanta Premier 14u Moore 2030|B-Class
-T|45770|14 Under Girls|Big Bend Lightning Sofield|B-Class
-T|45770|14 Under Girls|Diamond Devils 14u|B-Class
-T|45770|14 Under Girls|Florida Elite 2031|C-Class
-T|45770|14 Under Girls|Lady Reapers|B-Class
-T|45770|14 Under Girls|Pines 14u phillips|C-Class
-T|45770|14 Under Girls|South Georgia FEAR 14u|B-Class
-T|45770|14 Under Girls|Southern Smoke 14U Davis|B-Class
-T|45770|18 Under Girls|Adiktiv Elite Gold|B-Class
-T|45770|18 Under Girls|Adiktiv Elite Hutchinson|B-Class
-T|45770|18 Under Girls|Big Bend Lightning Helms|C-Class
-T|45770|18 Under Girls|Ghost 16U Braxton|B-Class
-T|45770|18 Under Girls|Lady Prospects Hogg|C-Class
-T|45770|18 Under Girls|South GA FEAR-Barkman|B-Class
-T|45770|18 Under Girls|Southern Smoke|B-Class
-T|45770|18 Under Girls|SOUTHERN STORM 16U|C-Class
-T|45770|18 Under Girls|Zombie Squad|C-Class
+T|45770|14U Open|Atlanta Premier 14u Moore 2030|B-Class
+T|45770|14U Open|Big Bend Lightning Sofield|B-Class
+T|45770|14U Open|Diamond Devils 14u|B-Class
+T|45770|14U Open|Florida Elite 2031|C-Class
+T|45770|14U Open|Lady Reapers|B-Class
+T|45770|14U Open|Pines 14u phillips|C-Class
+T|45770|14U Open|South Georgia FEAR 14u|B-Class
+T|45770|14U Open|Southern Smoke 14U Davis|B-Class
+T|45770|High School Open|Adiktiv Elite Hutchinson|B-Class
+T|45770|High School Open|Big Bend Lightning Helms|C-Class
+T|45770|High School Open|Ghost 16U Braxton|B-Class
+T|45770|High School Open|Lady Prospects Hogg|C-Class
+T|45770|High School Open|South GA FEAR-Barkman|B-Class
+T|45770|High School Open|Southern Smoke|B-Class
+T|45770|High School Open|SOUTHERN STORM 16U|C-Class
+T|45770|High School Open|Zombie Squad|C-Class
 T|45771|10 Under Girls|Big Bend Lightning Parsons|B-Class
 T|45771|10 Under Girls|Dothan Warriors Whitten|C-Class
 T|45771|10 Under Girls|Florida Rise|C-Class
@@ -43,7 +42,6 @@ T|45790|12 Under Girls|Dirt Dawgs 12u Goff|B-Class
 T|45790|12 Under Girls|Shelby Steel 2032/2033|C-Class
 T|45790|14 Under Girls|TC Elite - Stroud|B-Class
 T|45791|10 Under Girls|Georgia Platinum Cherokee|B-Class
-T|45791|11 Under Girls|Rhyne Park Renegades 11U|C-Class
 T|45791|12 Under Girls|Canes 2033|B-Class
 T|45791|12 Under Girls|CRUSH Livermore 12U|C-Class
 T|45791|12 Under Girls|Diamond Queens|C-Class
@@ -224,18 +222,21 @@ T|46031|16 Under Girls|Smoke Fastpitch|C-Class
 T|46031|18 Under Girls|Dirty Diamonds Bell|B-Class
 T|46031|18 Under Girls|Georgia United Elite|B-Class
 T|46031|18 Under Girls|RELENTLESS RIVALS|C-Class
-T|46034|10 Under Girls|Alabama Fury 10u Hall|C-Class
-T|46034|10 Under Girls|Bluewave|C-Class
-T|46034|10 Under Girls|Diamond Devils McLean|C-Class
-T|46034|10 Under Girls|EC Elite|C-Class
-T|46034|10 Under Girls|Florida Elite 10U - Merritt|B-Class
-T|46034|10 Under Girls|Jacksonville Storm|B-Class
-T|46034|10 Under Girls|Tallahassee Lady Bombers 10U|B-Class
-T|46034|12 Under Girls|Big Bend Lightning Briscoe|B-Class
-T|46034|12 Under Girls|Galaxy 229 12U|C-Class
-T|46034|12 Under Girls|PanHandle Power|C-Class
-T|46034|12 Under Girls|Southern Smoke-Simpson|C-Class
-T|46034|12 Under Girls|SOWEGA Smoke|B-Class
-T|46034|12 Under Girls|SOWEGA TRIBE 12U|C-Class
+T|46034|10U Open|Alabama Fury 10u Hall|C-Class
+T|46034|10U Open|Bluewave|C-Class
+T|46034|10U Open|Diamond Devils McLean|C-Class
+T|46034|10U Open|EC Elite|C-Class
+T|46034|10U Open|Florida Elite 10U - Merritt|B-Class
+T|46034|10U Open|Jacksonville Storm|B-Class
+T|46034|10U Open|Tallahassee Lady Bombers 10U|B-Class
+T|46034|12U Open|Alabama Fury 12u - Aplin|B-Class
+T|46034|12U Open|Big Bend Lightning Briscoe|B-Class
+T|46034|12U Open|Galaxy 229 12U|C-Class
+T|46034|12U Open|PanHandle Power|C-Class
+T|46034|12U Open|Southern Smoke-Simpson|C-Class
+T|46034|12U Open|SOWEGA Smoke|B-Class
+T|46034|12U Open|SOWEGA TRIBE 12U|C-Class
+V|46034|Davis Park Seminole County Recreation|Use Google Maps for Davis Park, Donalsonville, GA 39845|10U Open
+V|46034|Davis Park Seminole County Recreation|Use Google Maps for Davis Park, Donalsonville, GA 39845|12U Open
 T|46105|8 Under Girls|Lady Prospects-Roberts|C-Class
 T|46105|8 Under Girls|TN River Surge|C-Class
