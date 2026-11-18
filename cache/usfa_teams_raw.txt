@@ -55,75 +55,67 @@ T|45791|14 Under Girls|Fayette Thunder Select|C-Class
 T|45791|14 Under Girls|Fury Platinum 2031|B-Class
 T|45791|14 Under Girls|North Georgia Wrath|C-Class
 T|45791|16 Under Girls|Georgia Finesse|B-Class
-T|45806|11 Under Girls|D1VISION Softball 12U GA Elite|Wait List
-T|45806|12 Under Girls|Capstone Athletics - Loew|Accepted
-T|45806|12 Under Girls|CRUSH Livermore 12U|Accepted
-T|45806|12 Under Girls|Decatur Venom - Green|Accepted
-T|45806|12 Under Girls|EC Bullets 2032 Triplett|Accepted
-T|45806|12 Under Girls|Firecrackers-2033 Buckner/Self|Accepted
-T|45806|12 Under Girls|Ga Classics - 12U|Accepted
-T|45806|12 Under Girls|Ga Platinum 12u- O’Kelley|Wait List
-T|45806|12 Under Girls|Georgia Fire 12U- Anderson|Accepted
-T|45806|12 Under Girls|Kennesaw Outlaws 12u- McGrew|Accepted
-T|45806|12 Under Girls|NG Heat|Accepted
-T|45806|12 Under Girls|Rhyne Park Renegades 11U|Accepted
-T|45806|12 Under Girls|SBL Pirates 12U Yellow|Accepted
-T|45806|12 Under Girls|WOW Factor 2032 Phillips|Accepted
-T|45806|14 Under Girls|14U WILDCATS|Accepted
-T|45806|14 Under Girls|Ambush Fastpitch Tench|Accepted
-T|45806|14 Under Girls|Atlanta Apex|Wait List
-T|45806|14 Under Girls|Blaze Fastpitch|Wait List
-T|45806|14 Under Girls|Capstone Athletics - Bennett|Accepted
-T|45806|14 Under Girls|Dugout Divas Purple|Accepted
-T|45806|14 Under Girls|Fireproof 14u|Accepted
-T|45806|14 Under Girls|FOD Select Winfrey|Accepted
-T|45806|14 Under Girls|Ga Fire Spencer 2031|Accepted
-T|45806|14 Under Girls|Georgia Fire Yawn|Accepted
-T|45806|14 Under Girls|Georgia Misfits- Sipsy|Accepted
-T|45806|14 Under Girls|Georgia Misfits-Holland|Accepted
-T|45806|14 Under Girls|Georgia Power 2031 - Coggins|Accepted
-T|45806|14 Under Girls|Kennesaw Raptors KR|Accepted
-T|45806|14 Under Girls|Lady Dukes Winton-Wilkerson 13U|Accepted
-T|45806|14 Under Girls|Lady Panthers 14U|Accepted
-T|45806|14 Under Girls|Legacy - Aliengena|Accepted
-T|45806|14 Under Girls|Lightning Athletics|Accepted
-T|45806|14 Under Girls|Momentum 3:14|Wait List
-T|45806|14 Under Girls|PTC Pride|Wait List
-T|45806|14 Under Girls|Raptors|Accepted
-T|45806|14 Under Girls|Renegades 2030/31 14U|Wait List
-T|45806|14 Under Girls|Social Circle Swarm|Accepted
-T|45806|14 Under Girls|Stars Fastpitch - GA - Czarnecke|Accepted
-T|45806|14 Under Girls|Vipers Athletics|Accepted
-T|45806|18 Under Girls|16u Flush Fastpitch PWD Royal Flush Plumbing|Accepted
-T|45806|18 Under Girls|Atlanta Crush 16U Hebert|Accepted
-T|45806|18 Under Girls|Atlanta Crush 16U Newsom|Accepted
-T|45806|18 Under Girls|Atlanta Premier MMR|Accepted
-T|45806|18 Under Girls|Brooks Pressure 16u|Accepted
-T|45806|18 Under Girls|CSRA YARDDOGS 18U Gold|Accepted
-T|45806|18 Under Girls|Dirty Diamonds Bell|Accepted
-T|45806|18 Under Girls|Fireproof 16U|Accepted
-T|45806|18 Under Girls|GA FIRE WILKINS|Accepted
-T|45806|18 Under Girls|Georgia Finesse|Accepted
-T|45806|18 Under Girls|Georgia Lightning|Accepted
-T|45806|18 Under Girls|Impact Caymol- Helms|Accepted
-T|45806|18 Under Girls|Marucci Legacy SEGA - Carrow 14u|Accepted
-T|45806|18 Under Girls|RELENTLESS RIVALS|Accepted
-T|45823|10 Under Girls|Bremen Braves|Accepted
-T|45823|10 Under Girls|Carrollton Dirt Divas|Accepted
-T|45823|10 Under Girls|Coweta Chaos 2017|Accepted
-T|45823|10 Under Girls|Diamond Queens-10U Nolan|Accepted
-T|45823|10 Under Girls|East Cobb Edge 10U - Carter|Accepted
-T|45823|10 Under Girls|Lady Dukes Usher 10U|Accepted
-T|45823|10 Under Girls|Lady Mafia 10U|Accepted
-T|45823|10 Under Girls|LC Peaches|Accepted
-T|45823|10 Under Girls|Mayhem FP 10u|Accepted
-T|45823|10 Under Girls|NGA Static 2035|Accepted
-T|45823|10 Under Girls|Venom|Accepted
-T|45823|11 Under Girls|D1VISION Softball 12U GA Elite|Pay Later
-T|45823|14 Under Girls|Blaze Fastpitch|Accepted
-T|45823|14 Under Girls|North Georgia Wrath|Accepted
-T|45823|14 Under Girls|Renegades 2030/31 14U|Accepted
-T|45823|14 Under Girls|TC Elite - Stroud|Accepted
+T|45806|12u|Capstone Athletics - Loew|Accepted
+T|45806|12u|CRUSH Livermore 12U|Accepted
+T|45806|12u|Decatur Venom - Green|Accepted
+T|45806|12u|EC Bullets 2032 Triplett|Accepted
+T|45806|12u|Firecrackers-2033 Buckner/Self|Accepted
+T|45806|12u|Ga Classics - 12U|Accepted
+T|45806|12u|Georgia Fire 12U- Anderson|Accepted
+T|45806|12u|Kennesaw Outlaws 12u- McGrew|Accepted
+T|45806|12u|NG Heat|Accepted
+T|45806|12u|Rhyne Park Renegades 11U|Accepted
+T|45806|12u|SBL Pirates 12U Yellow|Accepted
+T|45806|12u|WOW Factor 2032 Phillips|Accepted
+T|45806|14u Red|14U WILDCATS|Accepted
+T|45806|14u Red|Georgia Misfits- Sipsy|Accepted
+T|45806|14u Red|Georgia Power 2031 - Coggins|Accepted
+T|45806|14u Red|Kennesaw Raptors KR|Accepted
+T|45806|14u Red|Legacy - Aliengena|Accepted
+T|45806|14u Red|Raptors|Accepted
+T|45806|14u Red|Social Circle Swarm|Accepted
+T|45806|14u Red|Stars Fastpitch - GA - Czarnecke|Accepted
+T|45806|14u White|Ambush Fastpitch Tench|Accepted
+T|45806|14u White|Capstone Athletics - Bennett|Accepted
+T|45806|14u White|Dugout Divas Purple|Accepted
+T|45806|14u White|Fireproof 14u|Accepted
+T|45806|14u White|FOD Select Winfrey|Accepted
+T|45806|14u White|Ga Fire Spencer 2031|Accepted
+T|45806|14u White|Georgia Fire Yawn|Accepted
+T|45806|14u White|Georgia Misfits-Holland|Accepted
+T|45806|14u White|Lady Dukes Winton-Wilkerson 13U|Accepted
+T|45806|14u White|Lady Panthers 14U|Accepted
+T|45806|14u White|Lightning Athletics|Accepted
+T|45806|14u White|Vipers Athletics|Accepted
+T|45806|HS|Atlanta Crush 16U Hebert|Accepted
+T|45806|HS|Atlanta Crush 16U Newsom|Accepted
+T|45806|HS|Atlanta Premier MMR|Accepted
+T|45806|HS|Brooks Pressure 16u|Accepted
+T|45806|HS|CSRA YARDDOGS 18U Gold|Accepted
+T|45806|HS|Dirty Diamonds Bell|Accepted
+T|45806|HS|Fireproof 16U|Accepted
+T|45806|HS|GA FIRE WILKINS|Accepted
+T|45806|HS|Georgia Finesse|Accepted
+T|45806|HS|Georgia Lightning|Accepted
+T|45806|HS|Impact Caymol- Helms|Accepted
+T|45806|HS|Marucci Legacy SEGA - Carrow 14u|Accepted
+T|45806|HS|RELENTLESS RIVALS|Accepted
+T|45823|10U|Bremen Braves|Accepted
+T|45823|10U|Carrollton Dirt Divas|Accepted
+T|45823|10U|Coweta Chaos 2017|Accepted
+T|45823|10U|Diamond Queens-10U Nolan|Accepted
+T|45823|10U|East Cobb Edge 10U - Carter|Accepted
+T|45823|10U|Lady Dukes Usher 10U|Accepted
+T|45823|10U|Lady Mafia 10U|Accepted
+T|45823|10U|LC Peaches|Accepted
+T|45823|10U|Mayhem FP 10u|Accepted
+T|45823|10U|NGA Static 2035|Accepted
+T|45823|10U|Venom|Accepted
+T|45823|14U|Blaze Fastpitch|Accepted
+T|45823|14U|North Georgia Wrath|Accepted
+T|45823|14U|Renegades 2030/31 14U|Accepted
+T|45823|14U|TC Elite - Stroud|Accepted
+T|45823|14U|WG Freedom Fastpitch|Accepted
 T|45824|8 Under Girls|Blue Crush 2036|League/Rec
 T|45824|8 Under Girls|Carrollton Dirt Divas 8U|C-Class
 T|45824|8 Under Girls|Naturals 8u|C-Class
@@ -176,6 +168,7 @@ T|46019|10U C-CLASS DIVISION|Katy Warriors 2K35|C-Class
 T|46019|10U C-CLASS DIVISION|Miami County Blaze 9U - Coppock|C-Class
 T|46019|10U C-CLASS DIVISION|MPACK Softball|C-Class
 T|46019|10U C-CLASS DIVISION|TN HEAT|C-Class
+T|46019|11U 2K15 DIVISION|Georgia Fire 12U- Anderson|B-Class
 T|46019|11U 2K15 DIVISION|Lebanon Heat|League/Rec
 T|46019|11U 2K15 DIVISION|Militia 14|C-Class
 T|46019|12U OPEN DIVISION|Ohio Hawks 2k14- Gabbard|B-Class
@@ -183,6 +176,7 @@ T|46019|12U OPEN DIVISION|Ohio Storm 2032 Streby|B-Class
 T|46019|12U OPEN DIVISION|Rhyne Park Renegades|B-Class
 T|46019|12U OPEN DIVISION|Sienna Surge|A-Class
 T|46019|12U OPEN DIVISION|Texas Crossfire Gold|B-Class
+T|46019|12U OPEN DIVISION|Y'alls Walton|B-Class
 T|46019|12U C-CLASS DIVISION|Forge Fastpitch 27:17|C-Class
 T|46019|12U C-CLASS DIVISION|HTX Aces 12U LeBlanc|C-Class
 T|46019|12U C-CLASS DIVISION|Mattoon Pride 12U|C-Class
