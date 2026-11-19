@@ -46,27 +46,6 @@
    ]
   },
   {
-   "sanction": "USFA",
-   "name": "Turkey Bowl Classic",
-   "start": "2026-11-21",
-   "end": "2026-11-21",
-   "state": "GA",
-   "city": "Shuford Field - GA",
-   "ages": "07U - 18U",
-   "ageMin": 7,
-   "ageMax": 18,
-   "fee": "$150 - $395",
-   "teams": null,
-   "url": "https://softball.sincsports.com/TTIntro.aspx?tid=USFA45790",
-   "id": "119cc080e1",
-   "eventId": "119cc080e1",
-   "team": "12U",
-   "teamName": "Shelby Steel 2032/2033",
-   "division": "12 Under Girls",
-   "source": "auto",
-   "venues": []
-  },
-  {
    "sanction": "USSSA",
    "name": "Jingle Bell Classic",
    "start": "2026-12-05",
