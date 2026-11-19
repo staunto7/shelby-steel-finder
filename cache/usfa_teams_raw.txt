@@ -200,13 +200,12 @@ T|46020|18U OPEN|Midwest Aftershock - BT|A-Class
 T|46020|18U OPEN|Oklahoma Bombers 18u Gold|A-Class
 T|46020|18U C-CLASS|Texas Inferno 08|C-Class
 T|46031|11 Under Girls|D1VISION Softball 12U GA Elite|B-Class
-T|46031|11 Under Girls|Rhyne Park Renegades 11U|C-Class
 T|46031|14 Under Girls|FOD Select Winfrey|C-Class
-T|46031|15 Under Girls|GA FIRE WILKINS|C-Class
 T|46031|16 Under Girls|Atlanta Crush 16U Hebert|B-Class
 T|46031|16 Under Girls|Atlanta Premier MMR|B-Class
 T|46031|16 Under Girls|Brooks Pressure 16u|B-Class
 T|46031|16 Under Girls|Ga Fire Banes 16u|B-Class
+T|46031|16 Under Girls|GA FIRE WILKINS|C-Class
 T|46031|16 Under Girls|Georgia Finesse|B-Class
 T|46031|16 Under Girls|Georgia Misfits 16U-Gibel|C-Class
 T|46031|16 Under Girls|Georgia Strike|C-Class
