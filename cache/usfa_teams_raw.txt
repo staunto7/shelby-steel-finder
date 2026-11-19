@@ -128,6 +128,7 @@ T|45825|9 Under Girls|Carrollton Dirt Divas|C-Class
 T|45825|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
 T|45825|10 Under Girls|Ga Fire - Rogers|B-Class
 T|45825|10 Under Girls|Georgia Misfits 10U|C-Class
+T|45825|12 Under Girls|Georgia Force 2033 Smith/Heggood|B-Class
 T|45825|14 Under Girls|Georgia Misfits-Holland|C-Class
 T|45982|10 Under Girls|Hocking Valley Thunder|C-Class
 T|45982|10 Under Girls|Midwest Crush 10U|C-Class
