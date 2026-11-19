@@ -38,10 +38,6 @@ T|45771|12 Under Girls|SOWEGA TRIBE 12U|C-Class
 T|45771|14 Under Girls|North Florida Fire|C-Class
 T|45771|14 Under Girls|Power Softball Gulf South 14u|C-Class
 T|45771|14 Under Girls|Vibe 850|C-Class
-T|45790|10 Under Girls|HC Elite|C-Class
-T|45790|12 Under Girls|Dirt Dawgs 12u Goff|B-Class
-T|45790|12 Under Girls|Shelby Steel 2032/2033|C-Class
-T|45790|14 Under Girls|TC Elite - Stroud|B-Class
 T|45791|10 Under Girls|Georgia Platinum Cherokee|B-Class
 T|45791|12 Under Girls|Canes 2033|B-Class
 T|45791|12 Under Girls|CRUSH Livermore 12U|C-Class
