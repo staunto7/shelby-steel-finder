@@ -66,7 +66,6 @@ T|45806|12u|WOW Factor 2032 Phillips|Accepted
 T|45806|14u Red|14U WILDCATS|Accepted
 T|45806|14u Red|Georgia Misfits- Sipsy|Accepted
 T|45806|14u Red|Georgia Power 2031 - Coggins|Accepted
-T|45806|14u Red|Kennesaw Raptors KR|Accepted
 T|45806|14u Red|Legacy - Aliengena|Accepted
 T|45806|14u Red|Raptors|Accepted
 T|45806|14u Red|Social Circle Swarm|Accepted
@@ -75,10 +74,10 @@ T|45806|14u White|Ambush Fastpitch Tench|Accepted
 T|45806|14u White|Capstone Athletics - Bennett|Accepted
 T|45806|14u White|Dugout Divas Purple|Accepted
 T|45806|14u White|Fireproof 14u|Accepted
-T|45806|14u White|FOD Select Winfrey|Accepted
 T|45806|14u White|Ga Fire Spencer 2031|Accepted
 T|45806|14u White|Georgia Fire Yawn|Accepted
 T|45806|14u White|Georgia Misfits-Holland|Accepted
+T|45806|14u White|Kennesaw Raptors KR|Accepted
 T|45806|14u White|Lady Dukes Winton-Wilkerson 13U|Accepted
 T|45806|14u White|Lady Panthers 14U|Accepted
 T|45806|14u White|Lightning Athletics|Accepted
