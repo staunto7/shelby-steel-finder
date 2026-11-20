@@ -137,6 +137,7 @@ T|45982|14 Under Girls|Kentucky Smoke|B-Class
 T|45982|14 Under Girls|Lady Dukes Bellamy/Whitt 14u|B-Class
 T|45982|14 Under Girls|Lady Rams 14U|C-Class
 T|45982|14 Under Girls|M-PACT|C-Class
+T|45982|14 Under Girls|WI Bandits 14U National|A-Class
 T|45982|18 Under Girls|Cincy Doom '29/'30 - Niese|C-Class
 T|45982|18 Under Girls|Diamond Elite 2009|C-Class
 T|45982|18 Under Girls|Fuego|C-Class
@@ -144,6 +145,7 @@ T|45982|18 Under Girls|Indiana Revolution 15U|B-Class
 T|45982|18 Under Girls|Lady Rams 16U|C-Class
 T|45982|18 Under Girls|Niagara Riptide|B-Class
 T|45982|18 Under Girls|Patriots|C-Class
+T|45983|10 Under Girls|Southern Storm 2035|C-Class
 T|45983|14 Under Girls|Kentucky Rebels 14u|C-Class
 T|46019|8U OPEN DIVISION|Lady Prospects-Roberts|C-Class
 T|46019|8U OPEN DIVISION|Tx Pressure|C-Class
