@@ -16,6 +16,7 @@ T|45770|High School Open|SOUTHERN STORM 16U|C-Class
 T|45770|High School Open|Zombie Squad|C-Class
 T|45771|9 Under Girls|Power Softball Gulf South|C-Class
 T|45771|10 Under Girls|Big Bend Lightning Parsons|B-Class
+T|45771|10 Under Girls|Bluewave|C-Class
 T|45771|10 Under Girls|Dothan Warriors Whitten|C-Class
 T|45771|10 Under Girls|Florida Rise|C-Class
 T|45771|10 Under Girls|Jacksonville Storm|B-Class
@@ -214,20 +215,5 @@ T|46031|16 Under Girls|Smoke Fastpitch|C-Class
 T|46031|18 Under Girls|Dirty Diamonds Bell|B-Class
 T|46031|18 Under Girls|Georgia United Elite|B-Class
 T|46031|18 Under Girls|RELENTLESS RIVALS|C-Class
-T|46034|10U Open|Alabama Fury 10u Hall|C-Class
-T|46034|10U Open|Bluewave|C-Class
-T|46034|10U Open|Diamond Devils McLean|C-Class
-T|46034|10U Open|EC Elite|C-Class
-T|46034|10U Open|Florida Elite 10U - Merritt|B-Class
-T|46034|10U Open|Jacksonville Storm|B-Class
-T|46034|12U Open|Alabama Fury 12u - Aplin|B-Class
-T|46034|12U Open|Big Bend Lightning Briscoe|B-Class
-T|46034|12U Open|Galaxy 229 12U|C-Class
-T|46034|12U Open|PanHandle Power|C-Class
-T|46034|12U Open|Southern Smoke-Simpson|C-Class
-T|46034|12U Open|SOWEGA Smoke|B-Class
-T|46034|12U Open|SOWEGA TRIBE 12U|C-Class
-V|46034|Davis Park Seminole County Recreation|Use Google Maps for Davis Park, Donalsonville, GA 39845|10U Open
-V|46034|Davis Park Seminole County Recreation|Use Google Maps for Davis Park, Donalsonville, GA 39845|12U Open
 T|46105|8 Under Girls|Lady Prospects-Roberts|C-Class
 T|46105|8 Under Girls|TN River Surge|C-Class
