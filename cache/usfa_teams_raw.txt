@@ -132,6 +132,7 @@ T|45982|12 Under Girls|Knights Elite|C-Class
 T|45982|12 Under Girls|Lady Diamondbacks 12U Nutt|C-Class
 T|45982|12 Under Girls|Miami County Blaze Maxson|C-Class
 T|45982|12 Under Girls|Mountain State Misfits|C-Class
+T|45982|12 Under Girls|OC Elite - Berry|C-Class
 T|45982|14 Under Girls|Kentucky Smoke|B-Class
 T|45982|14 Under Girls|Lady Dukes Bellamy/Whitt 14u|B-Class
 T|45982|14 Under Girls|Lady Rams 14U|C-Class
@@ -219,7 +220,6 @@ T|46034|10U Open|Diamond Devils McLean|C-Class
 T|46034|10U Open|EC Elite|C-Class
 T|46034|10U Open|Florida Elite 10U - Merritt|B-Class
 T|46034|10U Open|Jacksonville Storm|B-Class
-T|46034|10U Open|Tallahassee Lady Bombers 10U|B-Class
 T|46034|12U Open|Alabama Fury 12u - Aplin|B-Class
 T|46034|12U Open|Big Bend Lightning Briscoe|B-Class
 T|46034|12U Open|Galaxy 229 12U|C-Class
