@@ -1,14 +1,13 @@
-T|45771|9 Under Girls|Power Softball Gulf South|C-Class
 T|45771|10 Under Girls|Big Bend Lightning Parsons|B-Class
 T|45771|10 Under Girls|Bluewave|C-Class
 T|45771|10 Under Girls|Dothan Warriors Whitten|C-Class
 T|45771|10 Under Girls|Florida Rise|C-Class
 T|45771|10 Under Girls|Jacksonville Storm|B-Class
+T|45771|10 Under Girls|Power Softball Gulf South|C-Class
 T|45771|10 Under Girls|Power Softball Gulf South 10u Jenkins|C-Class
 T|45771|10 Under Girls|Purple Reign|B-Class
 T|45771|10 Under Girls|Sowega Lady Spartans|C-Class
 T|45771|12 Under Girls|Alabama Fury 12u - Aplin|B-Class
-T|45771|12 Under Girls|Alabama Fury 12U - Cox|B-Class
 T|45771|12 Under Girls|Alabama Fury Jones 11u|
 T|45771|12 Under Girls|AP Rucker 12u|B-Class
 T|45771|12 Under Girls|Big Bend Lightning Briscoe|B-Class
@@ -16,7 +15,6 @@ T|45771|12 Under Girls|Elite Academy Titans 12U (Tuel)|C-Class
 T|45771|12 Under Girls|Panhandle Heat-Mock|C-Class
 T|45771|12 Under Girls|PanHandle Power|C-Class
 T|45771|12 Under Girls|Power Softball Gulf South 12u|C-Class
-T|45771|12 Under Girls|SALT 2033 Mitchell|C-Class
 T|45771|12 Under Girls|South Alabama Panthers|C-Class
 T|45771|12 Under Girls|South Georgia Spark|C-Class
 T|45771|12 Under Girls|Southwest Georgia Diamond Dealers|C-Class
