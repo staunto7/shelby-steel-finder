@@ -12,6 +12,7 @@ T|45771|12 Under Girls|Alabama Fury 12U - Cox|B-Class
 T|45771|12 Under Girls|Alabama Fury Jones 11u|
 T|45771|12 Under Girls|AP Rucker 12u|B-Class
 T|45771|12 Under Girls|Big Bend Lightning Briscoe|B-Class
+T|45771|12 Under Girls|Elite Academy Titans 12U (Tuel)|C-Class
 T|45771|12 Under Girls|Panhandle Heat-Mock|C-Class
 T|45771|12 Under Girls|PanHandle Power|C-Class
 T|45771|12 Under Girls|Power Softball Gulf South 12u|C-Class
