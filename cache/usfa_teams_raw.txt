@@ -19,6 +19,7 @@ T|45771|12 Under Girls|South Alabama Panthers|C-Class
 T|45771|12 Under Girls|South Georgia Spark|C-Class
 T|45771|12 Under Girls|Southwest Georgia Diamond Dealers|C-Class
 T|45771|12 Under Girls|SOWEGA TRIBE 12U|C-Class
+T|45771|12 Under Girls|Warriors 11U Messick|C-Class
 T|45771|14 Under Girls|North Florida Fire|C-Class
 T|45771|14 Under Girls|Power Softball Gulf South 14u|C-Class
 T|45771|14 Under Girls|Vibe 850|C-Class
@@ -34,6 +35,7 @@ T|45791|13 Under Girls|West Cobb Crush 2013|B-Class
 T|45791|14 Under Girls|Blaze Fastpitch|C-Class
 T|45791|14 Under Girls|Fayette Thunder Select|C-Class
 T|45791|14 Under Girls|Fury Platinum 2031|B-Class
+T|45791|14 Under Girls|Lady Mafia 14U|C-Class
 T|45791|14 Under Girls|North Georgia Wrath|C-Class
 T|45791|16 Under Girls|Georgia Finesse|B-Class
 T|45791|18 Under Girls|WGS Elite|C-Class
@@ -63,6 +65,7 @@ T|45982|14 Under Girls|Kentucky Smoke|B-Class
 T|45982|14 Under Girls|Lady Dukes Bellamy/Whitt 14u|B-Class
 T|45982|14 Under Girls|Lady Rams 14U|C-Class
 T|45982|14 Under Girls|M-PACT|C-Class
+T|45982|14 Under Girls|Mid Michigan 14u Groom|B-Class
 T|45982|14 Under Girls|WI Bandits 14U National|A-Class
 T|45982|18 Under Girls|Cincy Doom '29/'30 - Niese|C-Class
 T|45982|18 Under Girls|Diamond Elite 2009|C-Class
@@ -71,6 +74,7 @@ T|45982|18 Under Girls|Indiana Revolution 15U|B-Class
 T|45982|18 Under Girls|Lady Rams 16U|C-Class
 T|45982|18 Under Girls|Niagara Riptide|B-Class
 T|45982|18 Under Girls|Patriots|C-Class
+T|45982|18 Under Girls|Southwest Ohio Legends|B-Class
 T|45983|10 Under Girls|Southern Storm 2035|C-Class
 T|45983|14 Under Girls|Kentucky Rebels 14u|C-Class
 T|46019|8U OPEN DIVISION|Lady Prospects-Roberts|C-Class
@@ -142,5 +146,6 @@ T|46031|18 Under Girls|Dirty Diamonds Bell|B-Class
 T|46031|18 Under Girls|Georgia United Elite|B-Class
 T|46031|18 Under Girls|RELENTLESS RIVALS|C-Class
 T|46031|18 Under Girls|Sharon Springs Spartans|B-Class
+T|46105|8 Under Girls|Lady Outlaws|C-Class
 T|46105|8 Under Girls|Lady Prospects-Roberts|C-Class
 T|46105|8 Under Girls|TN River Surge|C-Class
