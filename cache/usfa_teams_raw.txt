@@ -29,6 +29,7 @@ T|45791|12 Under Girls|Diamond Queens|C-Class
 T|45791|12 Under Girls|Ga Fire 2032 - Sappenfield|B-Class
 T|45791|12 Under Girls|Wow Factor Softball - Evans|C-Class
 T|45791|13 Under Girls|Premier Fastpitch 31/32|C-Class
+T|45791|13 Under Girls|Stars Fastpitch - GA - Czarnecke|B-Class
 T|45791|13 Under Girls|West Cobb Crush 2013|B-Class
 T|45791|14 Under Girls|Blaze Fastpitch|C-Class
 T|45791|14 Under Girls|Fayette Thunder Select|C-Class
