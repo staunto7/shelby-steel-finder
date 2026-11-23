@@ -35,6 +35,7 @@ T|45791|14 Under Girls|Fayette Thunder Select|C-Class
 T|45791|14 Under Girls|Fury Platinum 2031|B-Class
 T|45791|14 Under Girls|North Georgia Wrath|C-Class
 T|45791|16 Under Girls|Georgia Finesse|B-Class
+T|45791|18 Under Girls|WGS Elite|C-Class
 T|45824|8 Under Girls|Blue Crush 2036|League/Rec
 T|45824|8 Under Girls|Carrollton Dirt Divas 8U|C-Class
 T|45824|8 Under Girls|Naturals 8u|C-Class
@@ -139,5 +140,6 @@ T|46031|16 Under Girls|Smoke Fastpitch|C-Class
 T|46031|18 Under Girls|Dirty Diamonds Bell|B-Class
 T|46031|18 Under Girls|Georgia United Elite|B-Class
 T|46031|18 Under Girls|RELENTLESS RIVALS|C-Class
+T|46031|18 Under Girls|Sharon Springs Spartans|B-Class
 T|46105|8 Under Girls|Lady Prospects-Roberts|C-Class
 T|46105|8 Under Girls|TN River Surge|C-Class
