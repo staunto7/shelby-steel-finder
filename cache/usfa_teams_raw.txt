@@ -44,9 +44,10 @@ T|45824|8 Under Girls|Blue Crush 2036|League/Rec
 T|45824|8 Under Girls|Carrollton Dirt Divas 8U|C-Class
 T|45824|8 Under Girls|Naturals 8u|C-Class
 T|45824|8 Under Girls|West Georgia Bomb Pops|C-Class
-T|45824|9 Under Girls|Carrollton Dirt Divas|C-Class
-T|45824|9 Under Girls|Dirty Diamonds 10U|C-Class
+T|45824|8 Under Girls|West Georgia Diamonds 2K18|C-Class
+T|45824|10 Under Girls|Carrollton Dirt Divas|C-Class
 T|45824|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
+T|45824|10 Under Girls|Dirty Diamonds 10U|C-Class
 T|45824|10 Under Girls|West Georgia Nightmare|C-Class
 T|45825|9 Under Girls|Carrollton Dirt Divas|C-Class
 T|45825|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
