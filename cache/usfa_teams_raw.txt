@@ -22,6 +22,7 @@ T|45771|12 Under Girls|SOWEGA TRIBE 12U|C-Class
 T|45771|12 Under Girls|Warriors 11U Messick|C-Class
 T|45771|14 Under Girls|North Florida Fire|C-Class
 T|45771|14 Under Girls|Power Softball Gulf South 14u|C-Class
+T|45771|14 Under Girls|Sowega Tribe 14U- Dickens|C-Class
 T|45771|14 Under Girls|Vibe 850|C-Class
 T|45791|10 Under Girls|Georgia Platinum Cherokee|B-Class
 T|45791|12 Under Girls|Canes 2033|B-Class
@@ -29,14 +30,14 @@ T|45791|12 Under Girls|CRUSH Livermore 12U|C-Class
 T|45791|12 Under Girls|Diamond Queens|C-Class
 T|45791|12 Under Girls|Ga Fire 2032 - Sappenfield|B-Class
 T|45791|12 Under Girls|Wow Factor Softball - Evans|C-Class
-T|45791|13 Under Girls|Premier Fastpitch 31/32|C-Class
-T|45791|13 Under Girls|Stars Fastpitch - GA - Czarnecke|B-Class
-T|45791|13 Under Girls|West Cobb Crush 2013|B-Class
 T|45791|14 Under Girls|Blaze Fastpitch|C-Class
 T|45791|14 Under Girls|Fayette Thunder Select|C-Class
 T|45791|14 Under Girls|Fury Platinum 2031|B-Class
 T|45791|14 Under Girls|Lady Mafia 14U|C-Class
 T|45791|14 Under Girls|North Georgia Wrath|C-Class
+T|45791|14 Under Girls|Premier Fastpitch 31/32|C-Class
+T|45791|14 Under Girls|Stars Fastpitch - GA - Czarnecke|B-Class
+T|45791|14 Under Girls|West Cobb Crush 2013|B-Class
 T|45791|16 Under Girls|Georgia Finesse|B-Class
 T|45791|18 Under Girls|WGS Elite|C-Class
 T|45824|8 Under Girls|Blue Crush 2036|League/Rec
