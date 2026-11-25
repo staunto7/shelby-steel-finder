@@ -1,7 +1,8 @@
 T|45771|10 Under Girls|Big Bend Lightning Parsons|B-Class
 T|45771|10 Under Girls|Bluewave|C-Class
-T|45771|10 Under Girls|Dothan Warriors Whitten|C-Class
+T|45771|10 Under Girls|Dothan Warriors Rogers|C-Class
 T|45771|10 Under Girls|Florida Rise|C-Class
+T|45771|10 Under Girls|Havoc Miller 10U|C-Class
 T|45771|10 Under Girls|Jacksonville Storm|B-Class
 T|45771|10 Under Girls|Power Softball Gulf South|C-Class
 T|45771|10 Under Girls|Power Softball Gulf South 10u Jenkins|C-Class
