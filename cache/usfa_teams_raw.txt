@@ -89,6 +89,7 @@ T|46019|8U C-CLASS DIVISION|Outlaws Select 2036|C-Class
 T|46019|8U C-CLASS DIVISION|West Georgia Diamonds 2K18|C-Class
 T|46019|9U 2K17 DIVISION|ETX Triple Threat|C-Class
 T|46019|9U 2K17 DIVISION|Lady Outlaws Cruz|C-Class
+T|46019|9U 2K17 DIVISION|Power Softball Gulf South|C-Class
 T|46019|9U 2K17 DIVISION|Sudden Impact 2k17-Schneider|A-Class
 T|46019|9U 2K17 DIVISION|Tennessee Impact 2k35|
 T|46019|9U 2K17 DIVISION|TN Rampage|C-Class
@@ -97,6 +98,7 @@ T|46019|10U OPEN DIVISION|Rhyne Park Renegades 10U|B-Class
 T|46019|10U C-CLASS DIVISION|Hocking Valley Thunder|C-Class
 T|46019|10U C-CLASS DIVISION|Howard County Thunder 10U|C-Class
 T|46019|10U C-CLASS DIVISION|Katy Warriors 2K35|C-Class
+T|46019|10U C-CLASS DIVISION|Louisville Lady Sluggers 2034|C-Class
 T|46019|10U C-CLASS DIVISION|Miami County Blaze 9U - Coppock|C-Class
 T|46019|10U C-CLASS DIVISION|MPACK Softball|C-Class
 T|46019|10U C-CLASS DIVISION|TN HEAT|C-Class
@@ -111,6 +113,7 @@ T|46019|12U OPEN DIVISION|Texas Crossfire Gold|B-Class
 T|46019|12U OPEN DIVISION|Y'alls Walton|B-Class
 T|46019|12U C-CLASS DIVISION|Forge Fastpitch 27:17|C-Class
 T|46019|12U C-CLASS DIVISION|HTX Aces 12U LeBlanc|C-Class
+T|46019|12U C-CLASS DIVISION|HTX PINK SOXX|C-Class
 T|46019|12U C-CLASS DIVISION|Mattoon Pride 12U|C-Class
 T|46019|12U C-CLASS DIVISION|Prestige Town 12u|C-Class
 T|46020|14U OPEN|West Columbia Select|C-Class
@@ -122,6 +125,7 @@ T|46020|14U C-CLASS|Miami County Blaze 13U-Holt|C-Class
 T|46020|14U C-CLASS|Prodigy Garcia 14U|C-Class
 T|46020|14U C-CLASS|Prodigy Schons|C-Class
 T|46020|14U C-CLASS|Texas Bombers CTX- Salado|C-Class
+T|46020|14U C-CLASS|Texas Lady Hype-O'Neill|C-Class
 T|46020|16U OPEN|Finesse - Biederstedt|C-Class
 T|46020|16U OPEN|Midwest Aftershock 16U AD|B-Class
 T|46020|16U OPEN|Ohio Emeralds 15u|A-Class
