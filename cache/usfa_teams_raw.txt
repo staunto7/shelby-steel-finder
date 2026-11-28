@@ -28,11 +28,11 @@ T|45771|14 Under Girls|Sowega Tribe 14U- Dickens|C-Class
 T|45771|14 Under Girls|Vibe 850|C-Class
 T|45791|10 Under Girls|Georgia Platinum Cherokee|B-Class
 T|45791|11 Under Girls|Carrollton Dirt Divas 2033|C-Class
-T|45791|12 Under Girls|Canes 2033|B-Class
 T|45791|12 Under Girls|CRUSH Livermore 12U|C-Class
 T|45791|12 Under Girls|Diamond Queens|C-Class
 T|45791|12 Under Girls|Ga Fire 2032 - Sappenfield|B-Class
 T|45791|12 Under Girls|Wow Factor Softball - Evans|C-Class
+T|45791|14 Under Girls|7th Inning Lady Royals - 14U - Hall|C-Class
 T|45791|14 Under Girls|Blaze Fastpitch|C-Class
 T|45791|14 Under Girls|Fayette Thunder Select|C-Class
 T|45791|14 Under Girls|Fury Platinum 2031|B-Class
@@ -51,6 +51,7 @@ T|45824|8 Under Girls|West Georgia Diamonds 2K18|C-Class
 T|45824|10 Under Girls|Carrollton Dirt Divas|C-Class
 T|45824|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
 T|45824|10 Under Girls|Dirty Diamonds 10U|C-Class
+T|45824|10 Under Girls|Lady Mafia 10U|C-Class
 T|45824|10 Under Girls|West Georgia Nightmare|C-Class
 T|45825|9 Under Girls|Carrollton Dirt Divas|C-Class
 T|45825|10 Under Girls|Diamond Queens-10U Nolan|League/Rec
